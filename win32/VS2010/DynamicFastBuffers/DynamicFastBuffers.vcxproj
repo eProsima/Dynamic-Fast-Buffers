@@ -50,13 +50,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Proyectos\CDR\include\cpp\;D:\Proyectos\eProsima\eProsima\code\;D:\Proyectos\CDR\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\CDR\include\cpp\;..\..\..\..\eProsima\eProsima\code\;..\..\..\..\CDR\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>CDRd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Proyectos\CDR\lib\i86Win32VS2010</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\CDR\lib\i86Win32VS2010</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
