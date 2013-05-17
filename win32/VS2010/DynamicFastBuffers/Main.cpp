@@ -11,12 +11,14 @@
 void test1();
 void test2();
 void test3();
+void test4();
+void test5();
 
 int main()
 {
 	string str2;
 
-	test3();
+	test5();
 
 	cin >> str2;
 	return 0;
@@ -64,7 +66,7 @@ void test1()
 struct sTest1
 {
 	int n;
-	int j;
+	short j;
 };
 
 struct sTest2
@@ -87,13 +89,13 @@ void test2()
 
 	fb.addStructMember(struc, members, 2);
 	
-	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc);
+	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc, true);
 	char buffer[500];
 	struct sTest1 stest1;
 	stest1.n = 5;
 	stest1.j = 2;
-	FastBuffers::Serializer::serialize((void*) &test1, buffer, functions);
-
+	FastBuffers::Serializer::serialize((void*) &stest1, buffer, functions);
+	
 }
 
 void test3()
@@ -115,7 +117,7 @@ void test3()
 	members[2] = struc;
 	fb.addStructMember(struc2, members, 3);
 	
-	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc2);
+	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc2, true);
 	char buffer[500];
 	
 	struct sTest1 stest1;
@@ -127,5 +129,56 @@ void test3()
 	stest2.j = 2;
 	stest2.test1 = stest1;
 	FastBuffers::Serializer::serialize((void*) &stest2, buffer, functions);
+}
+
+void test4()
+{
+	FastBuffers::FB_API fb;
+	FastBuffers::TypeCode typecode1 = fb.createInteger();
+	FastBuffers::TypeCode typecode2 = fb.createShort();
+	FastBuffers::TypeCode *members;
+	FastBuffers::TypeCode struc = fb.createStruct();
+	members = (FastBuffers::TypeCode*) malloc(2*sizeof(FastBuffers::TypeCode));
+	members[0] = typecode1;
+	members[1] = typecode2;
+
+	fb.addStructMember(struc, members, 2);
+	
+	//Serialize
+	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc, true);
+	char buffer[500];
+	struct sTest1 stest1;
+	stest1.n = 5;
+	stest1.j = 2;
+	FastBuffers::Serializer::serialize((void*) &stest1, buffer, functions);
+
+	//Deserialize
+	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions2 = FastBuffers::Serializer::generateBytecode(struc, false);
+	struct sTest1 stest2;
+	FastBuffers::Serializer::deserialize((void*) &stest2, buffer, functions2);
+
+}
+
+void test5()
+{
+	FastBuffers::FB_API fb;
+	FastBuffers::TypeCode typecode1 = fb.createInteger();
+	FastBuffers::TypeCode typecode2 = fb.createInteger();
+	char buffer[500];
+	char* pBuffer = buffer;
+	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(typecode1, true);
+	int i=8;
+	FastBuffers::Serializer::serialize((void*) &i, buffer, functions);
+	functions = FastBuffers::Serializer::generateBytecode(typecode2, true);
+	int j=3;
+	pBuffer+=sizeof(int);
+	FastBuffers::Serializer::serialize((void*) &j, pBuffer, functions);
+
+	int a, b;
+	functions = FastBuffers::Serializer::generateBytecode(typecode1, false);
+	FastBuffers::Serializer::deserialize((void*) &a, buffer, functions);
+	functions = FastBuffers::Serializer::generateBytecode(typecode2, false);
+	FastBuffers::Serializer::deserialize((void*) &b, pBuffer, functions);
+
 }
 

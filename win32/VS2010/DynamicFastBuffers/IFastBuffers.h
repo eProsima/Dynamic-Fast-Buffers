@@ -38,14 +38,17 @@ namespace FastBuffers
 	{
 	private:
 		//vector<void*> functions_;
-		static void _generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* data)> &vec, TypeCode &typeCode);
+		static void _generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* data)> &vec, TypeCode &typeCode, bool flag);
 	public:
 		Serializer();
 		~Serializer();
-		static vector<void* (*)(eProsima::CDR* cdr, void* data)> generateBytecode(TypeCode &typeCode);
+		static vector<void* (*)(eProsima::CDR* cdr, void* data)> generateBytecode(TypeCode &typeCode, bool flag);
 		static void* serializeInteger(eProsima::CDR* cdr, void* data);
 		static void* serializeShort(eProsima::CDR* cdr, void* data);
 		static char* serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode);
+		static void* deserializeInteger(eProsima::CDR* cdr, void*data);
+		static void* deserializeShort(eProsima::CDR* cdr, void*data);
+		static char* deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode);
 	};
 
 	class Parser

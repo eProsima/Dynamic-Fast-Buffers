@@ -76,39 +76,71 @@ Serializer::Serializer(){}
 
 Serializer::~Serializer(){}
 
-vector<void* (*)(eProsima::CDR* cdr, void* data)> Serializer::generateBytecode(TypeCode &typeCode)
+vector<void* (*)(eProsima::CDR* cdr, void* data)> Serializer::generateBytecode(TypeCode &typeCode, bool flag)
 {
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> ret;
-	_generateBytecode(ret, typeCode);
+	if(flag)
+	{
+		_generateBytecode(ret, typeCode, true);
+	}else{
+		_generateBytecode(ret, typeCode, false);
+	}
 	return ret;
 }
 
-void Serializer::_generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* data)> &vec, TypeCode &typeCode)
+void Serializer::_generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* data)> &vec, TypeCode &typeCode, bool flag)
 {
-	switch(typeCode.getKind())
+	if (flag)
 	{
-		case TC_NOTYPE:
-			//Do nothing
-			break;
-		case TC_INTEGER:
-			vec.push_back(Serializer::serializeInteger);
-			break;
-		case TC_SHORT:
-			vec.push_back(Serializer::serializeShort);
-			break;
-		case TC_STRUCT:
-			//TODO: Implement Behaviour
-			{
-				TypeCode* members = typeCode.getMembers();
-				int count = typeCode.getCount();
-				for(int i=0; i<count; i++){
-					Serializer::_generateBytecode(vec, members[i]);
+		switch(typeCode.getKind())
+		{
+			case TC_NOTYPE:
+				//Do nothing
+				break;
+			case TC_INTEGER:
+				vec.push_back(Serializer::serializeInteger);
+				break;
+			case TC_SHORT:
+				vec.push_back(Serializer::serializeShort);
+				break;
+			case TC_STRUCT:
+				{
+					TypeCode* members = typeCode.getMembers();
+					int count = typeCode.getCount();
+					for(int i=0; i<count; i++){
+						Serializer::_generateBytecode(vec, members[i], true);
+					}
 				}
-			}
-		default:	
-			//Do Nothing
-			break;
+			default:	
+				//Do Nothing
+				break;
+		}
+	}else{
+		switch(typeCode.getKind())
+		{
+			case TC_NOTYPE:
+				//Do nothing
+				break;
+			case TC_INTEGER:
+				vec.push_back(Serializer::deserializeInteger);
+				break;
+			case TC_SHORT:
+				vec.push_back(Serializer::deserializeShort);
+				break;
+			case TC_STRUCT:
+				{
+					TypeCode* members = typeCode.getMembers();
+					int count = typeCode.getCount();
+					for(int i=0; i<count; i++){
+						Serializer::_generateBytecode(vec, members[i], false);
+					}
+				}
+			default:	
+				//Do Nothing
+				break;
+		}
 	}
+	
 }
 
 char* Serializer::serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode)
@@ -130,7 +162,7 @@ void* Serializer::serializeInteger(eProsima::CDR* cdr, void* data)
 	int *p = (int *) data;
 	cout << "P:" << p << endl;
 	cdr->serialize(*p);
-	p+=1;
+	++p;
 	cout <<"P:" <<  p << endl;
 	return (void*) p;
 }
@@ -140,9 +172,51 @@ void* Serializer::serializeShort(eProsima::CDR* cdr, void* data)
 	short *s = (short *) data;
 	cout << "S:" << s << endl;
 	cdr->serialize(*s);
-	s+=1;
+	++s;
 	cout << "S:" << s << endl;
 	return (void*) s;
+}
+
+char* Serializer::deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode)
+{
+	//Crear objetos CDR
+	eProsima::CDRBuffer cdrBuffer(buffer, 500);
+	eProsima::CDR cdr(cdrBuffer);
+	void *val = data;
+	for(vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin(); it != bytecode.end(); ++it){
+		val = (*it)(&cdr, val);
+		cout << "VAL:" << val << endl;
+	}
+
+	return buffer;
+}
+
+void* Serializer::deserializeInteger(eProsima::CDR* cdr, void* data)
+{
+	int32_t* pInteger = (int32_t *) data;
+	cdr->deserialize(*pInteger);
+	++pInteger;
+	return (void*) pInteger;
+	/*int *p = (int *) data;
+	cout << "P:" << p << endl;
+	cdr->deserialize(*p);
+	p+=1;
+	cout <<"P:" <<  p << endl;
+	return (void*) p;*/
+}
+
+void* Serializer::deserializeShort(eProsima::CDR* cdr, void* data)
+{
+	int16_t* pShort = (int16_t *) data;
+	cdr->deserialize(*pShort);
+	++pShort;
+	return (void*) pShort;
+	/*short *s = (short *) data;
+	cout << "S:" << s << endl;
+	cdr->deserialize(*s);
+	s+=1;
+	cout << "S:" << s << endl;
+	return (void*) s;*/
 }
 
 /*Serializer::Serializer(eProsima::CDR& cdr, TypeCode typeCode)
