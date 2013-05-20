@@ -143,15 +143,19 @@ void Serializer::_generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* da
 	
 }
 
-char* Serializer::serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode)
+char* Serializer::serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode)
 {
 	//Crear objetos CDR
 	eProsima::CDRBuffer cdrBuffer(buffer, 500);
 	eProsima::CDR cdr(cdrBuffer);
 	void *val = data;
-	for(vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin(); it != bytecode.end(); ++it){
-		val = (*it)(&cdr, val);
-		cout << "VAL:" << val << endl;
+	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
+	//for( ; it != bytecode.end(); ++it){
+	int size = bytecode.size();
+	for(int i=0; i<size; ++i)
+	{
+		val = bytecode.at(i)(&cdr, val);
+		//cout << "VAL:" << val << endl;
 	}
 
 	return buffer;
@@ -160,32 +164,36 @@ char* Serializer::serialize(void* data, char *buffer, vector<void* (*)(eProsima:
 void* Serializer::serializeInteger(eProsima::CDR* cdr, void* data)
 {
 	int *p = (int *) data;
-	cout << "P:" << p << endl;
+	//cout << "P:" << p << endl;
 	cdr->serialize(*p);
 	++p;
-	cout <<"P:" <<  p << endl;
+	//cout <<"P:" <<  p << endl;
 	return (void*) p;
 }
 
 void* Serializer::serializeShort(eProsima::CDR* cdr, void* data)
 {
 	short *s = (short *) data;
-	cout << "S:" << s << endl;
+	//cout << "S:" << s << endl;
 	cdr->serialize(*s);
 	++s;
-	cout << "S:" << s << endl;
+	//cout << "S:" << s << endl;
 	return (void*) s;
 }
 
-char* Serializer::deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode)
+char* Serializer::deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode)
 {
 	//Crear objetos CDR
 	eProsima::CDRBuffer cdrBuffer(buffer, 500);
 	eProsima::CDR cdr(cdrBuffer);
 	void *val = data;
-	for(vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin(); it != bytecode.end(); ++it){
-		val = (*it)(&cdr, val);
-		cout << "VAL:" << val << endl;
+	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
+	int size = bytecode.size();
+	//for(; it != bytecode.end(); ++it){
+	for(int i=0; i<size; ++i)
+	{
+		val = bytecode.at(i)(&cdr, val);
+		//cout << "VAL:" << val << endl;
 	}
 
 	return buffer;

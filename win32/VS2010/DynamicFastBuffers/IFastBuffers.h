@@ -45,10 +45,10 @@ namespace FastBuffers
 		static vector<void* (*)(eProsima::CDR* cdr, void* data)> generateBytecode(TypeCode &typeCode, bool flag);
 		static void* serializeInteger(eProsima::CDR* cdr, void* data);
 		static void* serializeShort(eProsima::CDR* cdr, void* data);
-		static char* serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode);
+		static char* serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode);
 		static void* deserializeInteger(eProsima::CDR* cdr, void*data);
 		static void* deserializeShort(eProsima::CDR* cdr, void*data);
-		static char* deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> bytecode);
+		static char* deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode);
 	};
 
 	class Parser
