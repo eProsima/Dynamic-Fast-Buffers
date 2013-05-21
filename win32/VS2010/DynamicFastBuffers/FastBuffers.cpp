@@ -143,22 +143,17 @@ void Serializer::_generateBytecode(vector<void* (*)(eProsima::CDR* cdr, void* da
 	
 }
 
-char* Serializer::serialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode)
+void Serializer::serialize(void* data, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode, eProsima::CDR *cdr)
 {
-	//Crear objetos CDR
-	eProsima::CDRBuffer cdrBuffer(buffer, 500);
-	eProsima::CDR cdr(cdrBuffer);
 	void *val = data;
 	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
 	//for( ; it != bytecode.end(); ++it){
 	int size = bytecode.size();
 	for(int i=0; i<size; ++i)
 	{
-		val = bytecode.at(i)(&cdr, val);
+		val = bytecode.at(i)(cdr, val);
 		//cout << "VAL:" << val << endl;
 	}
-
-	return buffer;
 }
 
 void* Serializer::serializeInteger(eProsima::CDR* cdr, void* data)
@@ -181,22 +176,18 @@ void* Serializer::serializeShort(eProsima::CDR* cdr, void* data)
 	return (void*) s;
 }
 
-char* Serializer::deserialize(void* data, char *buffer, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode)
+void Serializer::deserialize(void* data, vector<void* (*)(eProsima::CDR* cdr, void* data)> &bytecode, eProsima::CDR *cdr)
 {
 	//Crear objetos CDR
-	eProsima::CDRBuffer cdrBuffer(buffer, 500);
-	eProsima::CDR cdr(cdrBuffer);
 	void *val = data;
 	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
 	int size = bytecode.size();
 	//for(; it != bytecode.end(); ++it){
 	for(int i=0; i<size; ++i)
 	{
-		val = bytecode.at(i)(&cdr, val);
+		val = bytecode.at(i)(cdr, val);
 		//cout << "VAL:" << val << endl;
 	}
-
-	return buffer;
 }
 
 void* Serializer::deserializeInteger(eProsima::CDR* cdr, void* data)

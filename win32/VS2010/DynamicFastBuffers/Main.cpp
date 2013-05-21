@@ -232,13 +232,16 @@ void testRendimiento()
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc2, true);
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions2 = FastBuffers::Serializer::generateBytecode(struc3, false);
 
+	eProsima::CDRBuffer cdrBuffer(buffer, 500);
+	eProsima::CDR cdr(cdrBuffer);
+
 	for(int i=0; i< 1000000; ++i)
 	{
 		//Serialize
-		FastBuffers::Serializer::serialize((void*) &stest2, buffer, functions);
+		FastBuffers::Serializer::serialize((void*) &stest2, functions, &cdr);
 
 		//Deserialize
-		FastBuffers::Serializer::deserialize((void*) &stest3, buffer, functions2);
+		FastBuffers::Serializer::deserialize((void*) &stest3, functions2, &cdr);
 	}
 
 	//Time calc
