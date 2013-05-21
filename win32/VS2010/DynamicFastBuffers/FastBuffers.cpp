@@ -148,12 +148,16 @@ void Serializer::serialize(void* data, vector<void* (*)(eProsima::CDR* cdr, void
 	void *val = data;
 	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
 	//for( ; it != bytecode.end(); ++it){
-	int size = bytecode.size();
+	/*int size = bytecode.size();
 	for(int i=0; i<size; ++i)
 	{
 		val = bytecode.at(i)(cdr, val);
 		//cout << "VAL:" << val << endl;
-	}
+	}*/
+    for(vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin(); it != bytecode.end(); ++it)
+    {
+        val =(*it)(cdr, val);
+    }
 }
 
 void* Serializer::serializeInteger(eProsima::CDR* cdr, void* data)
@@ -181,13 +185,17 @@ void Serializer::deserialize(void* data, vector<void* (*)(eProsima::CDR* cdr, vo
 	//Crear objetos CDR
 	void *val = data;
 	//vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin();
-	int size = bytecode.size();
+	/*int size = bytecode.size();
 	//for(; it != bytecode.end(); ++it){
 	for(int i=0; i<size; ++i)
 	{
 		val = bytecode.at(i)(cdr, val);
 		//cout << "VAL:" << val << endl;
-	}
+	}*/
+    for(vector<void* (*)(eProsima::CDR* cdr, void* data)>::iterator it = bytecode.begin(); it != bytecode.end(); ++it)
+    {
+        val =(*it)(cdr, val);
+    }
 }
 
 void* Serializer::deserializeInteger(eProsima::CDR* cdr, void* data)

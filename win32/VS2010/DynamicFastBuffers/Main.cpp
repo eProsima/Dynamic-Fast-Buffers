@@ -80,7 +80,7 @@ struct sTest2
 
 void test2()
 {
-	FastBuffers::FB_API fb;
+	/*FastBuffers::FB_API fb;
 	FastBuffers::TypeCode typecode1 = fb.createInteger();
 	FastBuffers::TypeCode typecode2 = fb.createShort();
 	FastBuffers::TypeCode *members;
@@ -96,13 +96,13 @@ void test2()
 	struct sTest1 stest1;
 	stest1.n = 5;
 	stest1.j = 2;
-	FastBuffers::Serializer::serialize((void*) &stest1, buffer, functions);
+	FastBuffers::Serializer::serialize((void*) &stest1, buffer, functions);*/
 	
 }
 
 void test3()
 {
-	FastBuffers::FB_API fb;
+	/*FastBuffers::FB_API fb;
 	FastBuffers::TypeCode typecode1 = fb.createInteger();
 	FastBuffers::TypeCode typecode2 = fb.createInteger();
 	FastBuffers::TypeCode *members;
@@ -130,12 +130,12 @@ void test3()
 	stest2.n = 5;
 	stest2.j = 2;
 	stest2.test1 = stest1;
-	FastBuffers::Serializer::serialize((void*) &stest2, buffer, functions);
+	FastBuffers::Serializer::serialize((void*) &stest2, buffer, functions);*/
 }
 
 void test4()
 {
-	FastBuffers::FB_API fb;
+	/*FastBuffers::FB_API fb;
 	FastBuffers::TypeCode typecode1 = fb.createInteger();
 	FastBuffers::TypeCode typecode2 = fb.createShort();
 	FastBuffers::TypeCode *members;
@@ -157,13 +157,13 @@ void test4()
 	//Deserialize
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions2 = FastBuffers::Serializer::generateBytecode(struc, false);
 	struct sTest1 stest2;
-	FastBuffers::Serializer::deserialize((void*) &stest2, buffer, functions2);
+	FastBuffers::Serializer::deserialize((void*) &stest2, buffer, functions2);*/
 
 }
 
 void test5()
 {
-	FastBuffers::FB_API fb;
+	/*FastBuffers::FB_API fb;
 	FastBuffers::TypeCode typecode1 = fb.createInteger();
 	FastBuffers::TypeCode typecode2 = fb.createInteger();
 	char buffer[500];
@@ -180,7 +180,7 @@ void test5()
 	functions = FastBuffers::Serializer::generateBytecode(typecode1, false);
 	FastBuffers::Serializer::deserialize((void*) &a, buffer, functions);
 	functions = FastBuffers::Serializer::generateBytecode(typecode2, false);
-	FastBuffers::Serializer::deserialize((void*) &b, pBuffer, functions);
+	FastBuffers::Serializer::deserialize((void*) &b, pBuffer, functions);*/
 
 }
 
@@ -235,13 +235,15 @@ void testRendimiento()
 	eProsima::CDRBuffer cdrBuffer(buffer, 500);
 	eProsima::CDR cdr(cdrBuffer);
 
-	for(int i=0; i< 1000000; ++i)
+	for(int i = 0; i< 1000000; ++i)
 	{
 		//Serialize
 		FastBuffers::Serializer::serialize((void*) &stest2, functions, &cdr);
+        cdrBuffer.reset();
 
 		//Deserialize
 		FastBuffers::Serializer::deserialize((void*) &stest3, functions2, &cdr);
+        cdrBuffer.reset();
 	}
 
 	//Time calc
