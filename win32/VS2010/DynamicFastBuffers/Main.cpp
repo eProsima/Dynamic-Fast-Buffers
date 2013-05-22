@@ -7,6 +7,7 @@
 #include <vector>
 #include <stdint.h>
 #include <cstdio>
+#include "IFastBuffers.h"
 
 
 void test1();
@@ -15,6 +16,8 @@ void test3();
 void test4();
 void test5();
 void testRendimiento();
+
+//typedef void* (*CALLBACK) (eProsima::CDR* cdr, void* data);
 
 int main()
 {
@@ -232,6 +235,8 @@ void testRendimiento()
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions = FastBuffers::Serializer::generateBytecode(struc2, true);
 	vector<void* (*)(eProsima::CDR* cdr, void* data)> functions2 = FastBuffers::Serializer::generateBytecode(struc3, false);
 
+	//FastBuffers::CALLBACK *functions = FastBuffers::Serializer::generateBytecode2(struc2, true);
+	
 	eProsima::CDRBuffer cdrBuffer(buffer, 500);
 	eProsima::CDR cdr(cdrBuffer);
 
