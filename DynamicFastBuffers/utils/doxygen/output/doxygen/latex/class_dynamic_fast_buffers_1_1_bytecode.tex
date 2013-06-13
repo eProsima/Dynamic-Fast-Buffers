@@ -1,0 +1,148 @@
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode}{\section{Dynamic\-Fast\-Buffers\-:\-:Bytecode Class Reference}
+\label{class_dynamic_fast_buffers_1_1_bytecode}\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+}
+
+
+This static class represents the operations that odd to be done to serialize a determined data type.  
+
+
+
+
+{\ttfamily \#include $<$Common\-Data.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dynamic_fast_buffers_1_1_bytecode_ac06d0fcda7b517da81e2c4c600c0de8c}{Bytecode} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a6e753b79649428e5dbd5033676fce963}{\hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a6e753b79649428e5dbd5033676fce963}{$\sim$\-Bytecode} ()}\label{class_dynamic_fast_buffers_1_1_bytecode_a6e753b79649428e5dbd5033676fce963}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a7643a6a540efd276138fc5ac85640411}{get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Getter for the integer representing the array number of slots. \end{DoxyCompactList}\item 
+vector$<$ int $>$ $\ast$ \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a695e82e8a2c9aeca47f023f542ef0486}{get\-Alignment} ()
+\begin{DoxyCompactList}\small\item\em Getter for returning the vector holding the memory jumps measured in Bytes (padding) for a complex data type representation. \end{DoxyCompactList}\item 
+vector$<$ C\-A\-L\-L\-B\-A\-C\-K $>$ $\ast$ \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a24976cbe386c4309d86e1950ebea7904}{get\-Bytecode} ()
+\begin{DoxyCompactList}\small\item\em Getter for the vector containing the pointer to the functions that must be executed to serialize o deserialize some data type. \end{DoxyCompactList}\item 
+void \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a3bb8c6bf599c5b2adc6147cd2f8a75b2}{set\-Size} (int \&size)
+\begin{DoxyCompactList}\small\item\em Function used to set the attribute size\-\_\- to the specified value given as parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_aedf0b828c06d10ea4b862380a557fcd1}{add\-Function} (C\-A\-L\-L\-B\-A\-C\-K function)
+\begin{DoxyCompactList}\small\item\em Function used to add a function pointer to the bytecode\-\_\-vector. \end{DoxyCompactList}\item 
+void \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a2a19e9e9fc6f0ff01d7e31c0c600965b}{add\-Alignment} (int value)
+\begin{DoxyCompactList}\small\item\em Function used to add a padding (measured in Bytes) to the p\-Alignment\-\_\- vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This static class represents the operations that odd to be done to serialize a determined data type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_ac06d0fcda7b517da81e2c4c600c0de8c}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!Bytecode@{Bytecode}}
+\index{Bytecode@{Bytecode}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{Bytecode}]{\setlength{\rightskip}{0pt plus 5cm}Dynamic\-Fast\-Buffers\-::\-Bytecode\-::\-Bytecode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_ac06d0fcda7b517da81e2c4c600c0de8c}
+
+
+Default constructor. 
+
+Class \hyperlink{class_dynamic_fast_buffers_1_1_bytecode}{Bytecode} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a2a19e9e9fc6f0ff01d7e31c0c600965b}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!add\-Alignment@{add\-Alignment}}
+\index{add\-Alignment@{add\-Alignment}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{add\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}void Dynamic\-Fast\-Buffers\-::\-Bytecode\-::add\-Alignment (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_a2a19e9e9fc6f0ff01d7e31c0c600965b}
+
+
+Function used to add a padding (measured in Bytes) to the p\-Alignment\-\_\- vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & padding (in Bytes) to be added. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_aedf0b828c06d10ea4b862380a557fcd1}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!add\-Function@{add\-Function}}
+\index{add\-Function@{add\-Function}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{add\-Function}]{\setlength{\rightskip}{0pt plus 5cm}void Dynamic\-Fast\-Buffers\-::\-Bytecode\-::add\-Function (
+\begin{DoxyParamCaption}
+\item[{C\-A\-L\-L\-B\-A\-C\-K}]{function}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_aedf0b828c06d10ea4b862380a557fcd1}
+
+
+Function used to add a function pointer to the bytecode\-\_\-vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & The function pointer to be added. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a695e82e8a2c9aeca47f023f542ef0486}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!get\-Alignment@{get\-Alignment}}
+\index{get\-Alignment@{get\-Alignment}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{get\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ $\ast$ Dynamic\-Fast\-Buffers\-::\-Bytecode\-::get\-Alignment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_a695e82e8a2c9aeca47f023f542ef0486}
+
+
+Getter for returning the vector holding the memory jumps measured in Bytes (padding) for a complex data type representation. 
+
+\begin{DoxyReturn}{Returns}
+Vetcor containing the padding in bytes inserted for each data type. 
+\end{DoxyReturn}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a24976cbe386c4309d86e1950ebea7904}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!get\-Bytecode@{get\-Bytecode}}
+\index{get\-Bytecode@{get\-Bytecode}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{get\-Bytecode}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ C\-A\-L\-L\-B\-A\-C\-K $>$ $\ast$ Dynamic\-Fast\-Buffers\-::\-Bytecode\-::get\-Bytecode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_a24976cbe386c4309d86e1950ebea7904}
+
+
+Getter for the vector containing the pointer to the functions that must be executed to serialize o deserialize some data type. 
+
+\begin{DoxyReturn}{Returns}
+A vector composed by function pointers (attribute bytecode\-\_\-). 
+\end{DoxyReturn}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a7643a6a540efd276138fc5ac85640411}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Dynamic\-Fast\-Buffers\-::\-Bytecode\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_a7643a6a540efd276138fc5ac85640411}
+
+
+Getter for the integer representing the array number of slots. 
+
+\begin{DoxyReturn}{Returns}
+The number of slots of the array. 
+\end{DoxyReturn}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a3bb8c6bf599c5b2adc6147cd2f8a75b2}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}!set\-Size@{set\-Size}}
+\index{set\-Size@{set\-Size}!DynamicFastBuffers::Bytecode@{Dynamic\-Fast\-Buffers\-::\-Bytecode}}
+\subsubsection[{set\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void Dynamic\-Fast\-Buffers\-::\-Bytecode\-::set\-Size (
+\begin{DoxyParamCaption}
+\item[{int \&}]{size}
+\end{DoxyParamCaption}
+)}}\label{class_dynamic_fast_buffers_1_1_bytecode_a3bb8c6bf599c5b2adc6147cd2f8a75b2}
+
+
+Function used to set the attribute size\-\_\- to the specified value given as parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Common\-Data.\-h\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Common\-Data.\-cpp\end{DoxyCompactItemize}

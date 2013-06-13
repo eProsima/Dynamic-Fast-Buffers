@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DynamicFastBuffers\l::SerializerAPI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_dynamic_fast_buffers_1_1_serializer_a_p_i.html",tooltip="This static class offers an interface to serialize/deserialize data types (described by a Typecode) u..."];
+}

@@ -1,0 +1,17 @@
+﻿Build started 6/13/2013 12:25:46 PM.
+     1>Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Debug\DynamicFastBuffers.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Lib:
+         All outputs are up-to-date.
+         DynamicFastBuffers.vcxproj -> D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\lib\x64Win64VS2010\DynamicFastBufferszd.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\DynamicFastBuffers.unsuccessfulbuild".
+         Touching "x64\Debug\DynamicFastBuffers.lastbuildstate".
+     1>Done Building Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05

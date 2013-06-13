@@ -1,0 +1,91 @@
+\hypertarget{class_dynamic_fast_buffers_1_1_serializer_a_p_i}{\section{Dynamic\-Fast\-Buffers\-:\-:Serializer\-A\-P\-I Class Reference}
+\label{class_dynamic_fast_buffers_1_1_serializer_a_p_i}\index{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I@{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I}}
+}
+
+
+This static class offers an interface to serialize/deserialize data types (described by a \hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode}) using C\-D\-R protocol inside a e\-Prosima\-::\-Fast\-Buffer.  
+
+
+
+
+{\ttfamily \#include $<$Serializer\-A\-P\-I.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_dynamic_fast_buffers_1_1_serializer_a_p_i_ac9c1550caf7377448084cc966204b896}{serialize} (void $\ast$data, \hyperlink{class_dynamic_fast_buffers_1_1_bytecode}{Bytecode} $\ast$bytecode, e\-Prosima\-::\-Fast\-Cdr $\ast$cdr)
+\begin{DoxyCompactList}\small\item\em This function serializes any data defined by user, using the rest of the functions implemented within this A\-P\-I class. User does not have to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize. \end{DoxyCompactList}\item 
+static void \hyperlink{class_dynamic_fast_buffers_1_1_serializer_a_p_i_abeb9a50eae218edb44e82dcde232d0d7}{deserialize} (void $\ast$data, \hyperlink{class_dynamic_fast_buffers_1_1_bytecode}{Bytecode} $\ast$bytecode, e\-Prosima\-::\-Fast\-Cdr $\ast$cdr)
+\begin{DoxyCompactList}\small\item\em This function deserializes any data defined by user into the buffer inside Fast\-Cdr object, using the rest of the functions implemented within this A\-P\-I class. User does not have to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_dynamic_fast_buffers_1_1_serializer_a_p_i_afd383f1e8c4e2b271d409532d1525d57}{class {\bfseries Bytecode\-A\-P\-I}}\label{class_dynamic_fast_buffers_1_1_serializer_a_p_i_afd383f1e8c4e2b271d409532d1525d57}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This static class offers an interface to serialize/deserialize data types (described by a \hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode}) using C\-D\-R protocol inside a e\-Prosima\-::\-Fast\-Buffer. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dynamic_fast_buffers_1_1_serializer_a_p_i_abeb9a50eae218edb44e82dcde232d0d7}{\index{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I@{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!DynamicFastBuffers::SerializerAPI@{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I}}
+\subsubsection[{deserialize}]{\setlength{\rightskip}{0pt plus 5cm}void Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I\-::deserialize (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{{\bf Bytecode} $\ast$}]{bytecode, }
+\item[{e\-Prosima\-::\-Fast\-Cdr $\ast$}]{cdr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_dynamic_fast_buffers_1_1_serializer_a_p_i_abeb9a50eae218edb44e82dcde232d0d7}
+
+
+This function deserializes any data defined by user into the buffer inside Fast\-Cdr object, using the rest of the functions implemented within this A\-P\-I class. User does not have to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cdr} & A pointer to a Fast\-Cdr object containing a Fast\-Buffer from where data will be deserialized \\
+\hline
+{\em data} & A void pointer to the data type by user where data will be deserialized. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Not\-Enough\-Memory\-Exception} & This exception is thrown when trying to deserialize in a position that exceed the internal memory size. \\
+\hline
+{\em Bad\-Param\-Exception} & This exception is thrown trying to deserialize in an invalid value. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_dynamic_fast_buffers_1_1_serializer_a_p_i_ac9c1550caf7377448084cc966204b896}{\index{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I@{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I}!serialize@{serialize}}
+\index{serialize@{serialize}!DynamicFastBuffers::SerializerAPI@{Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I}}
+\subsubsection[{serialize}]{\setlength{\rightskip}{0pt plus 5cm}void Dynamic\-Fast\-Buffers\-::\-Serializer\-A\-P\-I\-::serialize (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{{\bf Bytecode} $\ast$}]{bytecode, }
+\item[{e\-Prosima\-::\-Fast\-Cdr $\ast$}]{cdr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_dynamic_fast_buffers_1_1_serializer_a_p_i_ac9c1550caf7377448084cc966204b896}
+
+
+This function serializes any data defined by user, using the rest of the functions implemented within this A\-P\-I class. User does not have to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cdr} & A pointer to a Fast\-Cdr object containing a Fast\-Buffer where data will be serialized \\
+\hline
+{\em data} & A void pointer to the data type by user from where data will be serialized. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Not\-Enough\-Memory\-Exception} & This exception is thrown when trying to serialize in a position that exceed the internal memory size. \\
+\hline
+{\em Bad\-Param\-Exception} & This exception is thrown trying to serialize in an invalid value. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Serializer\-A\-P\-I.\-h\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Serializer\-A\-P\-I.\-cpp\end{DoxyCompactItemize}

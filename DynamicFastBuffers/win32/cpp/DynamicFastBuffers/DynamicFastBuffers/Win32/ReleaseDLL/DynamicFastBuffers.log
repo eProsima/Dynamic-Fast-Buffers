@@ -1,0 +1,187 @@
+﻿Build started 6/13/2013 12:06:01 PM.
+     1>Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Win32\ReleaseDLL\DynamicFastBuffers.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Win32\ReleaseDLL\DynamicFastBuffers.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\include /ID:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\..\CDR\include\ /ID:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\..\CDR\include\cpp\ /ID:\Proyectos\eProsima\eProsima\code\ /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D __LITTLE_ENDIAN__ /D EPROSIMA_WIN32 /D EPROSIMA_CPP_DLL_VARIABLE /D EPROSIMA_CPP_DLL_EXPORT /D NDEBUG /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\ReleaseDLL\\" /Fd"Win32\ReleaseDLL\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\src\cpp\BytecodeAPI.cpp ..\..\..\..\src\cpp\CommonData.cpp ..\..\..\..\src\cpp\exceptions\NotEnoughParamsException.cpp ..\..\..\..\src\cpp\exceptions\WrongParamException.cpp ..\..\..\..\src\cpp\exceptions\WrongTypeException.cpp ..\..\..\..\src\cpp\SerializerAPI.cpp ..\..\..\..\src\cpp\TypecodeAPI.cpp Main.cpp
+         Main.cpp
+     1>d:\proyectos\cdr\include\cpp\exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(42): warning C4251: 'eProsima::FastCdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr::state'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(862): warning C4251: 'eProsima::FastCdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(865): warning C4251: 'eProsima::FastCdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         TypecodeAPI.cpp
+     1>d:\proyectos\cdr\include\cpp\exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(42): warning C4251: 'eProsima::FastCdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr::state'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(862): warning C4251: 'eProsima::FastCdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(865): warning C4251: 'eProsima::FastCdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>..\..\..\..\src\cpp\TypecodeAPI.cpp(56): warning C4101: 'p' : unreferenced local variable
+         SerializerAPI.cpp
+     1>d:\proyectos\cdr\include\cpp\exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(42): warning C4251: 'eProsima::FastCdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr::state'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(862): warning C4251: 'eProsima::FastCdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(865): warning C4251: 'eProsima::FastCdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         WrongTypeException.cpp
+     1>D:\Proyectos\CDR\include\cpp/exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         WrongParamException.cpp
+     1>D:\Proyectos\CDR\include\cpp/exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         NotEnoughParamsException.cpp
+     1>D:\Proyectos\CDR\include\cpp/exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         CommonData.cpp
+     1>d:\proyectos\cdr\include\cpp\exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(42): warning C4251: 'eProsima::FastCdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr::state'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(862): warning C4251: 'eProsima::FastCdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(865): warning C4251: 'eProsima::FastCdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+         BytecodeAPI.cpp
+     1>d:\proyectos\cdr\include\cpp\exceptions/Exception.h(85): warning C4251: 'eProsima::Exception::m_message' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of class 'eProsima::Exception'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(42): warning C4251: 'eProsima::FastCdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr::state'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(862): warning C4251: 'eProsima::FastCdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\FastCdr.h(865): warning C4251: 'eProsima::FastCdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::FastCdr'
+                 d:\proyectos\cdr\include\cpp\FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(73): warning C4251: 'eProsima::Cdr::state::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(76): warning C4251: 'eProsima::Cdr::state::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr::state'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1571): warning C4251: 'eProsima::Cdr::m_currentPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1574): warning C4251: 'eProsima::Cdr::m_alignPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>D:\Proyectos\CDR\include\cpp\Cdr.h(1577): warning C4251: 'eProsima::Cdr::m_lastPosition' : class 'eProsima::_FastBuffer_iterator' needs to have dll-interface to be used by clients of class 'eProsima::Cdr'
+                 D:\Proyectos\CDR\include\cpp/FastBuffer.h(17) : see declaration of 'eProsima::_FastBuffer_iterator'
+     1>..\..\..\..\src\cpp\BytecodeAPI.cpp(60): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\..\..\src\cpp\BytecodeAPI.cpp(193): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\lib\i86Win32VS2010\DynamicFastBuffers.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\..\CDR\lib\i86Win32VS2010 CDRd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Win32\ReleaseDLL\DynamicFastBuffers.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Proyectos\DynamicFastBuffers\lib\i86Win32VS2010\DynamicFastBuffers.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Proyectos\DynamicFastBuffers\lib\i86Win32VS2010\DynamicFastBuffers.lib" /MACHINE:X86 /DLL Win32\ReleaseDLL\BytecodeAPI.obj
+         Win32\ReleaseDLL\CommonData.obj
+         Win32\ReleaseDLL\NotEnoughParamsException.obj
+         Win32\ReleaseDLL\WrongParamException.obj
+         Win32\ReleaseDLL\WrongTypeException.obj
+         Win32\ReleaseDLL\SerializerAPI.obj
+         Win32\ReleaseDLL\TypecodeAPI.obj
+         Win32\ReleaseDLL\Main.obj
+            Creating library D:\Proyectos\DynamicFastBuffers\lib\i86Win32VS2010\DynamicFastBuffers.lib and object D:\Proyectos\DynamicFastBuffers\lib\i86Win32VS2010\DynamicFastBuffers.exp
+         DynamicFastBuffers.vcxproj -> D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\lib\i86Win32VS2010\DynamicFastBuffers.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\..\..\..\..\lib\i86Win32VS2010\DynamicFastBuffers.dll;#2" /manifest Win32\ReleaseDLL\DynamicFastBuffers.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Win32\ReleaseDLL\DynamicFastBuffers.unsuccessfulbuild".
+         Touching "Win32\ReleaseDLL\DynamicFastBuffers.lastbuildstate".
+     1>Done Building Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.25

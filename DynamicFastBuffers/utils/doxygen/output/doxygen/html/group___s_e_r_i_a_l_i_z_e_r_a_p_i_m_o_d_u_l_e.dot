@@ -1,0 +1,9 @@
+digraph "Serializer API Module"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node0 [label="Serializer API Module",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="Dynamic Fast Buffers\l API Reference",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___d_y_n_a_m_i_c_f_a_s_t_b_u_f_f_e_r_s_a_p_i_r_e_f_e_r_e_n_c_e.html",tooltip="DFB internal API divided in modules. "];
+  Node1->Node0 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+}

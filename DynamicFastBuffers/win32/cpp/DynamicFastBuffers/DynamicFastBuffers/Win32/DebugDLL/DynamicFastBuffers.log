@@ -1,0 +1,20 @@
+﻿Build started 6/13/2013 12:26:01 PM.
+     1>Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Win32\DebugDLL\DynamicFastBuffers.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+       Manifest:
+         All outputs are up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "Win32\DebugDLL\DynamicFastBuffers.unsuccessfulbuild".
+         Touching "Win32\DebugDLL\DynamicFastBuffers.lastbuildstate".
+     1>Done Building Project "D:\Proyectos\DynamicFastBuffers\win32\cpp\DynamicFastBuffers\DynamicFastBuffers\DynamicFastBuffers.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.06

@@ -1,0 +1,56 @@
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a_p_i}{\section{Dynamic\-Fast\-Buffers\-:\-:Bytecode\-A\-P\-I Class Reference}
+\label{class_dynamic_fast_buffers_1_1_bytecode_a_p_i}\index{Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I@{Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I}}
+}
+
+
+This static class offers an interface to generate a bytecode from a given \hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode} object.  
+
+
+
+
+{\ttfamily \#include $<$Bytecode\-A\-P\-I.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_dynamic_fast_buffers_1_1_bytecode}{Bytecode} $\ast$ \hyperlink{class_dynamic_fast_buffers_1_1_bytecode_a_p_i_a082121e1283ca0ae9a456caf814c0be8}{generate\-Bytecode} (\hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode} $\ast$typecode, flag flag)
+\begin{DoxyCompactList}\small\item\em This function generates a bytecode of function pointers depending on the flag specified by user whan calling the function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This static class offers an interface to generate a bytecode from a given \hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode} object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dynamic_fast_buffers_1_1_bytecode_a_p_i_a082121e1283ca0ae9a456caf814c0be8}{\index{Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I@{Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I}!generate\-Bytecode@{generate\-Bytecode}}
+\index{generate\-Bytecode@{generate\-Bytecode}!DynamicFastBuffers::BytecodeAPI@{Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I}}
+\subsubsection[{generate\-Bytecode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bytecode} $\ast$ Dynamic\-Fast\-Buffers\-::\-Bytecode\-A\-P\-I\-::generate\-Bytecode (
+\begin{DoxyParamCaption}
+\item[{{\bf Typecode} $\ast$}]{typecode, }
+\item[{flag}]{flag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_dynamic_fast_buffers_1_1_bytecode_a_p_i_a082121e1283ca0ae9a456caf814c0be8}
+
+
+This function generates a bytecode of function pointers depending on the flag specified by user whan calling the function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em typecode} & A pointer to a \hyperlink{class_dynamic_fast_buffers_1_1_typecode}{Typecode} object describing the data defined by user. \\
+\hline
+{\em flag} & An enumerator value that specifies if the bytecode thar must be generated is for data serialization or deserialization. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_dynamic_fast_buffers_1_1_bytecode}{Bytecode} object where all function pointers will be allocated. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_dynamic_fast_buffers_1_1_wrong_param_exception}{Wrong\-Param\-Exception}} & This exception is thrown when trying to deserialize in a position that exceed the internal memory size. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Bytecode\-A\-P\-I.\-h\item 
+D\-:/\-Proyectos/\-Dynamic\-Fast\-Buffers/win32/\-V\-S2010/\-Dynamic\-Fast\-Buffers/Bytecode\-A\-P\-I.\-cpp\end{DoxyCompactItemize}

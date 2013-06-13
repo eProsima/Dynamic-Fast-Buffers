@@ -1,0 +1,10 @@
+digraph "D:/Proyectos/DynamicFastBuffers/win32" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b4f92dd377abba25bba37a57cb06d57a {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_b4f92dd377abba25bba37a57cb06d57a.html"];
+    dir_b4f92dd377abba25bba37a57cb06d57a [shape=plaintext label="win32"];
+    dir_56c8f89cf9d22818312c8a4e6abbe8b2 [shape=box label="VS2010" color="red" fillcolor="white" style="filled" URL="dir_56c8f89cf9d22818312c8a4e6abbe8b2.html"];
+  }
+}
