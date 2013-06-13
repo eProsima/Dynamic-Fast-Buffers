@@ -1,0 +1,206 @@
+ ---COMPLEX_STRUCTURE---1000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.000375s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.000398s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.000372s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.000592s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.000596s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+ 
+ ---DFB---
+ C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.000573s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.000577s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.000549s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.000575s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.000573s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+ 
+ 
+ ---COMPLEX_STRUCTURE---10000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+ C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.005828s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.005954s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (262.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.003681s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.004984s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.003829s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (407.4%)
+ 
+ ---DFB---
+ C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.005045s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (309.2%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.005267s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (296.2%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.005264s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.004992s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.004991s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (312.6%)
+ 
+ 
+ ---COMPLEX_STRUCTURE---100000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+ C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.047370s wall, 0.031200s user + 0.000000s system = 0.031200s CPU (65.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.051927s wall, 0.046800s user + 0.000000s system = 0.046800s CPU (90.1%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.046782s wall, 0.046800s user + 0.000000s system = 0.046800s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.053873s wall, 0.046800s user + 0.000000s system = 0.046800s CPU (86.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.055325s wall, 0.031200s user + 0.000000s system = 0.031200s CPU (56.4%)
+ 
+ ---DFB---
+ C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.047717s wall, 0.046800s user + 0.000000s system = 0.046800s CPU (98.1%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.049651s wall, 0.062400s user + 0.000000s system = 0.062400s CPU (125.7%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.035825s wall, 0.046800s user + 0.000000s system = 0.046800s CPU (130.6%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.032639s wall, 0.031200s user + 0.000000s system = 0.031200s CPU (95.6%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.034981s wall, 0.031200s user + 0.000000s system = 0.031200s CPU (89.2%)
+ 
+ 
+ ---COMPLEX_STRUCTURE---1000000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+ C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.388771s wall, 0.390002s user + 0.000000s system = 0.390002s CPU (100.3%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.402131s wall, 0.405603s user + 0.000000s system = 0.405603s CPU (100.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.502373s wall, 0.514803s user + 0.000000s system = 0.514803s CPU (102.5%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.382537s wall, 0.390002s user + 0.000000s system = 0.390002s CPU (102.0%)
+ 
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 0.400919s wall, 0.405603s user + 0.000000s system = 0.405603s CPU (101.2%)
+ 
+ ---DFB---
+ C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.346439s wall, 0.343202s user + 0.000000s system = 0.343202s CPU (99.1%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.337363s wall, 0.343202s user + 0.000000s system = 0.343202s CPU (101.7%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.325202s wall, 0.327602s user + 0.000000s system = 0.327602s CPU (100.7%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.518744s wall, 0.514803s user + 0.000000s system = 0.514803s CPU (99.2%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 0.357331s wall, 0.358802s user + 0.000000s system = 0.358802s CPU (100.4%)
+ 
+ 
+ ---COMPLEX_STRUCTURE---10000000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+ C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 3.826464s wall, 3.822024s user + 0.000000s system = 3.822024s CPU (99.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 3.918173s wall, 3.931225s user + 0.000000s system = 3.931225s CPU (100.3%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 3.853374s wall, 3.837625s user + 0.000000s system = 3.837625s CPU (99.6%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 4.118961s wall, 4.118426s user + 0.000000s system = 4.118426s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 3.810756s wall, 3.806424s user + 0.000000s system = 3.806424s CPU (99.9%)
+ 
+ ---DFB---
+ C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 3.483925s wall, 3.463222s user + 0.000000s system = 3.463222s CPU (99.4%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 3.296845s wall, 3.291621s user + 0.000000s system = 3.291621s CPU (99.8%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 3.289765s wall, 3.291621s user + 0.000000s system = 3.291621s CPU (100.1%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 4.095907s wall, 4.102826s user + 0.000000s system = 4.102826s CPU (100.2%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 3.281639s wall, 3.276021s user + 0.000000s system = 3.276021s CPU (99.8%)
+ 
+ ---COMPLEX_STRUCTURE---100000000 LOOPS---------------------------------------------------------------------------------------------------------------------
+ ---PROTOBUF---
+ C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 37.041984s wall, 36.987837s user + 0.000000s system = 36.987837s CPU (99.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 39.161490s wall, 39.093851s user + 0.000000s system = 39.093851s CPU (99.8%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 39.664355s wall, 39.655454s user + 0.000000s system = 39.655454s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 36.894875s wall, 36.831836s user + 0.000000s system = 36.831836s CPU (99.8%)
+
+C:\Users\RafaelLara>D:\Proyectos\eBuffers\utils\pcPerformance\protocolbuffers\protobuf\Release\PerformanceProtoBuffers_100.exe
+ 40.841819s wall, 40.794261s user + 0.000000s system = 40.794261s CPU (99.9%)
+
+ ---DFB---
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 36.553855s wall, 36.551034s user + 0.000000s system = 36.551034s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 31.210074s wall, 31.200200s user + 0.000000s system = 31.200200s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 32.819226s wall, 32.807010s user + 0.000000s system = 32.807010s CPU (100.0%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 32.943639s wall, 32.916211s user + 0.000000s system = 32.916211s CPU (99.9%)
+
+C:\Users\RafaelLara>D:\Proyectos\PerformanceDynamicFastBuffers\x64\Release\PerformanceDynamicFastBuffers.exe
+ 36.885969s wall, 36.894236s user + 0.000000s system = 36.894236s CPU (100.0%)
+ 
+
+ 
+ 
+ 
