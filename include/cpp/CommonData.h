@@ -74,6 +74,9 @@ namespace DynamicFastBuffers
 
 		//! @brief Integer holding a value that specifies the total slots of the array (in case this Typecode es a TC_ARRAY).
 		int dimensions_;
+
+		//! @brief Integer holding a value that specifies the maximum size of the data inside it (in case this Typecode is a TC_STRUCT).
+		int structSize_;
 		
 		/*!
         * @brief Checks if a Typecode object with his attribute kind_ set to the specified value provided as parameter can be added to this Typecode.

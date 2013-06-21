@@ -1,6 +1,6 @@
 #ifndef _CPP_EXCEPTIONS_WRONGPARAMEXCEPTION_H_
 #define _CPP_EXCEPTIONS_WRONGPARAMEXCEPTION_H_
-#include "Cdr.h"
+#include "FastCdr.h"
 #include "FastBuffer.h"
 
 namespace DynamicFastBuffers
@@ -9,7 +9,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when a wrong parameter has been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class WrongParamException : public eProsima::Exception
+	class eProsima_cpp_DllVariable WrongParamException : public eProsima::Exception
 	{
 	public:
 
