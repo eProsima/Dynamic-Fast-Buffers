@@ -1,4 +1,4 @@
-#include "cpp\exceptions\WrongParamException.h"
+#include "cpp/exceptions/WrongParamException.h"
 
 namespace DynamicFastBuffers
 {

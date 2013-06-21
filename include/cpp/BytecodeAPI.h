@@ -1,9 +1,9 @@
 #ifndef _BYTECODE_API_
 #define _BYTECODE_API_
 
-#include "cpp\CommonData.h"
-#include "cpp\SerializerAPI.h"
-#include "cpp\exceptions/WrongParamException.h"
+#include "cpp/CommonData.h"
+#include "cpp/SerializerAPI.h"
+#include "cpp/exceptions/WrongParamException.h"
 
 namespace DynamicFastBuffers
 {

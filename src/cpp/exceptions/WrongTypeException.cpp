@@ -1,4 +1,4 @@
-#include "cpp\exceptions\WrongTypeException.h"
+#include "cpp/exceptions/WrongTypeException.h"
 
 namespace DynamicFastBuffers
 {

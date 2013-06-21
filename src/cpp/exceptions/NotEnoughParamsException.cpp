@@ -1,4 +1,4 @@
-#include "cpp\exceptions\NotEnoughParamsException.h"
+#include "cpp/exceptions/NotEnoughParamsException.h"
 
 namespace DynamicFastBuffers
 {

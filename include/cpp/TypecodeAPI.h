@@ -2,10 +2,10 @@
 #define _TYPECODE_API_
 
 #include <array>
-#include "cpp\CommonData.h"
-#include "cpp\exceptions\NotEnoughParamsException.h"
-#include "cpp\exceptions\WrongTypeException.h"
-#include "cpp\exceptions\WrongParamException.h"
+#include "cpp/CommonData.h"
+#include "cpp/exceptions/NotEnoughParamsException.h"
+#include "cpp/exceptions/WrongTypeException.h"
+#include "cpp/exceptions/WrongParamException.h"
 
 namespace DynamicFastBuffers
 {
