@@ -365,7 +365,7 @@ namespace DynamicFastBuffers
 	{
 		vector<int32_t> *vLong = (vector<int32_t>*) data;
 		cdr->serialize(*vLong);
-		vLong ++;
+		++vLong;
 		return (void*) vLong;
 	}
 	

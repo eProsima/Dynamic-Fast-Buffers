@@ -7,12 +7,12 @@ namespace DynamicFastBuffers
 	* Class Typecode
 	*/
 	
-	Typecode::Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1){};
+	Typecode::Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0){};
 
-	Typecode::Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1){};
+	Typecode::Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0){};
 
 	Typecode::Typecode(const Typecode& other) : kind_(other.kind_), counter_(other.counter_), members_(other.members_),
-		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_)
+		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_)
 	{
 		if(other.type_ != NULL)
 		{
@@ -36,6 +36,10 @@ namespace DynamicFastBuffers
 		int res = checkType(member.getKind());
 		if(res == 0){ //Se puede añadir
 			members_.push_back(member);
+			int size = member.getSize();
+			if(structSize_ < size && member.getKind() != TC_STRUCT){
+				structSize_ = size;
+			}
 			counter_++;
 		}
 		return res;
@@ -44,6 +48,10 @@ namespace DynamicFastBuffers
 	int Typecode::addMemberNoCheck(Typecode &member)
 	{
 		members_.push_back(member);
+		int size = member.getSize();
+		if(structSize_ < size && member.getKind() != TC_STRUCT){
+			structSize_ = size;
+		}
 		++counter_;
 		return 0;
 	}
@@ -125,6 +133,8 @@ namespace DynamicFastBuffers
 				return "TC_STRING";
 			case TC_CHARACTER:
 				return "TC_CHARACTER";
+			case TC_BOOLEAN:
+				return "TC_BOOLEAN";
 			case TC_STRUCT:
 				return "TC_STRUCT";
 			case TC_UNION:
@@ -191,11 +201,7 @@ namespace DynamicFastBuffers
 			return sizeof(bool);
 			break;
 		case TC_STRUCT:
-#if defined(_M_IX86)
-			return 2*sizeof(void*);
-#else
-			return sizeof(void*);
-#endif
+			return structSize_;
 			break;
 		case TC_UNION:
 		case TC_ARRAY:
@@ -275,10 +281,4 @@ namespace DynamicFastBuffers
 	{
 		*size_ = size;
 	}
-
-	/*inline int* Bytecode::getSize()
-	{
-		return size_;
-	}*/
-
 };

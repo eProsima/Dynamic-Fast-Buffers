@@ -53,22 +53,22 @@ namespace DynamicFastBuffers
 			break;
 		case TC_STRUCT:
 			{
+				
 				vector<Typecode> members = typecode->getMembers();
 				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
 				bool jumped = false;
-				for(int i=0; i<count; ++i){
+				for(unsigned int i=0; i<count; ++i){
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeSerialization(bytecode, &members[i], index);
-						if(((int) index % 8) != 0){
-							Typecode* jumper = new Typecode(TC_DOUBLE);
-							insertJumps(jumper, bytecode, index);
-							delete(jumper);
-							jumped = true;
-						}
 					}else{
 						if(i==0 || jumped){
 							alignment(members[i].getSize(), index);
+#if defined(_M_IX86)
+							if(members[i].getKind() == TC_STRING){
+								index = (char*) index + sizeof(int);
+							}
+#endif
 							jumped = false;
 						}else{
 							insertJumps(&members[i], bytecode, index);
@@ -190,18 +190,17 @@ namespace DynamicFastBuffers
 				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
 				bool jumped = false;
-				for(int i=0; i<count; ++i){
+				for(unsigned int i=0; i<count; ++i){
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeDeserialization(bytecode, &members[i], index);
-						if(((int) index % 8) != 0){
-							Typecode* jumper = new Typecode(TC_DOUBLE);
-							insertJumps(jumper, bytecode, index);
-							delete(jumper);
-							jumped = true;
-						}
 					}else{
 						if(i==0 || jumped){
 							alignment(members[i].getSize(), index);
+#if defined(_M_IX86)
+							if(members[i].getKind() == TC_STRING){
+								index = (char*) index + sizeof(int);
+							}
+#endif
 							jumped = false;
 						}else{
 							insertJumps(&members[i], bytecode, index);

@@ -50,10 +50,12 @@ namespace DynamicFastBuffers
 
 	Typecode* TypecodeAPI::createStruct(Typecode *init, ...)
 	{
+		if(init == NULL){
+			return new Typecode(TC_STRUCT);
+		}
 		Typecode *ret = new Typecode(TC_STRUCT);
 		va_list vl;
 		va_start(vl, init);
-		Typecode *p;
 		ret->addMemberNoCheck(*init);
 		Typecode *pTypecode = va_arg(vl, Typecode*);
 		while(pTypecode != NULL){
@@ -73,10 +75,16 @@ namespace DynamicFastBuffers
 		Typecode *ret = new Typecode(TC_ARRAY);
 		ret->setType(type);
 		va_list vl;
-		va_start(vl, nDims);
+		va_start(vl, dim1);
 		vector<int> content;
 		int count = 0, number = va_arg(vl, int);
-		int totalSize = 1;
+		int totalSize = dim1;
+		if(dim1 < 1){
+			throw WrongParamException("Dimensions must be positive integers.");
+		}else{
+			++count;
+			content.push_back(dim1);
+		}
 		while(number){
 			if(number < 1 ){
 				throw WrongParamException("Dimensions must be positive integers.");
