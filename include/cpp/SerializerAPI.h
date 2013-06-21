@@ -192,7 +192,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* SerializerAPI::deserializeBoolean(eProsima::FastCdr *cdr, void *data, int &size);
+		static void* deserializeBoolean(eProsima::FastCdr *cdr, void *data, int &size);
 		
 		//Complex data types
 

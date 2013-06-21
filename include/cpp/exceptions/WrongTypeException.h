@@ -57,7 +57,7 @@ namespace DynamicFastBuffers
 		WrongTypeException & operator=(WrongTypeException && ex);
 		
 		//! @brief Default constructor
-		virtual ~WrongTypeException ();
+		virtual ~WrongTypeException () EPROSIMA_USE_NOEXCEPT;
 		
 		//! @brief This function throws the object as exception.
 		virtual void raise() const;

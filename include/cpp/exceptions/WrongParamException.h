@@ -56,7 +56,7 @@ namespace DynamicFastBuffers
 		WrongParamException& operator=(WrongParamException&& ex);
 		
 		//! @brief Default constructor
-		virtual ~WrongParamException();
+		virtual ~WrongParamException() EPROSIMA_USE_NOEXCEPT;
 		
 		//! @brief This function throws the object as exception.
 		virtual void raise() const;
