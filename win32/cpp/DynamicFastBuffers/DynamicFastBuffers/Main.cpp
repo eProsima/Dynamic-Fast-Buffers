@@ -1,4 +1,4 @@
-
+/*
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -37,9 +37,9 @@ void testCode();
 
 struct inner
 {
-	string att1;
-	int att2;
-	double att3;
+	char att1;
+	char att2;
+	short att3;
 };
 
 struct outer
@@ -49,6 +49,40 @@ struct outer
 	int att3;
 	inner att4;
 };
+
+struct InnerStruct
+{
+	short s1;
+	int i1;
+	char c1;
+	std::string str1;
+	short s2;
+	long l1;
+};
+
+struct MediumStruct
+{
+	short i1;
+	char s1;
+	short arr1[2][4];
+	vector<long> members1;
+	int i2;
+	short s2;
+	InnerStruct st3;
+	std::string str1;
+};
+
+struct OuterStruct
+{
+	short s1;
+	int i1;
+	MediumStruct st1;
+	short arr1[2][4];
+	short i2;
+	long s2;
+	InnerStruct st3;
+	string str1;
+};*/
 
 /*
 
@@ -158,6 +192,7 @@ struct sTest2
 
 
 */
+/*
 int main()
 {
 	//_CrtSetBreakAlloc(144);
@@ -181,16 +216,28 @@ int main()
 
 void testCode()
 {
+
+	cout << "Arch: " << sizeof(void*)*8 << endl;
+	cout << "Character: " << sizeof(char) << endl;
+	cout << "Integer: " << sizeof(int) << endl;
+	cout << "Long: " << sizeof(long) << endl;
+	cout << "Float: " << sizeof(float) << endl;
+	cout << "Double: " << sizeof(double) << endl;
+	cout << "String: " << sizeof(std::string) << endl;
+	cout << "Boolean: " << sizeof(bool) << endl;
+	cout << "Void*: " << sizeof(void*) << endl;
+	
+
 	char *buffer = (char*)calloc(500, sizeof(char));
 
 	//boost::timer::auto_cpu_timer t;
 
 	outer stest1, stest2;
-	inner in1;
-
-	in1.att1 = "INNER";
-	in1.att2 = 1;
-	in1.att3 = 2;
+	inner in1;*/
+	/*
+	in1.att1 = 'A';
+	in1.att2 = 'B';
+	in1.att3 = 1000;
 
 	stest1.att1 = 10;
 	stest1.att2 = "OUTER";
@@ -202,11 +249,87 @@ void testCode()
 		DynamicFastBuffers::TypecodeAPI::createString(),
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
 		DynamicFastBuffers::TypecodeAPI::createStruct(
-			DynamicFastBuffers::TypecodeAPI::createString(),
-			DynamicFastBuffers::TypecodeAPI::createInteger(),
-			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
 			NULL
 		),
+		NULL
+	);*/
+
+	//
+	// Data creation
+	//
+	/*short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
+	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
+
+	InnerStruct innerTest;
+	innerTest.s1 = 1;
+	innerTest.i1 = 2;
+	innerTest.c1 = 'T';
+	innerTest.str1 = "CUATRO";
+	innerTest.s2 = 5;
+	innerTest.l1 = 6;
+
+	MediumStruct mediumTest;
+	mediumTest.i1 = 5;
+	mediumTest.s1 = 'C';
+	memcpy(mediumTest.arr1, arr1, sizeof(arr1));
+	mediumTest.members1 = vector<long>(5, 50);
+	mediumTest.i2 = 10;
+	mediumTest.s2 = 4;
+	mediumTest.st3 = innerTest;
+	mediumTest.str1 = "INNER STRUCT";
+	
+	OuterStruct inputStruct, outputStruct;
+	inputStruct.s1 = 6;
+	inputStruct.i1 = 15;
+	inputStruct.st1 = mediumTest;
+	memcpy(inputStruct.arr1, arr2, sizeof(arr2));
+	inputStruct.i2 = 20;
+	inputStruct.s2 = 8;
+	inputStruct.st3 = innerTest;
+	inputStruct.str1 = "OUTER STRUCT";
+
+
+	//
+	// Typecode creation
+	//
+	DynamicFastBuffers::Typecode* typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+			DynamicFastBuffers::TypecodeAPI::createSequence(DynamicFastBuffers::TypecodeAPI::createLong(), 5),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createStruct(
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createInteger(),
+				DynamicFastBuffers::TypecodeAPI::createCharacter(),
+				DynamicFastBuffers::TypecodeAPI::createString(),
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createLong(),
+				NULL
+			),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createString(),
 		NULL
 	);
 
@@ -219,17 +342,20 @@ void testCode()
 	for(int count = 0; count < 100; ++count)
 	{
 		
-		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
+		DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, &cdr);
 
 		cdr.reset();
 
-		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+		DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bytecodeDeserialization, &cdr);
 
 		cdr.reset();
+
+		string s;
+		cin >> s;
 
 	}
 }
-
+*/
 
 /*
 
