@@ -26,7 +26,7 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	WrongTypeException::~WrongTypeException(){}
+	WrongTypeException::~WrongTypeException() EPROSIMA_USE_NOEXCEPT{}
 
 	void WrongTypeException::raise() const
 	{

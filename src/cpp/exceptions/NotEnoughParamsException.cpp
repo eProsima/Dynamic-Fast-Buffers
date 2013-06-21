@@ -26,7 +26,7 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	NotEnoughParamsException::~NotEnoughParamsException(){}
+	NotEnoughParamsException::~NotEnoughParamsException() EPROSIMA_USE_NOEXCEPT{}
 
 	void NotEnoughParamsException::raise() const
 	{

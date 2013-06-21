@@ -9,7 +9,6 @@ namespace DynamicFastBuffers
 		vector<CALLBACK>* tc = bytecode->getBytecode();
 		vector<int> *jumps = bytecode->getAlignment();
 		int jLength = jumps->size();
-		int i=0;
 		int length = tc->size();
 		int* size;
 
@@ -34,7 +33,6 @@ namespace DynamicFastBuffers
 		vector<CALLBACK>* tc = bytecode->getBytecode();
 		vector<int> *jumps = bytecode->getAlignment();
 		int jLength = jumps->size();
-		int i=0;
 		int length = tc->size();
 		int* size;
 
