@@ -297,9 +297,9 @@ namespace DynamicFastBuffers
 
 	inline size_t BytecodeAPI::alignment(size_t dataSize, void *&m_currentPosition)
 	{
-		size_t align = (dataSize - ((int) m_currentPosition % dataSize)) & (dataSize-1);
+		size_t align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
 		m_currentPosition = (char*) m_currentPosition + align;
-		if(dataSize == 8 && (((int) m_currentPosition % 8) != 0)){
+		if(dataSize == 8 && (((size_t) m_currentPosition % 8) != 0)){
 			m_currentPosition = (char*) m_currentPosition + sizeof(int);
 			align += sizeof(int);
 		}
