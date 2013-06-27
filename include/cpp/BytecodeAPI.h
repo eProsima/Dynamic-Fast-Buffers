@@ -1,6 +1,7 @@
 #ifndef _BYTECODE_API_
 #define _BYTECODE_API_
 
+#include "cpp/DFB_dll.h"
 #include "cpp/CommonData.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/exceptions/WrongParamException.h"
@@ -11,7 +12,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to generate a bytecode from a given Typecode object.
      * @ingroup BYTECODEAPIMODULE
      */
-	class eProsima_cpp_DllVariable BytecodeAPI
+	class DFB_DllAPI BytecodeAPI
 	{
 	private:
 

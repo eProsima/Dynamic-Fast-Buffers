@@ -1,7 +1,7 @@
 #ifndef _COMMON_DATA_
 #define _COMMON_DATA_
 
-#include "eProsima_cpp/eProsima_cpp_dll.h"
+#include "cpp/DFB_dll.h"
 #include <stdint.h>
 #include <vector>
 #include <array>
@@ -50,7 +50,7 @@ namespace DynamicFastBuffers
      * @brief This static class stores all the relevant information about a Typecode.
      * @ingroup COMMONDATAMODULE
      */
-	class eProsima_cpp_DllVariable Typecode
+	class DFB_DllAPI Typecode
 	{
 	private:
 
@@ -198,7 +198,7 @@ namespace DynamicFastBuffers
      * @brief This static class represents the operations that odd to be done to serialize a determined data type.
      * @ingroup COMMONDATAMODULE
      */
-	class eProsima_cpp_DllVariable Bytecode
+	class DFB_DllAPI Bytecode
 	{
 	private:
 

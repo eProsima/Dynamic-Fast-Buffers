@@ -251,7 +251,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -270,7 +270,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -292,7 +292,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -314,7 +314,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -336,7 +336,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -358,7 +358,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -382,7 +382,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -436,7 +436,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>

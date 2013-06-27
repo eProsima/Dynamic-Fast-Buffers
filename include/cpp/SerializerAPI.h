@@ -1,6 +1,7 @@
 #ifndef _SERIALIZER_API_
 #define _SERIALIZER_API_
 
+#include "cpp/DFB_dll.h"
 #include "FastCdr.h"
 #include "FastBuffer.h"
 #include "CommonData.h"
@@ -11,7 +12,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to serialize/deserialize data types (described by a Typecode) using CDR protocol inside a eProsima::FastBuffer.
      * @ingroup SERIALIZERAPIMODULE
      */
-	class eProsima_cpp_DllVariable SerializerAPI
+	class DFB_DllAPI SerializerAPI
 	{
 
 	friend class BytecodeAPI;

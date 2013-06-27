@@ -1,6 +1,7 @@
 #ifndef _CPP_EXCEPTIONS_WRONGTYPEEXCEPTION_H_
 #define _CPP_EXCEPTIONS_WRONGTYPEEXCEPTION_H_
 
+#include "cpp/DFB_dll.h"
 #include "FastCdr.h"
 #include "FastBuffer.h"
 
@@ -10,7 +11,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when a parameter with a wrong type_ attribute has been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class eProsima_cpp_DllVariable WrongTypeException : public eProsima::Exception
+	class DFB_DllAPI WrongTypeException : public eProsima::Exception
 	{
 	public:
 

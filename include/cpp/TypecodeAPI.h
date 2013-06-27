@@ -1,6 +1,7 @@
 #ifndef _TYPECODE_API_
 #define _TYPECODE_API_
 
+#include "cpp/DFB_dll.h"
 #include <array>
 #include "cpp/CommonData.h"
 #include "cpp/exceptions/NotEnoughParamsException.h"
@@ -13,7 +14,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to create a typecode for data type definitions.
      * @ingroup TYPECODEAPIMODULE
      */
-	class eProsima_cpp_DllVariable TypecodeAPI
+	class DFB_DllAPI TypecodeAPI
 	{
 	private:
 		//No private atributes or functions
