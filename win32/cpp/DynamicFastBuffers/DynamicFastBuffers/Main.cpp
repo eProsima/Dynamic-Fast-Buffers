@@ -1,4 +1,4 @@
-/*
+
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -33,6 +33,7 @@ void testComplexErrors();
 void performanceTest();
 void userManualExampleCode();
 void testCode();
+inline void testComplexStruct_1();
 
 
 struct inner
@@ -49,7 +50,7 @@ struct outer
 	int att3;
 	inner att4;
 };
-
+/*
 struct InnerStruct
 {
 	short s1;
@@ -82,9 +83,9 @@ struct OuterStruct
 	long s2;
 	InnerStruct st3;
 	string str1;
-};*/
+};
 
-/*
+
 
 struct myStructure
 {
@@ -190,9 +191,9 @@ struct sTest2
 	short pepe;
 };
 
-
 */
-/*
+
+
 int main()
 {
 	//_CrtSetBreakAlloc(144);
@@ -208,8 +209,8 @@ int main()
 	//testPrimitiveErrors();
 	//testComplexErrors();
 	//performanceTest();
-	//userManualExampleCode();
-	testCode();
+//	userManualExampleCode();
+	testComplexStruct_1();
 
 	return 0;
 }  
@@ -233,8 +234,8 @@ void testCode()
 	//boost::timer::auto_cpu_timer t;
 
 	outer stest1, stest2;
-	inner in1;*/
-	/*
+	inner in1;
+	
 	in1.att1 = 'A';
 	in1.att2 = 'B';
 	in1.att3 = 1000;
@@ -255,7 +256,104 @@ void testCode()
 			NULL
 		),
 		NULL
-	);*/
+	);
+
+	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			NULL
+		),
+		NULL
+	);
+
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
+
+}
+
+struct innercomplexStruct_1
+{
+	int m1;
+	long m2;
+	std::string m3;
+	float m4;
+	double m5;
+	bool m6;
+};
+
+struct outercomplexStruct_1
+{
+	int m1;
+	long m2;
+	std::string m3;
+	innercomplexStruct_1 m4;
+	float m5;
+	double m6;
+	bool m7;
+};
+
+inline void testComplexStruct_1()
+{
+	char *buffer = (char*)calloc(500, sizeof(char));
+	outercomplexStruct_1 stest1, stest2;
+
+	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createBoolean(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createFloat(),
+		DynamicFastBuffers::TypecodeAPI::createDouble(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		NULL
+	);
+
+
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+
+	struct innercomplexStruct_1 inner1;
+	inner1.m1 = 1;
+	inner1.m2 = 2;
+	inner1.m3 = "INNER TEST 3";
+	inner1.m4 = 5.10;
+	inner1.m5 = 5.9;
+	inner1.m6 = false;
+
+	stest1.m1 = 101;
+	stest1.m2 = 102;
+	stest1.m3 = "OUTER TEST 3";
+	stest1.m4 = inner1;
+	stest1.m5 = 105.10;
+	stest1.m6 = 107.8;
+	stest1.m7 = true;
+
+	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastCdr cdr(fastBuffer);
+
+	for(int count = 0; count < 10; ++count)
+	{
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+	}
+
+	free(buffer);
+}
 
 	//
 	// Data creation
@@ -355,7 +453,7 @@ void testCode()
 
 	}
 }
-*/
+
 
 /*
 
@@ -819,7 +917,7 @@ void testDFB6()
 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &str2, bc1, &cdr);
 }
-
+*//*
 void testDFB7()
 {
 	char buffer[500];
@@ -1083,7 +1181,7 @@ void testPrimitiveErrors()
 	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
 	
 }
-
+*//*
 void performanceTest()
 {
 	//
@@ -1193,9 +1291,8 @@ void performanceTest()
 
 }
 */
- /*
-
-
+ 
+/*
 
 struct stB{
 	short s1;

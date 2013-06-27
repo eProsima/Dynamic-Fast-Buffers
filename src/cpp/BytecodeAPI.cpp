@@ -61,6 +61,8 @@ namespace DynamicFastBuffers
 				for(unsigned int i=0; i<count; ++i){
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeSerialization(bytecode, &members[i], index);
+						insertJumps(&members[i], bytecode, index);
+						jumped = true;
 					}else{
 						if(i==0 || jumped){
 							alignment(members[i].getSize(), index);
@@ -193,6 +195,8 @@ namespace DynamicFastBuffers
 				for(unsigned int i=0; i<count; ++i){
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeDeserialization(bytecode, &members[i], index);
+						insertJumps(&members[i], bytecode, index);
+						jumped = true;
 					}else{
 						if(i==0 || jumped){
 							alignment(members[i].getSize(), index);
@@ -297,7 +301,12 @@ namespace DynamicFastBuffers
 
 	inline size_t BytecodeAPI::alignment(size_t dataSize, void *&m_currentPosition)
 	{
-		size_t align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
+		size_t align;
+		if(dataSize != 0){
+			align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
+		}else{
+			align = 0;
+		}
 		m_currentPosition = (char*) m_currentPosition + align;
 		if(dataSize == 8 && (((size_t) m_currentPosition % 8) != 0)){
 			m_currentPosition = (char*) m_currentPosition + sizeof(int);
