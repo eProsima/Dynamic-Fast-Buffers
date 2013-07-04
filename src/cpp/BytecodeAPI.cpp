@@ -53,6 +53,11 @@ namespace DynamicFastBuffers
 			break;
 		case TC_STRUCT:
 			{
+				//testing
+
+//#define __linux 1
+
+				//end testing
 				
 				vector<Typecode> members = typecode->getMembers();
 				insertJumps(typecode, bytecode, index);
@@ -61,7 +66,16 @@ namespace DynamicFastBuffers
 				for(unsigned int i=0; i<count; ++i){
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeSerialization(bytecode, &members[i], index);
-						insertJumps(&members[i], bytecode, index);
+#if defined(__linux)
+						//Do nothing
+						if(i != count-1){
+							insertJumps(&members[i], bytecode, index);
+						}
+#else
+						if(i != count-1){
+							insertJumps(&members[i], bytecode, index);
+						}
+#endif
 						jumped = true;
 					}else{
 						if(i==0 || jumped){
@@ -188,14 +202,25 @@ namespace DynamicFastBuffers
 			break;
 		case TC_STRUCT:
 			{
+//#define __linux 1
 				vector<Typecode> members = typecode->getMembers();
 				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
 				bool jumped = false;
 				for(unsigned int i=0; i<count; ++i){
+
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeDeserialization(bytecode, &members[i], index);
-						insertJumps(&members[i], bytecode, index);
+#if defined(__linux)
+						//Do nothing
+						if(i != count-1){
+							insertJumps(&members[i], bytecode, index);
+						}
+#else
+						if(i != count-1){
+							insertJumps(&members[i], bytecode, index);
+						}
+#endif
 						jumped = true;
 					}else{
 						if(i==0 || jumped){

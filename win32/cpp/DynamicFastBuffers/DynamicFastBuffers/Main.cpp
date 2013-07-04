@@ -34,22 +34,9 @@ void performanceTest();
 void userManualExampleCode();
 void testCode();
 inline void testComplexStruct_1();
+inline void testinnerComplexStruct_2();
 
 
-struct inner
-{
-	char att1;
-	char att2;
-	short att3;
-};
-
-struct outer
-{
-	float att1;
-	string att2;
-	int att3;
-	inner att4;
-};
 /*
 struct InnerStruct
 {
@@ -210,10 +197,183 @@ int main()
 	//testComplexErrors();
 	//performanceTest();
 //	userManualExampleCode();
-	testComplexStruct_1();
+	//testCode();
+	testinnerComplexStruct_2();
 
 	return 0;
 }  
+
+struct inner2
+{
+	char att1;
+	short att2;
+};
+
+struct inner1
+{
+	char att1;
+	char att2;
+};
+
+struct inner
+{
+	short att1;
+	char att2;
+	inner1 att3;
+};
+
+struct outer
+{
+	float att1;
+	string att2;
+	int att3;
+	inner att4;
+	//inner2 att5;
+};
+
+struct innercomplexStruct_2
+{
+	int m1;
+	int m2;
+	long m3;
+	long m4;
+	std::string m5;
+	std::string m6;
+	float m7;
+	float m8;
+	double m9;
+	double m10;
+	bool m11;
+	bool m12;
+};
+
+struct outercomplexStruct_2
+{
+	int m1;
+	long m2;
+	std::string m3;
+	innercomplexStruct_2 m4;
+	float m5;
+	double m6;
+	bool m7;
+	long m8;
+	std::string m9;
+	innercomplexStruct_2 m10;
+	float m11;
+	double m12;
+	bool m13;
+};
+
+inline void testinnerComplexStruct_2()
+{
+	char *buffer = (char*)calloc(500, sizeof(char));
+	//boost::timer::auto_cpu_timer t;
+	outercomplexStruct_2 stest1, stest2;
+
+	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createBoolean(),
+			DynamicFastBuffers::TypecodeAPI::createBoolean(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createFloat(),
+		DynamicFastBuffers::TypecodeAPI::createDouble(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			DynamicFastBuffers::TypecodeAPI::createBoolean(),
+			DynamicFastBuffers::TypecodeAPI::createBoolean(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createFloat(),
+		DynamicFastBuffers::TypecodeAPI::createDouble(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		NULL
+	);
+
+
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+
+	struct innercomplexStruct_2 inner1;
+	inner1.m1 = 1;
+	inner1.m2 = 2;
+	inner1.m3 = 3;
+	inner1.m4 = 4;
+	inner1.m5 = "INNER TEST 5";
+	inner1.m6 = "INNER TEST 6";
+	inner1.m7 = 8.13;
+	inner1.m8 = 9.14;
+	inner1.m9 = 9.13;
+	inner1.m10 = 10.14;
+	inner1.m11 = false;
+	inner1.m12 = false;
+
+	struct innercomplexStruct_2 inner2;
+	inner2.m1 = 13;
+	inner2.m2 = 14;
+	inner2.m3 = 15;
+	inner2.m4 = 16;
+	inner2.m5 = "INNER TEST 17";
+	inner2.m6 = "INNER TEST 18";
+	inner2.m7 = 20.25;
+	inner2.m8 = 21.26;
+	inner2.m9 = 21.25;
+	inner2.m10 = 22.26;
+	inner2.m11 = false;
+	inner2.m12 = false;
+
+	stest1.m1 = 101;
+	stest1.m2 = 102;
+	stest1.m3 = "OUTER TEST 3";
+	stest1.m4 = inner1;
+	stest1.m5 = 105.10;
+	stest1.m6 = 107.8;
+	stest1.m7 = true;
+	stest1.m8 = 108;
+	stest1.m9 = "OUTER TEST 9";
+	stest1.m10 = inner2;
+	stest1.m11 = 1011.16;
+	stest1.m12 = 1013.14;
+	stest1.m13 = true;
+
+	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastCdr cdr(fastBuffer);
+
+	//for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
+	//{
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+	//}
+
+	free(buffer);
+}
 
 void testCode()
 {
@@ -234,29 +394,62 @@ void testCode()
 	//boost::timer::auto_cpu_timer t;
 
 	outer stest1, stest2;
-	inner in1;
+
+	//testing
+
+#define __linux 1
+
+	//end testing
+
+#if defined(__linux)
+	cout << "Emulating Linux OS" << endl;
+#endif	
+
+	inner2 manolo;
+	manolo.att1 = 'W';
+	manolo.att2 = 98;
+
+	inner1 pepe;
+	pepe.att1 = 'X';
+	pepe.att2 = 'o';
 	
-	in1.att1 = 'A';
+	inner in1;
+	in1.att1 = 2;
 	in1.att2 = 'B';
-	in1.att3 = 1000;
+	in1.att3 = pepe;
 
 	stest1.att1 = 10;
-	stest1.att2 = "OUTER";
+	stest1.att2 = "outer";
 	stest1.att3 = 20;
 	stest1.att4 =  in1;
+	//stest1.att5 = manolo;
+
+	cout << "outer: " << sizeof(outer) << endl;
+	cout << "inner: " << sizeof(inner) << endl;
+	cout << "inner1: " << sizeof(inner1) << endl;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createFloat(),
 		DynamicFastBuffers::TypecodeAPI::createString(),
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
 		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
 			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createStruct(
+				DynamicFastBuffers::TypecodeAPI::createCharacter(),
+				DynamicFastBuffers::TypecodeAPI::createCharacter(),
+				NULL
+			),
+			NULL
+		),
+		/*DynamicFastBuffers::TypecodeAPI::createStruct(
 			DynamicFastBuffers::TypecodeAPI::createCharacter(),
 			DynamicFastBuffers::TypecodeAPI::createShort(),
 			NULL
-		),
+		),*/
 		NULL
 	);
+
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -272,7 +465,21 @@ void testCode()
 		NULL
 	);
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+
+	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastCdr cdr(fastBuffer);
+
+	//for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
+	//{
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
+		cdr.reset();
+		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+	//}
+
+	free(buffer);
 
 }
 

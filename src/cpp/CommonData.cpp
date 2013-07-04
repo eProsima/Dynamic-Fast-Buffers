@@ -47,11 +47,24 @@ namespace DynamicFastBuffers
 
 	int Typecode::addMemberNoCheck(Typecode &member)
 	{
+		//testing
+
+//#define __linux 1
+
+		//endTesting
+
+
 		members_.push_back(member);
 		int size = member.getSize();
-		if(structSize_ < size && member.getKind() != TC_STRUCT){
+#if defined(__linux)
+		if(structSize_ < size){
 			structSize_ = size;
 		}
+#else
+		if(structSize_ < size/* && member.getKind() != TC_STRUCT*/){
+			structSize_ = size;
+		}
+#endif
 		++counter_;
 		return 0;
 	}
@@ -183,7 +196,16 @@ namespace DynamicFastBuffers
 			return sizeof(short);
 			break;
 		case TC_LONG:
+//Linux emulation
+//#define __linux 1
+#if defined(__linux)
+			return 8;
+#else
 			return sizeof(long);
+#endif
+//end test
+
+			//return sizeof(long);
 			break;
 		case TC_FLOAT:
 			return sizeof(float);
@@ -217,6 +239,7 @@ namespace DynamicFastBuffers
 					return sizeof(short);
 					break;
 				case TC_LONG:
+
 					return sizeof(long);
 					break;
 				case TC_FLOAT:
