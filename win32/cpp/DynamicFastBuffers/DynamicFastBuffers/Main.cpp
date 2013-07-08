@@ -740,6 +740,25 @@ inline void testComplexStruct_2()
 	stest1.m11 = true;
 	stest1.m12 = true;
 
+	for(int i=0; i<bytecodeSerialization->getAlignment()->size(); ++i){
+		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
+	}
+
+	cout << endl;
+
+	cout << &stest1.m1 << endl;
+	cout << &stest1.m2 << endl;
+	cout << &stest1.m3 << endl;
+	cout << &stest1.m4 << endl;
+	cout << &stest1.m5 << endl;
+	cout << &stest1.m6 << endl;
+	cout << &stest1.m7 << endl;
+	cout << &stest1.m8 << endl;
+	cout << &stest1.m9 << endl;
+	cout << &stest1.m10 << endl;
+	cout << &stest1.m11 << endl;
+	cout << &stest1.m12 << endl;
+
 	eProsima::FastBuffer fastBuffer(buffer, 500);
 	eProsima::FastCdr cdr(fastBuffer);
 
@@ -3587,7 +3606,22 @@ inline void performanceDFB()
 
 int main()
 {
-	testDFB::performanceDFB();
+
+	cout << "ARCHITECTURE: " << sizeof(void*)*8 << endl;
+	cout << "short: " << sizeof(short) << endl;
+	cout << "int: " << sizeof(int) << endl;
+	cout << "long: " << sizeof(long) << endl;
+	cout << "float: " << sizeof(float) << endl;
+	cout << "double: " << sizeof(double) << endl;
+	cout << "string: " << sizeof(string) << endl;
+	cout << "char: " << sizeof(char) << endl;
+	cout << "bool: " << sizeof(bool) << endl;
+	cout << "void*: " << sizeof(void*) << endl;
+
+	
+	testDFB::complexTestDFB();
+	
+	//testDFB::performanceDFB();
 	
 	return 0;
 }

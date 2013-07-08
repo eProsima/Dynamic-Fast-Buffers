@@ -15,6 +15,14 @@ namespace DynamicFastBuffers
 		if(jLength != 0){
 			for (int i=0; i< length; ++i){
 				val = static_cast<char*>(val) + (*jumps)[i]; 
+
+				//test
+
+				cout << val << endl;
+
+				//end test
+
+
 				size = bytecode->getSize();
 				val = (*tc)[i] (cdr, val, *size);
 			}
