@@ -11,15 +11,17 @@ namespace DynamicFastBuffers
 		int jLength = jumps->size();
 		int length = tc->size();
 		int* size;
+		
+		//test
+		//cout << endl;
+		//end test
 
 		if(jLength != 0){
 			for (int i=0; i< length; ++i){
 				val = static_cast<char*>(val) + (*jumps)[i]; 
 
 				//test
-
-				cout << val << endl;
-
+				//cout << val << endl;
 				//end test
 
 
@@ -101,7 +103,11 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
+#if defined(__linux)
+		int64_t *p = (int64_t *) data;
+#else
 		int32_t *p = (int32_t *) data;
+#endif
 		cdr->serialize(*p);
 		++p;
 		return (void *) p;
@@ -109,7 +115,11 @@ namespace DynamicFastBuffers
 
 	void* SerializerAPI::deserializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		int32_t* pLong = (int32_t *) data;
+#if defined(__linux)
+		int64_t *pLong = (int64_t *) data;
+#else
+		int32_t *pLong = (int32_t *) data;
+#endif
 		cdr->deserialize(*pLong);
 		++pLong;
 		return (void*) pLong;

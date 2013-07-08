@@ -199,7 +199,7 @@ namespace DynamicFastBuffers
 //Linux emulation
 //#define __linux 1
 #if defined(__linux)
-			return 8;
+			return sizeof(long);
 #else
 			return sizeof(long);
 #endif

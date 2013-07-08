@@ -2847,7 +2847,7 @@ struct outercomplexStruct_4
 
 inline void testinnerComplexStruct_4()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outercomplexStruct_4 stest1, stest2;
 
@@ -3112,7 +3112,7 @@ inline void testinnerComplexStruct_4()
 	stest1.m21 = 1022.23;
 	stest1.m22 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
 	for(int count = 0; count < 10000; ++count)
@@ -3191,7 +3191,7 @@ struct outercomplexStruct_5
 
 inline void testinnerComplexStruct_5()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outercomplexStruct_5 stest1, stest2;
 
@@ -3542,7 +3542,7 @@ inline void testinnerComplexStruct_5()
 	stest1.m24 = 1025.26;
 	stest1.m25 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
 	for(int count = 0; count < 10000; ++count)
@@ -3619,7 +3619,7 @@ int main()
 	cout << "void*: " << sizeof(void*) << endl;
 
 	
-	testDFB::complexTestDFB();
+	testDFB::innerComplexTestDFB();
 	
 	//testDFB::performanceDFB();
 	
