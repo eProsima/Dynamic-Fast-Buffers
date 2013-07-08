@@ -4,7 +4,7 @@
 #include <fstream>
 #include <fcntl.h>
 #include <stdio.h>
-#include <io.h>
+//#include <io.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <sys\stat.h>
