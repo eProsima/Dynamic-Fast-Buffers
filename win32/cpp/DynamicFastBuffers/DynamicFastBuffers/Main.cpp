@@ -718,10 +718,14 @@ inline void testComplexStruct_2()
 		DynamicFastBuffers::TypecodeAPI::createBoolean(),
 		NULL
 	);
+	
+	cout << "Typecode generado." << endl;
 
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	
+	cout << "Bytecode generado." << endl;
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -3583,7 +3587,7 @@ inline void performanceDFB()
 
 int main()
 {
-	testDFB::testSimpleStruct_30();
+	testDFB::performanceDFB();
 	
 	return 0;
 }
