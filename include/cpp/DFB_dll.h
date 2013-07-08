@@ -9,6 +9,8 @@
 #else
 #define DFB_DllAPI __declspec( dllimport )
 #endif /* DFB_EXPORT */
+#else
+#define DFB_DllAPI
 #endif /* _WIN32 */
 
 #endif // _DFB_DLL_H_
