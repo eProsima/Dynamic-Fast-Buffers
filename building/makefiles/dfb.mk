@@ -9,7 +9,6 @@ DFB_TARGET_DEBUG= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbd.so
 DFB_TARGET_DEBUG_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbzd.a
 DFB_TARGET= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfb.so
 DFB_TARGET_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbz.a
-DFB_TARGET_EXE= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/dfb.o
 
 DFB_CFLAGS += $(CFLAGS) -std=c++11
 DFB_CFLAGS_DEBUG += $(CFLAGS_DEBUG) -std=c++11
@@ -27,8 +26,7 @@ DFB_SRC_CPPFILES= $(BASEDIR)/src/cpp/TypecodeAPI.cpp \
 		  $(BASEDIR)/src/cpp/BytecodeAPI.cpp \
 		  $(BASEDIR)/src/cpp/SerializerAPI.cpp \
   		  $(BASEDIR)/src/cpp/CommonData.cpp \
-    		  $(BASEDIR)/win32/cpp/DynamicFastBuffers/DynamicFastBuffers/Main.cpp \
-		  $(BASEDIR)/src/cpp/exceptions/NotEnoughParamsException.cpp \
+    		  $(BASEDIR)/src/cpp/exceptions/NotEnoughParamsException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongParamException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongTypeException.cpp
 
@@ -51,7 +49,7 @@ DEPS+= $(DFB_DEPS_DEBUG) $(DFB_DEPS_RELEASE)
 
 dfb: checkDFBDirectories $(DFB_TARGET_DEBUG) $(DFB_TARGET_DEBUG_Z) $(DFB_TARGET) $(DFB_TARGET_Z) $(DFB_TARGET_EXE)
 
-checkCDRDirectories:
+checkDFBDirectories:
 	@mkdir -p $(OUTDIR)
 	@mkdir -p $(DFB_OUTDIR)
 	@mkdir -p $(DFB_OUTDIR_DEBUG)
@@ -75,10 +73,6 @@ $(DFB_TARGET): $(DFB_OBJS_RELEASE)
 $(DFB_TARGET_Z): $(DFB_OBJS_RELEASE)
 	$(AR) -cru $(DFB_TARGET_Z) $(DFB_OBJS_RELEASE)
 	$(CP) $(DFB_TARGET_Z) $(EPROSIMA_LIBRARY_PATH)/proyectos/$(EPROSIMA_TARGET)
-
-$(DFB_TARGET_EXE): $(DFB_OBJS_RELEASE)
-	$(LN) $(LDFLAGS) -o $(DFB_TARGET_EXE) $(DFB_LIBS_DIR) $(DFB_LIBS) $(DFB_OBJS_RELEASE)
-	
 
 vpath %.cpp $(DFB_SOURCES_DIRS)
 
