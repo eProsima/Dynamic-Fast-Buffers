@@ -63,23 +63,27 @@ namespace DynamicFastBuffers
 				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
 				bool jumped = false;
+				//test
+				
+//				cout << "INDEX: " << endl;
+				
+				//end test
 				for(unsigned int i=0; i<count; ++i){
+				//test
+				
+				//cout << i << "-" << index << endl;
+				
+				//end test
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeSerialization(bytecode, &members[i], index);
-#if defined(__linux)
-						//Do nothing
 						if(i != count-1){
 							insertJumps(&members[i], bytecode, index);
 						}
-#else
-						if(i != count-1){
-							insertJumps(&members[i], bytecode, index);
-						}
-#endif
 						jumped = true;
 					}else{
 						if(i==0 || jumped){
 							alignment(members[i].getSize(), index);
+							
 #if defined(_M_IX86)
 							if(members[i].getKind() == TC_STRING){
 								index = (char*) index + sizeof(int);
@@ -329,11 +333,20 @@ namespace DynamicFastBuffers
 		size_t align;
 		if(dataSize != 0){
 			align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
+			//test
+			//cout << "\tData Size: " << dataSize << ", Pos: " << m_currentPosition << ", SALTO: " << align << endl;
+			//end test
+			
 		}else{
 			align = 0;
 		}
 		m_currentPosition = (char*) m_currentPosition + align;
 		if(dataSize == 8 && (((size_t) m_currentPosition % 8) != 0)){
+		
+			//test
+			//cout << "\t\tENTRA: " <<  endl;
+			//end test
+		
 			m_currentPosition = (char*) m_currentPosition + sizeof(int);
 			align += sizeof(int);
 		}

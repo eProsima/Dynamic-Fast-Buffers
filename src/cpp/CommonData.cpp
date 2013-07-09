@@ -196,18 +196,30 @@ namespace DynamicFastBuffers
 			return sizeof(short);
 			break;
 		case TC_LONG:
-//Linux emulation
-//#define __linux 1
+#if defined(__linux)
+#if defined(__i386)
+			return sizeof(int32_t);
+#else
 			return sizeof(int64_t);
-//end test
-
-			//return sizeof(long);
+#endif
+#else
+			return sizeof(int64_t);
+#endif
 			break;
 		case TC_FLOAT:
 			return sizeof(float);
 			break;
 		case TC_DOUBLE:
-			return sizeof(double);
+			//return sizeof(double);
+#if defined(__linux)
+#if defined(__i386)
+			return sizeof(int32_t);
+#else
+			return sizeof(int64_t);
+#endif
+#else
+			return sizeof(int64_t);
+#endif
 			break;
 		case TC_STRING:
 			return sizeof(void*);
@@ -219,7 +231,12 @@ namespace DynamicFastBuffers
 			return sizeof(bool);
 			break;
 		case TC_STRUCT:
+#if defined(__linux)
+			return sizeof(void*);
+#else
 			return structSize_;
+#endif
+			//return structSize_;
 			break;
 		case TC_UNION:
 		case TC_ARRAY:

@@ -77,7 +77,7 @@ simpleStruct_10 stest1, stest2;
 	 
 	
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -171,7 +171,7 @@ simpleStruct_20 stest1, stest2;
 	 
 	
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -295,14 +295,14 @@ simpleStruct_30 stest1, stest2;
 	 
 	
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
 	}
-
+	
 	free(buffer);
 }
 
@@ -449,7 +449,7 @@ simpleStruct_40 stest1, stest2;
 	 
 	
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -633,7 +633,7 @@ simpleStruct_50 stest1, stest2;
 	 
 	
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -715,11 +715,8 @@ inline void testComplexStruct_2()
 		DynamicFastBuffers::TypecodeAPI::createBoolean(),
 		NULL
 	);
-
-
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
-
 	stest1.m1 = 0;
 	stest1.m2 = 1;
 	stest1.m3 = 0;
@@ -736,7 +733,7 @@ inline void testComplexStruct_2()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -841,7 +838,7 @@ inline void testComplexStruct_4()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -982,7 +979,7 @@ inline void testComplexStruct_6()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1159,7 +1156,7 @@ inline void testComplexStruct_8()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1372,7 +1369,7 @@ inline void testComplexStruct_10()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1466,7 +1463,7 @@ inline void testinnerSimpleStruct_2()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1567,7 +1564,7 @@ inline void testinnerSimpleStruct_4()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1724,7 +1721,7 @@ inline void testinnerSimpleStruct_6()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1953,7 +1950,7 @@ inline void testinnerSimpleStruct_8()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2270,7 +2267,7 @@ inline void testinnerSimpleStruct_10()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2380,18 +2377,38 @@ inline void testinnerComplexStruct_1()
 	stest1.m5 = 105.10;
 	stest1.m6 = 107.8;
 	stest1.m7 = true;
-
-	//cout << "JUMPS: " << endl;
+	
+	//test
+	/*cout << "Mem Mapping: " << endl;
+	cout << &stest1.m1 << endl;
+	cout << &stest1.m2 << endl;
+	cout << &stest1.m3 << endl;
+	printf("%p\n", (void*) &stest1.m4.m1);
+	printf("%p\n", (void*) &stest1.m4.m2);
+	printf("%p\n", (void*) &stest1.m4.m3);
+	printf("%p\n", (void*) &stest1.m4.m4);
+	printf("%p\n", (void*) &stest1.m4.m5);
+	printf("%p\n", (void*) &stest1.m4.m6);
+	cout << &stest1.m5 << endl;
+	cout << &stest1.m6 << endl;
+	cout << &stest1.m7 << endl;
+	
+	cout << "JUMPS: " << endl;
 	for(int i=0; i < bytecodeSerialization->getAlignment()->size(); ++i){
 		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
 	}
+	cout << endl;*/
+	//end test
+
+	//cout << "JUMPS: " << endl;
+	/*for(int i=0; i < bytecodeSerialization->getAlignment()->size(); ++i){
+		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
+	}*/
 
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	//cout << "Comienza serializar" << endl;
-
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2537,7 +2554,7 @@ inline void testinnerComplexStruct_2()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2766,7 +2783,7 @@ inline void testinnerComplexStruct_3()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -3101,7 +3118,7 @@ inline void testinnerComplexStruct_4()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -3531,7 +3548,7 @@ inline void testinnerComplexStruct_5()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100000; ++count)
+	for(int count = 0; count < 100; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -3578,9 +3595,9 @@ inline void innerComplexTestDFB()
 inline void performanceDFB()
 {
 	cout << "DYNAMIC FAST BUFFERS:" << endl << endl;
-	//simpleTestDFB();
-	//complexTestDFB();
-	//innerSimpleTestDBF();
+	simpleTestDFB();
+	complexTestDFB();
+	innerSimpleTestDBF();
 	innerComplexTestDFB();
 	cout << "------------------------------------------------------------------------------------------" << endl;
 
@@ -3591,10 +3608,24 @@ inline void performanceDFB()
 
 int main()
 {
+#if defined(__linux)
+cout << "Linux obsolete" << endl;
+#endif
+#if defined(__linux__)
+cout << "Linux standard" << endl;
+#endif
+#if defined(_M_IX86)
+cout << "32-bit VS arch" << endl;
+#endif
+#if defined(__i386)
+cout << "32-bit classic arch" << endl;
+#endif
+
+
 
 	cout << "ARCHITECTURE: " << sizeof(void*)*8 << endl;
 	cout << "short: " << sizeof(short) << endl;
-	cout << "int: " << sizeof(int32_t) << endl;
+	cout << "int32_t: " << sizeof(int32_t) << endl;
 	cout << "int64_t: " << sizeof(int64_t) << endl;
 	cout << "float: " << sizeof(float) << endl;
 	cout << "double: " << sizeof(double) << endl;
@@ -3603,9 +3634,6 @@ int main()
 	cout << "bool: " << sizeof(bool) << endl;
 	cout << "void*: " << sizeof(void*) << endl;
 
-	
-	//testDFB::innerComplexTestDFB();
-	
 	testDFB::performanceDFB();
 	
 	return 0;
