@@ -190,7 +190,7 @@ namespace DynamicFastBuffers
 		case TC_NOTYPE:
 			break;
 		case TC_INTEGER:
-			return sizeof(int);
+			return sizeof(int32_t);
 			break;
 		case TC_SHORT:
 			return sizeof(short);
@@ -198,11 +198,7 @@ namespace DynamicFastBuffers
 		case TC_LONG:
 //Linux emulation
 //#define __linux 1
-#if defined(__linux)
-			return sizeof(long);
-#else
-			return sizeof(long);
-#endif
+			return sizeof(int64_t);
 //end test
 
 			//return sizeof(long);
@@ -233,14 +229,14 @@ namespace DynamicFastBuffers
 				case TC_NOTYPE:
 					break;
 				case TC_INTEGER:
-					return sizeof(int);
+					return sizeof(int32_t);
 					break;
 				case TC_SHORT:
 					return sizeof(short);
 					break;
 				case TC_LONG:
 
-					return sizeof(long);
+					return sizeof(int64_t);
 					break;
 				case TC_FLOAT:
 					return sizeof(float);

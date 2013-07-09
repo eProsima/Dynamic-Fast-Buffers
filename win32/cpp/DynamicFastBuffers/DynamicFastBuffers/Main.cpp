@@ -26,37 +26,37 @@ namespace testDFB
 
 struct simpleStruct_10
 {
-	long m1;
-	long m2;
-	long m3;
-	long m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
+	int64_t m1;
+	int64_t m2;
+	int64_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
 };
 
 inline void testSimpleStruct_10()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
-
-	simpleStruct_10 stest1, stest2;
+	char *buffer = (char*)calloc(5000, sizeof(char));
+simpleStruct_10 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
 		NULL
 	);
+
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
@@ -72,19 +72,16 @@ inline void testSimpleStruct_10()
 	stest1.m9 = 9;
 	stest1.m10 = 10;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
-
 	 
+	
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
-
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
-
 		cdr.reset();
-
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
 	}
 
@@ -93,57 +90,57 @@ inline void testSimpleStruct_10()
 
 struct simpleStruct_20
 {
-	long m1;
-	long m2;
-	long m3;
-	long m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
-	long m17;
-	long m18;
-	long m19;
-	long m20;
+	int64_t m1;
+	int64_t m2;
+	int64_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
+	int64_t m17;
+	int64_t m18;
+	int64_t m19;
+	int64_t m20;
 };
 
 inline void testSimpleStruct_20()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
-
-	simpleStruct_20 stest1, stest2;
+	char *buffer = (char*)calloc(5000, sizeof(char));
+simpleStruct_20 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
-		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
 		NULL
 	);
+
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
@@ -169,19 +166,16 @@ inline void testSimpleStruct_20()
 	stest1.m19 = 19;
 	stest1.m20 = 20;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
-
 	 
+	
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
-
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
-
 		cdr.reset();
-
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
 	}
 
@@ -190,43 +184,42 @@ inline void testSimpleStruct_20()
 
 struct simpleStruct_30
 {
-	long m1;
-	long m2;
-	long m3;
-	long m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
-	long m17;
-	long m18;
-	long m19;
-	long m20;
-	long m21;
-	long m22;
-	long m23;
-	long m24;
-	long m25;
-	long m26;
-	long m27;
-	long m28;
-	long m29;
-	long m30;
+	int64_t m1;
+	int64_t m2;
+	int64_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
+	int64_t m17;
+	int64_t m18;
+	int64_t m19;
+	int64_t m20;
+	int64_t m21;
+	int64_t m22;
+	int64_t m23;
+	int64_t m24;
+	int64_t m25;
+	int64_t m26;
+	int64_t m27;
+	int64_t m28;
+	int64_t m29;
+	int64_t m30;
 };
 
 inline void testSimpleStruct_30()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
-	 
-	simpleStruct_30 stest1, stest2;
+	char *buffer = (char*)calloc(5000, sizeof(char));
+simpleStruct_30 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createLong(),
@@ -297,10 +290,12 @@ inline void testSimpleStruct_30()
 	stest1.m29 = 29;
 	stest1.m30 = 30;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
+	 
+	
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -313,53 +308,52 @@ inline void testSimpleStruct_30()
 
 struct simpleStruct_40
 {
-	long m1;
-	long m2;
-	long m3;
-	long m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
-	long m17;
-	long m18;
-	long m19;
-	long m20;
-	long m21;
-	long m22;
-	long m23;
-	long m24;
-	long m25;
-	long m26;
-	long m27;
-	long m28;
-	long m29;
-	long m30;
-	long m31;
-	long m32;
-	long m33;
-	long m34;
-	long m35;
-	long m36;
-	long m37;
-	long m38;
-	long m39;
-	long m40;
+	int64_t m1;
+	int64_t m2;
+	int64_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
+	int64_t m17;
+	int64_t m18;
+	int64_t m19;
+	int64_t m20;
+	int64_t m21;
+	int64_t m22;
+	int64_t m23;
+	int64_t m24;
+	int64_t m25;
+	int64_t m26;
+	int64_t m27;
+	int64_t m28;
+	int64_t m29;
+	int64_t m30;
+	int64_t m31;
+	int64_t m32;
+	int64_t m33;
+	int64_t m34;
+	int64_t m35;
+	int64_t m36;
+	int64_t m37;
+	int64_t m38;
+	int64_t m39;
+	int64_t m40;
 };
 
 inline void testSimpleStruct_40()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
-	 
-	simpleStruct_40 stest1, stest2;
+	char *buffer = (char*)calloc(5000, sizeof(char));
+simpleStruct_40 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createLong(),
@@ -450,10 +444,12 @@ inline void testSimpleStruct_40()
 	stest1.m39 = 39;
 	stest1.m40 = 40;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
+	 
+	
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -466,63 +462,62 @@ inline void testSimpleStruct_40()
 
 struct simpleStruct_50
 {
-	long m1;
-	long m2;
-	long m3;
-	long m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
-	long m17;
-	long m18;
-	long m19;
-	long m20;
-	long m21;
-	long m22;
-	long m23;
-	long m24;
-	long m25;
-	long m26;
-	long m27;
-	long m28;
-	long m29;
-	long m30;
-	long m31;
-	long m32;
-	long m33;
-	long m34;
-	long m35;
-	long m36;
-	long m37;
-	long m38;
-	long m39;
-	long m40;
-	long m41;
-	long m42;
-	long m43;
-	long m44;
-	long m45;
-	long m46;
-	long m47;
-	long m48;
-	long m49;
-	long m50;
+	int64_t m1;
+	int64_t m2;
+	int64_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
+	int64_t m17;
+	int64_t m18;
+	int64_t m19;
+	int64_t m20;
+	int64_t m21;
+	int64_t m22;
+	int64_t m23;
+	int64_t m24;
+	int64_t m25;
+	int64_t m26;
+	int64_t m27;
+	int64_t m28;
+	int64_t m29;
+	int64_t m30;
+	int64_t m31;
+	int64_t m32;
+	int64_t m33;
+	int64_t m34;
+	int64_t m35;
+	int64_t m36;
+	int64_t m37;
+	int64_t m38;
+	int64_t m39;
+	int64_t m40;
+	int64_t m41;
+	int64_t m42;
+	int64_t m43;
+	int64_t m44;
+	int64_t m45;
+	int64_t m46;
+	int64_t m47;
+	int64_t m48;
+	int64_t m49;
+	int64_t m50;
 };
 
 inline void testSimpleStruct_50()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
-	 
-	simpleStruct_50 stest1, stest2;
+	char *buffer = (char*)calloc(5000, sizeof(char));
+simpleStruct_50 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createLong(),
@@ -633,10 +628,12 @@ inline void testSimpleStruct_50()
 	stest1.m49 = 49;
 	stest1.m50 = 50;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
+	 
+	
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -683,10 +680,10 @@ inline void simpleTestDFB()
 
 struct complexStruct_2
 {
-	int m1;
-	int m2;
-	long m3;
-	long m4;
+	int32_t m1;
+	int32_t m2;
+	int64_t m3;
+	int64_t m4;
 	std::string m5;
 	std::string m6;
 	float m7;
@@ -699,7 +696,7 @@ struct complexStruct_2
 
 inline void testComplexStruct_2()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	complexStruct_2 stest1, stest2;
 
@@ -718,14 +715,10 @@ inline void testComplexStruct_2()
 		DynamicFastBuffers::TypecodeAPI::createBoolean(),
 		NULL
 	);
-	
-	cout << "Typecode generado." << endl;
 
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
-	
-	cout << "Bytecode generado." << endl;
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -740,29 +733,10 @@ inline void testComplexStruct_2()
 	stest1.m11 = true;
 	stest1.m12 = true;
 
-	for(int i=0; i<bytecodeSerialization->getAlignment()->size(); ++i){
-		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
-	}
-
-	cout << endl;
-
-	cout << &stest1.m1 << endl;
-	cout << &stest1.m2 << endl;
-	cout << &stest1.m3 << endl;
-	cout << &stest1.m4 << endl;
-	cout << &stest1.m5 << endl;
-	cout << &stest1.m6 << endl;
-	cout << &stest1.m7 << endl;
-	cout << &stest1.m8 << endl;
-	cout << &stest1.m9 << endl;
-	cout << &stest1.m10 << endl;
-	cout << &stest1.m11 << endl;
-	cout << &stest1.m12 << endl;
-
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -775,14 +749,14 @@ inline void testComplexStruct_2()
 
 struct complexStruct_4
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
 	std::string m9;
 	std::string m10;
 	std::string m11;
@@ -803,7 +777,7 @@ struct complexStruct_4
 
 inline void testComplexStruct_4()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	complexStruct_4 stest1, stest2;
 
@@ -864,10 +838,10 @@ inline void testComplexStruct_4()
 	stest1.m23 = true;
 	stest1.m24 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -880,18 +854,18 @@ inline void testComplexStruct_4()
 
 struct complexStruct_6
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
 	std::string m13;
 	std::string m14;
 	std::string m15;
@@ -920,7 +894,7 @@ struct complexStruct_6
 
 inline void testComplexStruct_6()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	complexStruct_6 stest1, stest2;
 
@@ -1005,10 +979,10 @@ inline void testComplexStruct_6()
 	stest1.m35 = true;
 	stest1.m36 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1021,22 +995,22 @@ inline void testComplexStruct_6()
 
 struct complexStruct_8
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
-	int m7;
-	int m8;
-	long m9;
-	long m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
+	int32_t m7;
+	int32_t m8;
+	int64_t m9;
+	int64_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
 	std::string m17;
 	std::string m18;
 	std::string m19;
@@ -1073,7 +1047,7 @@ struct complexStruct_8
 
 inline void testComplexStruct_8()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	complexStruct_8 stest1, stest2;
 
@@ -1182,10 +1156,10 @@ inline void testComplexStruct_8()
 	stest1.m47 = true;
 	stest1.m48 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1198,26 +1172,26 @@ inline void testComplexStruct_8()
 
 struct complexStruct_10
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
-	int m7;
-	int m8;
-	int m9;
-	int m10;
-	long m11;
-	long m12;
-	long m13;
-	long m14;
-	long m15;
-	long m16;
-	long m17;
-	long m18;
-	long m19;
-	long m20;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
+	int32_t m7;
+	int32_t m8;
+	int32_t m9;
+	int32_t m10;
+	int64_t m11;
+	int64_t m12;
+	int64_t m13;
+	int64_t m14;
+	int64_t m15;
+	int64_t m16;
+	int64_t m17;
+	int64_t m18;
+	int64_t m19;
+	int64_t m20;
 	std::string m21;
 	std::string m22;
 	std::string m23;
@@ -1262,7 +1236,7 @@ struct complexStruct_10
 
 inline void testComplexStruct_10()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	complexStruct_10 stest1, stest2;
 
@@ -1395,10 +1369,10 @@ inline void testComplexStruct_10()
 	stest1.m59 = true;
 	stest1.m60 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1444,8 +1418,8 @@ inline void complexTestDFB()
 
 struct innersimpleStruct_2
 {
-	int m1;
-	int m2;
+	int32_t m1;
+	int32_t m2;
 };
 
 struct outersimpleStruct_2
@@ -1456,7 +1430,7 @@ struct outersimpleStruct_2
 
 inline void testinnerSimpleStruct_2()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outersimpleStruct_2 stest1, stest2;
 
@@ -1473,7 +1447,8 @@ inline void testinnerSimpleStruct_2()
 		),
 		NULL
 	);
-	
+
+
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
 
@@ -1488,10 +1463,10 @@ inline void testinnerSimpleStruct_2()
 	stest1.m1 = inner1;
 	stest1.m2 = inner2;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1504,10 +1479,10 @@ inline void testinnerSimpleStruct_2()
 
 struct innersimpleStruct_4
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
 };
 
 struct outersimpleStruct_4
@@ -1520,7 +1495,7 @@ struct outersimpleStruct_4
 
 inline void testinnerSimpleStruct_4()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outersimpleStruct_4 stest1, stest2;
 
@@ -1589,10 +1564,10 @@ inline void testinnerSimpleStruct_4()
 	stest1.m3 = inner3;
 	stest1.m4 = inner4;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1605,12 +1580,12 @@ inline void testinnerSimpleStruct_4()
 
 struct innersimpleStruct_6
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
 };
 
 struct outersimpleStruct_6
@@ -1625,7 +1600,7 @@ struct outersimpleStruct_6
 
 inline void testinnerSimpleStruct_6()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outersimpleStruct_6 stest1, stest2;
 
@@ -1746,10 +1721,10 @@ inline void testinnerSimpleStruct_6()
 	stest1.m5 = inner5;
 	stest1.m6 = inner6;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1762,14 +1737,14 @@ inline void testinnerSimpleStruct_6()
 
 struct innersimpleStruct_8
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
-	int m7;
-	int m8;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
+	int32_t m7;
+	int32_t m8;
 };
 
 struct outersimpleStruct_8
@@ -1786,7 +1761,7 @@ struct outersimpleStruct_8
 
 inline void testinnerSimpleStruct_8()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outersimpleStruct_8 stest1, stest2;
 
@@ -1975,10 +1950,10 @@ inline void testinnerSimpleStruct_8()
 	stest1.m7 = inner7;
 	stest1.m8 = inner8;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -1991,16 +1966,16 @@ inline void testinnerSimpleStruct_8()
 
 struct innersimpleStruct_10
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	int m6;
-	int m7;
-	int m8;
-	int m9;
-	int m10;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int32_t m6;
+	int32_t m7;
+	int32_t m8;
+	int32_t m9;
+	int32_t m10;
 };
 
 struct outersimpleStruct_10
@@ -2019,7 +1994,7 @@ struct outersimpleStruct_10
 
 inline void testinnerSimpleStruct_10()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outersimpleStruct_10 stest1, stest2;
 
@@ -2157,6 +2132,7 @@ inline void testinnerSimpleStruct_10()
 		NULL
 	);
 
+
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
 
@@ -2291,10 +2267,10 @@ inline void testinnerSimpleStruct_10()
 	stest1.m9 = inner9;
 	stest1.m10 = inner10;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2325,7 +2301,7 @@ inline void innerSimpleTestDBF()
 	}
 	cout << endl << endl;
 
-	cout << "Estructura con 7 estructuras internas de 7 miembros cada una:" << endl;
+	cout << "Estructura con 8 estructuras internas de 8 miembros cada una:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerSimpleStruct_8();
 	}
@@ -2340,8 +2316,8 @@ inline void innerSimpleTestDBF()
 
 struct innercomplexStruct_1
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	float m4;
 	double m5;
@@ -2350,8 +2326,8 @@ struct innercomplexStruct_1
 
 struct outercomplexStruct_1
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	innercomplexStruct_1 m4;
 	float m5;
@@ -2361,7 +2337,8 @@ struct outercomplexStruct_1
 
 inline void testinnerComplexStruct_1()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	//cout << "Comienza ejecución" << endl;
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outercomplexStruct_1 stest1, stest2;
 
@@ -2404,15 +2381,24 @@ inline void testinnerComplexStruct_1()
 	stest1.m6 = 107.8;
 	stest1.m7 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	//cout << "JUMPS: " << endl;
+	for(int i=0; i < bytecodeSerialization->getAlignment()->size(); ++i){
+		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
+	}
+
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	//cout << "Comienza serializar" << endl;
+
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
+		//cout << "Serializa " << count << endl;
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+		//cout << "Deserializa " << count << endl;
 	}
 
 	free(buffer);
@@ -2420,10 +2406,10 @@ inline void testinnerComplexStruct_1()
 
 struct innercomplexStruct_2
 {
-	int m1;
-	int m2;
-	long m3;
-	long m4;
+	int32_t m1;
+	int32_t m2;
+	int64_t m3;
+	int64_t m4;
 	std::string m5;
 	std::string m6;
 	float m7;
@@ -2436,14 +2422,14 @@ struct innercomplexStruct_2
 
 struct outercomplexStruct_2
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	innercomplexStruct_2 m4;
 	float m5;
 	double m6;
 	bool m7;
-	long m8;
+	int64_t m8;
 	std::string m9;
 	innercomplexStruct_2 m10;
 	float m11;
@@ -2453,7 +2439,7 @@ struct outercomplexStruct_2
 
 inline void testinnerComplexStruct_2()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outercomplexStruct_2 stest1, stest2;
 
@@ -2548,10 +2534,10 @@ inline void testinnerComplexStruct_2()
 	stest1.m12 = 1013.14;
 	stest1.m13 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2564,12 +2550,12 @@ inline void testinnerComplexStruct_2()
 
 struct innercomplexStruct_3
 {
-	int m1;
-	int m2;
-	int m3;
-	long m4;
-	long m5;
-	long m6;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int64_t m4;
+	int64_t m5;
+	int64_t m6;
 	std::string m7;
 	std::string m8;
 	std::string m9;
@@ -2586,14 +2572,14 @@ struct innercomplexStruct_3
 
 struct outercomplexStruct_3
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	innercomplexStruct_3 m4;
 	float m5;
 	double m6;
 	bool m7;
-	long m8;
+	int64_t m8;
 	std::string m9;
 	innercomplexStruct_3 m10;
 	float m11;
@@ -2608,7 +2594,7 @@ struct outercomplexStruct_3
 
 inline void testinnerComplexStruct_3()
 {
-	char *buffer = (char*)calloc(500, sizeof(char));
+	char *buffer = (char*)calloc(5000, sizeof(char));
 	 
 	outercomplexStruct_3 stest1, stest2;
 
@@ -2777,10 +2763,10 @@ inline void testinnerComplexStruct_3()
 	stest1.m17 = 1018.19;
 	stest1.m18 = true;
 
-	eProsima::FastBuffer fastBuffer(buffer, 500);
+	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2793,14 +2779,14 @@ inline void testinnerComplexStruct_3()
 
 struct innercomplexStruct_4
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	long m5;
-	long m6;
-	long m7;
-	long m8;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int64_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
 	std::string m9;
 	std::string m10;
 	std::string m11;
@@ -2821,14 +2807,14 @@ struct innercomplexStruct_4
 
 struct outercomplexStruct_4
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	innercomplexStruct_4 m4;
 	float m5;
 	double m6;
 	bool m7;
-	long m8;
+	int64_t m8;
 	std::string m9;
 	innercomplexStruct_4 m10;
 	float m11;
@@ -3115,7 +3101,7 @@ inline void testinnerComplexStruct_4()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -3128,16 +3114,16 @@ inline void testinnerComplexStruct_4()
 
 struct innercomplexStruct_5
 {
-	int m1;
-	int m2;
-	int m3;
-	int m4;
-	int m5;
-	long m6;
-	long m7;
-	long m8;
-	long m9;
-	long m10;
+	int32_t m1;
+	int32_t m2;
+	int32_t m3;
+	int32_t m4;
+	int32_t m5;
+	int64_t m6;
+	int64_t m7;
+	int64_t m8;
+	int64_t m9;
+	int64_t m10;
 	std::string m11;
 	std::string m12;
 	std::string m13;
@@ -3162,14 +3148,14 @@ struct innercomplexStruct_5
 
 struct outercomplexStruct_5
 {
-	int m1;
-	long m2;
+	int32_t m1;
+	int64_t m2;
 	std::string m3;
 	innercomplexStruct_5 m4;
 	float m5;
 	double m6;
 	bool m7;
-	long m8;
+	int64_t m8;
 	std::string m9;
 	innercomplexStruct_5 m10;
 	float m11;
@@ -3545,7 +3531,7 @@ inline void testinnerComplexStruct_5()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 10000; ++count)
+	for(int count = 0; count < 100000; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -3558,7 +3544,6 @@ inline void testinnerComplexStruct_5()
 
 inline void innerComplexTestDFB()
 {
-
 	cout << "Estructura heterogénea con datos y 1 estructura interna de diferentes miembros repetidos 1 vez:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_1();
@@ -3593,9 +3578,9 @@ inline void innerComplexTestDFB()
 inline void performanceDFB()
 {
 	cout << "DYNAMIC FAST BUFFERS:" << endl << endl;
-	simpleTestDFB();
-	complexTestDFB();
-	innerSimpleTestDBF();
+	//simpleTestDFB();
+	//complexTestDFB();
+	//innerSimpleTestDBF();
 	innerComplexTestDFB();
 	cout << "------------------------------------------------------------------------------------------" << endl;
 
@@ -3609,8 +3594,8 @@ int main()
 
 	cout << "ARCHITECTURE: " << sizeof(void*)*8 << endl;
 	cout << "short: " << sizeof(short) << endl;
-	cout << "int: " << sizeof(int) << endl;
-	cout << "long: " << sizeof(long) << endl;
+	cout << "int: " << sizeof(int32_t) << endl;
+	cout << "int64_t: " << sizeof(int64_t) << endl;
 	cout << "float: " << sizeof(float) << endl;
 	cout << "double: " << sizeof(double) << endl;
 	cout << "string: " << sizeof(string) << endl;
@@ -3619,9 +3604,9 @@ int main()
 	cout << "void*: " << sizeof(void*) << endl;
 
 	
-	testDFB::innerComplexTestDFB();
+	//testDFB::innerComplexTestDFB();
 	
-	//testDFB::performanceDFB();
+	testDFB::performanceDFB();
 	
 	return 0;
 }
