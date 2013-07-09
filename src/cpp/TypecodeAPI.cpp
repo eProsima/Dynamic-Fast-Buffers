@@ -86,6 +86,7 @@ namespace DynamicFastBuffers
 			content.push_back(dim1);
 		}
 		while(number){
+			cout << number << " - " << endl;
 			if(number < 1 ){
 				throw WrongParamException("Dimensions must be positive integers.");
 			}

@@ -3605,6 +3605,362 @@ inline void performanceDFB()
 
 }
 
+struct testArrayStructure
+{
+	int32_t att1;
+	bool att2;
+	string att3;
+	double att4[3][4];
+	short att5[3][4];
+	bool att6;
+	int64_t att7;
+};
+
+inline void testArrays()
+{
+
+	char buffer[500];
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
+
+	double test1[3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	short test2[3][4] = {{2, 2, 2, 2}, {3, 3, 3, 3}, {4, 4, 4, 4}};
+
+	testArrayStructure arrst1, arrst2;
+	arrst1.att1 = 1;
+	arrst1.att2 = false;
+	arrst1.att3 = "TEST";
+	memcpy(arrst1.att4, test1, sizeof(test1));
+	memcpy(arrst1.att5, test2, sizeof(test2));
+	arrst1.att6 = true;
+	arrst1.att7 = 50;
+
+	DynamicFastBuffers::Typecode *tcArray = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+
+
+	int32_t int1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
+	int32_t int2 [3][4];
+
+	int64_t long1 [4][4][2] = {{{1,1},{2,2},{3,3},{4,4}}, {{10,10},{11,11},{12,12},{13,13}}, {{20,20},{21,21},{22,22},{23,23}}, {{30,30},{31,31},{32,32},{33,33}}};
+	int64_t long2 [4][4][2];
+	
+	short short1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
+	short short2 [3][4];
+
+	float float1 [3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	float float2 [3][4];
+
+	double double1 [3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	double double2 [3][4];
+
+	bool bool1 [3][4] = {{true,true,true,true}, {false,false,false,false}, {true,true,false,false}};
+	bool bool2 [3][4];
+
+	char char1 [5][4] = {{'-','-','-','-'},{'1','1','1','1'},{'W','W','W','W'}, {'i','i','i','i'}, {'?','?','?','?'}};
+	char char2 [5][4];
+
+	DynamicFastBuffers::Typecode *tc1 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		2, 3, 4, NULL
+	);
+	
+	DynamicFastBuffers::Typecode *tc2 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		3, 4, 4, 2, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc3 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc4 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createFloat(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc5 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createDouble(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc6 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc7 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createCharacter(),
+		2, 5, 4, NULL
+	);
+
+	
+	//--------------------------------------------
+
+	DynamicFastBuffers::Bytecode *bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc1,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc2,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc3,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc4,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc5,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc6,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::Bytecode *bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc7,
+		DynamicFastBuffers::flag::FLAG_TRUE
+	);
+
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &int1, bc1, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &long1, bc2, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &short1, bc3, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &float1, bc4, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &double1, bc5, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &bool1, bc6, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &char1, bc7, &cdr);
+
+	cdr.reset();
+
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc1, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc2, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc3, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc4, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc5, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc6, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc7, DynamicFastBuffers::flag::FLAG_FALSE);
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &int2, bc1, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &long2, bc2, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &short2, bc3, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &float2, bc4, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &double2, bc5, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &bool2, bc6, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &char2, bc7, &cdr);
+
+	
+
+	cdr.reset();
+
+	DynamicFastBuffers::Bytecode *bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_TRUE);
+
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &arrst1, bytecodest, &cdr);
+
+	cdr.reset();
+
+	bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_FALSE);
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &arrst2, bytecodest, &cdr);
+
+	bool comp = true;
+	comp &= (arrst1.att1 == arrst2.att1);
+	comp &= (arrst1.att2 == arrst2.att2);
+	comp &= (arrst1.att3 == arrst2.att3);
+	for(int i=0; i < 3; ++i){
+		for(int j=0; j<4; ++j){
+			comp &= (arrst1.att4[i][j] == arrst2.att4[i][j]);
+		}
+	}
+	for(int i=0; i < 3; ++i){
+		for(int j=0; j<4; ++j){
+			comp &= (arrst1.att5[i][j] == arrst2.att5[i][j]);
+		}
+	}
+	comp &= (arrst1.att6 == arrst2.att6);
+	comp &= (arrst1.att7 == arrst2.att7);
+	
+
+	if(!comp){
+		cout << "ERROR" << endl;
+	}else{
+		cout << "SUCCESS" << endl;
+	}
+}
+
+struct structTest3
+{
+	short s1;
+	int32_t i1;
+	char c1;
+	string str1;
+	short s2;
+	int64_t l1;
+};
+
+struct structTest1
+{
+	short i1;
+	char s1;
+	short arr1[2][4];
+	vector<int64_t> members1;
+	int32_t i2;
+	short s2;
+	structTest3 st3;
+	string str1;
+};
+
+struct structTest2
+{
+	short s1;
+	int32_t i1;
+	structTest1 st1;
+	short arr1[2][4];
+	short i2;
+	int64_t s2;
+	structTest3 st3;
+	string str1;
+};
+
+inline void testComplexVectors()
+{
+	/*
+	* CDR Serializer declaration
+	*/
+	char buffer[500];
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
+	
+	/*
+	* Data creation
+	*/
+	short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
+	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
+
+	structTest3 stestN;
+	stestN.s1 = 1;
+	stestN.i1 = 2;
+	stestN.c1 = 'T';
+	stestN.str1 = "CUATRO";
+	stestN.s2 = 5;
+	stestN.l1 = 6;
+
+	structTest1 stest3;
+	stest3.i1 = 5;
+	stest3.s1 = 'C';
+	memcpy(stest3.arr1, arr1, sizeof(arr1));
+	stest3.members1 = vector<int64_t>(5, 50);
+	stest3.i2 = 10;
+	stest3.s2 = 4;
+	stest3.st3 = stestN;
+	stest3.str1 = "INNER STRUCT";
+	
+	structTest2 stest1, stest2;
+	stest1.s1 = 6;
+	stest1.i1 = 15;
+	stest1.st1 = stest3;
+	memcpy(stest1.arr1, arr2, sizeof(arr2));
+	stest1.i2 = 20;
+	stest1.s2 = 8;
+	stest1.st3 = stestN;
+	stest1.str1 = "OUTER STRUCT";
+
+	/*
+	* Typecode creation
+	*/
+	DynamicFastBuffers::Typecode* struct1 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+			DynamicFastBuffers::TypecodeAPI::createSequence(DynamicFastBuffers::TypecodeAPI::createLong(), 5),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createStruct(
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createInteger(),
+				DynamicFastBuffers::TypecodeAPI::createCharacter(),
+				DynamicFastBuffers::TypecodeAPI::createString(),
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createLong(),
+				NULL
+			),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		NULL
+	);
+		
+
+	/*
+	* Bytecode for serialization
+	*/
+	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_TRUE);
+	
+	/*
+	* Data serialization
+	*/
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bc1, &cdr);
+		
+	/*
+	* Buffer reset
+	*/
+	cdr.reset();
+
+	/*
+	* Bytecode for deserialization
+	*/
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_FALSE);
+	
+	/*
+	* Data deserialization
+	*/
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bc1, &cdr);
+	
+	/*
+	* Typecode deletes
+	*/
+	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
+}
 
 int main()
 {
@@ -3634,7 +3990,10 @@ cout << "32-bit classic arch" << endl;
 	cout << "bool: " << sizeof(bool) << endl;
 	cout << "void*: " << sizeof(void*) << endl;
 
-	testDFB::performanceDFB();
+	//testDFB::performanceDFB();
+
+	//testArrays();
+	testComplexVectors();
 	
 	return 0;
 }

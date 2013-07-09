@@ -166,22 +166,9 @@ namespace DynamicFastBuffers
 	void* SerializerAPI::serializeString(eProsima::FastCdr *cdr, void *data, int &size)
 	{
 		string &s = *static_cast<std::string*>(data);
-
-		//test
-		//cout << s << endl;
-		//end test
-
 		cdr->serialize(s);
-
-		//test
-		//cout << "\t" << data << endl;
-		//endtest
 		void* ret = data;
-		
 		ret = static_cast<char*>(ret) + sizeof(std::string);
-		//test
-		//cout << "\t" << ret << endl;
-		//end test
 		return ret;
 	}
 
@@ -237,7 +224,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeArrayInteger(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		int *arrayInt = (int*) data;
+		int32_t *arrayInt = (int32_t*) data;
 		cdr->serializeArray(arrayInt, size);
 		arrayInt += size;
 		return (void*) arrayInt;
@@ -245,7 +232,7 @@ namespace DynamicFastBuffers
 	
 	void* SerializerAPI::deserializeArrayInteger(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		int *arrayInt = (int*) data;
+		int32_t *arrayInt = (int32_t*) data;
 		cdr->deserializeArray(arrayInt, size);
 		arrayInt += size;
 		return (void*) arrayInt;
@@ -275,7 +262,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeArrayLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		int32_t *arrayLong = (int32_t*) data;
+		int64_t *arrayLong = (int64_t*) data;
 		cdr->serializeArray(arrayLong, size);
 		arrayLong += size;
 		return (void*) arrayLong;
@@ -283,7 +270,7 @@ namespace DynamicFastBuffers
 	
 	void* SerializerAPI::deserializeArrayLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		int32_t *arrayLong = (int32_t*) data;
+		int64_t *arrayLong = (int64_t*) data;
 		cdr->deserializeArray(arrayLong, size);
 		arrayLong += size;
 		return (void*) arrayLong;
@@ -351,7 +338,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeSequenceInteger(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		vector<int> *vInt = (vector<int>*) data;
+		vector<int32_t> *vInt = (vector<int32_t>*) data;
 		cdr->serialize(*vInt);
 		vInt ++;
 		return (void*) vInt;
@@ -359,7 +346,7 @@ namespace DynamicFastBuffers
 	
 	void* SerializerAPI::deserializeSequenceInteger(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		vector<int> *vInt = (vector<int>*) data;
+		vector<int32_t> *vInt = (vector<int32_t>*) data;
 		cdr->deserialize(*vInt);
 		vInt ++;
 		return (void*) vInt;
@@ -389,7 +376,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeSequenceLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		vector<int32_t> *vLong = (vector<int32_t>*) data;
+		vector<int64_t> *vLong = (vector<int64_t>*) data;
 		cdr->serialize(*vLong);
 		++vLong;
 		return (void*) vLong;
@@ -397,7 +384,7 @@ namespace DynamicFastBuffers
 	
 	void* SerializerAPI::deserializeSequenceLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-		vector<int32_t> *vLong = (vector<int32_t>*) data;
+		vector<int64_t> *vLong = (vector<int64_t>*) data;
 		cdr->deserialize(*vLong);
 		vLong ++;
 		return (void*) vLong;
