@@ -3634,6 +3634,39 @@ inline void testArrays()
 	memcpy(arrst1.att5, test2, sizeof(test2));
 	arrst1.att6 = true;
 	arrst1.att7 = 50;
+	
+	/*printf("%p\n", &arrst1.att1);
+	printf("%p\n", &arrst1.att2);
+	printf("%p\n", &arrst1.att3);
+	printf("%p\n", &arrst1.att4[0][0]);
+	printf("%p\n", &arrst1.att4[0][1]);
+	printf("%p\n", &arrst1.att4[0][2]);
+	printf("%p\n", &arrst1.att4[0][3]);
+	printf("%p\n", &arrst1.att4[1][0]);
+	printf("%p\n", &arrst1.att4[1][1]);
+	printf("%p\n", &arrst1.att4[1][2]);
+	printf("%p\n", &arrst1.att4[1][3]);
+	printf("%p\n", &arrst1.att4[2][0]);
+	printf("%p\n", &arrst1.att4[2][1]);
+	printf("%p\n", &arrst1.att4[2][2]);
+	printf("%p\n", &arrst1.att4[2][3]);
+	
+	printf("%p\n", &arrst1.att5[0][0]);
+	printf("%p\n", &arrst1.att5[0][1]);
+	printf("%p\n", &arrst1.att5[0][2]);
+	printf("%p\n", &arrst1.att5[0][3]);
+	printf("%p\n", &arrst1.att5[1][0]);
+	printf("%p\n", &arrst1.att5[1][1]);
+	printf("%p\n", &arrst1.att5[1][2]);
+	printf("%p\n", &arrst1.att5[1][3]);
+	printf("%p\n", &arrst1.att5[2][0]);
+	printf("%p\n", &arrst1.att5[2][1]);
+	printf("%p\n", &arrst1.att5[2][2]);
+	printf("%p\n", &arrst1.att5[2][3]);
+	
+	printf("%p\n", &arrst1.att5);
+	printf("%p\n", &arrst1.att6);
+	printf("%p\n", &arrst1.att7);*/
 
 	DynamicFastBuffers::Typecode *tcArray = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
@@ -3774,13 +3807,12 @@ inline void testArrays()
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &char2, bc7, &cdr);
 
 	
-
 	cdr.reset();
 
 	DynamicFastBuffers::Bytecode *bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_TRUE);
-
+	
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &arrst1, bytecodest, &cdr);
-
+	
 	cdr.reset();
 
 	bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_FALSE);
@@ -3964,36 +3996,6 @@ inline void testComplexVectors()
 
 int main()
 {
-#if defined(__linux)
-cout << "Linux obsolete" << endl;
-#endif
-#if defined(__linux__)
-cout << "Linux standard" << endl;
-#endif
-#if defined(_M_IX86)
-cout << "32-bit VS arch" << endl;
-#endif
-#if defined(__i386)
-cout << "32-bit classic arch" << endl;
-#endif
-
-
-
-	cout << "ARCHITECTURE: " << sizeof(void*)*8 << endl;
-	cout << "short: " << sizeof(short) << endl;
-	cout << "int32_t: " << sizeof(int32_t) << endl;
-	cout << "int64_t: " << sizeof(int64_t) << endl;
-	cout << "float: " << sizeof(float) << endl;
-	cout << "double: " << sizeof(double) << endl;
-	cout << "string: " << sizeof(string) << endl;
-	cout << "char: " << sizeof(char) << endl;
-	cout << "bool: " << sizeof(bool) << endl;
-	cout << "void*: " << sizeof(void*) << endl;
-
-	//testDFB::performanceDFB();
-
-	//testArrays();
-	testComplexVectors();
 	
 	return 0;
 }
