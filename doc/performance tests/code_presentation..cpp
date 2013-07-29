@@ -36,11 +36,11 @@ DynamicFastBuffers::Bytecode *deserializationBytecode;
 
 serializationBytecode = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 	structTypecode,
-	DynamicFastBuffers::flag::FLAG_TRUE
+	DynamicFastBuffers::flag::SERIALIZE
 );
 deserializationBytecode = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 	structTypecode,
-	DynamicFastBuffers::flag::FLAG_FALSE
+	DynamicFastBuffers::flag::DESERIALIZE
 );
 
 --------------------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ cdr.reset();
 
 DynamicFastBuffers::SerializerAPI::deserialize(
 	(void*) &outputStruct,
-	serializationBytecode,
+	deserializationBytecode,
 	&cdr
 );
 DynamicFastBuffers::TypecodeAPI::deleteTypecode(structTypecode);

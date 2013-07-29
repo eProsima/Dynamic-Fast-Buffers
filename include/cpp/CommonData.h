@@ -77,6 +77,9 @@ namespace DynamicFastBuffers
 
 		//! @brief Integer holding a value that specifies the maximum size of the data inside it (in case this Typecode is a TC_STRUCT).
 		int structSize_;
+
+		//! @brief The size of the string object represented by this Typecode.
+		int size_str_;
 		
 		/*!
         * @brief Checks if a Typecode object with his attribute kind_ set to the specified value provided as parameter can be added to this Typecode.
@@ -131,6 +134,12 @@ namespace DynamicFastBuffers
 		* @return The size in Bytes of the represented data type.
         */
 		int getSize();
+
+		/*!
+        * @brief Getter to obtain the size in positions of a sequence Typecode.
+		* @return The size in Bytes of the represented data type.
+        */
+		int getMaxLenght();
 
 		/*!
         * @brief Return the number of slots of the array (in case this Typecode represents such data type).
@@ -191,6 +200,18 @@ namespace DynamicFastBuffers
 		* @param The Typecode object to be added.
         */
 		int addMemberNoCheck(Typecode &member);
+
+		/*!
+        * @brief In case of a string typecode, sets the length of the string
+		* @param The size to be set.
+        */
+		void setStrSize(int size_str);
+
+		/*!
+        * @brief In case of a string typecode, returns the length of the string
+		* @return The size the string.
+        */
+		int getStrSize();
 		
 	};
 

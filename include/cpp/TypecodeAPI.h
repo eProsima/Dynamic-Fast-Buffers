@@ -55,6 +55,7 @@ namespace DynamicFastBuffers
 		 * @return A pointer to the Typecode object created.
 		 */
 		static Typecode* createString();
+		static Typecode* createString(int size_str);
 
 		/*!
          * @brief This function creates a Typecode which represents a character data type.
@@ -114,6 +115,13 @@ namespace DynamicFastBuffers
 		 * @exception WrongParamException This exception is thrown when given Typecode is NULL.
 		 */
 		static void deleteTypecode(Typecode *tc);
+
+		/*!
+         * @brief This function calculates the space needed in the memory buffer for the data to be serialized.
+		 * @param tc A Typecode which size must be calculated.
+		 * @return The size needed in the buffer.
+		 */
+		static int checkSerializedDataSize(Typecode *tc);
 	};
 };
 

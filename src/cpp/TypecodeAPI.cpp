@@ -38,6 +38,13 @@ namespace DynamicFastBuffers
 		return new Typecode(TC_STRING);
 	}
 
+	Typecode* TypecodeAPI::createString(int size_str)
+	{
+		Typecode *tc = new Typecode(TC_STRING);
+		tc->setStrSize(size_str);
+		return tc;
+	}
+
 	Typecode* TypecodeAPI::createCharacter()
 	{
 		return new Typecode(TC_CHARACTER);
@@ -86,7 +93,6 @@ namespace DynamicFastBuffers
 			content.push_back(dim1);
 		}
 		while(number){
-			cout << number << " - " << endl;
 			if(number < 1 ){
 				throw WrongParamException("Dimensions must be positive integers.");
 			}
@@ -157,5 +163,51 @@ namespace DynamicFastBuffers
 		}
 		delete tc;
 	}
+
+	int TypecodeAPI::checkSerializedDataSize(Typecode *tc)
+	{
+		switch(tc->getKind()){
+		case TC_STRING:
+			{
+				int returnValue = 0;
+				returnValue = sizeof(int32_t)+tc->getStrSize();
+				if(returnValue == 4){
+					returnValue += 20;
+				}
+				return returnValue;
+				break;
+			}
+		case TC_STRUCT:
+			{
+				int returnValue = 0;
+				vector<Typecode> tcs = tc->getMembers();
+				for(int i=0; i < tcs.size(); ++i){
+					returnValue += checkSerializedDataSize(&tcs[i]);
+				}
+				return returnValue;
+				break;
+			}
+		case TC_ARRAY:
+			{
+				int returnValue = 0;
+				int dims = tc->getArraySize();
+				int typeSize = tc->getSize();
+				returnValue = dims*typeSize;
+				return returnValue;
+				break;
+			}
+		case TC_SEQUENCE:
+			{
+				int returnValue = 0;
+				int dims = tc->getMaxLenght();
+				returnValue = dims*tc->getType()->getSize();
+				return returnValue;
+				break;
+			}
+		}
+		return tc->getSize(); 
+	}
+
+
 
 }

@@ -3994,9 +3994,49 @@ inline void testComplexVectors()
 	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
 }
 
+inline void testSizeCalculation()
+{
+	DynamicFastBuffers::Typecode *tc1 = DynamicFastBuffers::TypecodeAPI::createString();
+	DynamicFastBuffers::Typecode *tc2 = DynamicFastBuffers::TypecodeAPI::createString(26);
+	DynamicFastBuffers::Typecode *tc3 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createCharacter(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+	DynamicFastBuffers::Typecode *tc4 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+	DynamicFastBuffers::Typecode *tc5 = DynamicFastBuffers::TypecodeAPI::createSequence(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		10
+	);
+	std::cout << "tc1: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc1) << std::endl;
+	std::cout << "tc2: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc2) << std::endl;
+	std::cout << "tc3: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc3) << std::endl;
+	std::cout << "tc4: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc4) << std::endl;
+	std::cout << "tc5: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc5) << std::endl;
+}
+
 int main()
 {
-	
+	testSizeCalculation();
 	return 0;
 }
 

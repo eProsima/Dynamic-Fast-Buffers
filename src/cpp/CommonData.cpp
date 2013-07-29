@@ -7,12 +7,12 @@ namespace DynamicFastBuffers
 	* Class Typecode
 	*/
 	
-	Typecode::Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0){};
+	Typecode::Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0){};
 
-	Typecode::Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0){};
+	Typecode::Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0){};
 
 	Typecode::Typecode(const Typecode& other) : kind_(other.kind_), counter_(other.counter_), members_(other.members_),
-		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_)
+		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_), size_str_(other.size_str_)
 	{
 		if(other.type_ != NULL)
 		{
@@ -110,6 +110,11 @@ namespace DynamicFastBuffers
 			return counter_;
 		}
 		return dimensions_;
+	}
+
+	int Typecode::getMaxLenght()
+	{
+		return maxLength_;
 	}
 
 	void Typecode::setArraySize(int size)
@@ -295,6 +300,16 @@ namespace DynamicFastBuffers
 			break;
 		}
 		return sizeof(int);
+	}
+
+	void Typecode::setStrSize(int size_str)
+	{
+		size_str_ = size_str;
+	}
+
+	int Typecode::getStrSize()
+	{
+		return size_str_;
 	}
 
 	/**
