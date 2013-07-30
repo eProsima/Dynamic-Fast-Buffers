@@ -1,10 +1,10 @@
-#include "cpp\TypecodeAPI.h"
-#include "cpp\BytecodeAPI.h"
-#include "cpp\SerializerAPI.h"
-#include "cpp\CommonData.h"
-#include "cpp\FastCdr.h"
-#include "cpp\exceptions\Exception.h"
-#include "cpp\exceptions\WrongParamException.h"
+#include "cpp/TypecodeAPI.h"
+#include "cpp/BytecodeAPI.h"
+#include "cpp/SerializerAPI.h"
+#include "cpp/CommonData.h"
+#include "cpp/FastCdr.h"
+#include "cpp/exceptions/Exception.h"
+#include "cpp/exceptions/WrongParamException.h"
 #include <iostream>
 #include <exception>
 
@@ -409,7 +409,7 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &d1, bc4, cdr); 
 	long l1 = 22, l2;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc5, cdr); 
-	string str1 = "HELLO WORLD", str2;
+	std::string str1 = "HELLO WORLD", str2;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &str1, bc6, cdr); 
 	char c1 = 'A', c2;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &c1, bc7, cdr); 
@@ -435,6 +435,8 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &str2, bc6, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &c2, bc7, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &b2, bc8, cdr); 
+
+	
 	
 	//
 	// Comparison
@@ -448,6 +450,10 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	returnValue &= (str1 == str2);
 	returnValue &= (c1 == c2);
 	returnValue &= (b1 == b2);
+
+	//cout << i1 << ", " << s1 << ", " << f1 << ", " << d1 << ", " << l1 << ", " << str1 << ", " << c1 << ", " << b1 << endl;
+	//cout << i2 << ", " << s2 << ", " << f2 << ", " << d2 << ", " << l2 << ", " << str2 << ", " << c2 << ", " << b2 << endl;
+	
 	
 	return returnValue;
 }
