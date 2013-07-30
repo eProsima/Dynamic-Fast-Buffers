@@ -17,6 +17,12 @@ namespace DynamicFastBuffers
 		}else{
 			BytecodeAPI::generateBytecodeDeserialization(bytecode, typecode, index);
 		}
+
+		vector<int> *jumps = bytecode->getAlignment();
+		for(int i=0; i < jumps->size(); ++i){
+			cout << jumps->at(i) << endl;
+		}
+
 		return bytecode;
 	}
 
@@ -53,27 +59,11 @@ namespace DynamicFastBuffers
 			break;
 		case TC_STRUCT:
 			{
-				//testing
-
-//#define __linux 1
-
-				//end testing
-				
 				vector<Typecode> members = typecode->getMembers();
 				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
 				bool jumped = false;
-				//test
-				
-//				cout << "INDEX: " << endl;
-				
-				//end test
 				for(unsigned int i=0; i<count; ++i){
-				//test
-				
-				//cout << i << "-" << index << endl;
-				
-				//end test
 					if(members[i].getKind() == TC_STRUCT){
 						generateBytecodeSerialization(bytecode, &members[i], index);
 						if(i != count-1){
