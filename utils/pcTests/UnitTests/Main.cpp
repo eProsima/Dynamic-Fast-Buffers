@@ -263,8 +263,33 @@ struct outer
 	inner att4;
 };
 
-bool serializeBlackBox01(eProsima::FastCdr *cdr)
+bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 {
+
+	int size = 0;
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createInteger());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createShort());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createFloat());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createDouble());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createLong());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createString());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createCharacter());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createBoolean());
+
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
+
 	DynamicFastBuffers::Bytecode *bc1;
 	DynamicFastBuffers::Bytecode *bc2;
 	DynamicFastBuffers::Bytecode *bc3;
@@ -310,13 +335,17 @@ bool serializeBlackBox01(eProsima::FastCdr *cdr)
 	return true;
 }
 
-bool serializeBlackBox02(eProsima::FastCdr *cdr)
+bool serializeBlackBox02(eProsima::FastCdr *cdrp)
 {
 	inner inputStruct;
 	
 	inputStruct.att1 = 'A';
 	inputStruct.att2 = 'B';
 	inputStruct.att3 = 1000;
+	
+	int size = 0;
+	
+	
 
 	DynamicFastBuffers::Typecode *tc = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createCharacter(),
@@ -324,6 +353,15 @@ bool serializeBlackBox02(eProsima::FastCdr *cdr)
 		DynamicFastBuffers::TypecodeAPI::createShort(),
 		NULL
 	);
+	
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		tc);
+		
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_FALSE);
@@ -338,7 +376,7 @@ bool serializeBlackBox02(eProsima::FastCdr *cdr)
 
 }
 
-bool serializeBlackBox03(eProsima::FastCdr *cdr)
+bool serializeBlackBox03(eProsima::FastCdr *cdrp)
 {
 	outer inputStruct;
 	inner in1;
@@ -351,6 +389,10 @@ bool serializeBlackBox03(eProsima::FastCdr *cdr)
 	inputStruct.att2 = "OUTER";
 	inputStruct.att3 = 20;
 	inputStruct.att4 =  in1;
+	
+	int size = 0;
+	
+	
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createFloat(),
@@ -364,6 +406,15 @@ bool serializeBlackBox03(eProsima::FastCdr *cdr)
 		),
 		NULL
 	);
+	
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		typecode);
+		
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
@@ -377,7 +428,7 @@ bool serializeBlackBox03(eProsima::FastCdr *cdr)
 	}
 }
 
-bool deserializeBlackBox01(eProsima::FastCdr *cdr)
+bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 {
 	DynamicFastBuffers::Bytecode *bc1;
 	DynamicFastBuffers::Bytecode *bc2;
@@ -387,6 +438,31 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	DynamicFastBuffers::Bytecode *bc6;
 	DynamicFastBuffers::Bytecode *bc7;
 	DynamicFastBuffers::Bytecode *bc8;
+	
+	int size = 0;
+	
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createInteger());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createShort());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createFloat());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createDouble());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createLong());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createString());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createCharacter());
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createBoolean());
+	
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
 
 	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::FLAG_TRUE);
 	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::FLAG_TRUE);
@@ -397,23 +473,26 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::FLAG_TRUE);
 	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::FLAG_TRUE);
 	
+	
+	
 	cdr->reset();
 
-	int i1 = 10, i2;
+	int i1 = 10, i2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &i1, bc1, cdr); 
-	short s1 = 3, s2;
+	short s1 = 3, s2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &s1, bc2, cdr); 
-	float f1 = 5, f2;
+	float f1 = 5, f2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &f1, bc3, cdr); 
-	double d1 = 3.5, d2;
+	double d1 = 3.5, d2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &d1, bc4, cdr); 
-	long l1 = 22, l2;
+	long l1 = 22, l2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc5, cdr); 
-	std::string str1 = "HELLO WORLD", str2;
+	string str1 = "HELLO WORLD";
+	string str2 = "";
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &str1, bc6, cdr); 
-	char c1 = 'A', c2;
+	char c1 = 'A', c2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &c1, bc7, cdr); 
-	bool b1 = false, b2;
+	bool b1 = false, b2 = true;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &b1, bc8, cdr);
 	
 	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::FLAG_FALSE);
@@ -426,8 +505,8 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::FLAG_FALSE);
 	
 	cdr->reset();
-
-	DynamicFastBuffers::SerializerAPI::deserialize((void*) &i2, bc1, cdr); 
+	
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &i2, bc1, cdr);
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &s2, bc2, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &f2, bc3, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &d2, bc4, cdr); 
@@ -435,8 +514,6 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &str2, bc6, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &c2, bc7, cdr); 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &b2, bc8, cdr); 
-
-	
 	
 	//
 	// Comparison
@@ -450,28 +527,35 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdr)
 	returnValue &= (str1 == str2);
 	returnValue &= (c1 == c2);
 	returnValue &= (b1 == b2);
-
-	//cout << i1 << ", " << s1 << ", " << f1 << ", " << d1 << ", " << l1 << ", " << str1 << ", " << c1 << ", " << b1 << endl;
-	//cout << i2 << ", " << s2 << ", " << f2 << ", " << d2 << ", " << l2 << ", " << str2 << ", " << c2 << ", " << b2 << endl;
-	
 	
 	return returnValue;
 }
 
-bool deserializeBlackBox02(eProsima::FastCdr *cdr)
+bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 {
 	inner inputStruct, outputStruct;
 	
 	inputStruct.att1 = 'A';
 	inputStruct.att2 = 'B';
 	inputStruct.att3 = 1000;
-
+	
+	int size = 0;
+	
 	DynamicFastBuffers::Typecode *tc = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createCharacter(),
 		DynamicFastBuffers::TypecodeAPI::createCharacter(),
 		DynamicFastBuffers::TypecodeAPI::createShort(),
 		NULL
 	);
+	
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		DynamicFastBuffers::TypecodeAPI::createInteger());
+		
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_FALSE);
@@ -491,10 +575,14 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdr)
 	return returnValue;
 }
 
-bool deserializeBlackBox03(eProsima::FastCdr *cdr)
+bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 {
 	outer inputStruct, outputStruct;
 	inner in1;
+	
+	int size = 0;
+	
+	
 	
 	in1.att1 = 'A';
 	in1.att2 = 'B';
@@ -504,7 +592,7 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdr)
 	inputStruct.att2 = "OUTER";
 	inputStruct.att3 = 20;
 	inputStruct.att4 =  in1;
-
+	
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createFloat(),
 		DynamicFastBuffers::TypecodeAPI::createString(),
@@ -517,18 +605,28 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdr)
 		),
 		NULL
 	);
-
+	
+	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
+		typecode);
+		
+	char buffer[size];
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
+	
+	
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
 
 	cdr->reset();
-
+	
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, cdr);
-
+		
 	cdr->reset();
 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bytecodeDeserialization, cdr);
-
+	
 	bool returnValue = true;
 	returnValue &= (inputStruct.att1 == outputStruct.att1);
 	returnValue &= (inputStruct.att2 == outputStruct.att2);
@@ -536,7 +634,7 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdr)
 	returnValue &= (inputStruct.att4.att1 == outputStruct.att4.att1);
 	returnValue &= (inputStruct.att4.att2 == outputStruct.att4.att2);
 	returnValue &= (inputStruct.att4.att3 == outputStruct.att4.att3);
-
+	
 	return returnValue;
 }
 
@@ -625,7 +723,7 @@ bool addMemberBlackBox04()
 
 void setUp(eProsima::FastCdr *&cdr, eProsima::FastBuffer *&fastBuffer, char* buffer)
 {
-	fastBuffer = new eProsima::FastBuffer(buffer, 500);
+	fastBuffer = new eProsima::FastBuffer(buffer, 500); 
 	cdr = new eProsima::FastCdr(*fastBuffer);
 }
 
