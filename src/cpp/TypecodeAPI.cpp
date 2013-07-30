@@ -172,7 +172,7 @@ namespace DynamicFastBuffers
 				int returnValue = 0;
 				returnValue = sizeof(int32_t)+tc->getStrSize();
 				if(returnValue == 4){
-					returnValue += 20;
+					returnValue += 256;
 				}
 				return returnValue;
 				break;
