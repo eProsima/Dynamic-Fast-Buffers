@@ -11,20 +11,36 @@ CP=cp
 ifeq ($(MAKECMDGOALS), unitTests)
 	include $(BASEDIR)/utils/pcTests/UnitTests/unitTests.mk
 else
-ifeq ($(MAKECMDGOALS), tests)
+ifeq ($(MAKECMDGOALS), test)
 	include $(BASEDIR)/utils/pcTests/TestsDFB/tests.mk
+else
+ifeq ($(MAKECMDGOALS), hwi86)
+	include $(BASEDIR)/examples/c++/HelloWorldDFB/hwi86.mk
+else
+ifeq ($(MAKECMDGOALS), hwx64)
+	include $(BASEDIR)/examples/c++/HelloWorldDFB/hwx64.mk
 else
 	include $(BASEDIR)/building/makefiles/dfb.mk
 endif
 endif
+endif
+endif
 
-.PHONY: all test unitTests
+
+
+
+
+.PHONY: all test unitTests hworldi86 hworldx64
 
 all: dfb 
 
 test: tests
 
 unitTests: utests
+
+hworldi86: hwi86
+
+hworldx64: hwx64
 
 clean:
 	@rm -f $(OBJS)
