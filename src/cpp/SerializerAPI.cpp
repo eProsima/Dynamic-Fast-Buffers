@@ -23,6 +23,7 @@ namespace DynamicFastBuffers
 
 				size = bytecode->getSize();
 				val = (*tc)[i] (cdr, val, *size);
+				cout << "serializa " << i << endl;
 			}
 		}else{
 			for (int i=0; i< length; ++i){
