@@ -115,15 +115,15 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-#if defined(__linux)
+/*#if defined(__linux)
 #if defined(__i386)
 					int32_t *p = (int32_t *) data;
 #else
 					int64_t *p = (int64_t *) data;
 #endif
-#else
+#else*/
 					int64_t *p = (int64_t *) data;
-#endif
+//#endif
 		
 		cdr->serialize(*p);
 		++p;
@@ -132,15 +132,15 @@ namespace DynamicFastBuffers
 
 	void* SerializerAPI::deserializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-#if defined(__linux)
+/*#if defined(__linux)
 #if defined(__i386)
 					int32_t *pLong = (int32_t *) data;
 #else
 					int64_t *pLong = (int64_t *) data;
 #endif
-#else
+#else*/
 					int64_t *pLong = (int64_t *) data;
-#endif
+//#endif
 		cdr->deserialize(*pLong);
 		++pLong;
 		return (void*) pLong;
