@@ -18,9 +18,9 @@ bool testPrimitiveData()
 	//
 	// Data creation
 	//
-	int i1 = 5, i2;
+	int32_t i1 = 5, i2;
 	short s1 = 2, s2;
-	long l1 = 7, l2;
+	int64_t l1 = 7, l2;
 	float f1 = 15.5, f2;
 	double d1 = 23.625, d2;
 	string str1 = "HELLO WORLD", str2;
@@ -134,7 +134,7 @@ struct outer
 {
 	float att1;
 	string att2;
-	int att3;
+	int32_t att3;
 	inner att4;
 };
 
@@ -297,8 +297,8 @@ bool testSequenceData()
 	//
 	// Data creation
 	//
-	vector<int> integerVector = vector<int>(10, 3);
-	vector<int> outputIntegerVector = vector<int>(10);
+	vector<int32_t> integerVector = vector<int32_t>(10, 3);
+	vector<int32_t> outputIntegerVector = vector<int32_t>(10);
 	vector<float> floatVector = vector<float>(5, 8);
 	vector<float> outputFloatVector = vector<float>(5);
 	
@@ -357,11 +357,11 @@ bool testSequenceData()
 struct InnerStruct
 {
 	short s1;
-	int i1;
+	int32_t i1;
 	char c1;
 	std::string str1;
 	short s2;
-	long l1;
+	int64_t l1;
 };
 
 struct MediumStruct
@@ -369,8 +369,8 @@ struct MediumStruct
 	short i1;
 	char s1;
 	short arr1[2][4];
-	vector<long> members1;
-	int i2;
+	vector<int64_t> members1;
+	int32_t i2;
 	short s2;
 	InnerStruct st3;
 	std::string str1;
@@ -379,11 +379,11 @@ struct MediumStruct
 struct OuterStruct
 {
 	short s1;
-	int i1;
+	int32_t i1;
 	MediumStruct st1;
 	short arr1[2][4];
 	short i2;
-	long s2;
+	int64_t s2;
 	InnerStruct st3;
 	string str1;
 };
@@ -415,7 +415,7 @@ bool testComplexStruct()
 	mediumTest.i1 = 5;
 	mediumTest.s1 = 'C';
 	memcpy(mediumTest.arr1, arr1, sizeof(arr1));
-	mediumTest.members1 = vector<long>(5, 50);
+	mediumTest.members1 = vector<int64_t>(5, 50);
 	mediumTest.i2 = 10;
 	mediumTest.s2 = 4;
 	mediumTest.st3 = innerTest;
@@ -548,9 +548,9 @@ bool testSimpleAlignment()
 	//
 	// Data creation
 	//
-	int i1=8, i2;
+	int32_t i1=8, i2;
 	short s1=2, s2;
-	long l1 = 3, l2;
+	int64_t l1 = 3, l2;
 	float f1 = 15.5, f2;
 	double d1 = 23.625, d2;
 	string str1 = "HELLO WORLD", str2;
@@ -673,22 +673,22 @@ bool testArrayKinds()
 	//
 	// Data creation
 	//
-	array<int,4> arr1 = {1, 2, 3, 4};
-	array<int,4> arr2;
+	array<int32_t,4> arr1 = {1, 2, 3, 4};
+	array<int32_t,4> arr2;
 	array<short,6> arr3 = {2, 3, 5, 6, 7, 8};
 	array<short,6> arr4;
-	array<long,4> arr5 = {9, 10, 11, 12};
-	array<long,4> arr6;
+	array<int64_t,4> arr5 = {9, 10, 11, 12};
+	array<int64_t,4> arr6;
 	array<float,4> arr7 = {9, 10, 11, 12};
 	array<float,4> arr8;
 	array<double,4> arr9 = {9, 10, 11, 12};
 	array<double,4> arr10;
 	array<char,10> arr13 = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
 	array<char,10> arr14;
-	int int1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
-	int int2 [3][4];
-	long long1 [4][4][2] = {{{1,1},{2,2},{3,3},{4,4}}, {{10,10},{11,11},{12,12},{13,13}}, {{20,20},{21,21},{22,22},{23,23}}, {{30,30},{31,31},{32,32},{33,33}}};
-	long long2 [4][4][2];
+	int32_t int1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
+	int32_t int2 [3][4];
+	int64_t long1 [4][4][2] = {{{1,1},{2,2},{3,3},{4,4}}, {{10,10},{11,11},{12,12},{13,13}}, {{20,20},{21,21},{22,22},{23,23}}, {{30,30},{31,31},{32,32},{33,33}}};
+	int64_t long2 [4][4][2];
 	short short1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
 	short short2 [3][4];
 	float float1 [3][4] = {{(float) 2.0, (float) 2.1, (float) 2.2, (float) 2.3}, {(float) 3.0, (float) 3.1, (float) 3.2, (float) 3.3}, {(float) 4.0, (float) 4.1, (float) 4.2, (float) 4.3}};
