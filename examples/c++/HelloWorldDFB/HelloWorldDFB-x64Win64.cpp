@@ -8,11 +8,11 @@
 struct InnerStruct
 {
 	short s1;
-	int i1;
+	int32_t i1;
 	char c1;
 	std::string str1;
 	short s2;
-	long l1;
+	int64_t l1;
 };
 
 struct MediumStruct
@@ -20,8 +20,8 @@ struct MediumStruct
 	short i1;
 	char s1;
 	short arr1[2][4];
-	vector<long> members1;
-	int i2;
+	vector<int64_t> members1;
+	int32_t i2;
 	short s2;
 	InnerStruct st3;
 	std::string str1;
@@ -30,11 +30,11 @@ struct MediumStruct
 struct OuterStruct
 {
 	short s1;
-	int i1;
+	int32_t i1;
 	MediumStruct st1;
 	short arr1[2][4];
 	short i2;
-	long s2;
+	int64_t s2;
 	InnerStruct st3;
 	string str1;
 };
@@ -125,7 +125,7 @@ int main()
 	mediumTest.i1 = 5;
 	mediumTest.s1 = 'C';
 	memcpy(mediumTest.arr1, arr1, sizeof(arr1));
-	mediumTest.members1 = vector<long>(5, 50);
+	mediumTest.members1 = vector<int64_t>(5, 50);
 	mediumTest.i2 = 10;
 	mediumTest.s2 = 4;
 	mediumTest.st3 = innerTest;
@@ -181,17 +181,17 @@ int main()
 		DynamicFastBuffers::TypecodeAPI::createString(),
 		NULL
 	);
-	
+
 	//
 	// Bytecode for serialization
 	//
 	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::FLAG_TRUE);
-	
+
 	//
 	// Data serialization
 	//
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bc1, &cdr);
-		
+
 	//
 	// Buffer reset
 	//
@@ -201,12 +201,12 @@ int main()
 	// Bytecode for deserialization
 	//
 	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::FLAG_FALSE);
-	
+
 	//
 	// Data deserialization
 	//
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bc1, &cdr);
-	
+
 	//
 	// Typecode deletes
 	//
