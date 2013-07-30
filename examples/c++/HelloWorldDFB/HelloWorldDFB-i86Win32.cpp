@@ -103,8 +103,8 @@ int main()
 	//
 	// CDR Serializer declaration
 	//
-	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	char buffer[2000];
+	eProsima::FastBuffer cdrBuffer(buffer, 2000);
 	eProsima::FastCdr cdr(cdrBuffer);
 	
 	//
@@ -112,7 +112,7 @@ int main()
 	//
 	short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
 	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
-
+	
 	InnerStruct innerTest;
 	innerTest.s1 = 1;
 	innerTest.i1 = 2;
@@ -140,7 +140,7 @@ int main()
 	inputStruct.s2 = 8;
 	inputStruct.st3 = innerTest;
 	inputStruct.str1 = "OUTER STRUCT";
-
+	
 	//
 	// Typecode creation
 	//
@@ -191,7 +191,7 @@ int main()
 	// Data serialization
 	//
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bc1, &cdr);
-		
+	
 	//
 	// Buffer reset
 	//
