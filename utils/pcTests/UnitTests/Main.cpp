@@ -580,7 +580,7 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 
 bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 {
-	outer inputStruct, outputStruct;
+	outer inputStruct, outputStruct; 
 	inner in1;
 	
 	int size = 0;
@@ -631,6 +631,7 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bytecodeDeserialization, cdr);
 	
 	bool returnValue = true;
+	
 	returnValue &= (inputStruct.att1 == outputStruct.att1);
 	returnValue &= (inputStruct.att2 == outputStruct.att2);
 	returnValue &= (inputStruct.att3 == outputStruct.att3);

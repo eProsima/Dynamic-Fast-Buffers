@@ -1,8 +1,8 @@
-#include "cpp\TypecodeAPI.h"
-#include "cpp\BytecodeAPI.h"
-#include "cpp\SerializerAPI.h"
-#include "cpp\CommonData.h"
-#include "cpp\FastCdr.h"
+#include "cpp/TypecodeAPI.h"
+#include "cpp/BytecodeAPI.h"
+#include "cpp/SerializerAPI.h"
+#include "cpp/CommonData.h"
+#include "cpp/FastCdr.h"
 #include <iostream>
 #include <cstdint>
 
@@ -544,8 +544,8 @@ bool testSimpleAlignment()
 	//
 	// CDR Serializer declaration
 	//
-	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	char buffer[1000];
+	eProsima::FastBuffer cdrBuffer(buffer, 1000);
 	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
@@ -669,8 +669,8 @@ bool testArrayKinds()
 	//
 	// CDR Serializer declaration
 	//
-	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	char buffer[5000];
+	eProsima::FastBuffer cdrBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(cdrBuffer);
 
 	//

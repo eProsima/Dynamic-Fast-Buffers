@@ -1,4 +1,4 @@
-DFB_OUTDIR= $(OUTDIR)/dfb
+DFB_OUTDIR= $(OUTDIR)/testDFB
 DFB_OUTDIR_DEBUG = $(DFB_OUTDIR)/debug
 DFB_OUTDIR_RELEASE = $(DFB_OUTDIR)/release
 
@@ -30,7 +30,7 @@ DFB_SRC_CPPFILES= $(BASEDIR)/src/cpp/TypecodeAPI.cpp \
     		  $(BASEDIR)/src/cpp/exceptions/NotEnoughParamsException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongParamException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongTypeException.cpp \
-		  $(BASEDIR)/utils/pcTests/UnitTests/Main.cpp
+		  $(BASEDIR)/utils/pcTests/TestsDFB/Main.cpp
 
 # Project sources are copied to the current directory
 DFB_SRCS= $(DFB_SRC_CFILES) $(DFB_SRC_CPPFILES)
