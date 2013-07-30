@@ -228,12 +228,12 @@ namespace DynamicFastBuffers
 			return sizeof(bool);
 			break;
 		case TC_STRUCT:
-//#if defined(__linux)
-	//		return sizeof(void*);
-//#else
+#if defined(__linux)
+			return sizeof(void*);
+#else
 			return structSize_;
-//#endif
-			//return structSize_;
+#endif
+			return structSize_;
 			break;
 		case TC_UNION:
 		case TC_ARRAY:
