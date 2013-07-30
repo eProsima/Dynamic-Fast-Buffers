@@ -15,11 +15,7 @@ namespace DynamicFastBuffers
 		if(jLength != 0){
 			for (int i=0; i< length; ++i){
 				
-				printf("%p + %d ->", val, (*jumps)[i]);
-
 				val = static_cast<char*>(val) + (*jumps)[i]; 
-
-				printf("%p\n", val);
 
 				//test
 				//cout << val << endl;
