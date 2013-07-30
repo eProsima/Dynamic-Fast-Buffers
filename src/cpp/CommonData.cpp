@@ -201,7 +201,15 @@ namespace DynamicFastBuffers
 			return sizeof(short);
 			break;
 		case TC_LONG:
+#if defined(__linux)
+#if defined(__i386)
+			return sizeof(int32_t);
+#else
 			return sizeof(int64_t);
+#endif
+#else
+			return sizeof(int64_t);
+#endif
 			break;
 		case TC_FLOAT:
 			return sizeof(float);
@@ -249,7 +257,15 @@ namespace DynamicFastBuffers
 					return sizeof(short);
 					break;
 				case TC_LONG:
-					return sizeof(int64_t);
+#if defined(__linux)
+#if defined(__i386)
+			return sizeof(int32_t);
+#else
+			return sizeof(int64_t);
+#endif
+#else
+			return sizeof(int64_t);
+#endif
 					break;
 				case TC_FLOAT:
 					return sizeof(float);
