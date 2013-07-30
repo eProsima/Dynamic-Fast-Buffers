@@ -20,7 +20,7 @@ namespace DynamicFastBuffers
 
 		vector<int> *jumps = bytecode->getAlignment();
 		for(int i=0; i < jumps->size(); ++i){
-			cout << jumps->at(i) << endl;
+			cout << "jumps[" << i << "]" << jumps->at(i) << endl;
 		}
 
 		return bytecode;
