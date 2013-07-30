@@ -4,6 +4,9 @@
 #include "cpp\CommonData.h"
 #include "cpp\FastCdr.h"
 #include <iostream>
+#include <cstdint>
+
+using namespace std;
 
 bool testPrimitiveData()
 {

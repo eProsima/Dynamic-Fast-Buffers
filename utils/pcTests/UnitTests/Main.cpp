@@ -7,6 +7,9 @@
 #include "cpp/exceptions/WrongParamException.h"
 #include <iostream>
 #include <exception>
+#include <cstdint>
+
+using namespace std;
 
 bool generateBytecodeWhiteBox02()
 {
