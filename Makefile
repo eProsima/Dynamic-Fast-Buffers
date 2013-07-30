@@ -6,12 +6,19 @@ LN=g++
 AR=ar
 CP=cp
 
+
 -include $(EPROSIMADIR)/building/makefiles/eProsima.mk
--include $(BASEDIR)/building/makefiles/dfb.mk
+ifeq ($(MAKECMDGOALS), test)
+	include $(BASEDIR)/utils/pcTests/UnitTests/unitTests.mk
+else
+	include $(BASEDIR)/building/makefiles/dfb.mk
+endif
 
-.PHONY: all
+.PHONY: all test
 
-all: dfb
+all: dfb 
+
+test: utests
 
 clean:
 	@rm -f $(OBJS)
