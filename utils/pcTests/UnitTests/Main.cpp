@@ -259,7 +259,7 @@ struct outer
 {
 	float att1;
 	string att2;
-	int att3;
+	int32_t att3;
 	inner att4;
 };
 
@@ -313,7 +313,7 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 	//
 	try{
 		cdr->reset();
-		int i1 = 10;
+		int32_t i1 = 10;
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &i1, bc1, cdr); 
 		short s1 = 3;
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &s1, bc2, cdr); 
@@ -321,7 +321,7 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &f1, bc3, cdr); 
 		double d1 = 3.5;
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &d1, bc4, cdr); 
-		long l1 = 22;
+		int64_t l1 = 22;
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc5, cdr); 
 		std::string str1 = "HELLO WORLD";
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &str1, bc6, cdr); 
@@ -477,7 +477,7 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	
 	cdr->reset();
 
-	int i1 = 10, i2 = 0;
+	int32_t i1 = 10, i2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &i1, bc1, cdr); 
 	short s1 = 3, s2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &s1, bc2, cdr); 
@@ -485,7 +485,7 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &f1, bc3, cdr); 
 	double d1 = 3.5, d2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &d1, bc4, cdr); 
-	long l1 = 22, l2 = 0;
+	int64_t l1 = 22, l2 = 0;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc5, cdr); 
 	string str1 = "HELLO WORLD";
 	string str2 = "";
