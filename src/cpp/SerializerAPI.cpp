@@ -127,12 +127,12 @@ namespace DynamicFastBuffers
 	{
 #if defined(__linux)
 #if defined(__i386)
-					int32_t *p = (int64_t *) data;
+					int32_t *pLong = (int64_t *) data;
 #else
-					int64_t *p = (int64_t *) data;
+					int64_t *pLong = (int64_t *) data;
 #endif
 #else
-					int64_t *p = (int64_t *) data;
+					int64_t *pLong = (int64_t *) data;
 #endif
 		cdr->deserialize(*pLong);
 		++pLong;
