@@ -110,7 +110,7 @@ namespace DynamicFastBuffers
 	{
 #if defined(__linux)
 #if defined(__i386)
-					int32_t *p = (int64_t *) data;
+					int32_t *p = (int32_t *) data;
 #else
 					int64_t *p = (int64_t *) data;
 #endif
@@ -127,7 +127,7 @@ namespace DynamicFastBuffers
 	{
 #if defined(__linux)
 #if defined(__i386)
-					int32_t *pLong = (int64_t *) data;
+					int32_t *pLong = (int32_t *) data;
 #else
 					int64_t *pLong = (int64_t *) data;
 #endif
