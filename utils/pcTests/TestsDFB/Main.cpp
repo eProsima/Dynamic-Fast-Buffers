@@ -396,9 +396,12 @@ bool testComplexStruct()
 	//
 	// CDR Serializer declaration
 	//
-	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	char buffer[1000];
+	eProsima::FastBuffer cdrBuffer(buffer, 1000);
 	eProsima::FastCdr cdr(cdrBuffer);
+
+	cout << "long: " << sizeof(int64_t) << endl;
+	cout << "long: " << sizeof(vector<int64_t>) << endl;
 
 	//
 	// Data creation
@@ -484,7 +487,11 @@ bool testComplexStruct()
 	//
 	// Data serialization
 	//
-	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, &cdr);
+	try{
+		DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, &cdr);
+	}catch (std::exception &e){
+		std::cout << e.what();
+	}
 
 	//
 	// Buffer reset

@@ -287,7 +287,7 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		DynamicFastBuffers::TypecodeAPI::createBoolean());
 
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
@@ -360,7 +360,7 @@ bool serializeBlackBox02(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		tc);
 		
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
@@ -413,7 +413,7 @@ bool serializeBlackBox03(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		typecode);
 		
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
@@ -461,7 +461,7 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		DynamicFastBuffers::TypecodeAPI::createBoolean());
 	
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
@@ -554,7 +554,7 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		DynamicFastBuffers::TypecodeAPI::createInteger());
 		
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
@@ -612,7 +612,7 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 	size += DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(
 		typecode);
 		
-	char buffer[size];
+	char *buffer = (char*) malloc(size);
 	eProsima::FastCdr *cdr;
 	eProsima::FastBuffer *cdrBuffer;
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
