@@ -18,7 +18,7 @@ namespace DynamicFastBuffers
 				val = static_cast<char*>(val) + (*jumps)[i]; 
 
 				//test
-				//cout << val << endl;
+				cout << val << endl;
 				//end test
 
 
@@ -111,16 +111,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-/*#if defined(__linux)
-#if defined(__i386)
-					int32_t *p = (int32_t *) data;
-#else
-					int64_t *p = (int64_t *) data;
-#endif
-#else*/
-					int64_t *p = (int64_t *) data;
-//#endif
-		
+		int64_t *p = (int64_t *) data;
 		cdr->serialize(*p);
 		++p;
 		return (void *) p;
@@ -128,15 +119,7 @@ namespace DynamicFastBuffers
 
 	void* SerializerAPI::deserializeLong(eProsima::FastCdr *cdr, void *data, int &size)
 	{
-/*#if defined(__linux)
-#if defined(__i386)
-					int32_t *pLong = (int32_t *) data;
-#else
-					int64_t *pLong = (int64_t *) data;
-#endif
-#else*/
-					int64_t *pLong = (int64_t *) data;
-//#endif
+		int64_t *pLong = (int64_t *) data;
 		cdr->deserialize(*pLong);
 		++pLong;
 		return (void*) pLong;

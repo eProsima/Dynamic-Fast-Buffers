@@ -319,7 +319,7 @@ namespace DynamicFastBuffers
 		if(dataSize != 0){
 			align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
 			//test
-			//cout << "\tData Size: " << dataSize << ", Pos: " << m_currentPosition << ", SALTO: " << align << endl;
+			cout << "\tData Size: " << dataSize << ", Pos: " << m_currentPosition << ", SALTO: " << align << endl;
 			//end test
 			
 		}else{
