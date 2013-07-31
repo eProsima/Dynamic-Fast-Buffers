@@ -11,7 +11,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when no parameters have been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class DFB_DllAPI NotEnoughParamsException : public eProsima::Exception
+	class Dfb_DllAPI NotEnoughParamsException : public eProsima::Exception
 	{
 	public:
 

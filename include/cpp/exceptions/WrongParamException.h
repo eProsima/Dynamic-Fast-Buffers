@@ -11,7 +11,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when a wrong parameter has been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class DFB_DllAPI WrongParamException : public eProsima::Exception
+	class Dfb_DllAPI WrongParamException : public eProsima::Exception
 	{
 	public:
 

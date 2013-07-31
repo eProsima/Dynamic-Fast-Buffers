@@ -50,7 +50,7 @@ namespace DynamicFastBuffers
      * @brief This static class stores all the relevant information about a Typecode.
      * @ingroup COMMONDATAMODULE
      */
-	class DFB_DllAPI Typecode
+	class Dfb_DllAPI Typecode
 	{
 	private:
 
@@ -219,7 +219,7 @@ namespace DynamicFastBuffers
      * @brief This static class represents the operations that odd to be done to serialize a determined data type.
      * @ingroup COMMONDATAMODULE
      */
-	class DFB_DllAPI Bytecode
+	class Dfb_DllAPI Bytecode
 	{
 	private:
 

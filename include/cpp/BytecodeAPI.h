@@ -12,7 +12,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to generate a bytecode from a given Typecode object.
      * @ingroup BYTECODEAPIMODULE
      */
-	class DFB_DllAPI BytecodeAPI
+	class Dfb_DllAPI BytecodeAPI
 	{
 	private:
 

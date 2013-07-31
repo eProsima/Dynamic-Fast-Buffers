@@ -14,7 +14,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to create a typecode for data type definitions.
      * @ingroup TYPECODEAPIMODULE
      */
-	class DFB_DllAPI TypecodeAPI
+	class Dfb_DllAPI TypecodeAPI
 	{
 	private:
 		//No private atributes or functions

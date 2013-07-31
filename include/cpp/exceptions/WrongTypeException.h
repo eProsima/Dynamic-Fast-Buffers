@@ -11,7 +11,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when a parameter with a wrong type_ attribute has been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class DFB_DllAPI WrongTypeException : public eProsima::Exception
+	class Dfb_DllAPI WrongTypeException : public eProsima::Exception
 	{
 	public:
 

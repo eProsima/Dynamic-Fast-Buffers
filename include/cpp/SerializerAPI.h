@@ -12,7 +12,7 @@ namespace DynamicFastBuffers
      * @brief This static class offers an interface to serialize/deserialize data types (described by a Typecode) using CDR protocol inside a eProsima::FastBuffer.
      * @ingroup SERIALIZERAPIMODULE
      */
-	class DFB_DllAPI SerializerAPI
+	class Dfb_DllAPI SerializerAPI
 	{
 
 	friend class BytecodeAPI;
