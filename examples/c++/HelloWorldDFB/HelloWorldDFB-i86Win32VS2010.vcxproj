@@ -79,7 +79,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\lib\i86Win32VS2010; ..\..\..\..\CDR\lib\i86Win32VS2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DynamicFastBuffers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

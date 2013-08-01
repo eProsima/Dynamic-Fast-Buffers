@@ -151,7 +151,7 @@
       <OptimizeReferences>
       </OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\lib\x64Win64VS2010;  ..\..\..\..\CDR\lib\x64Win64VS2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DynamicFastBuffers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
