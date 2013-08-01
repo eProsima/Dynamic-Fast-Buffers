@@ -23,35 +23,38 @@ if "%EPROSIMADIR%"=="" (
 )
 
 :: Go to root directory
-cd "..\.."
+	:: cd "..\.."
+
+::Test
+	set VERSION=0.1.0
 
 :: Update and compile CDR library.
-cd "..\CDR"
+	:: cd "..\CDR"
 :: Update CDR library.
-svn update
-set errorstatus=%ERRORLEVEL%
-if not %errorstatus%==0 goto :exit
+	:: svn update
+	:: set errorstatus=%ERRORLEVEL%
+	:: if not %errorstatus%==0 goto :exit
 :: Compile CDR library.
-cd "utils\scripts"
-call build_cdr.bat
-set errorstatus=%ERRORLEVEL%
-if not %errorstatus%==0 goto :exit
-cd "..\..\..\DynamicFastBuffers"
+	:: cd "utils\scripts"
+	:: call build_cdr.bat
+	:: set errorstatus=%ERRORLEVEL%
+	:: if not %errorstatus%==0 goto :exit
+	:: cd "..\..\..\DynamicFastBuffers"
 
 :: Get the current vesion of DynamicFastBuffers
-call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP
-if not %errorstatus%==0 goto :exit
+	:: call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP
+	:: if not %errorstatus%==0 goto :exit
 
 :: Update and compile DynamicFastBuffers application.
 :: Update DynamicFastBuffers application.
-svn update
-set errorstatus=%ERRORLEVEL%
-if not %errorstatus%==0 goto :exit
+	:: svn update
+	:: set errorstatus=%ERRORLEVEL%
+	:: if not %errorstatus%==0 goto :exit
 :: Compile DynamicFastBuffers for target.
-cd "utils\scripts"
-call build_dfb.bat
-set errorstatus=%ERRORLEVEL%
-if not %errorstatus%==0 goto :exit
+	:: cd "utils\scripts"
+	:: call build_dfb.bat
+	:: set errorstatus=%ERRORLEVEL%
+	:: if not %errorstatus%==0 goto :exit
 
 :: Create PDFS from documentation.
 cd "..\..\doc"
@@ -63,8 +66,19 @@ if not %errorstatus%==0 goto :exit
 soffice.exe --headless "macro:///eProsima.documentation.changeVersion(%CD%\DFB - User Manual.odt,%VERSION%)"
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
-cd ".."
 
+:: Copy pfd files into pdf dir
+xcopy /Y "DFB - Installation Manual.pdf" "pdf\DFB - Installation Manual.pdf"
+del "DFB - Installation Manual.pdf"
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+
+xcopy /Y "DFB - User Manual.pdf" "pdf\DFB - User Manual.pdf"
+del "DFB - User Manual.pdf"
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+
+cd ".."
 :: Create README
 	:: soffice.exe --headless "macro:///eProsima.documentation.changeVersionToHTML(%CD%\README.odt,%VERSION%)"
 	:: set errorstatus=%ERRORLEVEL%
@@ -72,40 +86,30 @@ cd ".."
 
 :: Create doxygen information.
 :: Generate the examples
-:: CDR example
-	:: call scripts\efastbuffers_local.bat -replace -ser cdr -o utils\doxygen\examples\cdr utils\doxygen\examples\cdr\FooCdr.idl
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-:: Fast CDR example
-	:: call scripts\efastbuffers_local.bat -replace -ser fastcdr -o utils\doxygen\examples\fastcdr utils\doxygen\examples\fastcdr\FooFastCdr.idl
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
 :: Export version
 	:: set VERSION_DOX=%VERSION%
-	:: mkdir output
-	:: mkdir output\doxygen
-	:: doxygen utils\doxygen\doxyfile
+	:: mkdir doc\html
+	:: mkdir utils\doxygen\output
+	:: mkdir utils\doxygen\output\doxygen
+	:: cd "utils\doxygen"
+	:: doxygen doxyfile
 	:: set errorstatus=%ERRORLEVEL%
 	:: if not %errorstatus%==0 goto :exit
 	:: cd output\doxygen\latex
 	:: call make.bat
 	:: set errorstatus=%ERRORLEVEL%
 	:: if not %errorstatus%==0 goto :exit
-	:: cd ..\..\..
+	:: cd "..\..\..\..\.."
 
 :: Create installers.
-	:: cd "utils\installers\windows"
+	cd "utils\installers\dfb\windows"
 :: Win32 installer.
-	:: makensis.exe /DVERSION="%VERSION%" Setup_Win32.nsi
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-:: Win64 installer.
-	:: makensis.exe /DVERSION="%VERSION%" Setup_Win64.nsi
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-	:: cd "..\..\.."
+	makensis.exe /DVERSION="%VERSION%" setup.nsi
+	set errorstatus=%ERRORLEVEL%
+	if not %errorstatus%==0 goto :exit
+	cd "..\..\..\.."
 
-	:: rmdir /S /Q output
+	:: rmdir /S /Q utils\doxygen\output
 
 goto :exit
 

@@ -5,7 +5,6 @@ Name "Dynamic Fast Buffers"
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.1
 !define COMPANY eProsima
 !define URL www.eprosima.com
 
@@ -36,12 +35,12 @@ Name "Dynamic Fast Buffers"
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile eProsima_Dynamic_Fast_Buffers-0.1.exe
+OutFile eProsima_Dynamic_Fast_Buffers-${VERSION}.exe
 InstallDir "$PROGRAMFILES\eProsima\Dynamic Fast Buffers"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 0.1.0.0
+VIProductVersion ${VERSION}.0
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "Dynamic Fast Buffers"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
@@ -57,7 +56,7 @@ Section "Main Files" SEC0000
 SectionIn RO
     SetOutPath $INSTDIR\doc\html
     SetOverwrite on
-    File /r ..\..\..\..\doc\html\*
+    File /r ..\..\..\doxygen\output\doxygen\html\*
     SetOutPath $INSTDIR\doc\pdf
     File /r ..\..\..\..\doc\pdf\*
     SetOutPath $INSTDIR\examples
