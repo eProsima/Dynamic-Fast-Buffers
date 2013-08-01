@@ -23,38 +23,35 @@ if "%EPROSIMADIR%"=="" (
 )
 
 :: Go to root directory
-	:: cd "..\.."
-
-::Test
-	set VERSION=0.1.0
+cd "..\.."
 
 :: Update and compile CDR library.
-	:: cd "..\CDR"
+cd "..\CDR"
 :: Update CDR library.
-	:: svn update
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
+svn update
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
 :: Compile CDR library.
-	:: cd "utils\scripts"
-	:: call build_cdr.bat
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-	:: cd "..\..\..\DynamicFastBuffers"
+cd "utils\scripts"
+call build_cdr.bat
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+cd "..\..\..\DynamicFastBuffers"
 
 :: Get the current vesion of DynamicFastBuffers
-	:: call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP
-	:: if not %errorstatus%==0 goto :exit
+call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP
+if not %errorstatus%==0 goto :exit
 
 :: Update and compile DynamicFastBuffers application.
 :: Update DynamicFastBuffers application.
-	:: svn update
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
+svn update
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
 :: Compile DynamicFastBuffers for target.
-	:: cd "utils\scripts"
-	:: call build_dfb.bat
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
+cd "utils\scripts"
+call build_dfb.bat
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
 
 :: Create PDFS from documentation.
 cd "..\..\doc"
@@ -80,34 +77,34 @@ if not %errorstatus%==0 goto :exit
 
 cd ".."
 :: Create README
-	:: soffice.exe --headless "macro:///eProsima.documentation.changeVersionToHTML(%CD%\README.odt,%VERSION%)"
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
+soffice.exe --headless "macro:///eProsima.documentation.changeVersionToHTML(%CD%\README.odt,%VERSION%)"
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
 
 :: Create doxygen information.
 :: Generate the examples
 :: Export version
-	:: set VERSION_DOX=%VERSION%
-	:: mkdir doc\html
-	:: mkdir utils\doxygen\output
-	:: mkdir utils\doxygen\output\doxygen
-	:: cd "utils\doxygen"
-	:: doxygen doxyfile
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-	:: cd output\doxygen\latex
-	:: call make.bat
-	:: set errorstatus=%ERRORLEVEL%
-	:: if not %errorstatus%==0 goto :exit
-	:: cd "..\..\..\..\.."
+set VERSION_DOX=%VERSION%
+mkdir doc\html
+mkdir utils\doxygen\output
+mkdir utils\doxygen\output\doxygen
+cd "utils\doxygen"
+doxygen doxyfile
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+cd output\doxygen\latex
+call make.bat
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+cd "..\..\..\..\.."
 
 :: Create installers.
-	cd "utils\installers\dfb\windows"
+cd "utils\installers\dfb\windows"
 :: Win32 installer.
-	makensis.exe /DVERSION="%VERSION%" setup.nsi
-	set errorstatus=%ERRORLEVEL%
-	if not %errorstatus%==0 goto :exit
-	cd "..\..\..\.."
+makensis.exe /DVERSION="%VERSION%" setup.nsi
+set errorstatus=%ERRORLEVEL%
+if not %errorstatus%==0 goto :exit
+cd "..\..\..\.."
 
 	:: rmdir /S /Q utils\doxygen\output
 
