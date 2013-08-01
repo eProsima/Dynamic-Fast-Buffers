@@ -55,6 +55,12 @@ namespace DynamicFastBuffers
 		 * @return A pointer to the Typecode object created.
 		 */
 		static Typecode* createString();
+
+		/*!
+         * @brief This function creates a Typecode which represents a string data type.
+		 * @param size_str The size in number of characters of the string object
+		 * @return A pointer to the Typecode object created.
+		 */
 		static Typecode* createString(int size_str);
 
 		/*!

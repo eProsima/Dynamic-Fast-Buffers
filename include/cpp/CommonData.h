@@ -41,7 +41,7 @@ namespace DynamicFastBuffers
 	};
 
 	/*! 
-	* @typedef Function pointer.
+	* @typedef Function CALLBACK.
 	* @brief This CALLBACK type represents pointer to a function defined in SerializerAPI.h.
 	*/
 	typedef void* (*CALLBACK) (eProsima::FastCdr* cdr, void* data, int &size);
@@ -173,37 +173,37 @@ namespace DynamicFastBuffers
 
 		/*!
         * @brief Sets the content vector.
-		* @param A vector containing the inner Typecode objects.
+		* @param content A vector containing the inner Typecode objects.
         */
 		void setContent(vector<int> &content);
 
 		/*!
         * @brief Sets the type_ attribute.
-		* @param A Typecode object to be set on type_ attribute.
+		* @param type A Typecode object to be set on type_ attribute.
         */
 		void setType(Typecode *type);
 
 		/*!
         * @brief Sets the maximum length of a sequence Typecode.
-		* @param The maximum length represented an an integer.
+		* @param maxLength The maximum length represented an an integer.
         */
 		void setMaxLength(int maxLength);
 
 		/*!
         * @brief Adds a Typecode in the content_ vector, checking first if it can be added depending on the attribute kind_.
-		* @param The Typecode object to be added.
+		* @param member The Typecode object to be added.
         */
 		int addMember(Typecode &member);
 
 		/*!
         * @brief Adds a Typecode in the content_ vector, without checking first if it can be added.
-		* @param The Typecode object to be added.
+		* @param member The Typecode object to be added.
         */
 		int addMemberNoCheck(Typecode &member);
 
 		/*!
         * @brief In case of a string typecode, sets the length of the string
-		* @param The size to be set.
+		* @param size_str The size to be set.
         */
 		void setStrSize(int size_str);
 
@@ -279,7 +279,7 @@ namespace DynamicFastBuffers
 
 		/*!
         * @brief Function used to add a padding (measured in Bytes) to the pAlignment_ vector.
-		* @param The padding (in Bytes) to be added.
+		* @param value The padding (in Bytes) to be added.
         */
 		void addAlignment(int value);
 		

@@ -499,8 +499,9 @@ namespace DynamicFastBuffers
 		/*!
          * @brief This function serializes any data defined by user, using the rest of the functions implemented within this API class. User does not have
 		 *	to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize.
-		 * @param cdr A pointer to a FastCdr object containing a FastBuffer where data will be serialized
 		 * @param data A void pointer to the data type by user from where data will be serialized.
+		 * @param bytecode A Bytecode object defining the serialization functions that must be called
+		 * @param cdr A pointer to a FastCdr object containing a FastBuffer where data will be serialized
 		 * @exception NotEnoughMemoryException This exception is thrown when trying to serialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
@@ -509,8 +510,9 @@ namespace DynamicFastBuffers
 		/*!
          * @brief This function deserializes any data defined by user into the buffer inside FastCdr object, using the rest of the functions implemented within this API class. 
 		 * User does not have to worry about the data type, because it is the bytecode that defines the kind of data the user wants to serialize.
-		 * @param cdr A pointer to a FastCdr object containing a FastBuffer from where data will be deserialized
 		 * @param data A void pointer to the data type by user where data will be deserialized.
+		 * @param bytecode A Bytecode object defining the deserialization functions that must be called
+		 * @param cdr A pointer to a FastCdr object containing a FastBuffer from where data will be deserialized
 		 * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
