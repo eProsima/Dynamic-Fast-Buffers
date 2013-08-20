@@ -5,22 +5,28 @@ DFB_OUTDIR_RELEASE = $(DFB_OUTDIR)/release
 DFB_SED_OUTPUT_DIR_DEBUG= $(subst /,\\/,$(DFB_OUTDIR_DEBUG))
 DFB_SED_OUTPUT_DIR_RELEASE= $(subst /,\\/,$(DFB_OUTDIR_RELEASE))
 
-DFB_TARGET_DEBUG= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbd.so
-DFB_TARGET_DEBUG_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbzd.a
-DFB_TARGET= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfb.so
-DFB_TARGET_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbz.a
+DFB_TARGET_DEBUG= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbd$(dfbversion).so
+DFB_TARGET_DEBUG_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbzd$(dfbversion).a
+DFB_TARGET= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfb$(dfbversion).so
+DFB_TARGET_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/libdfbz$(dfbversion).a
 
 DFB_CFLAGS += $(CFLAGS) -std=c++11
 DFB_CFLAGS_DEBUG += $(CFLAGS_DEBUG) -std=c++11
 
-DFB_LIBS_DEBUG= $(LIBS_DEBUG) -lcdrd
-DFB_LIBS= $(LIBS) -lcdr
+# Get cdr version.
+CDRVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/../CDR/include/cpp/cdr/Cdr_version.h)
 
-DFB_LIBS_DEBUG_DIR= -L$(BASEDIR)/lib/$(EPROSIMA_TARGET)
+# Get product version.
+DFBVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/include/cpp/DFB_version.h)
+
+DFB_LIBS_DEBUG= $(LIBS_DEBUG) -lcdrd$(CDRVERSION)
+DFB_LIBS= $(LIBS) -lcdr$(CDRVERSION)
+
+DFB_LIBS_DEBUG_DIR= -L$(BASEDIR)/lib/$(EPROSIMA_TARGET) -L$(BASEDIR)/../CDR/lib/$(EPROSIMA_TARGET)
 DFB_LIBS_DIR= $(DFB_LIBS_DEBUG_DIR)
 
 DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/cpp \
-		  -I$(EPROSIMADIR)/code
+		  -I$(EPROSIMADIR)/code -I$(BASEDIR)/../Marshalling/include
 
 DFB_SRC_CPPFILES= $(BASEDIR)/src/cpp/TypecodeAPI.cpp \
 		  $(BASEDIR)/src/cpp/BytecodeAPI.cpp \
