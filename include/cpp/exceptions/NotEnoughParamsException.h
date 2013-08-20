@@ -2,8 +2,7 @@
 #define _CPP_EXCEPTIONS_NOTENOUGHEXCEPTION_H_
 
 #include "cpp/DFB_dll.h"
-#include "FastCdr.h"
-#include "FastBuffer.h"
+#include "cpp/exceptions/Exception.h"
 
 namespace DynamicFastBuffers
 {
@@ -58,7 +57,7 @@ namespace DynamicFastBuffers
 		NotEnoughParamsException& operator=(NotEnoughParamsException&& ex);
 
 		//! @brief Default constructor
-		virtual ~NotEnoughParamsException() EPROSIMA_USE_NOEXCEPT;
+		virtual ~NotEnoughParamsException();
 
 		//! @brief This function throws the object as exception.
 		virtual void raise() const;

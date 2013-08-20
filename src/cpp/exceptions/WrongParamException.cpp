@@ -26,7 +26,7 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	WrongParamException::~WrongParamException() EPROSIMA_USE_NOEXCEPT{}
+	WrongParamException::~WrongParamException() {}
 
 	void WrongParamException::raise() const
 	{

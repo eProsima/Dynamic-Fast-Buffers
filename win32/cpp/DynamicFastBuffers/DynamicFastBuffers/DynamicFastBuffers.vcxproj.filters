@@ -26,9 +26,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\cpp\exceptions\NotEnoughParamsException.cpp">
       <Filter>Exceptions\Source Files</Filter>
     </ClCompile>
