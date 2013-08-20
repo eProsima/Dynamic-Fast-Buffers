@@ -63,6 +63,9 @@ SectionIn RO
     File /r ..\..\..\..\examples\*
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
+	File /r ..\..\..\..\..\Marshalling\include\*
+	File /r ..\..\..\..\..\CDR\include\*
+	File /r ..\..\..\..\..\CDR\include\cpp\*
     SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
     File ..\..\..\..\LGPLv3_LICENSE.txt
@@ -75,6 +78,7 @@ SectionGroup /e Libraries SECGRP0000
         SetOutPath $INSTDIR\lib\x64Win64VS2010
         SetOverwrite on
         File /r ..\..\..\..\lib\x64Win64VS2010\*
+		File /r ..\..\..\..\..\CDR\lib\x64Win64VS2010\*
         WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries" 1
     SectionEnd
 
@@ -82,6 +86,7 @@ SectionGroup /e Libraries SECGRP0000
         SetOutPath $INSTDIR\lib\i86Win32VS2010
         SetOverwrite on
         File /r ..\..\..\..\lib\i86Win32VS2010\*
+		File /r ..\..\..\..\..\CDR\lib\i86Win32VS2010\*
         WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries" 1
     SectionEnd
 SectionGroupEnd
