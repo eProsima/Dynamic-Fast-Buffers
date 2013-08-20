@@ -57,10 +57,10 @@ namespace DynamicFastBuffers
 		WrongParamException& operator=(WrongParamException&& ex);
 		
 		//! @brief Default constructor
-		virtual ~WrongParamException();
+		virtual ~WrongParamException() throw(){}
 		
 		//! @brief This function throws the object as exception.
-		virtual void raise() const;
+		virtual void raise() const {throw *this;}
 	};
 }
 

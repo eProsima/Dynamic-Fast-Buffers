@@ -57,10 +57,10 @@ namespace DynamicFastBuffers
 		WrongTypeException & operator=(WrongTypeException && ex);
 		
 		//! @brief Default constructor
-		virtual ~WrongTypeException ();
+		virtual ~WrongTypeException () throw(){}
 		
 		//! @brief This function throws the object as exception.
-		virtual void raise() const;
+		virtual void raise() const {throw *this;}
 	};
 }
 
