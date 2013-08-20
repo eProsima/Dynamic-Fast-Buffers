@@ -49,7 +49,7 @@ set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 :: Compile DynamicFastBuffers for target.
 cd "utils\scripts"
-call build_dfb.bat
+	:: call build_dfb.bat
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 
