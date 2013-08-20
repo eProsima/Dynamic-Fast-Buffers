@@ -26,10 +26,4 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	WrongParamException::~WrongParamException() {}
-
-	void WrongParamException::raise() const
-	{
-		throw *this;
-	}
 }

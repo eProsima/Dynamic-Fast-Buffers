@@ -26,10 +26,4 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	WrongTypeException::~WrongTypeException() {}
-
-	void WrongTypeException::raise() const
-	{
-		throw *this;
-	}
 }

@@ -26,10 +26,4 @@ namespace DynamicFastBuffers
 		return *this;
 	}
 
-	NotEnoughParamsException::~NotEnoughParamsException() {}
-
-	void NotEnoughParamsException::raise() const
-	{
-		throw *this;
-	}
 }
