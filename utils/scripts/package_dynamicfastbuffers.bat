@@ -39,7 +39,7 @@ if not %errorstatus%==0 goto :exit
 cd "..\..\..\DynamicFastBuffers"
 
 :: Get the current vesion of DynamicFastBuffers
-call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP
+call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP VERSIONDFB include/cpp/DFB_version.h
 if not %errorstatus%==0 goto :exit
 
 :: Update and compile DynamicFastBuffers application.
@@ -56,11 +56,11 @@ if not %errorstatus%==0 goto :exit
 :: Create PDFS from documentation.
 cd "..\..\doc"
 :: Installation manual
-soffice.exe --headless "macro:///eProsima.documentation.changeVersion(%CD%\DFB - Installation Manual.odt,%VERSION%)"
+soffice.exe --headless "macro:///eProsima.documentation.changeVersion(%CD%\DFB - Installation Manual.odt,%VERSIONDFB%)"
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 :: User manual
-soffice.exe --headless "macro:///eProsima.documentation.changeVersion(%CD%\DFB - User Manual.odt,%VERSION%)"
+soffice.exe --headless "macro:///eProsima.documentation.changeVersion(%CD%\DFB - User Manual.odt,%VERSIONDFB%)"
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 
@@ -77,14 +77,14 @@ if not %errorstatus%==0 goto :exit
 
 cd ".."
 :: Create README
-soffice.exe --headless "macro:///eProsima.documentation.changeVersionToHTML(%CD%\README.odt,%VERSION%)"
+soffice.exe --headless "macro:///eProsima.documentation.changeVersionToHTML(%CD%\README.odt,%VERSIONDFB%)"
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 
 :: Create doxygen information.
 :: Generate the examples
 :: Export version
-set VERSION_DOX=%VERSION%
+set VERSION_DOX=%VERSIONDFB%
 mkdir doc\html
 mkdir utils\doxygen\output
 mkdir utils\doxygen\output\doxygen
@@ -101,7 +101,7 @@ cd "..\..\..\..\.."
 :: Create installers.
 cd "utils\installers\dfb\windows"
 :: Win32 installer.
-makensis.exe /DVERSION="%VERSION%" setup.nsi
+makensis.exe /DVERSION="%VERSIONDFB%" setup.nsi
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 cd "..\..\..\.."
