@@ -65,8 +65,7 @@ SectionIn RO
     File /r ..\..\..\..\include\*
 	File /r ..\..\..\..\..\Marshalling\include\*
 	File /r ..\..\..\..\..\CDR\include\*
-	File /r ..\..\..\..\..\CDR\include\cpp\*
-    SetOutPath $INSTDIR
+	SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
     File ..\..\..\..\LGPLv3_LICENSE.txt
     File ..\..\..\..\README.html
