@@ -125,7 +125,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;_CONSOLE;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Marshalling\include;..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\lib\i86Win32VS2010; $(ProjectDir)..\..\..\..\CDR\lib\i86Win32VS2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>CDR.lib;DynamicFastBuffers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>$(TargetPath)</Command>
@@ -148,7 +148,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;_CONSOLE;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Marshalling\include;..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <StringPooling>true</StringPooling>
     </ClCompile>
@@ -158,7 +158,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\lib\x64Win64VS2010;$(ProjectDir)..\..\..\..\CDR\lib\x64Win64VS2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DynamicFastBuffers.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>$(TargetPath)</Command>

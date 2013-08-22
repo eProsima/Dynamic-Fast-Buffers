@@ -2,11 +2,12 @@
 #include "cpp/BytecodeAPI.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/CommonData.h"
-#include "cpp/FastCdr.h"
-#include <iostream>
-#include <cstdint>
+#include "cpp/cdr/FastCdr.h"
+#include "cpp/storage/FastBuffer.h"
+//#include <iostream>
+//#include <cstdint>
 
-using namespace std;
+//using namespace std;
 
 bool testPrimitiveData()
 {
@@ -15,8 +16,8 @@ bool testPrimitiveData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 	
 	//
 	// Data creation
@@ -57,6 +58,7 @@ bool testPrimitiveData()
 	//
 	// Data serialization
 	//
+	printf("SERIALIZES\n");
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &i1, bc1, &cdr);
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &s1, bc2, &cdr);
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc3, &cdr);
@@ -86,14 +88,27 @@ bool testPrimitiveData()
 	//
 	// Data deserialization
 	//
-	DynamicFastBuffers::SerializerAPI::deserialize((void*) &i2, bc1, &cdr);
+	printf("DESERIALIZES\n");
+	try{
+		DynamicFastBuffers::SerializerAPI::deserialize((void*) &i2, bc1, &cdr);
+	}catch (std::exception &e){
+		printf("%s\n", e.what());
+	}
+	printf("DESERIALIZES 1\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &s2, bc2, &cdr);
+	printf("DESERIALIZES 2\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &l2, bc3, &cdr);
+	printf("DESERIALIZES 3\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &f2, bc4, &cdr);
+	printf("DESERIALIZES 4\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &d2, bc5, &cdr);
+	printf("DESERIALIZES 5\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &str2, bc6, &cdr);
+	printf("DESERIALIZES 6\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &c2, bc7, &cdr);
+	printf("DESERIALIZES 7\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &b2, bc8, &cdr);
+	printf("DESERIALIZES 8\n");
 
 	//
 	// Typecode deletes
@@ -110,6 +125,8 @@ bool testPrimitiveData()
 	//
 	// Check data
 	//
+	printf("COMPARES\n");
+	
 	bool returnValue = true;
 	returnValue &= (i1 == i2);
 	returnValue &= (s1 == s2);
@@ -148,8 +165,8 @@ bool testStructData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -215,7 +232,7 @@ bool testStructData()
 	returnValue &= (inputStruct.att4.att3 == outputStruct.att4.att3);
 
 	return returnValue;
-
+	
 }
 
 bool testArrayData()
@@ -224,8 +241,8 @@ bool testArrayData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -294,8 +311,8 @@ bool testSequenceData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -397,11 +414,8 @@ bool testComplexStruct()
 	// CDR Serializer declaration
 	//
 	char buffer[1000];
-	eProsima::FastBuffer cdrBuffer(buffer, 1000);
-	eProsima::FastCdr cdr(cdrBuffer);
-
-	cout << "long: " << sizeof(int64_t) << endl;
-	cout << "long: " << sizeof(vector<int64_t>) << endl;
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 1000);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -487,12 +501,8 @@ bool testComplexStruct()
 	//
 	// Data serialization
 	//
-	try{
-		DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, &cdr);
-	}catch (std::exception &e){
-		std::cout << e.what();
-	}
-
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, &cdr);
+	
 	//
 	// Buffer reset
 	//
@@ -511,14 +521,20 @@ bool testComplexStruct()
 	returnValue &= (inputStruct.i1 == outputStruct.i1);
 		returnValue &= (inputStruct.st1.i1 == outputStruct.st1.i1);
 		returnValue &= (inputStruct.st1.s1 == outputStruct.st1.s1);
-		for(unsigned int i = 0; i < 2; ++i){
-			for(unsigned int j=0; j < 4; ++j){
-				returnValue &= (inputStruct.st1.arr1[i][j] == outputStruct.st1.arr1[i][j]);
-			}
-		}
-		for(unsigned int i = 0; i < 5; ++i){
-			returnValue &= (inputStruct.st1.members1[i] == outputStruct.st1.members1[i]);
-		}
+		
+		returnValue &= (inputStruct.st1.arr1[0][0] == outputStruct.st1.arr1[0][0]);
+		returnValue &= (inputStruct.st1.arr1[0][1] == outputStruct.st1.arr1[0][1]);
+		returnValue &= (inputStruct.st1.arr1[0][2] == outputStruct.st1.arr1[0][2]);
+		returnValue &= (inputStruct.st1.arr1[0][3] == outputStruct.st1.arr1[0][3]);
+		returnValue &= (inputStruct.st1.arr1[1][0] == outputStruct.st1.arr1[1][0]);
+		returnValue &= (inputStruct.st1.arr1[1][1] == outputStruct.st1.arr1[1][1]);
+		returnValue &= (inputStruct.st1.arr1[1][2] == outputStruct.st1.arr1[1][2]);
+		returnValue &= (inputStruct.st1.arr1[1][3] == outputStruct.st1.arr1[1][3]);
+			returnValue &= (inputStruct.st1.members1[0] == outputStruct.st1.members1[0]);
+			returnValue &= (inputStruct.st1.members1[1] == outputStruct.st1.members1[1]);
+			returnValue &= (inputStruct.st1.members1[2] == outputStruct.st1.members1[2]);
+			returnValue &= (inputStruct.st1.members1[3] == outputStruct.st1.members1[3]);
+			returnValue &= (inputStruct.st1.members1[4] == outputStruct.st1.members1[4]);
 		returnValue &= (inputStruct.st1.i2 == outputStruct.st1.i2);
 		returnValue &= (inputStruct.st1.s1 == outputStruct.st1.s1);
 			returnValue &= (inputStruct.st1.st3.s1 == outputStruct.st1.st3.s1);
@@ -528,11 +544,14 @@ bool testComplexStruct()
 			returnValue &= (inputStruct.st1.st3.s2 == outputStruct.st1.st3.s2);
 			returnValue &= (inputStruct.st1.st3.l1 == outputStruct.st1.st3.l1);
 		returnValue &= (inputStruct.st1.str1 == outputStruct.st1.str1);
-	for(unsigned int i = 0; i < 2; ++i){
-		for(unsigned int j=0; j < 4; ++j){
-			returnValue &= (inputStruct.arr1[i][j] == outputStruct.arr1[i][j]);
-		}
-	}
+			returnValue &= (inputStruct.arr1[0][0] == outputStruct.arr1[0][0]);
+			returnValue &= (inputStruct.arr1[0][1] == outputStruct.arr1[0][1]);
+			returnValue &= (inputStruct.arr1[0][2] == outputStruct.arr1[0][2]);
+			returnValue &= (inputStruct.arr1[0][3] == outputStruct.arr1[0][3]);
+			returnValue &= (inputStruct.arr1[1][0] == outputStruct.arr1[1][0]);
+			returnValue &= (inputStruct.arr1[1][1] == outputStruct.arr1[1][1]);
+			returnValue &= (inputStruct.arr1[1][2] == outputStruct.arr1[1][2]);
+			returnValue &= (inputStruct.arr1[1][3] == outputStruct.arr1[1][3]);
 	returnValue &= (inputStruct.i2 == outputStruct.i2);
 	returnValue &= (inputStruct.s2 == outputStruct.s2);
 		returnValue &= (inputStruct.st3.s1 == outputStruct.st3.s1);
@@ -552,8 +571,8 @@ bool testSimpleAlignment()
 	// CDR Serializer declaration
 	//
 	char buffer[1000];
-	eProsima::FastBuffer cdrBuffer(buffer, 1000);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 1000);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -677,8 +696,8 @@ bool testArrayKinds()
 	// CDR Serializer declaration
 	//
 	char buffer[5000];
-	eProsima::FastBuffer cdrBuffer(buffer, 5000);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eProsima::storage::FastBuffer cdrBuffer(buffer, 5000);
+	eProsima::marshalling::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -862,51 +881,51 @@ int main()
 	printf("SYSTEM COMPLEX TESTS:\n\n");
 
 	if(testPrimitiveData()){
-		cout << "TEST: testPrimitiveData ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testPrimitiveData ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testPrimitiveData failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testPrimitiveData failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testStructData()){
-		cout << "TEST: testStructData ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testStructData ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testStructData failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testStructData failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testArrayData()){
-		cout << "TEST: testArrayData ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testArrayData ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testArrayData failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testArrayData failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testSequenceData()){
-		cout << "TEST: testSequenceData ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testSequenceData ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testSequenceData failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testSequenceData failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testComplexStruct()){
-		cout << "TEST: testComplexStruct ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testComplexStruct ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testComplexStruct failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testComplexStruct failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testSimpleAlignment()){
-		cout << "TEST: testSimpleAlignment ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testSimpleAlignment ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testSimpleAlignment failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testSimpleAlignment failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 
 	if(testArrayKinds()){
-		cout << "TEST: testArrayKinds ended succesfully.\nData Comparison: CORRECT" << endl;
+		printf("TEST: testArrayKinds ended succesfully.\nData Comparison: CORRECT\n");
 	}else{
-		cout << "TEST: testArrayKinds failed.\nData Comparison: FAIL" << endl;
+		printf("TEST: testArrayKinds failed.\nData Comparison: FAIL\n");
 		return -1;
 	}
 	return 0;
