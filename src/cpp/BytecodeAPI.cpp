@@ -17,7 +17,9 @@ namespace DynamicFastBuffers
 		}else{
 			BytecodeAPI::generateBytecodeDeserialization(bytecode, typecode, index);
 		}
-
+		for(int i=0; i<bytecode->getAlignment()->size(); ++i){
+			//printf("%d\n", bytecode->getAlignment()->at(i));
+		}
 		return bytecode;
 	}
 
@@ -71,7 +73,9 @@ namespace DynamicFastBuffers
 							
 #if defined(_M_IX86)
 							if(members[i].getKind() == TC_STRING){
-								index = (char*) index + sizeof(int);
+								//printf("\tTC_STRING_1: %p ->", index);
+								index = (char*) index + sizeof(string) - sizeof(int32_t);
+								//printf(" TC_STRING_2: %p\n", index);
 							}
 #endif
 							jumped = false;
@@ -79,7 +83,29 @@ namespace DynamicFastBuffers
 							insertJumps(&members[i], bytecode, index);
 						}
 						generateBytecodeSerialization(bytecode, &members[i], index);
+						if(members[i].getKind() == TC_ARRAY || members[i].getKind() == TC_SEQUENCE){
+							//printf("ARRAY location: %p\n", index);
+						}
+#if defined(_M_IX86)
+						if(members[i].getKind() == TC_SEQUENCE){
+							index = (char*) index + sizeof(std::vector<void*>);
+						}else{
+							if(members[i].getKind() == TC_STRING){
+								//printf("\t\tString index: %p ->", index);
+							}
+							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							if(members[i].getKind() == TC_STRING){
+								//printf("%p\n", index);
+							}
+						}
+#else
 						index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+#endif
+						
+						if(members[i].getKind() == TC_ARRAY || members[i].getKind() == TC_SEQUENCE){
+							//printf("ARRAY - size: %d, dataSize: %d\n", members[i].getSize()*members[i].getArraySize(), members[i].getSize());
+							//printf("ARRAY location: %p\n", index);
+						}
 					}
 				}
 			}
@@ -216,7 +242,9 @@ namespace DynamicFastBuffers
 							alignment(members[i].getSize(), index);
 #if defined(_M_IX86)
 							if(members[i].getKind() == TC_STRING){
-								index = (char*) index + sizeof(int);
+								//printf("\tTC_STRING_1: %p ->", index);
+								index = (char*) index + sizeof(string) - sizeof(int32_t);
+								//printf(" TC_STRING_2: %p\n", index);
 							}
 #endif
 							jumped = false;
@@ -224,7 +252,20 @@ namespace DynamicFastBuffers
 							insertJumps(&members[i], bytecode, index);
 						}
 						generateBytecodeDeserialization(bytecode, &members[i], index);
+						//printf("ARRAY location: %p\n", index);
+#if defined(_M_IX86)
+						if(members[i].getKind() == TC_SEQUENCE){
+							index = (char*) index + sizeof(std::vector<void*>);
+						}else{
+							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+						}
+#else
 						index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+#endif
+						if(members[i].getKind() == TC_ARRAY){
+							//printf("ARRAY - size: %d, dataSize: %d\n", members[i].getSize()*members[i].getArraySize(), members[i].getSize());
+							//printf("ARRAY location: %p\n", index);
+						}
 					}
 				}
 				break;
@@ -308,7 +349,7 @@ namespace DynamicFastBuffers
 		bytecode->addAlignment(alignment(typecode->getSize(), m_currentPosition));
 #if defined(_M_IX86)
 		if(typecode->getKind() == TC_STRING){
-			m_currentPosition = (char*) m_currentPosition + sizeof(int);
+			m_currentPosition = (char*) m_currentPosition + (sizeof(string)-sizeof(int32_t));
 		}
 #endif
 	}
@@ -319,17 +360,18 @@ namespace DynamicFastBuffers
 		if(dataSize != 0){
 			align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
 			//test
-			//cout << "\tData Size: " << dataSize << ", Pos: " << m_currentPosition << ", SALTO: " << align << endl;
+			//printf("\tData Size:  %d , Pos:  %p, SALTO:  %d", dataSize, m_currentPosition, align);
 			//end test
 			
 		}else{
 			align = 0;
 		}
 		m_currentPosition = (char*) m_currentPosition + align;
+		//printf(" -> %p\n", m_currentPosition);
 		if(dataSize == 8 && (((size_t) m_currentPosition % 8) != 0)){
 		
 			//test
-			//cout << "\t\tENTRA: " <<  endl;
+			//printf("\t\tENTRA: \n");
 			//end test
 		
 			m_currentPosition = (char*) m_currentPosition + sizeof(int);

@@ -1,5 +1,4 @@
 #include "cpp/SerializerAPI.h"
-#include <iostream>
 
 namespace DynamicFastBuffers
 {
@@ -17,10 +16,7 @@ namespace DynamicFastBuffers
 				
 				val = static_cast<char*>(val) + (*jumps)[i]; 
 
-				//test
-				cout << val << endl;
-				//end test
-
+				//printf("%d - %p\n", i, val);
 
 				size = bytecode->getSize();
 
@@ -44,18 +40,10 @@ namespace DynamicFastBuffers
 		int jLength = jumps->size();
 		int length = tc->size();
 		int* size;
-		
-		//test
-		//cout << "Deserialization: " << endl;
-		//end test
 
 		if(jLength != 0){
 			for (int i=0; i< length; ++i){
 				val = static_cast<char*>(val) + (*jumps)[i]; 
-				
-				//test
-				//cout << val << endl;
-				//end test
 				
 				size = bytecode->getSize();
 				val = (*tc)[i] (serializer, val, *size);
@@ -81,9 +69,11 @@ namespace DynamicFastBuffers
 
 	void* SerializerAPI::deserializeInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
 	{
+		//printf("entra\n");
 		int32_t* pInteger = (int32_t *) data;
 		serializer->deserialize(*pInteger);
 		++pInteger;
+		//printf("sale\n");
 		return (void*) pInteger;
 	}
 
@@ -172,6 +162,7 @@ namespace DynamicFastBuffers
 		serializer->serialize(s);
 		void* ret = data;
 		ret = static_cast<char*>(ret) + sizeof(std::string);
+		//printf("HIJOPUTA\n");
 		return ret;
 	}
 
@@ -192,6 +183,7 @@ namespace DynamicFastBuffers
 		char *p = (char*) data;
 		serializer->serialize(*p);
 		++p;
+		//printf("HIJOPUTA2\n");
 		return (void *) p;
 	}
 
