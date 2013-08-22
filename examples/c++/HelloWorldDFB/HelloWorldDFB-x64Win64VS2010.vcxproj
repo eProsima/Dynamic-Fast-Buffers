@@ -137,7 +137,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;_CONSOLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Marshalling\include;..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
       <OmitFramePointers>false</OmitFramePointers>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
