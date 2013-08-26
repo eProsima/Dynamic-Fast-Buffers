@@ -128,6 +128,12 @@ namespace DynamicFastBuffers
 		 * @return The size needed in the buffer.
 		 */
 		static int checkSerializedDataSize(Typecode *tc);
+
+		/*!
+        * @brief This function calculates the maximum size of the sizes of the datum allocated inside a structure.
+		* @param tc A struct Typecode which size must be calculated.
+		*/
+		static size_t calculateStructSize(Typecode *tc);
 	};
 };
 

@@ -2,7 +2,7 @@
 
 namespace DynamicFastBuffers
 {
-	void SerializerAPI::serialize(void *data, Bytecode* bytecode, eProsima::marshalling::Marshalling *serializer)
+	void SerializerAPI::serialize(void *data, Bytecode* bytecode, eProsima::FastCdr *serializer)
 	{
 		void *val = data;
 		vector<CALLBACK>* tc = bytecode->getBytecode();
@@ -32,7 +32,7 @@ namespace DynamicFastBuffers
 
 	}
 
-	void SerializerAPI::deserialize(void *data, Bytecode* bytecode, eProsima::marshalling::Marshalling *serializer)
+	void SerializerAPI::deserialize(void *data, Bytecode* bytecode, eProsima::FastCdr *serializer)
 	{
 		void *val = data;
 		vector<CALLBACK>* tc = bytecode->getBytecode();
@@ -59,7 +59,7 @@ namespace DynamicFastBuffers
 	/*
 	* INTEGER
 	*/
-	void* SerializerAPI::serializeInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int32_t *p = (int32_t *) data;
 		serializer->serialize(*p);
@@ -67,7 +67,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		//printf("entra\n");
 		int32_t* pInteger = (int32_t *) data;
@@ -80,7 +80,7 @@ namespace DynamicFastBuffers
 	/*
 	* SHORT
 	*/
-	void* SerializerAPI::serializeShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int16_t *p = (int16_t *) data;
 		serializer->serialize(*p);
@@ -88,7 +88,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int16_t* pShort = (int16_t *) data;
 		serializer->deserialize(*pShort);
@@ -99,7 +99,7 @@ namespace DynamicFastBuffers
 	/*
 	* LONG
 	*/
-	void* SerializerAPI::serializeLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int64_t *p = (int64_t *) data;
 		serializer->serialize(*p);
@@ -107,7 +107,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int64_t *pLong = (int64_t *) data;
 		serializer->deserialize(*pLong);
@@ -118,7 +118,7 @@ namespace DynamicFastBuffers
 	/*
 	* FLOAT
 	*/
-	void* SerializerAPI::serializeFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		float *p = (float*) data;
 		serializer->serialize(*p);
@@ -126,7 +126,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		float* pFloat = (float *) data;
 		serializer->deserialize(*pFloat);
@@ -137,7 +137,7 @@ namespace DynamicFastBuffers
 	/*
 	* DOUBLE
 	*/
-	void* SerializerAPI::serializeDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		double *p = (double*) data;
 		serializer->serialize(*p);
@@ -145,7 +145,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		double* pDouble = (double*) data;
 		serializer->deserialize(*pDouble);
@@ -156,7 +156,7 @@ namespace DynamicFastBuffers
 	/*
 	* STRING
 	*/
-	void* SerializerAPI::serializeString(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeString(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		string &s = *static_cast<std::string*>(data);
 		serializer->serialize(s);
@@ -166,7 +166,7 @@ namespace DynamicFastBuffers
 		return ret;
 	}
 
-	void* SerializerAPI::deserializeString(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeString(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		string &pString = *static_cast<std::string*>(data);
 		serializer->deserialize(pString);
@@ -178,7 +178,7 @@ namespace DynamicFastBuffers
 	/*
 	* CHARACTER
 	*/
-	void* SerializerAPI::serializeCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		char *p = (char*) data;
 		serializer->serialize(*p);
@@ -187,7 +187,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		char* pChar = (char*) data;
 		serializer->deserialize(*pChar);
@@ -198,7 +198,7 @@ namespace DynamicFastBuffers
 	/*
 	* BOOLEAN
 	*/
-	void* SerializerAPI::serializeBoolean(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeBoolean(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		bool *p = (bool*) data;
 		serializer->serialize(*p);
@@ -206,7 +206,7 @@ namespace DynamicFastBuffers
 		return (void *) p;
 	}
 
-	void* SerializerAPI::deserializeBoolean(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeBoolean(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		bool* pBool = (bool*) data;
 		serializer->deserialize(*pBool);
@@ -217,7 +217,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY INT
 	*/
-	void* SerializerAPI::serializeArrayInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int32_t *arrayInt = (int32_t*) data;
 		serializer->serializeArray(arrayInt, size);
@@ -225,7 +225,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayInt;
 	}
 	
-	void* SerializerAPI::deserializeArrayInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int32_t *arrayInt = (int32_t*) data;
 		serializer->deserializeArray(arrayInt, size);
@@ -236,7 +236,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY SHORT
 	*/
-	void* SerializerAPI::serializeArrayShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		short *arrayShort = (short*) data;
 		serializer->serializeArray(arrayShort, size);
@@ -244,7 +244,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayShort;
 	}
 	
-	void* SerializerAPI::deserializeArrayShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		short *arrayShort = (short*) data;
 		serializer->deserializeArray(arrayShort, size);
@@ -255,7 +255,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY LONG
 	*/
-	void* SerializerAPI::serializeArrayLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int64_t *arrayLong = (int64_t*) data;
 		serializer->serializeArray(arrayLong, size);
@@ -263,7 +263,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayLong;
 	}
 	
-	void* SerializerAPI::deserializeArrayLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		int64_t *arrayLong = (int64_t*) data;
 		serializer->deserializeArray(arrayLong, size);
@@ -274,7 +274,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY FLOAT
 	*/
-	void* SerializerAPI::serializeArrayFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		float *arrayFloat = (float*) data;
 		serializer->serializeArray(arrayFloat, size);
@@ -282,7 +282,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayFloat;
 	}
 	
-	void* SerializerAPI::deserializeArrayFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		float *arrayFloat = (float*) data;
 		serializer->deserializeArray(arrayFloat, size);
@@ -293,7 +293,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY DOUBLE
 	*/
-	void* SerializerAPI::serializeArrayDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		double *arrayDouble = (double*) data;
 		serializer->serializeArray(arrayDouble, size);
@@ -301,7 +301,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayDouble;
 	}
 	
-	void* SerializerAPI::deserializeArrayDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		double *arrayDouble = (double*) data;
 		serializer->deserializeArray(arrayDouble, size);
@@ -312,7 +312,7 @@ namespace DynamicFastBuffers
 	/*
 	* ARRAY CHARACTER
 	*/
-	void* SerializerAPI::serializeArrayCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeArrayCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		char *arrayCharacter = (char*) data;
 		serializer->serializeArray(arrayCharacter, size);
@@ -320,7 +320,7 @@ namespace DynamicFastBuffers
 		return (void*) arrayCharacter;
 	}
 	
-	void* SerializerAPI::deserializeArrayCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeArrayCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		char *arrayCharacter = (char*) data;
 		serializer->deserializeArray(arrayCharacter, size);
@@ -331,7 +331,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR INT
 	*/
-	void* SerializerAPI::serializeSequenceInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<int32_t> *vInt = (vector<int32_t>*) data;
 		serializer->serialize(*vInt);
@@ -339,7 +339,7 @@ namespace DynamicFastBuffers
 		return (void*) vInt;
 	}
 	
-	void* SerializerAPI::deserializeSequenceInteger(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<int32_t> *vInt = (vector<int32_t>*) data;
 		serializer->deserialize(*vInt);
@@ -350,7 +350,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR SHORT
 	*/
-	void* SerializerAPI::serializeSequenceShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<short> *vShort = (vector<short>*) data;
 		serializer->serialize(*vShort);
@@ -358,7 +358,7 @@ namespace DynamicFastBuffers
 		return (void*) vShort;
 	}
 	
-	void* SerializerAPI::deserializeSequenceShort(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<short> *vShort = (vector<short>*) data;
 		serializer->deserialize(*vShort);
@@ -369,7 +369,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR LONG
 	*/
-	void* SerializerAPI::serializeSequenceLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<int64_t> *vLong = (vector<int64_t>*) data;
 		serializer->serialize(*vLong);
@@ -377,7 +377,7 @@ namespace DynamicFastBuffers
 		return (void*) vLong;
 	}
 	
-	void* SerializerAPI::deserializeSequenceLong(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<int64_t> *vLong = (vector<int64_t>*) data;
 		serializer->deserialize(*vLong);
@@ -388,7 +388,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR FLOAT
 	*/
-	void* SerializerAPI::serializeSequenceFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<float> *vFloat = (vector<float>*) data;
 		serializer->serialize(*vFloat);
@@ -396,7 +396,7 @@ namespace DynamicFastBuffers
 		return (void*) vFloat;
 	}
 	
-	void* SerializerAPI::deserializeSequenceFloat(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<float> *vFloat = (vector<float>*) data;
 		serializer->deserialize(*vFloat);
@@ -407,7 +407,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR DOUBLE
 	*/
-	void* SerializerAPI::serializeSequenceDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<double> *vDouble = (vector<double>*) data;
 		serializer->serialize(*vDouble);
@@ -415,7 +415,7 @@ namespace DynamicFastBuffers
 		return (void*) vDouble;
 	}
 	
-	void* SerializerAPI::deserializeSequenceDouble(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<double> *vDouble = (vector<double>*) data;
 		serializer->deserialize(*vDouble);
@@ -426,7 +426,7 @@ namespace DynamicFastBuffers
 	/*
 	* VECTOR CHARACTER
 	*/
-	void* SerializerAPI::serializeSequenceCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::serializeSequenceCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<char> *vChar = (vector<char>*) data;
 		serializer->serialize(*vChar);
@@ -434,7 +434,7 @@ namespace DynamicFastBuffers
 		return (void*) vChar;
 	}
 	
-	void* SerializerAPI::deserializeSequenceCharacter(eProsima::marshalling::Marshalling *serializer, void *data, int &size)
+	void* SerializerAPI::deserializeSequenceCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		vector<char> *vChar = (vector<char>*) data;
 		serializer->deserialize(*vChar);

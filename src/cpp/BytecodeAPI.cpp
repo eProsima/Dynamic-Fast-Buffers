@@ -57,55 +57,41 @@ namespace DynamicFastBuffers
 		case TC_STRUCT:
 			{
 				vector<Typecode> members = typecode->getMembers();
-				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
-				bool jumped = false;
 				for(unsigned int i=0; i<count; ++i){
-					if(members[i].getKind() == TC_STRUCT){
-						generateBytecodeSerialization(bytecode, &members[i], index);
-						if(i != count-1){
-							insertJumps(&members[i], bytecode, index);
+					if(members[i].getKind() == TC_STRUCT){							//Struct
+						if(i==0){
+							members[i].setStructSize(typecode->getSize());
 						}
-						jumped = true;
-					}else{
-						if(i==0 || jumped){
+						generateBytecodeSerialization(bytecode, &members[i], index);
+					}else{															//other kind
+						if(i==0){														//First element
+							insertJumps(typecode, bytecode, index);
 							alignment(members[i].getSize(), index);
-							
 #if defined(_M_IX86)
 							if(members[i].getKind() == TC_STRING){
-								//printf("\tTC_STRING_1: %p ->", index);
 								index = (char*) index + sizeof(string) - sizeof(int32_t);
-								//printf(" TC_STRING_2: %p\n", index);
 							}
 #endif
-							jumped = false;
-						}else{
+						}else{															//Other elements
 							insertJumps(&members[i], bytecode, index);
 						}
 						generateBytecodeSerialization(bytecode, &members[i], index);
-						if(members[i].getKind() == TC_ARRAY || members[i].getKind() == TC_SEQUENCE){
-							//printf("ARRAY location: %p\n", index);
-						}
+						//printf("\t\%s index: %p ->", members[i].getKindStr().c_str(), index);
 #if defined(_M_IX86)
+						
 						if(members[i].getKind() == TC_SEQUENCE){
 							index = (char*) index + sizeof(std::vector<void*>);
 						}else{
-							if(members[i].getKind() == TC_STRING){
-								//printf("\t\tString index: %p ->", index);
-							}
+							
 							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
-							if(members[i].getKind() == TC_STRING){
-								//printf("%p\n", index);
-							}
+							
 						}
 #else
 						index = (char*) index + (members[i].getSize()*members[i].getArraySize());
 #endif
 						
-						if(members[i].getKind() == TC_ARRAY || members[i].getKind() == TC_SEQUENCE){
-							//printf("ARRAY - size: %d, dataSize: %d\n", members[i].getSize()*members[i].getArraySize(), members[i].getSize());
-							//printf("ARRAY location: %p\n", index);
-						}
+						//printf("%p\n", index);
 					}
 				}
 			}
@@ -217,58 +203,45 @@ namespace DynamicFastBuffers
 			break;
 		case TC_STRUCT:
 			{
-//#define __linux 1
 				vector<Typecode> members = typecode->getMembers();
-				insertJumps(typecode, bytecode, index);
 				size_t count = members.size();
-				bool jumped = false;
 				for(unsigned int i=0; i<count; ++i){
-
-					if(members[i].getKind() == TC_STRUCT){
+					if(members[i].getKind() == TC_STRUCT){							//Struct
+						if(i==0){
+							members[i].setStructSize(typecode->getSize());
+						}
 						generateBytecodeDeserialization(bytecode, &members[i], index);
-#if defined(__linux)
-						//Do nothing
-						if(i != count-1){
-							insertJumps(&members[i], bytecode, index);
-						}
-#else
-						if(i != count-1){
-							insertJumps(&members[i], bytecode, index);
-						}
-#endif
-						jumped = true;
-					}else{
-						if(i==0 || jumped){
+					}else{															//other kind
+						if(i==0){														//First element
+							insertJumps(typecode, bytecode, index);
 							alignment(members[i].getSize(), index);
 #if defined(_M_IX86)
 							if(members[i].getKind() == TC_STRING){
-								//printf("\tTC_STRING_1: %p ->", index);
 								index = (char*) index + sizeof(string) - sizeof(int32_t);
-								//printf(" TC_STRING_2: %p\n", index);
 							}
 #endif
-							jumped = false;
-						}else{
+						}else{															//Other elements
 							insertJumps(&members[i], bytecode, index);
 						}
 						generateBytecodeDeserialization(bytecode, &members[i], index);
-						//printf("ARRAY location: %p\n", index);
+						//printf("\t\%s index: %p ->", members[i].getKindStr().c_str(), index);
 #if defined(_M_IX86)
+						
 						if(members[i].getKind() == TC_SEQUENCE){
 							index = (char*) index + sizeof(std::vector<void*>);
 						}else{
+							
 							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							
 						}
 #else
 						index = (char*) index + (members[i].getSize()*members[i].getArraySize());
 #endif
-						if(members[i].getKind() == TC_ARRAY){
-							//printf("ARRAY - size: %d, dataSize: %d\n", members[i].getSize()*members[i].getArraySize(), members[i].getSize());
-							//printf("ARRAY location: %p\n", index);
-						}
+						
+						//printf("%p\n", index);
 					}
 				}
-				break;
+			break;
 			}
 		case TC_ARRAY:
 			{
@@ -352,6 +325,7 @@ namespace DynamicFastBuffers
 			m_currentPosition = (char*) m_currentPosition + (sizeof(string)-sizeof(int32_t));
 		}
 #endif
+		//printf("%s - %d\n", typecode->getKindStr().c_str(), bytecode->getAlignment()->size());
 	}
 
 	inline size_t BytecodeAPI::alignment(size_t dataSize, void *&m_currentPosition)

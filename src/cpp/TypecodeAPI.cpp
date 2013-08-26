@@ -71,6 +71,7 @@ namespace DynamicFastBuffers
 			pTypecode = (Typecode*) va_arg(vl, Typecode*);
 		}
 		va_end(vl);
+		TypecodeAPI::calculateStructSize(ret);
 		return ret;
 	}
 
@@ -208,6 +209,23 @@ namespace DynamicFastBuffers
 		return tc->getSize(); 
 	}
 
+	size_t TypecodeAPI::calculateStructSize(Typecode *tc)
+	{
+		size_t size = tc->getMembers().size();
+		if(size != 0){
+			vector<Typecode> members = tc->getMembers();
+			for(int i=0; i<size; ++i){ //foreach member in struct
+				if(members[i].getKind() != TC_STRUCT){ //NO struct
+					tc->setStructSize(members[i].getSize());
+				}else{ //struct
+					tc->setStructSize(TypecodeAPI::calculateStructSize(&members[i]));
+				}
+			}
+		}else{
+			tc->setStructSize(0); //check this later
+		}
 
+		return tc->getSize();
+	}
 
 }

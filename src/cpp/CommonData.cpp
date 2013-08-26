@@ -47,13 +47,6 @@ namespace DynamicFastBuffers
 
 	int Typecode::addMemberNoCheck(Typecode &member)
 	{
-		//testing
-
-//#define __linux 1
-
-		//endTesting
-
-
 		members_.push_back(member);
 		int size = member.getSize();
 #if defined(__linux)
@@ -236,11 +229,6 @@ namespace DynamicFastBuffers
 			return sizeof(bool);
 			break;
 		case TC_STRUCT:
-//#if defined(__linux)
-			//return sizeof(void*);
-//#else
-	//		return structSize_;
-//#endif
 			return structSize_;
 			break;
 		case TC_UNION:
@@ -312,6 +300,13 @@ namespace DynamicFastBuffers
 		return size_str_;
 	}
 
+	void Typecode::setStructSize(int structSize)
+	{
+		if(structSize_ < structSize){
+			structSize_ = structSize;
+		}
+	}
+
 	/**
 	* Class Bytecode
 	*/
@@ -338,8 +333,9 @@ namespace DynamicFastBuffers
 		return pAlignment_;
 	}
 
-	void Bytecode::addAlignment(int value)
+	void Bytecode::addAlignment(size_t value)
 	{
+		//printf("Add to vector value %d\n");
 		pAlignment_->push_back(value);
 	}
 

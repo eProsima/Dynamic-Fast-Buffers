@@ -6,7 +6,7 @@
 #include <vector>
 #include <array>
 
-#include "cpp/Marshalling.h"
+#include "cpp/FastCdr.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ namespace DynamicFastBuffers
 	* @typedef Function CALLBACK.
 	* @brief This CALLBACK type represents pointer to a function defined in SerializerAPI.h.
 	*/
-	typedef void* (*CALLBACK) (eProsima::marshalling::Marshalling* serializer, void* data, int &size);
+	typedef void* (*CALLBACK) (eProsima::FastCdr* serializer, void* data, int &size);
 
 	/*!
      * @brief This static class stores all the relevant information about a Typecode.
@@ -211,6 +211,13 @@ namespace DynamicFastBuffers
 		* @return The size the string.
         */
 		int getStrSize();
+
+		/*!
+        * @brief Sets the size of a structure
+		* @param structSize The size of the struct to be set
+		* @return The size the string.
+        */
+		void setStructSize(int structSize);
 		
 	};
 
@@ -280,7 +287,7 @@ namespace DynamicFastBuffers
         * @brief Function used to add a padding (measured in Bytes) to the pAlignment_ vector.
 		* @param value The padding (in Bytes) to be added.
         */
-		void addAlignment(int value);
+		void addAlignment(size_t value);
 		
 		
 	};
