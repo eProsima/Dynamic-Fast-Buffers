@@ -63,7 +63,6 @@ SectionIn RO
     File /r ..\..\..\..\examples\*
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
-	File /r ..\..\..\..\..\Marshalling\include\*
 	File /r ..\..\..\..\..\CDR\include\*
 	SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
