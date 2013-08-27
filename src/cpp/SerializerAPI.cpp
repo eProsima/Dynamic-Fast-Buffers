@@ -159,16 +159,17 @@ namespace DynamicFastBuffers
 	void* SerializerAPI::serializeString(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		string &s = *static_cast<std::string*>(data);
+		//printf("%s\n", &s);
 		serializer->serialize(s);
 		void* ret = data;
 		ret = static_cast<char*>(ret) + sizeof(std::string);
-		//printf("HIJOPUTA\n");
 		return ret;
 	}
 
 	void* SerializerAPI::deserializeString(eProsima::FastCdr *serializer, void *data, int &size)
 	{
 		string &pString = *static_cast<std::string*>(data);
+		//printf("%s\n", &pString);
 		serializer->deserialize(pString);
 		void* ret = data;
 		ret = static_cast<char*>(ret) + sizeof(std::string);
@@ -183,7 +184,6 @@ namespace DynamicFastBuffers
 		char *p = (char*) data;
 		serializer->serialize(*p);
 		++p;
-		//printf("HIJOPUTA2\n");
 		return (void *) p;
 	}
 

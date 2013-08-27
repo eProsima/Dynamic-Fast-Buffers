@@ -18,7 +18,7 @@ namespace DynamicFastBuffers
 			BytecodeAPI::generateBytecodeDeserialization(bytecode, typecode, index);
 		}
 		for(int i=0; i<bytecode->getAlignment()->size(); ++i){
-			//printf("%d\n", bytecode->getAlignment()->at(i));
+			//printf("%d, ", bytecode->getAlignment()->at(i));
 		}
 		return bytecode;
 	}
@@ -58,24 +58,54 @@ namespace DynamicFastBuffers
 			{
 				vector<Typecode> members = typecode->getMembers();
 				size_t count = members.size();
+#if defined(_M_IX86)
+				bool jumped = false; //In Win32, padding is inserted after a internal structure
+#endif
 				for(unsigned int i=0; i<count; ++i){
-					if(members[i].getKind() == TC_STRUCT){							//Struct
+					if(members[i].getKind() == TC_STRUCT){ //Struct
 						if(i==0){
 							members[i].setStructSize(typecode->getSize());
 						}
 						generateBytecodeSerialization(bytecode, &members[i], index);
-					}else{															//other kind
-						if(i==0){														//First element
-							insertJumps(typecode, bytecode, index);
-							alignment(members[i].getSize(), index);
 #if defined(_M_IX86)
+						if(i != count-1){ //If struct is not the last member
+							insertJumps(&members[i], bytecode, index);
+						}
+						jumped = true;
+#endif
+					}else{ //other kind
+						if(i==0){ //First element
+							
+							
+#if defined(_M_IX86)
+							if(jumped){
+								alignment(members[i].getSize(), index);
+								jumped = false;
+							}else{
+								insertJumps(typecode, bytecode, index);
+							}
+							
 							if(members[i].getKind() == TC_STRING){
 								index = (char*) index + sizeof(string) - sizeof(int32_t);
 							}
+							
+#else
+							insertJumps(typecode, bytecode, index);
 #endif
-						}else{															//Other elements
+						}else{//Other elements
+#if defined(_M_IX86)
+							if(!jumped){
+								insertJumps(&members[i], bytecode, index);
+							}else{
+								jumped = false;
+							}
+#else
 							insertJumps(&members[i], bytecode, index);
+#endif
 						}
+
+
+
 						generateBytecodeSerialization(bytecode, &members[i], index);
 						//printf("\t\%s index: %p ->", members[i].getKindStr().c_str(), index);
 #if defined(_M_IX86)
@@ -83,8 +113,11 @@ namespace DynamicFastBuffers
 						if(members[i].getKind() == TC_SEQUENCE){
 							index = (char*) index + sizeof(std::vector<void*>);
 						}else{
-							
-							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							if(members[i].getKind() == TC_STRING){
+								index = (char*) index + (sizeof(std::string));
+							}else{
+								index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							}
 							
 						}
 #else
@@ -205,23 +238,49 @@ namespace DynamicFastBuffers
 			{
 				vector<Typecode> members = typecode->getMembers();
 				size_t count = members.size();
+#if defined(_M_IX86)
+				bool jumped = false; //In Win32, padding is inserted after a internal structure
+#endif
 				for(unsigned int i=0; i<count; ++i){
-					if(members[i].getKind() == TC_STRUCT){							//Struct
+					if(members[i].getKind() == TC_STRUCT){ //Struct
 						if(i==0){
 							members[i].setStructSize(typecode->getSize());
 						}
 						generateBytecodeDeserialization(bytecode, &members[i], index);
-					}else{															//other kind
-						if(i==0){														//First element
-							insertJumps(typecode, bytecode, index);
-							alignment(members[i].getSize(), index);
 #if defined(_M_IX86)
+						if(i != count-1){ //If struct is not the last member
+							insertJumps(&members[i], bytecode, index);
+						}
+						jumped = true;
+#endif
+					}else{ //other kind
+						if(i==0){ //First element
+							
+							
+#if defined(_M_IX86)
+							if(jumped){
+								alignment(members[i].getSize(), index);
+								jumped = false;
+							}else{
+								insertJumps(typecode, bytecode, index);
+							}
+							
 							if(members[i].getKind() == TC_STRING){
 								index = (char*) index + sizeof(string) - sizeof(int32_t);
 							}
+#else
+							insertJumps(typecode, bytecode, index);
 #endif
-						}else{															//Other elements
+						}else{//Other elements
+#if defined(_M_IX86)
+							if(!jumped){
+								insertJumps(&members[i], bytecode, index);
+							}else{
+								jumped = false;
+							}
+#else
 							insertJumps(&members[i], bytecode, index);
+#endif
 						}
 						generateBytecodeDeserialization(bytecode, &members[i], index);
 						//printf("\t\%s index: %p ->", members[i].getKindStr().c_str(), index);
@@ -230,8 +289,11 @@ namespace DynamicFastBuffers
 						if(members[i].getKind() == TC_SEQUENCE){
 							index = (char*) index + sizeof(std::vector<void*>);
 						}else{
-							
-							index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							if(members[i].getKind() == TC_STRING){
+								index = (char*) index + (sizeof(std::string));
+							}else{
+								index = (char*) index + (members[i].getSize()*members[i].getArraySize());
+							}
 							
 						}
 #else
@@ -241,8 +303,8 @@ namespace DynamicFastBuffers
 						//printf("%p\n", index);
 					}
 				}
-			break;
 			}
+			break;
 		case TC_ARRAY:
 			{
 				int nDims = typecode->getConstentSize();
@@ -322,7 +384,9 @@ namespace DynamicFastBuffers
 		bytecode->addAlignment(alignment(typecode->getSize(), m_currentPosition));
 #if defined(_M_IX86)
 		if(typecode->getKind() == TC_STRING){
-			m_currentPosition = (char*) m_currentPosition + (sizeof(string)-sizeof(int32_t));
+			//printf("\t\tENTRA STRING: %p - ", m_currentPosition);
+			//m_currentPosition = (char*) m_currentPosition + (sizeof(string)-sizeof(int32_t));
+			//printf("%p\n", m_currentPosition);
 		}
 #endif
 		//printf("%s - %d\n", typecode->getKindStr().c_str(), bytecode->getAlignment()->size());

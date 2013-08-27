@@ -130,7 +130,7 @@
       <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;_CONSOLE;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\..\..\Marshalling\include;..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
@@ -144,8 +144,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>$(TargetPath)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -163,7 +162,7 @@
       <PreprocessorDefinitions>_WIN32;__LITTLE_ENDIAN__;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;EPROSIMA_CPP_DLL_EXPORT;_CONSOLE;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\..\..\Marshalling\include;..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include; $(ProjectDir)..\..\..\..\CDR\include\; $(EPROSIMADIR)\code\; $(ProjectDir)..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

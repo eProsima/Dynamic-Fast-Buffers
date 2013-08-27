@@ -2,8 +2,8 @@
 #include "cpp/BytecodeAPI.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/CommonData.h"
-#include "cpp/cdr/FastCdr.h"
-#include "cpp/storage/FastBuffer.h"
+#include "cpp/FastCdr.h"
+#include "cpp/FastBuffer.h"
 //#include <iostream>
 //#include <cstdint>
 
@@ -16,8 +16,8 @@ bool testPrimitiveData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
 	
 	//
 	// Data creation
@@ -165,8 +165,8 @@ bool testStructData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -241,8 +241,8 @@ bool testArrayData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -311,8 +311,8 @@ bool testSequenceData()
 	// CDR Serializer declaration
 	//
 	char buffer[500];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 500);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -414,8 +414,8 @@ bool testComplexStruct()
 	// CDR Serializer declaration
 	//
 	char buffer[1000];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 1000);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 1000);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -571,8 +571,8 @@ bool testSimpleAlignment()
 	// CDR Serializer declaration
 	//
 	char buffer[1000];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 1000);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 1000);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
@@ -696,8 +696,8 @@ bool testArrayKinds()
 	// CDR Serializer declaration
 	//
 	char buffer[5000];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 5000);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 5000);
+	eProsima::FastCdr cdr(cdrBuffer);
 
 	//
 	// Data creation
