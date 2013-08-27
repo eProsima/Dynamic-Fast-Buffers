@@ -2,8 +2,8 @@
 #include "cpp/BytecodeAPI.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/CommonData.h"
-#include "cpp/cdr/FastCdr.h"
-#include "cpp/storage/FastBuffer.h"
+#include "cpp/FastCdr.h"
+#include "cpp/FastBuffer.h"
 #include <iostream>
 
 struct InnerStruct
@@ -105,8 +105,8 @@ int main()
 	// CDR Serializer declaration
 	//
 	char buffer[1000];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 1000);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 1000);
+	eProsima::FastCdr cdr(cdrBuffer);
 	
 	//
 	// Data creation

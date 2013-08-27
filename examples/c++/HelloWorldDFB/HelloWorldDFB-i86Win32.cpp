@@ -2,8 +2,8 @@
 #include "cpp/BytecodeAPI.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/CommonData.h"
-#include "cpp/cdr/FastCdr.h"
-#include "cpp/storage/FastBuffer.h"
+#include "cpp/FastCdr.h"
+#include "cpp/FastBuffer.h"
 #include <iostream>
 
 struct InnerStruct
@@ -33,6 +33,7 @@ struct OuterStruct
 	short s1;
 	int32_t i1;
 	MediumStruct st1;
+	//short attshort;
 	short arr1[2][4];
 	short i2;
 	int64_t s2;
@@ -105,8 +106,8 @@ int main()
 	// CDR Serializer declaration
 	//
 	char buffer[5000];
-	eProsima::storage::FastBuffer cdrBuffer(buffer, 5000);
-	eProsima::marshalling::FastCdr cdr(cdrBuffer);
+	eProsima::FastBuffer cdrBuffer(buffer, 5000);
+	eProsima::FastCdr cdr(cdrBuffer);
 	
 	//
 	// Data creation
@@ -142,7 +143,7 @@ int main()
 	inputStruct.st3 = innerTest;
 	inputStruct.str1 = "OUTER STRUCT";
 
-	printf("vector: %d\n", sizeof(vector<void*>));
+	/*printf("vector: %d\n", sizeof(vector<void*>));
 	printf("vector int64: %d\n", sizeof(vector<int64_t>));
 	printf("string: %d\n", sizeof(std::string));
 
@@ -152,19 +153,19 @@ int main()
 		printf("%p\n", &(inputStruct.st1.s1));
 		
 		printf("%p\n", &(inputStruct.st1.arr1));
-		/*st1->st1.arr1[0][1] == st2->st1.arr1[0][1] &&
+		st1->st1.arr1[0][1] == st2->st1.arr1[0][1] &&
 		st1->st1.arr1[0][2] == st2->st1.arr1[0][2] &&
 		st1->st1.arr1[0][3] == st2->st1.arr1[0][3] &&
 		st1->st1.arr1[1][0] == st2->st1.arr1[1][0] &&
 		st1->st1.arr1[1][1] == st2->st1.arr1[1][1] &&
 		st1->st1.arr1[1][2] == st2->st1.arr1[1][2] &&
-		st1->st1.arr1[1][3] == st2->st1.arr1[1][3] &&*/
+		st1->st1.arr1[1][3] == st2->st1.arr1[1][3] &&
 	
 		printf("%p\n", &(inputStruct.st1.members1));
-		/*st1->st1.members1[1] == st2->st1.members1[1] &&
+		st1->st1.members1[1] == st2->st1.members1[1] &&
 		st1->st1.members1[2] == st2->st1.members1[2] &&
 		st1->st1.members1[3] == st2->st1.members1[3] &&
-		st1->st1.members1[4] == st2->st1.members1[4] &&*/
+		st1->st1.members1[4] == st2->st1.members1[4] &&
 		
 		printf("%p\n", &(inputStruct.st1.i2));
 		printf("%p\n", &(inputStruct.st1.s2));
@@ -176,14 +177,14 @@ int main()
 		printf("%p\n", &(inputStruct.st1.st3.l1));
 		printf("%p\n", &(inputStruct.st1.str1));
 	
-		printf("%p\n", &(inputStruct.arr1));
-		/*st1->arr1[0][1] == st2->arr1[0][1] &&
+		printf("%p\n", &(inputStruct.arr1[0][0]));
+		st1->arr1[0][1] == st2->arr1[0][1] &&
 		st1->arr1[0][2] == st2->arr1[0][2] &&
 		st1->arr1[0][3] == st2->arr1[0][3] &&
 		st1->arr1[1][0] == st2->arr1[1][0] &&
 		st1->arr1[1][1] == st2->arr1[1][1] &&
 		st1->arr1[1][2] == st2->arr1[1][2] &&
-		st1->arr1[1][3] == st2->arr1[1][3] &&*/
+		st1->arr1[1][3] == st2->arr1[1][3] &&
 
 		printf("%p\n", &(inputStruct.i2));
 		printf("%p\n", &(inputStruct.s2));
@@ -195,7 +196,7 @@ int main()
 		printf("%p\n", &(inputStruct.st3.l1));
 		printf("%p\n", &(inputStruct.str1));
 
-		printf("%--------------------------------------------\n");
+		printf("%--------------------------------------------\n");*/
 	
 	//
 	// Typecode creation
