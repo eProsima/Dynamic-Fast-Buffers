@@ -49,10 +49,7 @@ function installer
 	cp -r ../../../../../CDR/include tmp/$project/include
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
-	cp -r ../../../../../Marshalling/include tmp/$project/include
-	errorstatus=$?
-	if [ $errorstatus != 0 ]; then return; fi
-
+	
 	# Copy DFB libraries
 	mkdir -p tmp/$project/lib
 

@@ -21,7 +21,7 @@ DFB_TARGET_EXE= $(DFB_EXE_DIR)HelloWorldi86.o
 DFB_CFLAGS += -c -Wall -O2 -m32 -fpic -std=c++11
 DFB_LDFLAGS=-m32
 
-DFB_LIBS= $(LIBS) -lcdr -ldfb-0.1.0
+DFB_LIBS= $(LIBS) -lcdr -ldfb
 
 DFB_LIBS_DIR= -L$(BASEDIR)/lib/$(TARGET_ARCH) -L$(BASEDIR)/../CDR/lib/$(TARGET_ARCH)
 
