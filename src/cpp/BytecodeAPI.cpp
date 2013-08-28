@@ -21,7 +21,7 @@ namespace DynamicFastBuffers
 			//printf("%d, ", bytecode->getAlignment()->at(i));
 		}
 		//std::cout << endl;
-		return bytecode;
+		return bytecode; 
 	}
 
 	void BytecodeAPI::generateBytecodeSerialization(Bytecode *bytecode, Typecode *typecode, void *&index)
