@@ -1,0 +1,324 @@
+﻿Build started 9/3/2013 2:31:33 PM.
+     1>Project "D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\PerformanceProtoBuffers_100.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\PerformanceProtoBuffers_100.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src" /ID:\Proyectos\boost_1_53_0 /Zi /nologo /W3 /WX- /O2 /GL /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /errorReport:prompt main_100.cc PerformanceTest.pb.cc
+         main_100.cc
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1445): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1447): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1449): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1455): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1457): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1463): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1465): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1470): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1474): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1478): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(142): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(237): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(305): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>main_100.cc(348): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(349): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(397): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(398): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(399): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(400): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(458): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(459): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(461): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(462): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(463): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(531): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(532): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(533): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(534): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(535): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(536): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(537): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(538): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(616): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(617): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(618): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(619): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(620): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(621): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(622): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(623): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(624): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(625): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1269): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1277): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1333): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1334): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1348): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1358): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1364): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1435): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1436): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1437): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1455): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1456): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1457): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1475): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1476): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1477): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1489): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1495): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1500): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1584): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1585): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1586): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1587): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1610): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1611): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1612): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1613): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1636): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1637): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1638): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1639): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1662): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1663): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1664): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1665): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1679): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1685): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1690): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1789): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1790): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1791): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1793): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1821): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1822): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1823): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1824): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1825): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1853): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1854): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1855): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1856): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1857): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1885): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1886): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1887): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1888): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1889): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1917): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1918): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1919): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1920): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1921): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1937): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1943): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1948): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>main_100.cc(1955): warning C4305: 'argument' : truncation from 'double' to 'float'
+         PerformanceTest.pb.cc
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1445): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1447): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1449): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1455): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1457): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1463): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1465): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1470): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1474): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/descriptor.h(1478): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(142): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(237): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/unknown_field_set.h(305): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/io/coded_stream.h(902): warning C4244: '=' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/io/coded_stream.h(1078): warning C4244: 'return' : conversion from '__int64' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(663): warning C4267: 'argument' : conversion from 'size_t' to 'google::protobuf::uint32', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(670): warning C4267: 'argument' : conversion from 'size_t' to 'google::protobuf::uint32', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(738): warning C4267: 'argument' : conversion from 'size_t' to 'google::protobuf::uint32', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(739): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(742): warning C4267: 'argument' : conversion from 'size_t' to 'google::protobuf::uint32', possible loss of data
+     1>C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src\google/protobuf/wire_format_lite_inl.h(743): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(8771): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(8788): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(8934): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(8943): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9010): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9020): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9564): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9581): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9598): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9615): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9877): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9886): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9895): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(9904): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10021): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10031): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10041): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10051): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10867): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10884): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10901): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10918): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10935): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(10952): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11330): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11339): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11348): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11357): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11366): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11375): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11542): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11552): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11562): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11572): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11582): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(11592): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12684): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12701): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12718): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12735): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12752): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12769): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12786): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(12803): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13297): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13306): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13315): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13324): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13333): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13342): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13351): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13360): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13577): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13587): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13597): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13607): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13617): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13627): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13637): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(13647): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15011): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15028): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15045): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15062): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15079): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15096): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15113): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15130): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15147): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15164): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15774): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15783): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15792): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15801): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15810): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15819): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15828): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15837): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15846): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(15855): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16122): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16132): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16142): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16152): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16162): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16172): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16182): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16192): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16202): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(16212): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(21549): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(21637): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(21679): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(21976): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22078): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22126): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22496): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22513): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22659): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22668): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22735): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(22745): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23152): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23247): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23349): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23384): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23432): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23469): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23965): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23982): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(23999): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24203): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24212): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24221): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24313): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24323): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24333): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24847): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(24942): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25021): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25123): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25158): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25188): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25236): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25273): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25305): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25914): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25931): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25948): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(25965): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26227): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26236): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26245): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26254): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26371): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26381): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26391): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(26401): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27006): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27101): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27180): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27344): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27379): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27409): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27478): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27515): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(27547): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28278): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28295): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28312): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28329): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28346): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28666): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28675): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28684): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28693): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28702): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28844): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28854): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28864): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28874): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(28884): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(29579): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(29674): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(29753): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(29965): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(30000): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(30030): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(30114): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(30151): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>PerformanceTest.pb.cc(30183): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\Release\PerformanceProtoBuffers_100.exe" /NOLOGO /LIBPATH:"D:\Proyectos\boost_1_53_0\lib64-msvc-10.0" /LIBPATH:"C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\vsprojects\Release" libprotobuf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\PerformanceProtoBuffers_100.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\Release\PerformanceProtoBuffers_100.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\Release\PerformanceProtoBuffers_100.lib" /MACHINE:X64 Release\main_100.obj
+         Release\PerformanceTest.pb.obj
+         Generating code
+         Finished generating code
+         PerformanceProtoBuffers_100.vcxproj -> D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\Release\PerformanceProtoBuffers_100.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\Release\PerformanceProtoBuffers_100.exe;#1" /manifest Release\PerformanceProtoBuffers_100.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\PerformanceProtoBuffers_100.unsuccessfulbuild".
+         Touching "Release\PerformanceProtoBuffers_100.lastbuildstate".
+     1>Done Building Project "D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\PerformanceProtoBuffers_100.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:13.59
