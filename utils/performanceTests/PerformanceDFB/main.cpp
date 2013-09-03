@@ -1,10 +1,10 @@
 #include <iostream>
 #include <fcntl.h>
 #include <stdio.h>
-#include <io.h>
+//#include <io.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <sys\stat.h>
+#include <sys/stat.h>
 #include <ostream>
 #include <fstream>
 #include <sys/stat.h>
@@ -28,7 +28,7 @@
 #include <boost/chrono.hpp>
 
 //Global variables
-#define NUMBER_OF_LOOPS 10000
+#define NUMBER_OF_LOOPS 1000000
 #define BUFFER_SIZE 100000
 
 using namespace DynamicFastBuffers;
@@ -3615,31 +3615,31 @@ inline void testinnerComplexStruct_5()
 
 inline void innerComplexTestDFB()
 {
-	cout << "Estructura heterogénea con datos y 1 estructura interna de diferentes miembros repetidos 1 vez:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 1 estructura interna de diferentes miembros repetidos 1 vez:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_1();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 2 estructuras internas de diferentes miembros repetidos 2 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 2 estructuras internas de diferentes miembros repetidos 2 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_2();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 3 estructuras internas de diferentes miembros repetidos 3 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 3 estructuras internas de diferentes miembros repetidos 3 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_3();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 4 estructuras internas de diferentes miembros repetidos 4 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 4 estructuras internas de diferentes miembros repetidos 4 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_4();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 5 estructuras internas de diferentes miembros repetidos 5 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 5 estructuras internas de diferentes miembros repetidos 5 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testinnerComplexStruct_5();
 	}

@@ -32,10 +32,10 @@ inline void testSimpleStructProtobuf_10()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+		//cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -81,10 +81,10 @@ inline void testSimpleStructProtobuf_20()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -141,10 +141,10 @@ inline void testSimpleStructProtobuf_30()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -210,10 +210,10 @@ inline void testSimpleStructProtobuf_40()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -289,10 +289,10 @@ inline void testSimpleStructProtobuf_50()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -361,10 +361,10 @@ inline void testComplexStructProtobuf_2()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -416,10 +416,10 @@ inline void testComplexStructProtobuf_4()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -483,10 +483,10 @@ inline void testComplexStructProtobuf_6()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -562,10 +562,10 @@ inline void testComplexStructProtobuf_8()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -653,10 +653,10 @@ inline void testComplexStructProtobuf_10()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -724,10 +724,10 @@ inline void testInnerSimpleStructProtobuf_2()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -787,10 +787,10 @@ inline void testInnerSimpleStructProtobuf_4()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -880,10 +880,10 @@ inline void testInnerSimpleStructProtobuf_6()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1011,10 +1011,10 @@ inline void testInnerSimpleStructProtobuf_8()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1188,10 +1188,10 @@ inline void testInnerSimpleStructProtobuf_10()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1287,10 +1287,10 @@ inline void testInnerComplexStructProtobuf_1()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1374,10 +1374,10 @@ inline void testInnerComplexStructProtobuf_2()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1510,10 +1510,10 @@ inline void testInnerComplexStructProtobuf_3()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1704,10 +1704,10 @@ inline void testInnerComplexStructProtobuf_4()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
-		cout << "Str size: " << str.size() << endl;
-		break;
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
+//		cout << "Str size: " << str.size() << endl;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -1965,10 +1965,10 @@ inline void testInnerComplexStructProtobuf_5()
 			printf("ERROR: serialization");
 		}
 
-		cout << "Size: " << performance1.ByteSize() << endl;
-		std::string str(buffer);
+//		cout << "Size: " << performance1.ByteSize() << endl;
+//		std::string str(buffer);
 		//cout << "Str size: " << str.size() << endl << str << endl;
-		break;
+//		break;
 
 		if(!performance2.ParseFromArray(buffer, performance1.ByteSize())){
 			printf("ERROR: deserialization");
@@ -2033,31 +2033,31 @@ inline void testInnerComplexStructProtobuf_5()
 
 inline void innerComplexTestProtobuf()
 {
-	cout << "Estructura heterogénea con datos y 1 estructura interna de diferentes miembros repetidos 1 vez:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 1 estructura interna de diferentes miembros repetidos 1 vez:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testInnerComplexStructProtobuf_1();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 2 estructuras internas de diferentes miembros repetidos 2 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 2 estructuras internas de diferentes miembros repetidos 2 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testInnerComplexStructProtobuf_2();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 3 estructuras internas de diferentes miembros repetidos 3 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 3 estructuras internas de diferentes miembros repetidos 3 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testInnerComplexStructProtobuf_3();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 4 estructuras internas de diferentes miembros repetidos 4 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 4 estructuras internas de diferentes miembros repetidos 4 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testInnerComplexStructProtobuf_4();
 	}
 	cout << endl << endl;
 
-	cout << "Estructura heterogénea con datos y 5 estructuras internas de diferentes miembros repetidos 5 veces:" << endl;
+	cout << "Estructura heterog\E9nea con datos y 5 estructuras internas de diferentes miembros repetidos 5 veces:" << endl;
 	for(int i = 0; i < 5; ++i){
 		testInnerComplexStructProtobuf_5();
 	}
