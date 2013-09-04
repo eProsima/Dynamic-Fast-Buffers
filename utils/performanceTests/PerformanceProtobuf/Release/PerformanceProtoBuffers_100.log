@@ -1,6 +1,8 @@
-﻿Build started 9/3/2013 2:31:33 PM.
+﻿Build started 9/3/2013 3:55:16 PM.
      1>Project "D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceProtobuf\PerformanceProtoBuffers_100.vcxproj" on node 2 (rebuild target(s)).
-     1>InitializeBuildStatus:
+     1>_PrepareForClean:
+         Deleting file "Release\PerformanceProtoBuffers_100.lastbuildstate".
+       InitializeBuildStatus:
          Creating "Release\PerformanceProtoBuffers_100.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\RafaelLara\Desktop\Desktop Backup\protobuf-2.5.0\src" /ID:\Proyectos\boost_1_53_0 /Zi /nologo /W3 /WX- /O2 /GL /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /errorReport:prompt main_100.cc PerformanceTest.pb.cc
@@ -321,4 +323,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:13.59
+Time Elapsed 00:00:12.69

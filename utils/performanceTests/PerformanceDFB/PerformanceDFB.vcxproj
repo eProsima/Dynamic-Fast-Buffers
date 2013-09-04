@@ -93,10 +93,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalLibraryDirectories>..\..\..\..\DynamicFastBuffers\lib\x64Win64VS2010;..\..\..\..\CDR\lib\x64Win64VS2010;%(AdditionalLibraryDirectories); ..\..\..\..\boost_1_53_0\lib64-msvc-10.0</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\boost_1_53_0;..\..\..\include;..\..\..\..\CDR\include;$(EPROSIMADIR)\code;..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
