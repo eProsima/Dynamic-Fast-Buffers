@@ -1,0 +1,34 @@
+Instalación y configuración de Clonezilla:
+
+Para la instalación de DRBL server, es necesaria una configuración prefia del entorno de red:
+	- Dos subredes, una interna para el servidor y los PC's de test y la red de la empresa.
+	- El servidor se encuentra en una máquina virtual con un SO Ubuntu 12.04 y los dos adaptadores de red en estado brigded. 
+		- Adaptador 1: A la tarjeta de red de la placa base
+		- Adaptador 2: A la tarjeta de red conectada por PCI-E
+	- Redes dentro de la propia máquina virtual:
+		- Red eProsima (red de la empresa): 
+			- Eth1
+			- Address: 192.168.1.232
+			- Netmask: 255.255.255.0
+			- Gateway: 192.168.1.1
+			- DNS: 192.168.1.3
+		- Red Tests
+			- Eth0
+			- Address: 192.168.2.232
+			- Netmask: 255.255.255.0
+			- Gateway: 0.0.0.0
+	- Montar disco para alomacenamiento de imagenes en '/home/partimag'
+	- Instalar DRBL y clonezilla tal y como se muestra en este tutorial: http://www.corbacho.info/clonezilla/clonezilla.html, pero sin modificar el fichero de redes (modificarlo manualmente con los datos enteriormente expuestos)
+	- Configurar Drbl 'sudo /usr/sbin/drblpush -i': Al configurar drbl, marcar que publique el servidor DHCP en la red eProsima (eth1) y configurar direccionamiento automático para 5 máquinas. 
+		- Cuando pregunte si se desea detectar nuevos clientes, arrancar todos los clientes en modo de red (configurar en la BIOS), y esperar a que el servidor detecte las MAC.
+	- Arrancar clonezilla 'sudo /usr/sbin/dcs':
+		- Guardar imagen en servidor: 
+			- Arrancar clonezilla en modo experto (en la opción de almacenar disco completo)
+			- Mantener opciones por defecto y seleccionar el nombre de la imagen en cliente
+			- Marcar confirmación de la acción a realizar cuando finalice la operación en el lado del cliente (asegurarse de que el check de la integridad de la imagen está seleccionado)
+		- Cargar imagen en cliente: 
+			- Arrancar clonezilla en modo experto (en la opción de cargar disco completo)
+			- Seleccionar la imagen a cargar
+			- Establecer conexión unicast si es para un solo cliente o bloadcast si es para varios.
+		
+NOTA: Las imagenes han de salvarse y cargarse a disco completo, ya que si no el sector MBR se eobreescribe, y aunque las particiones sean idénticas, el sector es diferente en Windows y en Linux y falla la carga del sistema operativo.
