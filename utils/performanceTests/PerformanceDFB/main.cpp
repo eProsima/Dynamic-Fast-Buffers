@@ -4215,9 +4215,7 @@ inline void testSesar01()
 int main()
 {
 
-	std::cout << "sizeofstring " << sizeof(std::string) << std::endl;
-
-	testDFB::performanceDFB();
+	testDFB::innerComplexTestDFB();
 
 	//testDFB::testinnerComplexStruct_2();
 
