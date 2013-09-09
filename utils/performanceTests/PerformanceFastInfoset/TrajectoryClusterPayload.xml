@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> 
+<trajectory>
+  <airborne_status>not_airborne</airborne_status> 
+  <last_overflown_point>0</last_overflown_point> 
+<trajectory_points>
+  <flight_phase>en_route</flight_phase> 
+<ground_speed>
+  <unit>nautical_miles_per_hour</unit> 
+  <value>442.0</value> 
+  </ground_speed>
+<heading>
+  <value>2020</value> 
+  </heading>
+<mass>
+  <value>16580</value> 
+  </mass>
+<ref_id_belongs_to>
+  <type>Sector</type> 
+  <identifier/> 
+  </ref_id_belongs_to>
+<ref_id_designator>
+  <value>1</value> 
+  </ref_id_designator>
+<rocd>
+  <value>0.0</value> 
+  </rocd>
+<track>
+  <value>0</value> 
+  </track>
+<trj_point_type>
+  <adep>false</adep> 
+  <ades>false</ades> 
+  <beacon>false</beacon> 
+  <bottom_of_climb>false</bottom_of_climb> 
+  <bottom_of_descent>false</bottom_of_descent> 
+  <boundary_point>false</boundary_point> 
+  <change_of_status>false</change_of_status> 
+  <constraint_application>false</constraint_application> 
+  <end_of_turn>false</end_of_turn> 
+  <entry_of_hold>false</entry_of_hold> 
+  <exit_of_hold>false</exit_of_hold> 
+  <GAT_OAT>false</GAT_OAT> 
+  <Joining>false</Joining> 
+  <Leaving>false</Leaving> 
+  <middle_of_turn>false</middle_of_turn> 
+  <OAT_GAT>false</OAT_GAT> 
+  <STAR_entry>false</STAR_entry> 
+  <start_of_turn>false</start_of_turn> 
+  <top_of_climb>false</top_of_climb> 
+  <top_of_descent>false</top_of_descent> 
+  </trj_point_type><true_airspeed>
+  <unit>nautical_miles_per_hour</unit> 
+  <value>442.0</value> 
+  </true_airspeed><point_4D><time>
+  <value>1348127168</value> 
+  </time><position3D><altitude>
+  <altitude_kind>ealtitude</altitude_kind> <altitude>
+  <unit>feet</unit> 
+  <value>36000</value> 
+  </altitude><flight_level>
+  <value>0</value> 
+  </flight_level>
+  </altitude></position3D>
+  </point_4D>
+  </trajectory_points>
+</trajectory>
+
