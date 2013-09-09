@@ -58,7 +58,6 @@ bool testPrimitiveData()
 	//
 	// Data serialization
 	//
-	printf("SERIALIZES\n");
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &i1, bc1, &cdr);
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &s1, bc2, &cdr);
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &l1, bc3, &cdr);
@@ -88,28 +87,19 @@ bool testPrimitiveData()
 	//
 	// Data deserialization
 	//
-	printf("DESERIALIZES\n");
 	try{
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &i2, bc1, &cdr);
 	}catch (std::exception &e){
 		printf("%s\n", e.what());
 	}
-	printf("DESERIALIZES 1\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &s2, bc2, &cdr);
-	printf("DESERIALIZES 2\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &l2, bc3, &cdr);
-	printf("DESERIALIZES 3\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &f2, bc4, &cdr);
-	printf("DESERIALIZES 4\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &d2, bc5, &cdr);
-	printf("DESERIALIZES 5\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &str2, bc6, &cdr);
-	printf("DESERIALIZES 6\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &c2, bc7, &cdr);
-	printf("DESERIALIZES 7\n");
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &b2, bc8, &cdr);
-	printf("DESERIALIZES 8\n");
-
+	
 	//
 	// Typecode deletes
 	//
@@ -125,7 +115,6 @@ bool testPrimitiveData()
 	//
 	// Check data
 	//
-	printf("COMPARES\n");
 	
 	bool returnValue = true;
 	returnValue &= (i1 == i2);
