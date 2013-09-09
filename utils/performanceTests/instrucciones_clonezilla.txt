@@ -17,7 +17,7 @@ Para la instalación de DRBL server, es necesaria una configuración prefia del 
 			- Address: 192.168.2.232
 			- Netmask: 255.255.255.0
 			- Gateway: 0.0.0.0
-	- Montar disco para alomacenamiento de imagenes en '/home/partimag'
+	- Montar disco para almacenamiento de imagenes en '/home/partimag'
 	- Instalar DRBL y clonezilla tal y como se muestra en este tutorial: http://www.corbacho.info/clonezilla/clonezilla.html, pero sin modificar el fichero de redes (modificarlo manualmente con los datos enteriormente expuestos)
 	- Configurar Drbl 'sudo /usr/sbin/drblpush -i': Al configurar drbl, marcar que publique el servidor DHCP en la red eProsima (eth1) y configurar direccionamiento automático para 5 máquinas. 
 		- Cuando pregunte si se desea detectar nuevos clientes, arrancar todos los clientes en modo de red (configurar en la BIOS), y esperar a que el servidor detecte las MAC.
