@@ -143,61 +143,6 @@ int main()
 	inputStruct.st3 = innerTest;
 	inputStruct.str1 = "OUTER STRUCT";
 
-	/*printf("vector: %d\n", sizeof(vector<void*>));
-	printf("vector int64: %d\n", sizeof(vector<int64_t>));
-	printf("string: %d\n", sizeof(std::string));
-
-		printf("%p\n", &(inputStruct.s1));
-		printf("%p\n", &(inputStruct.i1));
-		printf("%p\n", &(inputStruct.st1.i1));
-		printf("%p\n", &(inputStruct.st1.s1));
-		
-		printf("%p\n", &(inputStruct.st1.arr1));
-		st1->st1.arr1[0][1] == st2->st1.arr1[0][1] &&
-		st1->st1.arr1[0][2] == st2->st1.arr1[0][2] &&
-		st1->st1.arr1[0][3] == st2->st1.arr1[0][3] &&
-		st1->st1.arr1[1][0] == st2->st1.arr1[1][0] &&
-		st1->st1.arr1[1][1] == st2->st1.arr1[1][1] &&
-		st1->st1.arr1[1][2] == st2->st1.arr1[1][2] &&
-		st1->st1.arr1[1][3] == st2->st1.arr1[1][3] &&
-	
-		printf("%p\n", &(inputStruct.st1.members1));
-		st1->st1.members1[1] == st2->st1.members1[1] &&
-		st1->st1.members1[2] == st2->st1.members1[2] &&
-		st1->st1.members1[3] == st2->st1.members1[3] &&
-		st1->st1.members1[4] == st2->st1.members1[4] &&
-		
-		printf("%p\n", &(inputStruct.st1.i2));
-		printf("%p\n", &(inputStruct.st1.s2));
-		printf("%p\n", &(inputStruct.st1.st3.s1));
-		printf("%p\n", &(inputStruct.st1.st3.i1));
-		printf("%p\n", &(inputStruct.st1.st3.c1));
-		printf("%p\n", &(inputStruct.st1.st3.str1));
-		printf("%p\n", &(inputStruct.st1.st3.s2));
-		printf("%p\n", &(inputStruct.st1.st3.l1));
-		printf("%p\n", &(inputStruct.st1.str1));
-	
-		printf("%p\n", &(inputStruct.arr1[0][0]));
-		st1->arr1[0][1] == st2->arr1[0][1] &&
-		st1->arr1[0][2] == st2->arr1[0][2] &&
-		st1->arr1[0][3] == st2->arr1[0][3] &&
-		st1->arr1[1][0] == st2->arr1[1][0] &&
-		st1->arr1[1][1] == st2->arr1[1][1] &&
-		st1->arr1[1][2] == st2->arr1[1][2] &&
-		st1->arr1[1][3] == st2->arr1[1][3] &&
-
-		printf("%p\n", &(inputStruct.i2));
-		printf("%p\n", &(inputStruct.s2));
-		printf("%p\n", &(inputStruct.st3.s1));
-		printf("%p\n", &(inputStruct.st3.i1));
-		printf("%p\n", &(inputStruct.st3.c1));
-		printf("%p\n", &(inputStruct.st3.str1));
-		printf("%p\n", &(inputStruct.st3.s2));
-		printf("%p\n", &(inputStruct.st3.l1));
-		printf("%p\n", &(inputStruct.str1));
-
-		printf("%--------------------------------------------\n");*/
-	
 	//
 	// Typecode creation
 	//
