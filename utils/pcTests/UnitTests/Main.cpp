@@ -643,6 +643,147 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 	return returnValue;
 }
 
+struct innerBlackBox03
+{
+	int32_t att1;
+	int64_t att2;
+	float att3;
+};
+
+struct outerBlackBox04
+{
+	innerBlackBox03 innerbb;
+	std::string att2;
+	bool att3;
+};
+
+bool deserializeBlackBox04(eProsima::FastCdr *cdrp)
+{
+
+	outerBlackBox04 inputStruct, outputStruct; 
+	innerBlackBox03 in1;
+	
+	in1.att1 = 5;
+	in1.att2 = 7;
+	in1.att3 = 9.0;
+
+	inputStruct.innerbb = in1;
+	inputStruct.att2 = "OUTER";
+	inputStruct.att3 = true;
+	
+	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		NULL
+	);
+	
+	char *buffer = (char*) malloc(500);
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, 500); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
+	
+	
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+
+	cdr->reset();
+	
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, cdr);
+		
+	cdr->reset();
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bytecodeDeserialization, cdr);
+	
+	bool returnValue = true;
+	
+	returnValue &= (inputStruct.innerbb.att1 == outputStruct.innerbb.att1);
+	returnValue &= (inputStruct.innerbb.att2 == outputStruct.innerbb.att2);
+	returnValue &= (inputStruct.innerbb.att3 == outputStruct.innerbb.att3);
+	returnValue &= (inputStruct.att2 == outputStruct.att2);
+	returnValue &= (inputStruct.att3 == outputStruct.att3);
+	
+	return returnValue;
+}
+
+struct outerBlackBox05
+{
+	innerBlackBox03 innerbb1;
+	std::string att2;
+	bool att3;
+	innerBlackBox03 innerbb2;
+};
+
+bool deserializeBlackBox05()
+{
+	outerBlackBox05 inputStruct, outputStruct; 
+	innerBlackBox03 in1;
+	
+	in1.att1 = 5;
+	in1.att2 = 7;
+	in1.att3 = 9.0;
+
+	inputStruct.innerbb1 = in1;
+	inputStruct.att2 = "OUTER";
+	inputStruct.att3 = true;
+	inputStruct.innerbb2 = in1;
+	
+	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			DynamicFastBuffers::TypecodeAPI::createFloat(),
+			NULL
+		),
+		NULL
+	);
+	
+	char *buffer = (char*) malloc(500);
+	eProsima::FastCdr *cdr;
+	eProsima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eProsima::FastBuffer(buffer, 500); 
+	cdr = new eProsima::FastCdr(*cdrBuffer);
+	
+	
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+
+	cdr->reset();
+	
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, cdr);
+		
+	cdr->reset();
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &outputStruct, bytecodeDeserialization, cdr);
+	
+	bool returnValue = true;
+	
+	returnValue &= (inputStruct.innerbb1.att1 == outputStruct.innerbb1.att1);
+	returnValue &= (inputStruct.innerbb1.att2 == outputStruct.innerbb1.att2);
+	returnValue &= (inputStruct.innerbb1.att3 == outputStruct.innerbb1.att3);
+	returnValue &= (inputStruct.att2 == outputStruct.att2);
+	returnValue &= (inputStruct.att3 == outputStruct.att3);
+	returnValue &= (inputStruct.innerbb2.att1 == outputStruct.innerbb2.att1);
+	returnValue &= (inputStruct.innerbb2.att2 == outputStruct.innerbb2.att2);
+	returnValue &= (inputStruct.innerbb2.att3 == outputStruct.innerbb2.att3);
+	
+	return returnValue;
+}
+
 bool addMemberBlackBox01()
 {
 	DynamicFastBuffers::Typecode *tcInteger;
@@ -877,6 +1018,20 @@ int main()
 		cout << "TEST: deserializeBlackBox03 ended succesfully.\nData Comparison: CORRECT" << endl;
 	}else{
 		cout << "TEST: deserializeBlackBox03 failed.\nData Comparison: FAIL" << endl;
+		return -1;
+	}
+
+	if(deserializeBlackBox04(cdr)){
+		cout << "TEST: deserializeBlackBox04 ended succesfully.\nData Comparison: CORRECT" << endl;
+	}else{
+		cout << "TEST: deserializeBlackBox04 failed.\nData Comparison: FAIL" << endl;
+		return -1;
+	}
+
+	if(deserializeBlackBox05()){
+		cout << "TEST: deserializeBlackBox05 ended succesfully.\nData Comparison: CORRECT" << endl;
+	}else{
+		cout << "TEST: deserializeBlackBox05 failed.\nData Comparison: FAIL" << endl;
 		return -1;
 	}
 
