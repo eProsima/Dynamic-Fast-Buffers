@@ -11,8 +11,6 @@ LNK=ln
 -include $(EPROSIMADIR)/building/makefiles/eProsima.mk
 -include $(BASEDIR)/building/makefiles/dfb.mk
 
-
-
 .PHONY: all
 
 all: dfb
