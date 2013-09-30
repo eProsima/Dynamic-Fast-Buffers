@@ -1,0 +1,21 @@
+﻿Build started 9/16/2013 11:59:10 AM.
+     1>Project "D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceFastInfoset\PerformanceFastInfoset.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\PerformanceFastInfoset.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "Release\PerformanceFastInfoset.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I.\include /I..\..\..\..\boost_1_53_0 /I"C:\Program Files (x86)\AppliedInformatics\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D POCO_STATIC /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Test.cpp
+         Test.cpp
+         Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+         - add -D_WIN32_WINNT=0x0501 to the compiler command line; or
+         - add _WIN32_WINNT=0x0501 to your project's Preprocessor Definitions.
+         Assuming _WIN32_WINNT=0x0501 (i.e. Windows XP target).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceFastInfoset\Release\PerformanceFastInfoset.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:.\lib /LIBPATH:..\..\..\..\..\Libraries\boost_1_53_0\lib\i86 /LIBPATH:"C:\Program Files (x86)\AppliedInformatics\lib" zlib.libkernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\PerformanceFastInfoset.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceFastInfoset\Release\PerformanceFastInfoset.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceFastInfoset\Release\PerformanceFastInfoset.lib" /MACHINE:X86 Release\Test.obj
+     1>LINK : fatal error LNK1181: cannot open input file 'zlib.libkernel32.lib'
+     1>Done Building Project "D:\Proyectos\DynamicFastBuffers\utils\performanceTests\PerformanceFastInfoset\PerformanceFastInfoset.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.71

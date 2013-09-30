@@ -1146,9 +1146,60 @@ inline void testSesar()
 		}
 }
 
+inline void testMIPPositions()
+{
+	std::ifstream ifstream("xml_input_positions.xml", std::ios::in | std::ios::binary);
+	std::ofstream ofstream("xml_input_positions.fis", std::ios::out | std::ios::binary);
+	std::ifstream ifstream2("xml_input_positions.fis", std::ios::in | std::ios::binary);
+	std::ofstream ofstream2("xml_input_positionsFinal.xml", std::ios::out | std::ios::binary);
+	std::stringbuf xml1;
+	std::stringbuf fis;
+	std::stringbuf xml2;
+			
+	std::ostream ostxml1(&xml1);
+	std::ostream ofis(&fis);
+	std::istream ifis(&fis);
+	std::ostream oxml2(&xml2);
+
+	ostxml1 << ifstream.rdbuf();
+
+	std::istream ixml1(&xml1);
+
+	//boost
+
+	for(int i=0; i< 1000; ++i){
+		xml1.pubseekpos(0);
+		ixml1.rdbuf(&xml1);
+		fis.pubseekpos(0);
+		ofis.rdbuf(&fis);
+		ifis.rdbuf(&fis);
+		xml2.pubseekpos(0);
+		oxml2.rdbuf(&xml2);
+
+		try
+		{
+			Poco::FastInfoset::Converter::convertToFIS(ixml1, ofis);
+
+				
+			Poco::FastInfoset::Converter::convertToXML(ifis, oxml2);
+
+		}
+		catch(Poco::Exception &ex)
+		{
+			std::cout << ex.what() << ": " << ex.message() << std::endl;
+			break;
+		}
+	}
+	std::cout << "FAST INFOSET\nMIP Data Set (with Positions)\nSerialized size: " << fis.str().size() << std::endl;
+}
+
+
+
 int main()
 {
-	testSesar();
+	//testSesar();
+
+	testMIPPositions();
 
 	/*for(int i=0; i < 5; ++i)
 	{

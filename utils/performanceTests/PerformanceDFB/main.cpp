@@ -725,7 +725,6 @@ struct complexStruct_2
 inline void testComplexStruct_2()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	complexStruct_2 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -763,6 +762,7 @@ inline void testComplexStruct_2()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -809,7 +809,6 @@ struct complexStruct_4
 inline void testComplexStruct_4()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	complexStruct_4 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -871,6 +870,7 @@ inline void testComplexStruct_4()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -929,7 +929,6 @@ struct complexStruct_6
 inline void testComplexStruct_6()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	complexStruct_6 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1015,6 +1014,7 @@ inline void testComplexStruct_6()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1085,7 +1085,6 @@ struct complexStruct_8
 inline void testComplexStruct_8()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	complexStruct_8 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1195,6 +1194,7 @@ inline void testComplexStruct_8()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1277,7 +1277,6 @@ struct complexStruct_10
 inline void testComplexStruct_10()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	complexStruct_10 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *typecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1411,6 +1410,7 @@ inline void testComplexStruct_10()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1474,7 +1474,6 @@ struct outersimpleStruct_2
 inline void testinnerSimpleStruct_2()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outersimpleStruct_2 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1508,6 +1507,7 @@ inline void testinnerSimpleStruct_2()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1542,7 +1542,6 @@ struct outersimpleStruct_4
 inline void testinnerSimpleStruct_4()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outersimpleStruct_4 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1612,6 +1611,7 @@ inline void testinnerSimpleStruct_4()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1650,7 +1650,6 @@ struct outersimpleStruct_6
 inline void testinnerSimpleStruct_6()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outersimpleStruct_6 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -1772,6 +1771,7 @@ inline void testinnerSimpleStruct_6()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -1814,7 +1814,6 @@ struct outersimpleStruct_8
 inline void testinnerSimpleStruct_8()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outersimpleStruct_8 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -2004,6 +2003,7 @@ inline void testinnerSimpleStruct_8()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -2050,7 +2050,6 @@ struct outersimpleStruct_10
 inline void testinnerSimpleStruct_10()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outersimpleStruct_10 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -2324,6 +2323,7 @@ inline void testinnerSimpleStruct_10()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -2396,7 +2396,6 @@ struct outercomplexStruct_1
 inline void testinnerComplexStruct_1()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outercomplexStruct_1 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -2440,6 +2439,7 @@ inline void testinnerComplexStruct_1()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -2491,7 +2491,6 @@ struct outercomplexStruct_2
 inline void testinnerComplexStruct_2()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outercomplexStruct_2 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -2591,6 +2590,7 @@ inline void testinnerComplexStruct_2()
 	//
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -2657,7 +2657,6 @@ struct outercomplexStruct_3
 inline void testinnerComplexStruct_3()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outercomplexStruct_3 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -2827,6 +2826,7 @@ inline void testinnerComplexStruct_3()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -2899,7 +2899,6 @@ struct outercomplexStruct_4
 inline void testinnerComplexStruct_4()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outercomplexStruct_4 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -3165,6 +3164,7 @@ inline void testinnerComplexStruct_4()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -3246,7 +3246,6 @@ struct outercomplexStruct_5
 inline void testinnerComplexStruct_5()
 {
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
-	boost::timer::auto_cpu_timer t;
 	outercomplexStruct_5 stest1, stest2;
 
 	DynamicFastBuffers::Typecode *outerTypecode = DynamicFastBuffers::TypecodeAPI::createStruct(
@@ -3598,6 +3597,7 @@ inline void testinnerComplexStruct_5()
 
 	eProsima::FastBuffer fastBuffer(buffer, BUFFER_SIZE);
 	eProsima::FastCdr cdr(fastBuffer);
+	boost::timer::auto_cpu_timer t;
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
@@ -4216,6 +4216,8 @@ int main()
 {
 
 	testDFB::innerComplexTestDFB();
+
+	//testDFB::performanceDFB();
 
 	//testDFB::testinnerComplexStruct_2();
 
