@@ -44,9 +44,9 @@ function installer
 
 	# DFB headers
 	mkdir -p tmp/$project/include
-	cp -r ../../../../include tmp/$project/include
+	cp -r ../../../../include tmp/$project
 	# CDR & Marshallingheaders
-	cp -r ../../../../../CDR/include tmp/$project/include
+	cp -r ../../../../../CDR/include tmp/$project
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
 	
