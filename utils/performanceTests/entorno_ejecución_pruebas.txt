@@ -1,0 +1,28 @@
+Bibliotecas:
+
+	Google Protocol Buffers
+		Versión: 2.5.0
+		Arquitectura: Compilada para 64-bit Windows y Linux
+		Operaciones: SerializeToArray y ParseFromArray consecutivas en bucle. Serialización binaria.
+
+	Apache Thrift
+		Versión: 0.9.0
+		Arquitectura: Compilada para 64-bit Windows y Linux
+		Operaciones: resetBuffer, write y read usando buffer en memoria (TMemoryBuffer) y protocolo de serialización binario (TBinaryProtocol).
+		
+	Fast Buffers:
+		Versión: 0.2.0
+		Arquitectura: Compilada para 64-bit Windows y Linux
+		Operaciones: Serialize y deserialize para distintos tipos de datos. Protocolo de serialización Fast CDR
+		
+		
+Entorno de pruebas:
+	
+	Sistema Operativo:
+		Windows: Windows 7 Enterprise Edition, 64-bit, Service Pack 1, actualizado a 01.09.2013
+		Linux: Fedora 19, 64-bit, actualizado a 01.09.2013
+		
+	Máquinas de pruebas:
+		CPU: Intel Core i3-3240 (Ivy Bridge) 3.40GHz, Monoprocesador de doble núcleo con hiperthreading (4 hilos de ejecución), 3 MB caché L3, 2 x 256 KB caché L2), Bus a 5 GT/s DMI, conjunto de inst. 64-bit, tecnología de tablas de páginas extendidas. 
+		RAM: 4 GB DDR3
+		HD: 500 GB SATA2 7200
