@@ -478,7 +478,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
-      <StructMemberAlignment>2Bytes</StructMemberAlignment>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
