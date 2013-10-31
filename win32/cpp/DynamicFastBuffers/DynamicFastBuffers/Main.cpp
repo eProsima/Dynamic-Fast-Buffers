@@ -3981,12 +3981,36 @@ inline void testSizeCalculation()
 */
 namespace align_tests
 {
+	void firsTest() //Compara la diferencia de alineamiento calculado por el compilador y por la función alignment_of
+	{
+		ptrdiff_t align;
+	
+		struct myStruct01{
+			char c0;
+			int32_t i2;
+		};
+		myStruct01 pepe;
+		align = (char*) &pepe.i2 - (char*) &pepe.c0;
 
+		myStruct01 st1;
+		st1.c0 = 1;
+		st1.i2 = 5;
+
+		cout << "Native (c0): " << &(st1) << endl;
+		cout << "Native (i2): " << &(st1.i2) << endl;
+		cout << "Alignof (c0): " << std::alignment_of<char>::value << endl;
+		cout << "Alignof (i2): " << std::alignment_of<int32_t>::value << endl;
+
+		cout << align << endl;
+	}
 };
 
 int main()
 {
+
 	
+
+
 	return 0;
 }
 
