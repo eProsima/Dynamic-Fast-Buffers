@@ -497,6 +497,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\cpp\AlignmentInformation.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\BytecodeAPI.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\CommonData.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\exceptions\NotEnoughParamsException.cpp" />
@@ -504,8 +505,10 @@
     <ClCompile Include="..\..\..\..\src\cpp\exceptions\WrongTypeException.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\SerializerAPI.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\TypecodeAPI.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\include\cpp\AlignmentInformation.h" />
     <ClInclude Include="..\..\..\..\include\cpp\BytecodeAPI.h" />
     <ClInclude Include="..\..\..\..\include\cpp\CommonData.h" />
     <ClInclude Include="..\..\..\..\include\cpp\DFB_dll.h" />

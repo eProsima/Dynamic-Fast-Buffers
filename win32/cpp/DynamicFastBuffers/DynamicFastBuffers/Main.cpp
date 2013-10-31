@@ -20,7 +20,7 @@
 #include <string>
 //#include <fstream>
 #include <string>
-
+/*
 namespace testDFB
 {
 
@@ -724,7 +724,7 @@ inline void testComplexStruct_2()
 	stest1.m5 = "TEST 0";
 	stest1.m6 = "TEST 1";
 	stest1.m7 = 0.0;
-	stest1.m8 = 1.1;
+	stest1.m8 = (float) 1.1;
 	stest1.m9 = 0.0;
 	stest1.m10 = 1.1;
 	stest1.m11 = true;
@@ -823,9 +823,9 @@ inline void testComplexStruct_4()
 	stest1.m11 = "TEST 2";
 	stest1.m12 = "TEST 3";
 	stest1.m13 = 0.0;
-	stest1.m14 = 1.1;
-	stest1.m15 = 2.2;
-	stest1.m16 = 3.3;
+	stest1.m14 = (float) 1.1;
+	stest1.m15 = (float) 2.2;
+	stest1.m16 = (float) 3.3;
 	stest1.m17 = 0.0;
 	stest1.m18 = 1.1;
 	stest1.m19 = 2.2;
@@ -958,10 +958,10 @@ inline void testComplexStruct_6()
 	stest1.m17 = "TEST 4";
 	stest1.m18 = "TEST 5";
 	stest1.m19 = 0.0;
-	stest1.m20 = 1.1;
-	stest1.m21 = 2.2;
-	stest1.m22 = 3.3;
-	stest1.m23 = 4.4;
+	stest1.m20 = (float) 1.1;
+	stest1.m21 = (float) 2.2;
+	stest1.m22 = (float) 3.3;
+	stest1.m23 = (float) 4.4;
 	stest1.m24 = 5.5;
 	stest1.m25 = 0.0;
 	stest1.m26 = 1.1;
@@ -1129,13 +1129,13 @@ inline void testComplexStruct_8()
 	stest1.m23 = "TEST 6";
 	stest1.m24 = "TEST 7";
 	stest1.m25 = 0.0;
-	stest1.m26 = 1.1;
-	stest1.m27 = 2.2;
-	stest1.m28 = 3.3;
-	stest1.m29 = 4.4;
-	stest1.m30 = 5.5;
-	stest1.m31 = 6.6;
-	stest1.m32 = 7.7;
+	stest1.m26 = (float) 1.1;
+	stest1.m27 = (float) 2.2;
+	stest1.m28 = (float) 3.3;
+	stest1.m29 = (float) 4.4;
+	stest1.m30 = (float) 5.5;
+	stest1.m31 = (float) 6.6;
+	stest1.m32 = (float) 7.7;
 	stest1.m33 = 0.0;
 	stest1.m34 = 1.1;
 	stest1.m35 = 2.2;
@@ -1336,10 +1336,10 @@ inline void testComplexStruct_10()
 	stest1.m29 = "TEST 8";
 	stest1.m30 = "TEST 9";
 	stest1.m31 = 0.0;
-	stest1.m32 = 1.1;
+	stest1.m32 = (float) 1.1;
 	stest1.m33 = 2.2;
-	stest1.m34 = 3.3;
-	stest1.m35 = 4.4;
+	stest1.m34 = (float) 3.3;
+	stest1.m35 = (float) 4.4;
 	stest1.m36 = 5.5;
 	stest1.m37 = 6.6;
 	stest1.m38 = 7.7;
@@ -2378,33 +2378,6 @@ inline void testinnerComplexStruct_1()
 	stest1.m6 = 107.8;
 	stest1.m7 = true;
 	
-	//test
-	/*cout << "Mem Mapping: " << endl;
-	cout << &stest1.m1 << endl;
-	cout << &stest1.m2 << endl;
-	cout << &stest1.m3 << endl;
-	printf("%p\n", (void*) &stest1.m4.m1);
-	printf("%p\n", (void*) &stest1.m4.m2);
-	printf("%p\n", (void*) &stest1.m4.m3);
-	printf("%p\n", (void*) &stest1.m4.m4);
-	printf("%p\n", (void*) &stest1.m4.m5);
-	printf("%p\n", (void*) &stest1.m4.m6);
-	cout << &stest1.m5 << endl;
-	cout << &stest1.m6 << endl;
-	cout << &stest1.m7 << endl;
-	
-	cout << "JUMPS: " << endl;
-	for(int i=0; i < bytecodeSerialization->getAlignment()->size(); ++i){
-		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
-	}
-	cout << endl;*/
-	//end test
-
-	//cout << "JUMPS: " << endl;
-	/*for(int i=0; i < bytecodeSerialization->getAlignment()->size(); ++i){
-		cout << bytecodeSerialization->getAlignment()->at(i) << ", ";
-	}*/
-
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
@@ -3605,6 +3578,9 @@ inline void performanceDFB()
 
 }
 
+namespace old_tests
+{
+
 struct testArrayStructure
 {
 	int32_t att1;
@@ -3635,39 +3611,6 @@ inline void testArrays()
 	arrst1.att6 = true;
 	arrst1.att7 = 50;
 	
-	/*printf("%p\n", &arrst1.att1);
-	printf("%p\n", &arrst1.att2);
-	printf("%p\n", &arrst1.att3);
-	printf("%p\n", &arrst1.att4[0][0]);
-	printf("%p\n", &arrst1.att4[0][1]);
-	printf("%p\n", &arrst1.att4[0][2]);
-	printf("%p\n", &arrst1.att4[0][3]);
-	printf("%p\n", &arrst1.att4[1][0]);
-	printf("%p\n", &arrst1.att4[1][1]);
-	printf("%p\n", &arrst1.att4[1][2]);
-	printf("%p\n", &arrst1.att4[1][3]);
-	printf("%p\n", &arrst1.att4[2][0]);
-	printf("%p\n", &arrst1.att4[2][1]);
-	printf("%p\n", &arrst1.att4[2][2]);
-	printf("%p\n", &arrst1.att4[2][3]);
-	
-	printf("%p\n", &arrst1.att5[0][0]);
-	printf("%p\n", &arrst1.att5[0][1]);
-	printf("%p\n", &arrst1.att5[0][2]);
-	printf("%p\n", &arrst1.att5[0][3]);
-	printf("%p\n", &arrst1.att5[1][0]);
-	printf("%p\n", &arrst1.att5[1][1]);
-	printf("%p\n", &arrst1.att5[1][2]);
-	printf("%p\n", &arrst1.att5[1][3]);
-	printf("%p\n", &arrst1.att5[2][0]);
-	printf("%p\n", &arrst1.att5[2][1]);
-	printf("%p\n", &arrst1.att5[2][2]);
-	printf("%p\n", &arrst1.att5[2][3]);
-	
-	printf("%p\n", &arrst1.att5);
-	printf("%p\n", &arrst1.att6);
-	printf("%p\n", &arrst1.att7);*/
-
 	DynamicFastBuffers::Typecode *tcArray = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
 		DynamicFastBuffers::TypecodeAPI::createBoolean(),
@@ -3882,14 +3825,14 @@ inline void testComplexVectors()
 {
 	/*
 	* CDR Serializer declaration
-	*/
+	/
 	char buffer[500];
 	eProsima::FastBuffer cdrBuffer(buffer, 500);
 	eProsima::FastCdr cdr(cdrBuffer);
 	
 	/*
 	* Data creation
-	*/
+	/
 	short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
 	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
 
@@ -3923,7 +3866,7 @@ inline void testComplexVectors()
 
 	/*
 	* Typecode creation
-	*/
+	/
 	DynamicFastBuffers::Typecode* struct1 = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createShort(),
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
@@ -3965,32 +3908,32 @@ inline void testComplexVectors()
 
 	/*
 	* Bytecode for serialization
-	*/
+	/
 	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_TRUE);
 	
 	/*
 	* Data serialization
-	*/
+	/
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bc1, &cdr);
 		
 	/*
 	* Buffer reset
-	*/
+	/
 	cdr.reset();
 
 	/*
 	* Bytecode for deserialization
-	*/
+	/
 	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_FALSE);
 	
 	/*
 	* Data deserialization
-	*/
+	/
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bc1, &cdr);
 	
 	/*
 	* Typecode deletes
-	*/
+	/
 	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
 }
 
@@ -4034,9 +3977,16 @@ inline void testSizeCalculation()
 	std::cout << "tc5: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc5) << std::endl;
 }
 
+};
+*/
+namespace align_tests
+{
+
+};
+
 int main()
 {
-	testSizeCalculation();
+	
 	return 0;
 }
 

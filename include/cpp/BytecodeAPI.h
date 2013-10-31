@@ -13,6 +13,7 @@
 #include "cpp/CommonData.h"
 #include "cpp/SerializerAPI.h"
 #include "cpp/exceptions/WrongParamException.h"
+#include "cpp/AlignmentInformation.h"
 
 namespace DynamicFastBuffers
 {
@@ -23,6 +24,8 @@ namespace DynamicFastBuffers
 	class Dfb_DllAPI BytecodeAPI
 	{
 	private:
+
+		AlignmentInfo *alignmentInfo_;
 
 		/*!
          * @brief This function generates a bytecode for data serialization.

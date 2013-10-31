@@ -47,6 +47,12 @@
     <ClCompile Include="..\..\..\..\src\cpp\TypecodeAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\cpp\AlignmentInformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\include\cpp\exceptions\NotEnoughParamsException.h">
@@ -74,6 +80,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\include\cpp\DFB_version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\cpp\AlignmentInformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

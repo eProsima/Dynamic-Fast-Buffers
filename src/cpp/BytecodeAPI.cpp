@@ -10,6 +10,7 @@ namespace DynamicFastBuffers
 		if(typecode == NULL){
 			throw WrongParamException("Parameter inserted is null. A Typecode object must be specified.");
 		}
+		
 		void *index = NULL;
 		Bytecode *bytecode = new Bytecode();
 		if(flag){
@@ -421,6 +422,37 @@ namespace DynamicFastBuffers
 			align += sizeof(int);
 		}
 		return align;
+	}
+
+	inline size_t calculateJump (void *pointer, DynamicFastBuffers::Typecode *tc)
+	{
+		switch (tc->getKind())
+		{
+		case TC_CHARACTER:
+			return AlignmentInfo::charJump(pointer);
+			break;
+		case TC_SHORT:
+
+			break;
+		case TC_INTEGER:
+
+			break;
+		case TC_LONG:
+
+			break;
+		case TC_FLOAT:
+
+			break;
+		case TC_DOUBLE:
+
+			break;
+		case TC_STRING:
+
+			break;
+		case TC_BOOLEAN:
+
+			break;
+		}
 	}
 };
 
