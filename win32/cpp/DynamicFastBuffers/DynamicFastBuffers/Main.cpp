@@ -3990,24 +3990,82 @@ namespace align_tests
 		char att1;
 		char att2;
 	};
-
 	ptrdiff_t charAlign;
+
+	struct shortAlignment_st
+	{
+		char att1;
+		short att2;
+	};
+	ptrdiff_t shortAlign;
 
 	struct intAlignment_st
 	{
 		char att1;
 		int32_t att2;
 	};
-
 	ptrdiff_t intAlign;
+
+	struct longAlignment_st
+	{
+		char att1;
+		int64_t att2;
+	};
+	ptrdiff_t longAlign;
+
+	struct floatAlignment_st
+	{
+		char att1;
+		float att2;
+	};
+	ptrdiff_t floatAlign;
+
+	struct doubleAlignment_st
+	{
+		char att1;
+		double att2;
+	};
+	ptrdiff_t doubleAlign;
+
+	struct stringAlignment_st
+	{
+		char att1;
+		std::string att2;
+	};
+	ptrdiff_t stringAlign;
+
+	struct booleanAlignment_st
+	{
+		char att1;
+		bool att2;
+	};
+	ptrdiff_t booleanAlign;
 
 	void initialize()
 	{
 		charAlignment_st charst;
 		charAlign = (char*) &charst.att2 - (char*) &charst.att1;
 
+		shortAlignment_st shortst;
+		shortAlign = (char*) &shortst.att2 - (char*) &shortst.att1;
+
 		intAlignment_st intst;
 		intAlign = (char*) &intst.att2 - (char*) &intst.att1;
+
+		longAlignment_st longst;
+		longAlign = (char*) &longst.att2 - (char*) &longst.att1;
+
+		floatAlignment_st floatst;
+		floatAlign = (char*) &floatst.att2 - (char*) &floatst.att1;
+
+		doubleAlignment_st doublest;
+		doubleAlign = (char*) &doublest.att2 - (char*) &doublest.att1;
+
+		stringAlignment_st stringst;
+		stringAlign = (char*) &stringst.att2 - (char*) &stringst.att1;
+
+		booleanAlignment_st booleanst;
+		booleanAlign = (char*) &booleanst.att2 - (char*) &booleanst.att1;
 	}
 
 	/*void firsTest() //Compara la diferencia de alineamiento calculado por el compilador y por la función alignment_of
@@ -4033,16 +4091,14 @@ namespace align_tests
 		cout << align << endl;
 	}*/
 
-	size_t calculatePadding(void* position, ptrdiff_t align)
+	size_t calculatePadding(void* position, void* initialPosition, ptrdiff_t align)
 	{
 		size_t padding = 0;
 		size_t alignment = align;
-		size_t calc = ((size_t) position % alignment);
-		cout << "Module: " << calc << endl;
-
-		if (calc == 0){
-			//Do nothing
-		} else {
+		ptrdiff_t rawPosition = (char*)position - (char*)initialPosition;
+		size_t calc = ((size_t) rawPosition % alignment);
+		
+		if (calc != 0){
 			padding = alignment - (calc);
 		}
 
@@ -4062,6 +4118,134 @@ namespace align_tests
 		cout << ofs << endl;
 	}
 
+	void charAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			char c1;
+			char i2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		align = charAlign;
+
+		position = &(stIn.c1);
+		position = (char*) position + sizeof(char);
+
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'charAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'charAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void shortAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			short c1;
+			short i2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		align = shortAlign;
+
+		position = &(stIn.c1);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'shortAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'shortAlignmentTest01': ERROR" << endl;
+		}
+	}
+
 	void intAlignmentTest01() // Estructura con un char y un entero, para comprobar alineamiento con distintos packings
 	{
 		struct intAlignment_st
@@ -4072,24 +4256,22 @@ namespace align_tests
 
 		int ofs = (int) offsetof(struct intAlignment_st, i1);
 
-		cout << "Offsetof: " << ofs << endl;
-
 		intAlignment_st stIn/*, stOut*/;
 		stIn.c0 = 1;
 		stIn.i1 = 5;
+
+		void* initialPosition = &stIn;
 
 		ptrdiff_t align = intAlign;
 
 		void *position = &(stIn.c0);
 		position = (char*) position+1;
 
-		size_t padding = calculatePadding(position, align);
+		size_t padding = calculatePadding(position, initialPosition, align);
 
 		position = (char*) position + padding;
 
 		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.c0;
-
-		cout << "OurOffset: " << ourOffset << endl;
 
 		if (ofs == ourOffset){
 			cout << "Test 'intAlignmentTest01': SUCCESS" << endl;
@@ -4122,14 +4304,15 @@ namespace align_tests
 
 		//Primera posicion
 
+		void* initialPosition = &stIn;
+
 		ofs = (int) offsetof(struct intAlignment_st, c1);
 
 		ptrdiff_t align = charAlign;
 
-		void *position = &(stIn.i0);
-		position = (char*) position+1;
-
-		size_t padding = calculatePadding(position, align);
+		void *position = &(stIn.c1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
 
 		position = (char*) position + padding;
 
@@ -4146,7 +4329,7 @@ namespace align_tests
 		position = &(stIn.c1);
 		position = (char*) position+1;
 
-		padding = calculatePadding(position, align);
+		padding = calculatePadding(position, initialPosition, align);
 
 		position = (char*) position + padding;
 
@@ -4161,16 +4344,341 @@ namespace align_tests
 		}
 	}
 
+	void longAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			short i2;
+			int64_t c1;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		//Primera posicion
+
+		void* initialPosition = &stIn;
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		align = longAlign;
+
+		position = &(stIn.i2);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'longAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'longAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void floatAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			char att2;
+			float att3;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 1;
+		stIn.att2 = 5;
+		stIn.att3 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att3);
+
+		align = floatAlign;
+
+		position = &(stIn.att2);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'floatAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'floatAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void doubleAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			short att1;
+			double att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = doubleAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'doubleAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'doubleAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void stringAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			std::string att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = "Hello World";
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = stringAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'stringAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'stringAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void booleanAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			bool att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = true;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = booleanAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'booleanAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'booleanAlignmentTest01': ERROR" << endl;
+		}
+	}
+
 	
 };
 
 int main()
 {
 
+	cout << "void*: " << sizeof(void*) << endl;
+	cout << "vector void: " << sizeof(vector<void*>) << endl;
+	cout << "vector int: " << sizeof(vector<int32_t>) << endl;
+	cout << "vector long: " << sizeof(vector<int64_t>) << endl;
+	cout << "vector double: " << sizeof(vector<double>) << endl;
+	cout << "vector string: " << sizeof(vector<std::string>) << endl;
+
 	align_tests::initialize();
 
+	align_tests::charAlignmentTest01();
+	align_tests::shortAlignmentTest01();
 	align_tests::intAlignmentTest01();
 	align_tests::intAlignmentTest02();
+	align_tests::longAlignmentTest01();
+	align_tests::floatAlignmentTest01();
+	align_tests::doubleAlignmentTest01();
+	align_tests::stringAlignmentTest01();
+	align_tests::booleanAlignmentTest01();
 
 
 	string s;
