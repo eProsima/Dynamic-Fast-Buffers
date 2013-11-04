@@ -88,6 +88,7 @@ namespace DynamicFastBuffers
 		//! @brief The size of the string object represented by this Typecode.
 		int size_str_;
 		
+		size_t align_;
 		/*!
         * @brief Checks if a Typecode object with his attribute kind_ set to the specified value provided as parameter can be added to this Typecode.
 		* @return An integer code that represents if a Typecode objetc can or cannot be added to current one.
@@ -99,19 +100,31 @@ namespace DynamicFastBuffers
 		/*!
         * @brief Default constructor.
         */
-		Typecode();
+		Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0){};
 
 		/*!
         * @brief Overwritten constructor in which the kind of the data type is specified as parameter.
 		* @param kind Enumerator describing the Typecode data type.
         */
-		Typecode(tc_kind kind);
+		Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0)
+		{
+			preprocess(kind);
+		};
 
 		/*!
         * @brief Copy constructor.
 		* @param other A Typecode object from which all data is copied.
         */
-		Typecode(const Typecode& other);
+		Typecode(const Typecode& other) : kind_(other.kind_), counter_(other.counter_), members_(other.members_),
+		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_), size_str_(other.size_str_)
+		{
+			if(other.type_ != NULL)
+			{
+				type_ = new Typecode(*other.type_);
+			}
+
+			preprocess(other.kind_);
+		}
 
 		/*!
         * @brief Default constructor. Frees all memory reserved for being used by its internal data structures.
@@ -226,7 +239,11 @@ namespace DynamicFastBuffers
 		* @return The size the string.
         */
 		void setStructSize(int structSize);
-		
+
+		void preprocess(tc_kind kind)
+			  {
+		align_ = 5;
+	    }
 	};
 
 	/*!
@@ -300,5 +317,7 @@ namespace DynamicFastBuffers
 		
 	};
 };
+
+#include "cpp/Preprocessor.h"
 
 #endif //_COMMON_DATA_

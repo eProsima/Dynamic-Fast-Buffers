@@ -43,7 +43,7 @@ using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
 
-#define NUMBER_OF_LOOPS 1000000
+#define NUMBER_OF_LOOPS 1000
 
 
 namespace testThrift

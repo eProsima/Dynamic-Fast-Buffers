@@ -47,9 +47,6 @@
     <ClCompile Include="..\..\..\..\src\cpp\TypecodeAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\cpp\AlignmentInformation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,7 +79,7 @@
     <ClInclude Include="..\..\..\..\include\cpp\DFB_version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\AlignmentInformation.h">
+    <ClInclude Include="..\..\..\..\include\cpp\Preprocessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,8 +25,6 @@ namespace DynamicFastBuffers
 	{
 	private:
 
-		AlignmentInfo *alignmentInfo_;
-
 		/*!
          * @brief This function generates a bytecode for data serialization.
 		 * @param bytecode A pointer to a Bytecode object where all function pointers for serializing data will be allocated.
@@ -60,6 +58,9 @@ namespace DynamicFastBuffers
 		 * @return The number of Bytes of padding inserted by the compiler whan aligning consecutive data types.
 		 */
 		static inline size_t alignment(size_t dataSize, void *&m_currentPosition);
+
+		static inline size_t calculatePadding (void *&position, DynamicFastBuffers::Typecode *tc);
+
 	public:
 
 		/*!

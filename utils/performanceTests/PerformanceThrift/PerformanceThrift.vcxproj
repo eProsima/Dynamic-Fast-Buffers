@@ -38,6 +38,9 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -55,6 +58,9 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -107,7 +113,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\thrift-0.9.0;..\..\..\..\thrift-0.9.0\lib\cpp\src;..\..\..\..\boost_1_53_0;.\gen-cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Bibliotecas\thrift-0.9.1;..\..\..\..\..\Bibliotecas\thrift-0.9.1\lib\cpp\src;..\..\..\..\..\Bibliotecas\boost_1_53_0;.\gen-cpp</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SIGNED_RIGHT_SHIFT_IS;ARITHMETIC_RIGHT_SHIFT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -115,8 +121,19 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalLibraryDirectories>..\..\..\..\boost_1_53_0\lib64-msvc-10.0;..\..\..\..\thrift-0.9.0\lib\cpp\x64\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\..\Bibliotecas\boost_1_53_0\lib64-msvc-10.0;..\..\..\..\..\Bibliotecas\thrift-0.9.1\lib\cpp\x64\Release</AdditionalLibraryDirectories>
     </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>..\..\..\..\..\Bibliotecas\boost_1_53_0\lib64-msvc-10.0;..\..\..\..\..\Bibliotecas\thrift-0.9.1\lib\cpp\x64\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libthrift.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Bibliotecas\thrift-0.9.1;..\..\..\..\..\Bibliotecas\thrift-0.9.1\lib\cpp\src;..\..\..\..\..\Bibliotecas\boost_1_53_0;.\gen-cpp</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;SIGNED_RIGHT_SHIFT_IS;ARITHMETIC_RIGHT_SHIFT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gen-cpp\fileSimple_constants.cpp" />

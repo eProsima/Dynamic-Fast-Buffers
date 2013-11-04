@@ -403,7 +403,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CONSOLE;EPROSIMA_WIN32;EPROSIMA_CPP_DLL_VARIABLE;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
-      <StructMemberAlignment>2Bytes</StructMemberAlignment>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -479,7 +479,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;__LITTLE_ENDIAN__;DFB_DLL_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\include;$(ProjectDir)..\..\..\..\..\CDR\include\;$(ProjectDir)..\..\..\..\..\CDR\include\cpp\;$(EPROSIMADIR)\code\</AdditionalIncludeDirectories>
-      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -499,7 +499,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\cpp\AlignmentInformation.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\BytecodeAPI.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\CommonData.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\exceptions\NotEnoughParamsException.cpp" />
@@ -510,7 +509,6 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\cpp\AlignmentInformation.h" />
     <ClInclude Include="..\..\..\..\include\cpp\BytecodeAPI.h" />
     <ClInclude Include="..\..\..\..\include\cpp\CommonData.h" />
     <ClInclude Include="..\..\..\..\include\cpp\DFB_dll.h" />
@@ -518,6 +516,7 @@
     <ClInclude Include="..\..\..\..\include\cpp\exceptions\NotEnoughParamsException.h" />
     <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongParamException.h" />
     <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongTypeException.h" />
+    <ClInclude Include="..\..\..\..\include\cpp\Preprocessor.h" />
     <ClInclude Include="..\..\..\..\include\cpp\SerializerAPI.h" />
     <ClInclude Include="..\..\..\..\include\cpp\TypecodeAPI.h" />
   </ItemGroup>
