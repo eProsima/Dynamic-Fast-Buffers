@@ -22,10 +22,10 @@ namespace DynamicFastBuffers
 		}
 		
 		//Test--
-		//for(int i=0; i<bytecode->getAlignment()->size(); ++i){
-		//	printf("%d, ", bytecode->getAlignment()->at(i));
-		//}
-		//std::cout << endl;
+		/*for(int i=0; i<bytecode->getAlignment()->size(); ++i){
+			printf("%d, ", bytecode->getAlignment()->at(i));
+		}
+		std::cout << endl;*/
 		//--Test
 
 		return bytecode; 
@@ -72,24 +72,24 @@ namespace DynamicFastBuffers
 						insertJumps(&members[i], bytecode, index, initialPosition, added);
 						added = true;
 						generateBytecodeSerialization(bytecode, &members[i], index, initialPosition, added);
-						added = false;
-
-						/*if(i==0){
-							members[i].setStructSize(typecode->getSize());
+						//added = false;
+						if(i + 1 < count){
+							if(members[i+1].getAlign() > members[i].getAlign()) {
+								added = false;
+							} else {
+								added = false;
+								insertJumps(&members[i], bytecode, index, initialPosition, added);
+								added = true;
+							}
 						}
-						generateBytecodeSerialization(bytecode, &members[i], index, initialPosition);
-						if(i != count-1){ //If struct is not the last member
-							insertJumps(&members[i], bytecode, index, initialPosition);
-						}*/
+
 					}else{ //other kind
-						//if(i==0){ //First element
-							//insertJumps(typecode, bytecode, index, initialPosition);
-						//}else{//Other elements
+						
 						insertJumps(&members[i], bytecode, index, initialPosition, added);
 						added = false;
-						//}
 						generateBytecodeSerialization(bytecode, &members[i], index, initialPosition, added);
 					}
+					
 				}
 			}
 			break;
@@ -208,24 +208,24 @@ namespace DynamicFastBuffers
 						insertJumps(&members[i], bytecode, index, initialPosition, added);
 						added = true;
 						generateBytecodeDeserialization(bytecode, &members[i], index, initialPosition, added);
-						added = false;
-
-						/*if(i==0){
-							members[i].setStructSize(typecode->getSize());
+						//added = false;
+						if(i + 1 < count){
+							if(members[i+1].getAlign() > members[i].getAlign()) {
+								added = false;
+							} else {
+								added = false;
+								insertJumps(&members[i], bytecode, index, initialPosition, added);
+								added = true;
+							}
 						}
-						generateBytecodeSerialization(bytecode, &members[i], index, initialPosition);
-						if(i != count-1){ //If struct is not the last member
-							insertJumps(&members[i], bytecode, index, initialPosition);
-						}*/
+
 					}else{ //other kind
-						//if(i==0){ //First element
-							//insertJumps(typecode, bytecode, index, initialPosition);
-						//}else{//Other elements
+						
 						insertJumps(&members[i], bytecode, index, initialPosition, added);
 						added = false;
-						//}
 						generateBytecodeDeserialization(bytecode, &members[i], index, initialPosition, added);
 					}
+					
 				}
 			}
 			break;

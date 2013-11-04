@@ -466,6 +466,30 @@ namespace DynamicFastBuffers
 				} att2;
 			};
 			ptrdiff_t sequenceStructAlign;
+
+			struct paddingBehindStructure1
+			{
+				char att1;
+				struct innerSt{
+					short att1;
+					char att2;
+				} att2;
+				char att3;
+			};
+			ptrdiff_t paddingBehindStructure1Align;
+
+			/*struct paddingBehindStructure2
+			{
+				char att1;
+				struct innerSt{
+					int32_t att1;
+					char att2;
+				} att2;
+				char att3;
+			};
+			ptrdiff_t paddingBehindStructure2Align;*/
+
+			bool paddingBehindStructures;
 		
 		public:
 
@@ -530,6 +554,14 @@ namespace DynamicFastBuffers
 				sequenceStructAlignment_st sequencestructst;
 				sequenceStructAlign = (char*) &sequencestructst.att2.att1 - (char*) &sequencestructst.att1;
 
+				paddingBehindStructure1 pbs1;
+				paddingBehindStructure1Align = (char*) &pbs1.att3 - (char*) &pbs1.att2.att2;
+				if (paddingBehindStructure1Align > charAlign) {
+					paddingBehindStructures = true;
+				} else {
+					paddingBehindStructures = false;
+				}
+
 			}
 
 			size_t getCharAlign()
@@ -591,12 +623,15 @@ namespace DynamicFastBuffers
 			{
 				return longStructAlign;
 			}
+
+			bool getPaddingBehindStructures()
+			{
+				return paddingBehindStructures;
+			}
 			
 		};
 	};
 	
 };
-
-//#include "cpp/Preprocessor.h"
 
 #endif //_COMMON_DATA_

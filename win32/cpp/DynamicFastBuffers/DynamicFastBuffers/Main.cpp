@@ -5890,7 +5890,7 @@ namespace align_tests
 namespace newTests
 {
 
-	struct simpleStruct
+	struct simpleStruct1
 	{
 		char att0;
 		int32_t att1;
@@ -5901,10 +5901,10 @@ namespace newTests
 		} att3;
 	};
 
-	inline void simpleStructTest() //Estructura como último elemento
+	inline void simpleStructTest1() //Estructura como último elemento
 	{
 
-		simpleStruct in;
+		simpleStruct1 in;
 		in.att0 = 'a';
 		in.att1 = 5;
 		in.att2 = 2;
@@ -6145,6 +6145,64 @@ namespace newTests
 
 	}
 
+	struct paddingBehindStructure1
+	{
+		char att1;
+		struct innerSt{
+			int32_t att1;
+			char att2;
+		} att2;
+		/*struct innerSt2{
+			short att1;
+			char att2;
+		} att3;*/
+		char att4;
+	};
+
+	inline void simpleStructTest7() //Probar padding detrás de las estructuras
+	{
+
+		paddingBehindStructure1 in, out;
+		in.att1 = 'a';
+		in.att2.att1 = 2;
+		in.att2.att2 = 'm';
+		/*in.att3.att1 = 3;
+		in.att3.att2 = 'n';*/
+		in.att4 = 'b';
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createInteger(),
+				TypecodeAPI::createCharacter(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			NULL
+		);
+
+		Bytecode* bytecodeSerialization = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+		Bytecode* bytecodeDeserialization = BytecodeAPI::generateBytecode(tc, DESERIALIZE);
+
+		char *buffer = (char*)calloc(500, sizeof(char));
+		
+		eProsima::FastBuffer fastBuffer(buffer, 500);
+		eProsima::FastCdr cdr(fastBuffer);
+	 
+	
+
+		for(int count = 0; count < 100; ++count)
+		{
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::serialize((void*) &in, bytecodeSerialization, &cdr);
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::deserialize((void*) &out, bytecodeDeserialization, &cdr);
+		}
+
+		free(buffer);
+
+	}
+
 
 
 };
@@ -6162,7 +6220,7 @@ int main()
 
 	align_tests::initialize();
 
-	/*cout << "Simple types: " << endl;
+	cout << "Simple types: " << endl;
 	align_tests::charAlignmentTest01();
 	align_tests::shortAlignmentTest01();
 	align_tests::intAlignmentTest01();
@@ -6193,17 +6251,21 @@ int main()
 	align_tests::doubleStructAlignmentTest01();
 	align_tests::stringStructAlignmentTest01();
 	align_tests::booleanStructAlignmentTest01();
-	align_tests::sequenceStructAlignmentTest01();*/
+	align_tests::sequenceStructAlignmentTest01();
 	
-	//newTests::simpleStructTest6();
-	//testDFB::simpleTestDFB();
-	//testDFB::complexTestDFB();
-	//testDFB::innerSimpleTestDBF();
-	testDFB::testinnerComplexStruct_2();
+	/*newTests::simpleStructTest1();
+	newTests::simpleStructTest2();
+	newTests::simpleStructTest3();
+	newTests::simpleStructTest4();
+	newTests::simpleStructTest5();
+	newTests::simpleStructTest6();
+	newTests::simpleStructTest7();*/
 
+	testDFB::performanceDFB();
+	
 
-	/*string s;
-	cin >> s;*/
+	string s;
+	cin >> s;
 	return 0;
 }
 
