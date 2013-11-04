@@ -43,8 +43,8 @@ namespace DynamicFastBuffers
 	//! @brief This enumeration is used to specify if user wants to create a Bytecode for serialization or deserialization.
 	enum flag
 	{
-		FLAG_FALSE = 0,
-		FLAG_TRUE
+		DESERIALIZE = 0,
+		SERIALIZE
 	};
 
 	/*! 
@@ -100,30 +100,25 @@ namespace DynamicFastBuffers
 		/*!
         * @brief Default constructor.
         */
-		Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0){};
+		Typecode() : kind_(TC_NOTYPE), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0), align_(0){};
 
 		/*!
         * @brief Overwritten constructor in which the kind of the data type is specified as parameter.
 		* @param kind Enumerator describing the Typecode data type.
         */
-		Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0)
-		{
-			preprocess(kind);
-		};
+		Typecode(tc_kind kind) : kind_(kind), members_(0), counter_(0), type_(0), dimensions_(1), structSize_(0), size_str_(0), align_(0){};
 
 		/*!
         * @brief Copy constructor.
 		* @param other A Typecode object from which all data is copied.
         */
 		Typecode(const Typecode& other) : kind_(other.kind_), counter_(other.counter_), members_(other.members_),
-		content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_), size_str_(other.size_str_)
+			content_(other.content_), type_(other.type_), maxLength_(other.maxLength_), dimensions_(other.dimensions_), structSize_(other.structSize_), size_str_(other.size_str_), align_(other.align_)
 		{
 			if(other.type_ != NULL)
 			{
 				type_ = new Typecode(*other.type_);
 			}
-
-			preprocess(other.kind_);
 		}
 
 		/*!
@@ -240,10 +235,15 @@ namespace DynamicFastBuffers
         */
 		void setStructSize(int structSize);
 
-		void preprocess(tc_kind kind)
-			  {
-		align_ = 5;
-	    }
+		void setAlign(size_t align)
+		{
+			align_ = align;
+		}
+
+		size_t getAlign()
+		{
+			return align_;
+		}
 	};
 
 	/*!
@@ -262,7 +262,7 @@ namespace DynamicFastBuffers
 
 		//! @brief This attribute represents the number of slots of the array (in case this Bytecode is for serializing an array).
 		int* size_;
-	
+
 	public:
 
 		/*!
@@ -313,11 +313,290 @@ namespace DynamicFastBuffers
 		* @param value The padding (in Bytes) to be added.
         */
 		void addAlignment(size_t value);
-		
-		
+
 	};
+
+	namespace processor
+	{
+		class AlignmentInfo
+		{
+
+		private:
+		
+			struct charAlignment_st
+			{
+				char att1;
+				char att2;
+			};
+			ptrdiff_t charAlign;
+
+			struct shortAlignment_st
+			{
+				char att1;
+				short att2;
+			};
+			ptrdiff_t shortAlign;
+
+			struct intAlignment_st
+			{
+				char att1;
+				int32_t att2;
+			};
+			ptrdiff_t intAlign;
+
+			struct longAlignment_st
+			{
+				char att1;
+				int64_t att2;
+			};
+			ptrdiff_t longAlign;
+
+			struct floatAlignment_st
+			{
+				char att1;
+				float att2;
+			};
+			ptrdiff_t floatAlign;
+
+			struct doubleAlignment_st
+			{
+				char att1;
+				double att2;
+			};
+			ptrdiff_t doubleAlign;
+
+			struct stringAlignment_st
+			{
+				char att1;
+				std::string att2;
+			};
+			ptrdiff_t stringAlign;
+
+			struct booleanAlignment_st
+			{
+				char att1;
+				bool att2;
+			};
+			ptrdiff_t booleanAlign;
+
+			struct sequenceAlignment_st
+			{
+				char att1;
+				vector<void*> att2;
+			};
+			ptrdiff_t sequenceAlign;
+
+			struct charStructAlignment_st
+			{
+				char att1;
+				struct st{
+					char att1;
+				} att2;
+			};
+			ptrdiff_t charStructAlign;
+
+			struct shortStructAlignment_st
+			{
+				char att1;
+				struct st{
+					short att1;
+				} att2;
+			};
+			ptrdiff_t shortStructAlign;
+
+			struct intStructAlignment_st
+			{
+				char att1;
+				struct st{
+					int32_t att1;
+				} att2;
+			};
+			ptrdiff_t intStructAlign;
+
+			struct longStructAlignment_st
+			{
+				char att1;
+				struct st{
+					int64_t att1;
+				} att2;
+			};
+			ptrdiff_t longStructAlign;
+
+			struct floatStructAlignment_st
+			{
+				char att1;
+				struct st{
+					float att1;
+				} att2;
+			};
+			ptrdiff_t floatStructAlign;
+
+			struct doubleStructAlignment_st
+			{
+				char att1;
+				struct st{
+					double att1;
+				} att2;
+			};
+			ptrdiff_t doubleStructAlign;
+
+			struct stringStructAlignment_st
+			{
+				char att1;
+				struct st{
+					std::string att1;
+				} att2;
+			};
+			ptrdiff_t stringStructAlign;
+
+			struct booleanStructAlignment_st
+			{
+				char att1;
+				struct st{
+					bool att1;
+				} att2;
+			};
+			ptrdiff_t booleanStructAlign;
+
+			struct sequenceStructAlignment_st
+			{
+				char att1;
+				struct st{
+					vector<void*> att1;
+				} att2;
+			};
+			ptrdiff_t sequenceStructAlign;
+		
+		public:
+
+			AlignmentInfo()
+			{
+				initialize();
+			}
+
+			inline void initialize()
+			{
+				charAlignment_st charst;
+				charAlign = (char*) &charst.att2 - (char*) &charst.att1;
+
+				shortAlignment_st shortst;
+				shortAlign = (char*) &shortst.att2 - (char*) &shortst.att1;
+
+				intAlignment_st intst;
+				intAlign = (char*) &intst.att2 - (char*) &intst.att1;
+
+				longAlignment_st longst;
+				longAlign = (char*) &longst.att2 - (char*) &longst.att1;
+
+				floatAlignment_st floatst;
+				floatAlign = (char*) &floatst.att2 - (char*) &floatst.att1;
+
+				doubleAlignment_st doublest;
+				doubleAlign = (char*) &doublest.att2 - (char*) &doublest.att1;
+
+				stringAlignment_st stringst;
+				stringAlign = (char*) &stringst.att2 - (char*) &stringst.att1;
+
+				booleanAlignment_st booleanst;
+				booleanAlign = (char*) &booleanst.att2 - (char*) &booleanst.att1;
+
+				sequenceAlignment_st sequencest;
+				sequenceAlign = (char*) &sequencest.att2 - (char*) &sequencest.att1;
+
+				charStructAlignment_st charstructst;
+				charStructAlign = (char*) &charstructst.att2.att1 - (char*) &charstructst.att1;
+
+				shortStructAlignment_st shortstructst;
+				shortStructAlign = (char*) &shortstructst.att2.att1 - (char*) &shortstructst.att1;
+
+				intStructAlignment_st intstructst;
+				intStructAlign = (char*) &intstructst.att2.att1 - (char*) &intstructst.att1;
+
+				longStructAlignment_st longstructst;
+				longStructAlign = (char*) &longstructst.att2.att1 - (char*) &longstructst.att1;
+
+				floatStructAlignment_st floatstructst;
+				floatStructAlign = (char*) &floatstructst.att2.att1 - (char*) &floatstructst.att1;
+
+				doubleStructAlignment_st doublestructst;
+				doubleStructAlign = (char*) &doublestructst.att2.att1 - (char*) &doublestructst.att1;
+
+				stringStructAlignment_st stringstructst;
+				stringStructAlign = (char*) &stringstructst.att2.att1 - (char*) &stringstructst.att1;
+
+				booleanStructAlignment_st booleanstructst;
+				booleanStructAlign = (char*) &booleanstructst.att2.att1 - (char*) &booleanstructst.att1;
+
+				sequenceStructAlignment_st sequencestructst;
+				sequenceStructAlign = (char*) &sequencestructst.att2.att1 - (char*) &sequencestructst.att1;
+
+			}
+
+			size_t getCharAlign()
+			{
+				return charAlign;
+			}
+		
+			size_t getIntegerAlign()
+			{
+				return intAlign;
+			}
+
+			size_t getShortAlign()
+			{
+				return shortAlign;
+			}
+
+			size_t getLongAlign()
+			{
+				return longAlign;
+			}
+
+			size_t getFloatAlign()
+			{
+				return floatAlign;
+			}
+
+			size_t getDoubleAlign()
+			{
+				return doubleAlign;
+			}
+
+			size_t getStringAlign()
+			{
+				return stringAlign;
+			}
+
+			size_t getBooleanAlign()
+			{
+				return booleanAlign;
+			}
+
+			size_t getCharStructAlign()
+			{
+				return charStructAlign;
+			}
+
+			size_t getShortStructAlign()
+			{
+				return shortStructAlign;
+			}
+
+			size_t getIntegerStructAlign()
+			{
+				return intStructAlign;
+			}
+
+			size_t getLongStructAlign()
+			{
+				return longStructAlign;
+			}
+			
+		};
+	};
+	
 };
 
-#include "cpp/Preprocessor.h"
+//#include "cpp/Preprocessor.h"
 
 #endif //_COMMON_DATA_

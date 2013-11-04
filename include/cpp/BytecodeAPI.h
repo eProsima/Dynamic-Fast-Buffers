@@ -32,7 +32,7 @@ namespace DynamicFastBuffers
 		 * @param index A void pointer reference that will act as a memory address to calculate memory alignment of complex data types.
 		 * @exception WrongParamException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          */
-		static void generateBytecodeSerialization(Bytecode *bytecode, Typecode *typecode, void*&index);
+		static void generateBytecodeSerialization(Bytecode *bytecode, Typecode *typecode, void*&index, void *&initialPosition, bool added);
 
 		/*!
          * @brief This function generates a bytecode for data deserialization.
@@ -41,7 +41,7 @@ namespace DynamicFastBuffers
 		 * @param index A void pointer reference that will act as a memory address to calculate memory alignment of complex data types.
 		 * @exception WrongParamException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          */
-		static void generateBytecodeDeserialization(Bytecode *bytecode, Typecode *typecode, void *&index);
+		static void generateBytecodeDeserialization(Bytecode *bytecode, Typecode *typecode, void*&index, void *&initialPosition, bool added);
 
 		/*!
          * @brief This function adds an integer representing a memory jump between data into the Bytecode list of memory jumps.
@@ -49,7 +49,7 @@ namespace DynamicFastBuffers
 		 * @param bytecode A pointer to a Bytecode object where the jump will be added.
 		 * @param index A void pointer reference that will act as a memory address to calculate memory alignment of complex data types.
 		 */
-		static void insertJumps(Typecode *typecode, Bytecode *bytecode, void *&m_currentPosition);
+		static void insertJumps(Typecode *typecode, Bytecode *bytecode, void *&m_currentPosition, void *&initialPosition,  bool added);
 
 		/*!
          * @brief This function calculates the magnitude of the memory jump depending of the following data lenght specified in dataSize parameter.
@@ -59,7 +59,9 @@ namespace DynamicFastBuffers
 		 */
 		static inline size_t alignment(size_t dataSize, void *&m_currentPosition);
 
-		static inline size_t calculatePadding (void *&position, DynamicFastBuffers::Typecode *tc);
+		static inline size_t calculatePadding (void *&position, void *initialPosition, DynamicFastBuffers::Typecode *tc, bool added);
+
+		static inline size_t calculateStructPadding (void *&position, void *initialPosition, DynamicFastBuffers::Typecode *tc);
 
 	public:
 

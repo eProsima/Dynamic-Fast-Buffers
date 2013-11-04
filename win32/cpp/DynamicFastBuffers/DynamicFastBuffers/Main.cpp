@@ -23,7 +23,7 @@
 
 using namespace DynamicFastBuffers;
 
-/*
+
 namespace testDFB
 {
 
@@ -61,8 +61,8 @@ simpleStruct_10 stest1, stest2;
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 1;
 	stest1.m2 = 2;
@@ -145,8 +145,8 @@ simpleStruct_20 stest1, stest2;
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 1;
 	stest1.m2 = 2;
@@ -259,8 +259,8 @@ simpleStruct_30 stest1, stest2;
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 1;
 	stest1.m2 = 2;
@@ -403,8 +403,8 @@ simpleStruct_40 stest1, stest2;
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 1;
 	stest1.m2 = 2;
@@ -577,8 +577,8 @@ simpleStruct_50 stest1, stest2;
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 1;
 	stest1.m2 = 2;
@@ -718,8 +718,8 @@ inline void testComplexStruct_2()
 		DynamicFastBuffers::TypecodeAPI::createBoolean(),
 		NULL
 	);
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 	stest1.m1 = 0;
 	stest1.m2 = 1;
 	stest1.m3 = 0;
@@ -810,8 +810,8 @@ inline void testComplexStruct_4()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -939,8 +939,8 @@ inline void testComplexStruct_6()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -1104,8 +1104,8 @@ inline void testComplexStruct_8()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -1305,8 +1305,8 @@ inline void testComplexStruct_10()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	stest1.m1 = 0;
 	stest1.m2 = 1;
@@ -1449,8 +1449,8 @@ inline void testinnerSimpleStruct_2()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innersimpleStruct_2 inner1;
 	inner1.m1 = 1;
@@ -1532,8 +1532,8 @@ inline void testinnerSimpleStruct_4()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innersimpleStruct_4 inner1;
 	inner1.m1 = 1;
@@ -1663,8 +1663,8 @@ inline void testinnerSimpleStruct_6()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innersimpleStruct_6 inner1;
 	inner1.m1 = 1;
@@ -1858,8 +1858,8 @@ inline void testinnerSimpleStruct_8()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innersimpleStruct_8 inner1;
 	inner1.m1 = 1;
@@ -2133,8 +2133,8 @@ inline void testinnerSimpleStruct_10()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innersimpleStruct_10 inner1;
 	inner1.m1 = 1;
@@ -2362,8 +2362,8 @@ inline void testinnerComplexStruct_1()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innercomplexStruct_1 inner1;
 	inner1.m1 = 1;
@@ -2482,8 +2482,8 @@ inline void testinnerComplexStruct_2()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innercomplexStruct_2 inner1;
 	inner1.m1 = 1;
@@ -2530,7 +2530,7 @@ inline void testinnerComplexStruct_2()
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
-	for(int count = 0; count < 100; ++count)
+	for(int count = 0; count < 5; ++count)
 	{
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
@@ -2674,8 +2674,8 @@ inline void testinnerComplexStruct_3()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innercomplexStruct_3 inner1;
 	inner1.m1 = 1;
@@ -2961,8 +2961,8 @@ inline void testinnerComplexStruct_4()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innercomplexStruct_4 inner1;
 	inner1.m1 = 1;
@@ -3332,8 +3332,8 @@ inline void testinnerComplexStruct_5()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
 
 	struct innercomplexStruct_5 inner1;
 	inner1.m1 = 1;
@@ -3693,37 +3693,37 @@ inline void testArrays()
 
 	DynamicFastBuffers::Bytecode *bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc1,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc2,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc3,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc4,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc5,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc6,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::Bytecode *bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		tc7,
-		DynamicFastBuffers::flag::FLAG_TRUE
+		DynamicFastBuffers::flag::SERIALIZE
 	);
 
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &int1, bc1, &cdr);
@@ -3736,13 +3736,13 @@ inline void testArrays()
 
 	cdr.reset();
 
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc1, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc2, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc3, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc4, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc5, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc6, DynamicFastBuffers::flag::FLAG_FALSE);
-	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc7, DynamicFastBuffers::flag::FLAG_FALSE);
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc1, DynamicFastBuffers::flag::DESERIALIZE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc2, DynamicFastBuffers::flag::DESERIALIZE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc3, DynamicFastBuffers::flag::DESERIALIZE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc4, DynamicFastBuffers::flag::DESERIALIZE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc5, DynamicFastBuffers::flag::DESERIALIZE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc6, DynamicFastBuffers::flag::DESERIALIZE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc7, DynamicFastBuffers::flag::DESERIALIZE);
 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &int2, bc1, &cdr);
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &long2, bc2, &cdr);
@@ -3755,13 +3755,13 @@ inline void testArrays()
 	
 	cdr.reset();
 
-	DynamicFastBuffers::Bytecode *bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode *bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::SERIALIZE);
 	
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &arrst1, bytecodest, &cdr);
 	
 	cdr.reset();
 
-	bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::FLAG_FALSE);
+	bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::DESERIALIZE);
 
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &arrst2, bytecodest, &cdr);
 
@@ -3828,14 +3828,14 @@ inline void testComplexVectors()
 {
 	/*
 	* CDR Serializer declaration
-	/
+	*/
 	char buffer[500];
 	eProsima::FastBuffer cdrBuffer(buffer, 500);
 	eProsima::FastCdr cdr(cdrBuffer);
 	
 	/*
 	* Data creation
-	/
+	*/
 	short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
 	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
 
@@ -3869,7 +3869,7 @@ inline void testComplexVectors()
 
 	/*
 	* Typecode creation
-	/
+	*/
 	DynamicFastBuffers::Typecode* struct1 = DynamicFastBuffers::TypecodeAPI::createStruct(
 		DynamicFastBuffers::TypecodeAPI::createShort(),
 		DynamicFastBuffers::TypecodeAPI::createInteger(),
@@ -3911,32 +3911,32 @@ inline void testComplexVectors()
 
 	/*
 	* Bytecode for serialization
-	/
-	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_TRUE);
+	*/
+	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::SERIALIZE);
 	
 	/*
 	* Data serialization
-	/
+	*/
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bc1, &cdr);
 		
 	/*
 	* Buffer reset
-	/
+	*/
 	cdr.reset();
 
 	/*
 	* Bytecode for deserialization
-	/
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::FLAG_FALSE);
+	*/
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::DESERIALIZE);
 	
 	/*
 	* Data deserialization
-	/
+	*/
 	DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bc1, &cdr);
 	
 	/*
 	* Typecode deletes
-	/
+	*/
 	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
 }
 
@@ -3981,7 +3981,7 @@ inline void testSizeCalculation()
 }
 
 };
-*/
+
 namespace align_tests
 {
 
@@ -5887,10 +5887,273 @@ namespace align_tests
 
 };
 
+namespace newTests
+{
+
+	struct simpleStruct
+	{
+		char att0;
+		int32_t att1;
+		short att2;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+	};
+
+	inline void simpleStructTest() //Estructura como último elemento
+	{
+
+		simpleStruct in;
+		in.att0 = 'a';
+		in.att1 = 5;
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createInteger(),
+			TypecodeAPI::createShort(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct2
+	{
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		int32_t att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest2() // Estructura como primer elemento
+	{
+
+		simpleStruct2 in;
+		in.att0 = 'a';
+		in.att1 = 5;
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createInteger(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct3
+	{
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		std::string att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest3() // Estructura como primer elemento usando también String
+	{
+
+		simpleStruct3 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct4
+	{
+		struct innerSt{
+			struct innerinnerSt{
+				char att1;
+			} att2;
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		std::string att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest4() //Estructura como en el test 3 pero con otra estructura dentro en su primer elemento
+	{
+
+		simpleStruct4 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 9;
+		in.att3.att1 = 10;
+		in.att3.att2.att1 = 'W';
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createStruct(
+					TypecodeAPI::createCharacter(),
+					NULL
+				),
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct5
+	{
+		
+		char att0;
+		std::string att1;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest5() //Estructura igual que en el test 3 pero en medio
+	{
+
+		simpleStruct5 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct6
+	{
+		
+		char att0;
+		std::string att1;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest6() //Estructura igual que en el test 3 pero en medio
+	{
+
+		simpleStruct6 in, out;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 8;
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bytecodeSerialization = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+		Bytecode* bytecodeDeserialization = BytecodeAPI::generateBytecode(tc, DESERIALIZE);
+
+		char *buffer = (char*)calloc(500, sizeof(char));
+		
+		eProsima::FastBuffer fastBuffer(buffer, 500);
+		eProsima::FastCdr cdr(fastBuffer);
+	 
+	
+
+		for(int count = 0; count < 100; ++count)
+		{
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::serialize((void*) &in, bytecodeSerialization, &cdr);
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::deserialize((void*) &out, bytecodeDeserialization, &cdr);
+		}
+
+		free(buffer);
+
+	}
+
+
+
+};
+
 int main()
 {
 
 	cout << "void*: " << sizeof(void*) << endl;
+	cout << "std::string: " << sizeof(std::string) << endl;
 	cout << "vector void: " << sizeof(vector<void*>) << endl;
 	cout << "vector int: " << sizeof(vector<int32_t>) << endl;
 	cout << "vector long: " << sizeof(vector<int64_t>) << endl;
@@ -5899,7 +6162,7 @@ int main()
 
 	align_tests::initialize();
 
-	cout << "Simple types: " << endl;
+	/*cout << "Simple types: " << endl;
 	align_tests::charAlignmentTest01();
 	align_tests::shortAlignmentTest01();
 	align_tests::intAlignmentTest01();
@@ -5930,12 +6193,17 @@ int main()
 	align_tests::doubleStructAlignmentTest01();
 	align_tests::stringStructAlignmentTest01();
 	align_tests::booleanStructAlignmentTest01();
-	align_tests::sequenceStructAlignmentTest01();
+	align_tests::sequenceStructAlignmentTest01();*/
 	
+	//newTests::simpleStructTest6();
+	//testDFB::simpleTestDFB();
+	//testDFB::complexTestDFB();
+	//testDFB::innerSimpleTestDBF();
+	testDFB::testinnerComplexStruct_2();
 
 
-	string s;
-	cin >> s;
+	/*string s;
+	cin >> s;*/
 	return 0;
 }
 

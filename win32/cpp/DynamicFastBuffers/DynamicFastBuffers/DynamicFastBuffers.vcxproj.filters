@@ -79,8 +79,5 @@
     <ClInclude Include="..\..\..\..\include\cpp\DFB_version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\Preprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

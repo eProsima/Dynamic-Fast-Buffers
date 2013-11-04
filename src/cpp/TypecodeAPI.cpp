@@ -8,7 +8,7 @@ using namespace std;
 
 namespace DynamicFastBuffers
 {
-	Typecode* TypecodeAPI::createInteger()
+	/*Typecode* TypecodeAPI::createInteger()
 	{
 		return new Typecode(TC_INTEGER);
 	}
@@ -226,6 +226,6 @@ namespace DynamicFastBuffers
 		}
 
 		return tc->getSize();
-	}
+	}*/
 
 }

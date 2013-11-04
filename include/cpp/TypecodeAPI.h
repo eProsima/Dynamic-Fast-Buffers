@@ -15,6 +15,9 @@
 #include "cpp/exceptions/NotEnoughParamsException.h"
 #include "cpp/exceptions/WrongTypeException.h"
 #include "cpp/exceptions/WrongParamException.h"
+#include <iostream>
+#include <stdarg.h>
+#include <string>
 
 namespace DynamicFastBuffers
 {
@@ -32,56 +35,56 @@ namespace DynamicFastBuffers
          * @brief This function creates a Typecode which represents an integer data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createInteger();
+		//static Typecode* createInteger();
 
 		/*!
          * @brief This function creates a Typecode which represents a short data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createShort();
+		//static Typecode* createShort();
 
 		/*!
          * @brief This function creates a Typecode which represents a long data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createLong();
+		//static Typecode* createLong();
 
 		/*!
          * @brief This function creates a Typecode which represents a float data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createFloat();
+		//static Typecode* createFloat();
 
 		/*!
          * @brief This function creates a Typecode which represents double precision number data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createDouble();
+		//static Typecode* createDouble();
 
 		/*!
          * @brief This function creates a Typecode which represents a string data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createString();
+		//static Typecode* createString();
 
 		/*!
          * @brief This function creates a Typecode which represents a string data type.
 		 * @param size_str The size in number of characters of the string object
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createString(int size_str);
+		//static Typecode* createString(int size_str);
 
 		/*!
          * @brief This function creates a Typecode which represents a character data type.
 		 * @return A pointer to the Typecode object created.
 	     */
-		static Typecode* createCharacter();
+		//static Typecode* createCharacter();
 
 		/*!
          * @brief This function creates a Typecode which represents a boolean data type.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createBoolean();
+		//static Typecode* createBoolean();
 
 		/*!
          * @brief This function creates a Typecode which represents a struct data type. The new Typecode will be created inside the function, and returned
@@ -89,7 +92,7 @@ namespace DynamicFastBuffers
 		 * @param init A variable number of Typecode objects to be added as members of the structure. At least one has to be specified.
 		 * @return A pointer to the Typecode object created.
 		 */
-		static Typecode* createStruct(Typecode *init, ...);
+		//static Typecode* createStruct(Typecode *init, ...);
 
 		/*!
          * @brief This function creates a Typecode which represents an array of any data type. The new Typecode will be created inside the function, and returned
@@ -102,7 +105,7 @@ namespace DynamicFastBuffers
 		 * @exception NotEnoughParamsException This exception is thrown when nDims parameter is not greater than zero, or when user provides a number of dimensions 
 		 * not equal to nDims parameter.
 		 */
-		static Typecode* createArray(Typecode *type, int nDims, int dim1, ...);
+		//static Typecode* createArray(Typecode *type, int nDims, int dim1, ...);
 
 		/*!
          * @brief This function creates a Typecode which represents a sequence of any data type. The new Typecode will be created inside the function, and returned
@@ -112,7 +115,7 @@ namespace DynamicFastBuffers
 		 * @return A pointer to the Typecode object created.
 		 * @exception WrongParamException This exception is thrown when maximum length specified for creating the sequence is not greater than zero.
 		 */
-		static Typecode* createSequence(Typecode *type, int maxLength);
+		//static Typecode* createSequence(Typecode *type, int maxLength);
 
 		/*!
          * @brief This function adds inner members to the Typecode object proportioned as parameter. If no members are specified, an exception will be thrown.
@@ -121,27 +124,302 @@ namespace DynamicFastBuffers
 		 * @exception NotEnoughParamsException This exception is thrown when no inner Typecode objects were specified.
 		 * @exception WrongTypeException This exception is thrown when trying to add Typecode objects into a Typecode that is not a structure description.
 		 */
-		static void addMembers(Typecode *dest, ...);
+		//static void addMembers(Typecode *dest, ...);
 
 		/*!
          * @brief This function deletes a Typecode object by calling its default destructor.
 		 * @param tc A Typecode to be deleted.
 		 * @exception WrongParamException This exception is thrown when given Typecode is NULL.
 		 */
-		static void deleteTypecode(Typecode *tc);
+		//static void deleteTypecode(Typecode *tc);
 
 		/*!
          * @brief This function calculates the space needed in the memory buffer for the data to be serialized.
 		 * @param tc A Typecode which size must be calculated.
 		 * @return The size needed in the buffer.
 		 */
-		static int checkSerializedDataSize(Typecode *tc);
+		//static int checkSerializedDataSize(Typecode *tc);
 
 		/*!
         * @brief This function calculates the maximum size of the sizes of the datum allocated inside a structure.
 		* @param tc A struct Typecode which size must be calculated.
 		*/
-		static size_t calculateStructSize(Typecode *tc);
+		//static size_t calculateStructSize(Typecode *tc);
+
+		static Typecode* createInteger()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_INTEGER);
+			size_t alignment = alignInfo.getIntegerAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createShort()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_SHORT);
+			size_t alignment = alignInfo.getShortAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createLong()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_LONG);
+			size_t alignment = alignInfo.getLongAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createFloat()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_FLOAT);
+			size_t alignment = alignInfo.getFloatAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createDouble()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_DOUBLE);
+			size_t alignment = alignInfo.getDoubleAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createString()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_STRING);
+			size_t alignment = alignInfo.getStringAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createString(int size_str)
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode *tc = new Typecode(TC_STRING);
+			tc->setStrSize(size_str);
+			size_t alignment = alignInfo.getStringAlign();
+			//cout << "ALIGN: " << alignment << endl;
+			tc->setAlign(alignment);
+			return tc;
+		}
+
+		static Typecode* createCharacter()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_CHARACTER);
+			tc->setAlign(alignInfo.getCharAlign());
+			return tc;
+		}
+
+		static Typecode* createBoolean()
+		{
+			processor::AlignmentInfo alignInfo;
+			Typecode* tc = new Typecode(TC_BOOLEAN);
+			tc->setAlign(alignInfo.getBooleanAlign());
+			return tc;
+		}
+
+		static Typecode* createStruct(Typecode *init, ...)
+		{
+			if(init == NULL){
+				return new Typecode(TC_STRUCT);
+			}
+			Typecode *ret = new Typecode(TC_STRUCT);
+			va_list vl;
+			va_start(vl, init);
+			ret->addMemberNoCheck(*init);
+			Typecode *pTypecode = va_arg(vl, Typecode*);
+			while(pTypecode != NULL){
+				ret->addMemberNoCheck(*pTypecode);
+				delete(pTypecode);
+				pTypecode = (Typecode*) va_arg(vl, Typecode*);
+			}
+			va_end(vl);
+			TypecodeAPI::calculateStructSize(ret);
+			return ret;
+		}
+
+		static Typecode* createArray(Typecode *type, int nDims, int dim1, ...)
+		{
+			if(nDims < 1 ){
+				throw NotEnoughParamsException("Number of dimensions must be a positive integer greater than zero.");
+			}
+			Typecode *ret = new Typecode(TC_ARRAY);
+			ret->setType(type);
+			va_list vl;
+			va_start(vl, dim1);
+			vector<int> content;
+			int count = 0, number = va_arg(vl, int);
+			int totalSize = dim1;
+			if(dim1 < 1){
+				throw WrongParamException("Dimensions must be positive integers.");
+			}else{
+				++count;
+				content.push_back(dim1);
+			}
+			while(number){
+				if(number < 1 ){
+					throw WrongParamException("Dimensions must be positive integers.");
+				}
+				++count;
+				totalSize *= (int)number;
+				content.push_back(number);
+				number = (int) va_arg(vl, int);
+			}
+			ret->setArraySize(totalSize);
+			if(count != nDims || dim1 == 0){
+				delete(ret);
+				throw NotEnoughParamsException("Number of dimensions is different than the real dimensions specified.");
+			}
+			ret->setContent(content);
+			va_end(vl);
+			return ret;
+		}
+
+		static Typecode* createSequence(Typecode *type, int maxLength)
+		{
+			if(maxLength <= 0){
+				throw WrongParamException("Maximum length specified for creating the sequence must be a positive integer greater than zero.");
+			}
+			Typecode *ret = new Typecode(TC_SEQUENCE);
+			ret->setType(type);
+			ret->setMaxLength(maxLength);
+			return ret;
+		}
+
+		static void addMembers(Typecode *dest, ...)
+		{
+			if(dest == NULL){
+				throw WrongParamException("Destination typecode cannot be null.");
+			}
+			va_list vl;
+			va_start(vl, dest);
+			Typecode *pTypecode;
+			pTypecode = va_arg(vl, Typecode*);
+			switch(dest->getKind())
+			{
+			case TC_STRUCT:
+				if(pTypecode == NULL){
+					throw NotEnoughParamsException("No members specified.");
+				}
+				while(pTypecode != NULL){
+					dest->addMember(*pTypecode);
+					pTypecode = va_arg(vl, Typecode*);
+				}
+				va_end(vl);
+				break;
+			default:
+				string msg;
+				if(pTypecode == NULL){
+					msg = "No members specified.";
+					throw NotEnoughParamsException(msg.c_str());
+				}else{
+					msg = "Only applicable for structures, members cannot be added to kind " + dest->getKindStr();
+					delete(pTypecode);
+					throw WrongTypeException(msg.c_str());
+				}
+			}
+		}
+
+		static void deleteTypecode(Typecode *tc)
+		{
+			if(tc == NULL){
+				throw WrongParamException("Destination typecode cannot be null.");
+			}
+			delete tc;
+		}
+
+		static int checkSerializedDataSize(Typecode *tc)
+		{
+			switch(tc->getKind()){
+			case TC_STRING:
+				{
+					int returnValue = 0;
+					returnValue = sizeof(int32_t)+tc->getStrSize();
+					if(returnValue == 4){
+						returnValue += 256;
+					}
+					return returnValue;
+					break;
+				}
+			case TC_STRUCT:
+				{
+					int returnValue = 0;
+					vector<Typecode> tcs = tc->getMembers();
+					for(int i=0; i < tcs.size(); ++i){
+						returnValue += checkSerializedDataSize(&tcs[i]);
+					}
+					return returnValue;
+					break;
+				}
+			case TC_ARRAY:
+				{
+					int returnValue = 0;
+					int dims = tc->getArraySize();
+					int typeSize = tc->getSize();
+					returnValue = dims*typeSize;
+					return returnValue;
+					break;
+				}
+			case TC_SEQUENCE:
+				{
+					int returnValue = 0;
+					int dims = tc->getMaxLenght();
+					returnValue = dims*tc->getType()->getSize();
+					return returnValue;
+					break;
+				}
+			}
+			return tc->getSize(); 
+		}
+
+		static size_t calculateStructSize(Typecode *tc)
+		{
+			processor::AlignmentInfo alignInfo;
+			size_t alignment = alignInfo.getShortAlign();
+			
+			size_t size = tc->getMembers().size();
+			if(size != 0){
+				vector<Typecode> members = tc->getMembers();
+				for(int i=0; i<size; ++i){ //foreach member in struct
+					if(members[i].getKind() != TC_STRUCT){ //NO struct
+						tc->setStructSize(members[i].getSize());
+					}else{ //struct
+						tc->setStructSize(TypecodeAPI::calculateStructSize(&members[i]));
+					}
+				}
+			}else{
+				tc->setStructSize(0); //check this later
+			}
+
+			size_t stSize = tc->getSize();
+
+			if (stSize == sizeof(char)){
+				tc->setAlign(alignInfo.getCharStructAlign());
+			} else if (stSize == sizeof(short)) {
+				tc->setAlign(alignInfo.getShortStructAlign());
+			} else if (stSize == sizeof(int32_t)) {
+				tc->setAlign(alignInfo.getIntegerStructAlign());
+			} else if (stSize == sizeof(int64_t)) {
+				tc->setAlign(alignInfo.getLongStructAlign());
+			}
+
+			return tc->getSize();
+		}
 	};
 };
 

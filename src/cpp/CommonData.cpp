@@ -330,4 +330,5 @@ namespace DynamicFastBuffers
 	{
 		*size_ = size;
 	}
+	
 };

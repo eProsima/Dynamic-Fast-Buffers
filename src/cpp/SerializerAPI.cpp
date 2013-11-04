@@ -1,4 +1,5 @@
 #include "cpp/SerializerAPI.h"
+#include <iostream>
 
 namespace DynamicFastBuffers
 {
@@ -61,6 +62,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeInteger(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "int" << std::endl;
 		int32_t *p = (int32_t *) data;
 		serializer->serialize(*p);
 		++p;
@@ -82,6 +84,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeShort(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "short" << std::endl;
 		int16_t *p = (int16_t *) data;
 		serializer->serialize(*p);
 		++p;
@@ -101,6 +104,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeLong(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "long" << std::endl;
 		int64_t *p = (int64_t *) data;
 		serializer->serialize(*p);
 		++p;
@@ -120,6 +124,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeFloat(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "float" << std::endl;
 		float *p = (float*) data;
 		serializer->serialize(*p);
 		++p;
@@ -139,6 +144,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeDouble(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "double" << std::endl;
 		double *p = (double*) data;
 		serializer->serialize(*p);
 		++p;
@@ -158,6 +164,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeString(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "string" << std::endl;
 		string &s = *static_cast<std::string*>(data);
 		//printf("%s\n", &s);
 		serializer->serialize(s);
@@ -181,6 +188,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeCharacter(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "char" << std::endl;
 		char *p = (char*) data;
 		serializer->serialize(*p);
 		++p;
@@ -200,6 +208,7 @@ namespace DynamicFastBuffers
 	*/
 	void* SerializerAPI::serializeBoolean(eProsima::FastCdr *serializer, void *data, int &size)
 	{
+		std::cout << "bool" << std::endl;
 		bool *p = (bool*) data;
 		serializer->serialize(*p);
 		++p;
