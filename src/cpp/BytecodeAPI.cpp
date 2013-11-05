@@ -356,10 +356,8 @@ namespace DynamicFastBuffers
 			calc = ((size_t) rawPosition % alignment);
 		}
 		
-		if (calc != 0){
-			padding = alignment - (calc);
-		}
-
+		padding = (alignment - (calc)) % alignment;
+		
 		position = (char*) position + padding + tc->getSize();
 		
 		return padding;
@@ -375,10 +373,8 @@ namespace DynamicFastBuffers
 			calc = ((size_t) rawPosition % alignment);
 		}
 		
-		if (calc != 0){
-			padding = alignment - (calc);
-		}
-
+		padding = (alignment - (calc)) % alignment;
+		
 		position = (char*) position + padding;
 
 		return padding;

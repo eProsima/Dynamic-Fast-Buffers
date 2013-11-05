@@ -2362,9 +2362,6 @@ inline void testinnerComplexStruct_1()
 	);
 
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
-
 	struct innercomplexStruct_1 inner1;
 	inner1.m1 = 1;
 	inner1.m2 = 2;
@@ -2381,6 +2378,9 @@ inline void testinnerComplexStruct_1()
 	stest1.m6 = 107.8;
 	stest1.m7 = true;
 	
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
+
 	eProsima::FastBuffer fastBuffer(buffer, 5000);
 	eProsima::FastCdr cdr(fastBuffer);
 
@@ -6203,6 +6203,25 @@ namespace newTests
 
 	}
 
+	inline void testStructAlignment()
+	{
+		struct out
+		{
+			char att0;
+			struct in
+			{
+				vector<int> att0;
+			} att1;
+		};
+
+		out st;
+		st.att0 = 'a';
+		//st.att1.att0 = 555;
+		
+		cout << "StringAlign: " << align_tests::stringStructAlign << endl;
+		cout << "Stop" << endl;
+	}
+
 
 
 };
@@ -6253,19 +6272,25 @@ int main()
 	align_tests::booleanStructAlignmentTest01();
 	align_tests::sequenceStructAlignmentTest01();
 	
-	/*newTests::simpleStructTest1();
+	newTests::simpleStructTest1();
 	newTests::simpleStructTest2();
 	newTests::simpleStructTest3();
 	newTests::simpleStructTest4();
 	newTests::simpleStructTest5();
 	newTests::simpleStructTest6();
-	newTests::simpleStructTest7();*/
+	newTests::simpleStructTest7();
 
 	testDFB::performanceDFB();
+	//testDFB::testinnerComplexStruct_1();
+
+	//newTests::testStructAlignment();
 	
 
 	string s;
 	cin >> s;
+	while (s != "q"){
+		cin >> s;
+	}
 	return 0;
 }
 

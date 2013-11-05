@@ -414,9 +414,9 @@ namespace DynamicFastBuffers
 				tc->setAlign(alignInfo.getShortStructAlign());
 			} else if (stSize == sizeof(int32_t)) {
 				tc->setAlign(alignInfo.getIntegerStructAlign());
-			} else if (stSize == sizeof(int64_t)) {
+			} else if (stSize >= sizeof(int64_t)) {
 				tc->setAlign(alignInfo.getLongStructAlign());
-			}
+			} 
 
 			return tc->getSize();
 		}

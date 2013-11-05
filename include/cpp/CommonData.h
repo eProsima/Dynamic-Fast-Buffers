@@ -624,10 +624,37 @@ namespace DynamicFastBuffers
 				return longStructAlign;
 			}
 
+			size_t getFloatStructAlign()
+			{
+				return floatStructAlign;
+			}
+
+			size_t getDoubleStructAlign()
+			{
+				return doubleStructAlign;
+			}
+
+			size_t getBooleanStructAlign()
+			{
+				return booleanStructAlign;
+			}
+
+			size_t getSequenceStructAlign()
+			{
+				return sequenceStructAlign;
+			}
+
+			size_t getStringStructAlign()
+			{
+				return stringStructAlign;
+			}
+
 			bool getPaddingBehindStructures()
 			{
 				return paddingBehindStructures;
 			}
+
+			
 			
 		};
 	};

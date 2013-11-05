@@ -207,7 +207,7 @@ namespace DynamicFastBuffers
 #endif
 			break;
 		case TC_STRING:
-			return sizeof(void*);
+			return sizeof(std::string);
 			break;
 		case TC_CHARACTER:
 			return sizeof(char);
