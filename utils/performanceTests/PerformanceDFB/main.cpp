@@ -3850,9 +3850,9 @@ inline void testArrays()
 	
 
 	if(!comp){
-		cout << "ERROR" << endl;
+		cout << "FAIL" << endl;
 	}else{
-		cout << "SUCCESS" << endl;
+		cout << "CORRECT" << endl;
 	}
 }
 
@@ -4383,9 +4383,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'charAlignmentTest01': SUCCESS "<< endl;
+			cout << "Test 'charAlignmentTest01': CORRECT "<< endl;
 		} else {
-			cout << "Test 'charAlignmentTest01': ERROR" << endl;
+			cout << "Test 'charAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4447,9 +4447,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'shortAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'shortAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'shortAlignmentTest01': ERROR" << endl;
+			cout << "Test 'shortAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4481,9 +4481,9 @@ namespace align_tests
 		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.c0;
 
 		if (ofs == ourOffset){
-			cout << "Test 'intAlignmentTest01': SUCCESS"  << "\nOffset: " << ourOffset << endl;
+			cout << "Test 'intAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'intAlignmentTest01': ERROR" << endl;
+			cout << "Test 'intAlignmentTest01': FAIL" << endl;
 		}
 
 	}
@@ -4545,9 +4545,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'intAlignmentTest02': SUCCESS" << endl;
+			cout << "Test 'intAlignmentTest02': CORRECT" << endl;
 		} else {
-			cout << "Test 'intAlignmentTest02': ERROR" << endl;
+			cout << "Test 'intAlignmentTest02': FAIL" << endl;
 		}
 	}
 
@@ -4609,9 +4609,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'longAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'longAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'longAlignmentTest01': ERROR" << endl;
+			cout << "Test 'longAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4673,9 +4673,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'floatAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'floatAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'floatAlignmentTest01': ERROR" << endl;
+			cout << "Test 'floatAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4734,9 +4734,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'doubleAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'doubleAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'doubleAlignmentTest01': ERROR" << endl;
+			cout << "Test 'doubleAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4795,9 +4795,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'stringAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'stringAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'stringAlignmentTest01': ERROR" << endl;
+			cout << "Test 'stringAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4856,9 +4856,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'booleanAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'booleanAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'booleanAlignmentTest01': ERROR" << endl;
+			cout << "Test 'booleanAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4918,9 +4918,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'sequenceAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'sequenceAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'sequenceAlignmentTest01': ERROR" << endl;
+			cout << "Test 'sequenceAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -4981,9 +4981,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayCharAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayCharAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayCharAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayCharAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5044,9 +5044,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayShortAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayShortAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayShortAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayShortAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5107,9 +5107,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayIntAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayIntAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayIntAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayIntAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5170,9 +5170,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayLongAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayLongAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayLongAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayLongAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5233,9 +5233,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayFloatAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayFloatAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayFloatAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayFloatAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5296,9 +5296,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayDoubleAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayDoubleAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayDoubleAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayDoubleAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5359,9 +5359,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayStringAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayStringAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayStringAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayStringAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5422,9 +5422,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'arrayBooleanAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'arrayBooleanAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'arrayBooleanAlignmentTest01': ERROR" << endl;
+			cout << "Test 'arrayBooleanAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5485,9 +5485,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'charStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'charStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'charStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'charStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5548,9 +5548,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'shortStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'shortStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'shortStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'shortStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5611,9 +5611,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'intStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'intStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'intStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'intStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5674,9 +5674,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'longStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'longStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'longStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'longStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5737,9 +5737,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'floatStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'floatStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'floatStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'floatStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5800,9 +5800,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'doubleStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'doubleStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'doubleStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'doubleStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5863,9 +5863,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'stringStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'stringStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'stringStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'stringStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5926,9 +5926,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'booleanStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'booleanStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'booleanStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'booleanStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -5990,9 +5990,9 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'sequenceStructAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'sequenceStructAlignmentTest01': CORRECT" << endl;
 		} else {
-			cout << "Test 'sequenceStructAlignmentTest01': ERROR" << endl;
+			cout << "Test 'sequenceStructAlignmentTest01': FAIL" << endl;
 		}
 	}
 
@@ -6000,7 +6000,7 @@ namespace align_tests
 	{
 		align_tests::initialize();
 
-		cout << "Simple types: " << endl;
+		cout << "SIMPLE TYPES ALIGNMENT: \n" << endl;
 		align_tests::charAlignmentTest01();
 		align_tests::shortAlignmentTest01();
 		align_tests::intAlignmentTest01();
@@ -6011,7 +6011,7 @@ namespace align_tests
 		align_tests::stringAlignmentTest01();
 		align_tests::booleanAlignmentTest01();
 
-		cout << endl << "Complex types: " << endl;
+		cout << endl << "COMPLEX TYPES ALIGNMENT: \n" << endl;
 		align_tests::sequenceAlignmentTest01();
 		align_tests::arrayCharAlignmentTest01();
 		align_tests::arrayShortAlignmentTest01();
@@ -6022,7 +6022,7 @@ namespace align_tests
 		align_tests::arrayStringAlignmentTest01();
 		align_tests::arrayBooleanAlignmentTest01();
 
-		cout << endl << "Structures: " << endl;
+		cout << endl << "STRUCTURES ALIGNMENT: \n" << endl;
 		align_tests::charStructAlignmentTest01();
 		align_tests::shortStructAlignmentTest01();
 		align_tests::intStructAlignmentTest01();
