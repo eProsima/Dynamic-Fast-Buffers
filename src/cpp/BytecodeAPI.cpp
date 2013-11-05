@@ -22,10 +22,10 @@ namespace DynamicFastBuffers
 		}
 		
 		//Test--
-		/*for(int i=0; i<bytecode->getAlignment()->size(); ++i){
+		for(int i=0; i<bytecode->getAlignment()->size(); ++i){
 			printf("%d, ", bytecode->getAlignment()->at(i));
 		}
-		std::cout << endl;*/
+		std::cout << endl;
 		//--Test
 
 		return bytecode; 

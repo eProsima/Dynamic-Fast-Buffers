@@ -1,16 +1,4 @@
 #include <iostream>
-#include <fcntl.h>
-#include <stdio.h>
-//#include <io.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <ostream>
-#include <fstream>
-#include <sys/stat.h>
-#include <list>
-#include <string>
-#include <fstream>
 #include <stdint.h>
 
 //DFB
@@ -3659,6 +3647,2744 @@ inline void performanceDFB()
 
 }
 
+namespace unitTests
+{
+
+struct testArrayStructure
+{
+	int32_t att1;
+	bool att2;
+	string att3;
+	double att4[3][4];
+	short att5[3][4];
+	bool att6;
+	int64_t att7;
+};
+
+inline void testArrays()
+{
+
+	char buffer[500];
+	eProsima::FastBuffer cdrBuffer(buffer, 500);
+	eProsima::FastCdr cdr(cdrBuffer);
+
+	double test1[3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	short test2[3][4] = {{2, 2, 2, 2}, {3, 3, 3, 3}, {4, 4, 4, 4}};
+
+	testArrayStructure arrst1, arrst2;
+	arrst1.att1 = 1;
+	arrst1.att2 = false;
+	arrst1.att3 = "TEST";
+	memcpy(arrst1.att4, test1, sizeof(test1));
+	memcpy(arrst1.att5, test2, sizeof(test2));
+	arrst1.att6 = true;
+	arrst1.att7 = 50;
+	
+	DynamicFastBuffers::Typecode *tcArray = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+
+
+	int32_t int1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
+	int32_t int2 [3][4];
+
+	int64_t long1 [4][4][2] = {{{1,1},{2,2},{3,3},{4,4}}, {{10,10},{11,11},{12,12},{13,13}}, {{20,20},{21,21},{22,22},{23,23}}, {{30,30},{31,31},{32,32},{33,33}}};
+	int64_t long2 [4][4][2];
+	
+	short short1 [3][4] = {{16,2,77,29}, {16,2,77,29}, {16,2,77,29}};
+	short short2 [3][4];
+
+	float float1 [3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	float float2 [3][4];
+
+	double double1 [3][4] = {{2.0, 2.1, 2.2, 2.3}, {3.0, 3.1, 3.2, 3.3}, {4.0, 4.1, 4.2, 4.3}};
+	double double2 [3][4];
+
+	bool bool1 [3][4] = {{true,true,true,true}, {false,false,false,false}, {true,true,false,false}};
+	bool bool2 [3][4];
+
+	char char1 [5][4] = {{'-','-','-','-'},{'1','1','1','1'},{'W','W','W','W'}, {'i','i','i','i'}, {'?','?','?','?'}};
+	char char2 [5][4];
+
+	DynamicFastBuffers::Typecode *tc1 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		2, 3, 4, NULL
+	);
+	
+	DynamicFastBuffers::Typecode *tc2 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		3, 4, 4, 2, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc3 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc4 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createFloat(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc5 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createDouble(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc6 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		2, 3, 4, NULL
+	);
+
+	DynamicFastBuffers::Typecode *tc7 = DynamicFastBuffers::TypecodeAPI::createArray(
+		DynamicFastBuffers::TypecodeAPI::createCharacter(),
+		2, 5, 4, NULL
+	);
+
+	
+	//--------------------------------------------
+
+	DynamicFastBuffers::Bytecode *bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc1,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc2,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc3,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc4,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc5,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc6,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::Bytecode *bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(
+		tc7,
+		DynamicFastBuffers::flag::SERIALIZE
+	);
+
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &int1, bc1, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &long1, bc2, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &short1, bc3, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &float1, bc4, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &double1, bc5, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &bool1, bc6, &cdr);
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &char1, bc7, &cdr);
+
+	cdr.reset();
+
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc1, DynamicFastBuffers::flag::DESERIALIZE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc2, DynamicFastBuffers::flag::DESERIALIZE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc3, DynamicFastBuffers::flag::DESERIALIZE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc4, DynamicFastBuffers::flag::DESERIALIZE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc5, DynamicFastBuffers::flag::DESERIALIZE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc6, DynamicFastBuffers::flag::DESERIALIZE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc7, DynamicFastBuffers::flag::DESERIALIZE);
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &int2, bc1, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &long2, bc2, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &short2, bc3, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &float2, bc4, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &double2, bc5, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &bool2, bc6, &cdr);
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &char2, bc7, &cdr);
+
+	
+	cdr.reset();
+
+	DynamicFastBuffers::Bytecode *bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::SERIALIZE);
+	
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &arrst1, bytecodest, &cdr);
+	
+	cdr.reset();
+
+	bytecodest = DynamicFastBuffers::BytecodeAPI::generateBytecode(tcArray, DynamicFastBuffers::flag::DESERIALIZE);
+
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &arrst2, bytecodest, &cdr);
+
+	bool comp = true;
+	comp &= (arrst1.att1 == arrst2.att1);
+	comp &= (arrst1.att2 == arrst2.att2);
+	comp &= (arrst1.att3 == arrst2.att3);
+	for(int i=0; i < 3; ++i){
+		for(int j=0; j<4; ++j){
+			comp &= (arrst1.att4[i][j] == arrst2.att4[i][j]);
+		}
+	}
+	for(int i=0; i < 3; ++i){
+		for(int j=0; j<4; ++j){
+			comp &= (arrst1.att5[i][j] == arrst2.att5[i][j]);
+		}
+	}
+	comp &= (arrst1.att6 == arrst2.att6);
+	comp &= (arrst1.att7 == arrst2.att7);
+	
+
+	if(!comp){
+		cout << "ERROR" << endl;
+	}else{
+		cout << "SUCCESS" << endl;
+	}
+}
+
+struct structTest3
+{
+	short s1;
+	int32_t i1;
+	char c1;
+	string str1;
+	short s2;
+	int64_t l1;
+};
+
+struct structTest1
+{
+	short i1;
+	char s1;
+	short arr1[2][4];
+	vector<int64_t> members1;
+	int32_t i2;
+	short s2;
+	structTest3 st3;
+	string str1;
+};
+
+struct structTest2
+{
+	short s1;
+	int32_t i1;
+	structTest1 st1;
+	short arr1[2][4];
+	short i2;
+	int64_t s2;
+	structTest3 st3;
+	string str1;
+};
+
+inline void testComplexVectors()
+{
+	/*
+	* CDR Serializer declaration
+	*/
+	char buffer[5000];
+	eProsima::FastBuffer cdrBuffer(buffer, 5000);
+	eProsima::FastCdr cdr(cdrBuffer);
+	
+	/*
+	* Data creation
+	*/
+	short arr1[2][4] = {{100,101,102,103},{104,105,106,107}};
+	short arr2[2][4] = {{200,201,202,203},{204,205,206,207}};
+
+	structTest3 stestN;
+	stestN.s1 = 1;
+	stestN.i1 = 2;
+	stestN.c1 = 'T';
+	stestN.str1 = "CUATRO";
+	stestN.s2 = 5;
+	stestN.l1 = 6;
+
+	structTest1 stest3;
+	stest3.i1 = 5;
+	stest3.s1 = 'C';
+	memcpy(stest3.arr1, arr1, sizeof(arr1));
+	stest3.members1 = vector<int64_t>(5, 50);
+	stest3.i2 = 10;
+	stest3.s2 = 4;
+	stest3.st3 = stestN;
+	stest3.str1 = "INNER STRUCT";
+	
+	structTest2 stest1, stest2;
+	stest1.s1 = 6;
+	stest1.i1 = 15;
+	stest1.st1 = stest3;
+	memcpy(stest1.arr1, arr2, sizeof(arr2));
+	stest1.i2 = 20;
+	stest1.s2 = 8;
+	stest1.st3 = stestN;
+	stest1.str1 = "OUTER STRUCT";
+
+	cout << "Sizeof(vector): " << sizeof(vector<int64_t>) << endl;
+
+	cout << "s1: " << offsetof(structTest2, s1) << endl;
+	cout << "i1: " << offsetof(structTest2, i1) << endl;
+
+	cout << "\tst1.i1: " << offsetof(structTest2, st1.i1) << endl;
+	cout << "\tst1.s1: " << offsetof(structTest2, st1.s1) << endl;
+	cout << "\tst1.arr1: " << offsetof(structTest2, st1.arr1) << endl;
+	cout << "\tst1.members1: " << offsetof(structTest2, st1.members1) << endl;
+	cout << "\tst1.i2: " << offsetof(structTest2, st1.i2) << endl;
+	cout << "\tst1.s2: " << offsetof(structTest2, st1.s2) << endl;
+	
+	cout << "\t\tst1.st3.s1: " << offsetof(structTest2, st1.st3.s1) << endl;
+	cout << "\t\tst1.st3.i1: " << offsetof(structTest2, st1.st3.i1) << endl;
+	cout << "\t\tst1.st3.c1: " << offsetof(structTest2, st1.st3.c1) << endl;
+	cout << "\t\tst1.st3.str1: " << offsetof(structTest2, st1.st3.str1) << endl;
+	cout << "\t\tst1.st3.s2: " << offsetof(structTest2, st1.st3.s2) << endl;
+	cout << "\t\tst1.st3.l1: " << offsetof(structTest2, st1.st3.l1) << endl;
+	
+	cout << "\tst1.str1: " << offsetof(structTest2, st1.str1) << endl;
+
+	cout << "i2: " << offsetof(structTest2, i2) << endl;
+	cout << "s2: " << offsetof(structTest2, s2) << endl;
+	
+	cout << "\t.st3.s1: " << offsetof(structTest2, st3.s1) << endl;
+	cout << "\t.st3.i1: " << offsetof(structTest2, st3.i1) << endl;
+	cout << "\t.st3.c1: " << offsetof(structTest2, st3.c1) << endl;
+	cout << "\t.st3.str1: " << offsetof(structTest2, st3.str1) << endl;
+	cout << "\t.st3.s2: " << offsetof(structTest2, st3.s2) << endl;
+	cout << "\t.st3.l1: " << offsetof(structTest2, st3.l1) << endl;
+
+	cout << "str1: " << offsetof(structTest2, str1) << endl;
+
+	/*
+	* Typecode creation
+	*/
+	DynamicFastBuffers::Typecode* struct1 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+			DynamicFastBuffers::TypecodeAPI::createSequence(DynamicFastBuffers::TypecodeAPI::createLong(), 5),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createStruct(
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createInteger(),
+				DynamicFastBuffers::TypecodeAPI::createCharacter(),
+				DynamicFastBuffers::TypecodeAPI::createString(),
+				DynamicFastBuffers::TypecodeAPI::createShort(),
+				DynamicFastBuffers::TypecodeAPI::createLong(),
+				NULL
+			),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(DynamicFastBuffers::TypecodeAPI::createShort(), 2, 2, 4, 0),
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		DynamicFastBuffers::TypecodeAPI::createStruct(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createInteger(),
+			DynamicFastBuffers::TypecodeAPI::createCharacter(),
+			DynamicFastBuffers::TypecodeAPI::createString(),
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			DynamicFastBuffers::TypecodeAPI::createLong(),
+			NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		NULL
+	);
+
+	
+		
+
+	/*
+	* Bytecode for serialization
+	*/
+	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::SERIALIZE);
+	
+	/*
+	* Data serialization
+	*/
+	DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bc1, &cdr);
+		
+	/*
+	* Buffer reset
+	*/
+	cdr.reset();
+
+	/*
+	* Bytecode for deserialization
+	*/
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::flag::DESERIALIZE);
+	
+	/*
+	* Data deserialization
+	*/
+	DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bc1, &cdr);
+	
+	/*
+	* Typecode deletes
+	*/
+	DynamicFastBuffers::TypecodeAPI::deleteTypecode(struct1);
+}
+
+inline void testSizeCalculation()
+{
+	DynamicFastBuffers::Typecode *tc1 = DynamicFastBuffers::TypecodeAPI::createString();
+	DynamicFastBuffers::Typecode *tc2 = DynamicFastBuffers::TypecodeAPI::createString(26);
+	DynamicFastBuffers::Typecode *tc3 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createCharacter(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createShort(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+	DynamicFastBuffers::Typecode *tc4 = DynamicFastBuffers::TypecodeAPI::createStruct(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createString(),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createDouble(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createArray(
+			DynamicFastBuffers::TypecodeAPI::createShort(),
+			2, 3, 4, NULL
+		),
+		DynamicFastBuffers::TypecodeAPI::createBoolean(),
+		DynamicFastBuffers::TypecodeAPI::createLong(),
+		NULL
+	);
+	DynamicFastBuffers::Typecode *tc5 = DynamicFastBuffers::TypecodeAPI::createSequence(
+		DynamicFastBuffers::TypecodeAPI::createInteger(),
+		10
+	);
+	std::cout << "tc1: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc1) << std::endl;
+	std::cout << "tc2: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc2) << std::endl;
+	std::cout << "tc3: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc3) << std::endl;
+	std::cout << "tc4: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc4) << std::endl;
+	std::cout << "tc5: " << DynamicFastBuffers::TypecodeAPI::checkSerializedDataSize(tc5) << std::endl;
+}
+
+inline void execute()
+{
+	testArrays();
+	cout << " testArrays finished" << endl;
+	testComplexVectors();
+	cout << " complexVectors finished" << endl;
+	testSizeCalculation();
+	cout << " sizeCalculation finished" << endl;
+}
+
+};
+
+namespace align_tests
+{
+
+	struct charAlignment_st
+	{
+		char att1;
+		char att2;
+	};
+	ptrdiff_t charAlign;
+
+	struct shortAlignment_st
+	{
+		char att1;
+		short att2;
+	};
+	ptrdiff_t shortAlign;
+
+	struct intAlignment_st
+	{
+		char att1;
+		int32_t att2;
+	};
+	ptrdiff_t intAlign;
+
+	struct longAlignment_st
+	{
+		char att1;
+		int64_t att2;
+	};
+	ptrdiff_t longAlign;
+
+	struct floatAlignment_st
+	{
+		char att1;
+		float att2;
+	};
+	ptrdiff_t floatAlign;
+
+	struct doubleAlignment_st
+	{
+		char att1;
+		double att2;
+	};
+	ptrdiff_t doubleAlign;
+
+	struct stringAlignment_st
+	{
+		char att1;
+		std::string att2;
+	};
+	ptrdiff_t stringAlign;
+
+	struct booleanAlignment_st
+	{
+		char att1;
+		bool att2;
+	};
+	ptrdiff_t booleanAlign;
+
+	struct sequenceAlignment_st
+	{
+		char att1;
+		vector<void*> att2;
+	};
+	ptrdiff_t sequenceAlign;
+
+	struct charStructAlignment_st
+	{
+		char att1;
+		struct st{
+			char att1;
+		} att2;
+	};
+	ptrdiff_t charStructAlign;
+
+	struct shortStructAlignment_st
+	{
+		char att1;
+		struct st{
+			short att1;
+		} att2;
+	};
+	ptrdiff_t shortStructAlign;
+
+	struct intStructAlignment_st
+	{
+		char att1;
+		struct st{
+			int32_t att1;
+		} att2;
+	};
+	ptrdiff_t intStructAlign;
+
+	struct longStructAlignment_st
+	{
+		char att1;
+		struct st{
+			int64_t att1;
+		} att2;
+	};
+	ptrdiff_t longStructAlign;
+
+	struct floatStructAlignment_st
+	{
+		char att1;
+		struct st{
+			float att1;
+		} att2;
+	};
+	ptrdiff_t floatStructAlign;
+
+	struct doubleStructAlignment_st
+	{
+		char att1;
+		struct st{
+			double att1;
+		} att2;
+	};
+	ptrdiff_t doubleStructAlign;
+
+	struct stringStructAlignment_st
+	{
+		char att1;
+		struct st{
+			std::string att1;
+		} att2;
+	};
+	ptrdiff_t stringStructAlign;
+
+	struct booleanStructAlignment_st
+	{
+		char att1;
+		struct st{
+			bool att1;
+		} att2;
+	};
+	ptrdiff_t booleanStructAlign;
+
+	struct sequenceStructAlignment_st
+	{
+		char att1;
+		struct st{
+			vector<void*> att1;
+		} att2;
+	};
+	ptrdiff_t sequenceStructAlign;
+
+	void initialize()
+	{
+		charAlignment_st charst;
+		charAlign = (char*) &charst.att2 - (char*) &charst.att1;
+
+		shortAlignment_st shortst;
+		shortAlign = (char*) &shortst.att2 - (char*) &shortst.att1;
+
+		intAlignment_st intst;
+		intAlign = (char*) &intst.att2 - (char*) &intst.att1;
+
+		longAlignment_st longst;
+		longAlign = (char*) &longst.att2 - (char*) &longst.att1;
+
+		floatAlignment_st floatst;
+		floatAlign = (char*) &floatst.att2 - (char*) &floatst.att1;
+
+		doubleAlignment_st doublest;
+		doubleAlign = (char*) &doublest.att2 - (char*) &doublest.att1;
+
+		stringAlignment_st stringst;
+		stringAlign = (char*) &stringst.att2 - (char*) &stringst.att1;
+
+		booleanAlignment_st booleanst;
+		booleanAlign = (char*) &booleanst.att2 - (char*) &booleanst.att1;
+
+		sequenceAlignment_st sequencest;
+		sequenceAlign = (char*) &sequencest.att2 - (char*) &sequencest.att1;
+
+		charStructAlignment_st charstructst;
+		charStructAlign = (char*) &charstructst.att2.att1 - (char*) &charstructst.att1;
+
+		shortStructAlignment_st shortstructst;
+		shortStructAlign = (char*) &shortstructst.att2.att1 - (char*) &shortstructst.att1;
+
+		intStructAlignment_st intstructst;
+		intStructAlign = (char*) &intstructst.att2.att1 - (char*) &intstructst.att1;
+
+		longStructAlignment_st longstructst;
+		longStructAlign = (char*) &longstructst.att2.att1 - (char*) &longstructst.att1;
+
+		floatStructAlignment_st floatstructst;
+		floatStructAlign = (char*) &floatstructst.att2.att1 - (char*) &floatstructst.att1;
+
+		doubleStructAlignment_st doublestructst;
+		doubleStructAlign = (char*) &doublestructst.att2.att1 - (char*) &doublestructst.att1;
+
+		stringStructAlignment_st stringstructst;
+		stringStructAlign = (char*) &stringstructst.att2.att1 - (char*) &stringstructst.att1;
+
+		booleanStructAlignment_st booleanstructst;
+		booleanStructAlign = (char*) &booleanstructst.att2.att1 - (char*) &booleanstructst.att1;
+
+		sequenceStructAlignment_st sequencestructst;
+		sequenceStructAlign = (char*) &sequencestructst.att2.att1 - (char*) &sequencestructst.att1;
+
+	}
+
+	size_t calculatePadding(void* position, void* initialPosition, ptrdiff_t align)
+	{
+		size_t padding = 0;
+		size_t alignment = align;
+		ptrdiff_t rawPosition = (char*)position - (char*)initialPosition;
+		size_t calc = ((size_t) rawPosition % alignment);
+		
+		if (calc != 0){
+			padding = alignment - (calc);
+		}
+
+		return padding;
+	}
+
+	void charAlignmentTest()
+	{
+		struct charAlignment_st
+		{
+			char c0;
+			char c1;
+		};
+
+		int ofs = (int) offsetof(struct charAlignment_st, c1);
+
+		cout << ofs << endl;
+	}
+
+	void charAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			char c1;
+			char i2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		align = charAlign;
+
+		position = &(stIn.c1);
+		position = (char*) position + sizeof(char);
+
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'charAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'charAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void shortAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			short c1;
+			short i2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		align = shortAlign;
+
+		position = &(stIn.c1);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'shortAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'shortAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void intAlignmentTest01() // Estructura con un char y un entero, para comprobar alineamiento con distintos packings
+	{
+		struct intAlignment_st
+		{
+			char c0;
+			int32_t i1;
+		};
+
+		int ofs = (int) offsetof(struct intAlignment_st, i1);
+
+		intAlignment_st stIn/*, stOut*/;
+		stIn.c0 = 1;
+		stIn.i1 = 5;
+
+		void* initialPosition = &stIn;
+
+		ptrdiff_t align = intAlign;
+
+		void *position = &(stIn.c0);
+		position = (char*) position+1;
+
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.c0;
+
+		if (ofs == ourOffset){
+			cout << "Test 'intAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'intAlignmentTest01': ERROR" << endl;
+		}
+
+	}
+
+	void intAlignmentTest02()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			int32_t i0;
+			char c1;
+			int32_t i2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		//Primera posicion
+
+		void* initialPosition = &stIn;
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.c1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		align = intAlign;
+
+		position = &(stIn.c1);
+		position = (char*) position+1;
+
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'intAlignmentTest02': SUCCESS" << endl;
+		} else {
+			cout << "Test 'intAlignmentTest02': ERROR" << endl;
+		}
+	}
+
+	void longAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct intAlignment_st
+		{
+			char i0;
+			short i2;
+			int64_t c1;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		intAlignment_st stIn;
+		stIn.i0 = 1;
+		stIn.c1 = 5;
+		stIn.i2 = 10;
+
+		//Primera posicion
+
+		void* initialPosition = &stIn;
+
+		ofs = (int) offsetof(struct intAlignment_st, i2);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.i0);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct intAlignment_st, c1);
+
+		align = longAlign;
+
+		position = &(stIn.i2);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.i0;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'longAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'longAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void floatAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			char att2;
+			float att3;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 1;
+		stIn.att2 = 5;
+		stIn.att3 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att3);
+
+		align = floatAlign;
+
+		position = &(stIn.att2);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'floatAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'floatAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void doubleAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			short att1;
+			double att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = 10;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = shortAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = doubleAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(short);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'doubleAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'doubleAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void stringAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			std::string att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = "Hello World";
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = stringAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'stringAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'stringAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void booleanAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			bool att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2 = true;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = booleanAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'booleanAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'booleanAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void sequenceAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			vector<void*> att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		vector<void*> att (4, NULL);
+		stIn.att2 = att;
+
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = sequenceAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'sequenceAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'sequenceAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayCharAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			char att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = charAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayCharAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayCharAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayShortAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			short att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = shortAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayShortAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayShortAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayIntAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			int32_t att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = intAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayIntAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayIntAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayLongAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			int64_t att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i+5;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = longAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayLongAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayLongAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayFloatAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			float att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i+5;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = floatAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayFloatAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayFloatAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayDoubleAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			double att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i+5;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = doubleAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayDoubleAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayDoubleAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayStringAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			std::string att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i+5;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = stringAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayStringAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayStringAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void arrayBooleanAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			bool att2[11];
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		for(int i=0; i < 11; ++i) {
+			stIn.att2[i] = i+5;
+		}
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = booleanAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'arrayBooleanAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'arrayBooleanAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void charStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				char att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = charStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'charStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'charStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void shortStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				short att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = shortStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'shortStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'shortStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void intStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				int32_t att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = intStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'intStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'intStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void longStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				int64_t att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = longStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'longStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'longStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void floatStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				float att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = floatStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'floatStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'floatStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void doubleStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				double att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = doubleStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'doubleStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'doubleStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void stringStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				std::string att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = stringStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'stringStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'stringStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void booleanStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				bool att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		stIn.att2.att1 = 10;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = booleanStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'booleanStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'booleanStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	void sequenceStructAlignmentTest01()
+	{
+		//Cálculo de offset usando la biblioteca estándar
+		struct alignment_st
+		{
+			char att1;
+			struct st{
+				vector<void*> att1;
+			} att2;
+		};
+
+		int ofs;
+
+		//Clalculo de offset usando algoritmia
+
+		bool result = true;
+
+		alignment_st stIn;
+		stIn.att1 = 5;
+		vector<void*> v (4, NULL);
+		stIn.att2.att1 = v;
+		
+		void* initialPosition = &stIn;
+
+		//Primera posicion
+
+		ofs = (int) offsetof(struct alignment_st, att1);
+
+		ptrdiff_t align = charAlign;
+
+		void *position = &(stIn.att1);
+		
+		size_t padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		//Segunda posicion
+
+		ofs = (int) offsetof(struct alignment_st, att2);
+
+		align = sequenceStructAlign;
+
+		position = &(stIn.att1);
+		position = (char*) position + sizeof(char);
+		
+		padding = calculatePadding(position, initialPosition, align);
+
+		position = (char*) position + padding;
+
+		ourOffset = (char*) position - (char*) &stIn.att1;
+
+		result &= (ofs==ourOffset);
+
+		if (result){
+			cout << "Test 'sequenceStructAlignmentTest01': SUCCESS" << endl;
+		} else {
+			cout << "Test 'sequenceStructAlignmentTest01': ERROR" << endl;
+		}
+	}
+
+	inline void execute()
+	{
+		align_tests::initialize();
+
+		cout << "Simple types: " << endl;
+		align_tests::charAlignmentTest01();
+		align_tests::shortAlignmentTest01();
+		align_tests::intAlignmentTest01();
+		align_tests::intAlignmentTest02();
+		align_tests::longAlignmentTest01();
+		align_tests::floatAlignmentTest01();
+		align_tests::doubleAlignmentTest01();
+		align_tests::stringAlignmentTest01();
+		align_tests::booleanAlignmentTest01();
+
+		cout << endl << "Complex types: " << endl;
+		align_tests::sequenceAlignmentTest01();
+		align_tests::arrayCharAlignmentTest01();
+		align_tests::arrayShortAlignmentTest01();
+		align_tests::arrayIntAlignmentTest01();
+		align_tests::arrayLongAlignmentTest01();
+		align_tests::arrayFloatAlignmentTest01();
+		align_tests::arrayDoubleAlignmentTest01();
+		align_tests::arrayStringAlignmentTest01();
+		align_tests::arrayBooleanAlignmentTest01();
+
+		cout << endl << "Structures: " << endl;
+		align_tests::charStructAlignmentTest01();
+		align_tests::shortStructAlignmentTest01();
+		align_tests::intStructAlignmentTest01();
+		align_tests::longStructAlignmentTest01();
+		align_tests::floatStructAlignmentTest01();
+		align_tests::doubleStructAlignmentTest01();
+		align_tests::stringStructAlignmentTest01();
+		align_tests::booleanStructAlignmentTest01();
+		align_tests::sequenceStructAlignmentTest01();
+	
+	}
+
+};
+
+namespace newTests
+{
+
+	struct simpleStruct1
+	{
+		char att0;
+		int32_t att1;
+		short att2;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+	};
+
+	inline void simpleStructTest1() //Estructura como último elemento
+	{
+
+		simpleStruct1 in;
+		in.att0 = 'a';
+		in.att1 = 5;
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createInteger(),
+			TypecodeAPI::createShort(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct2
+	{
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		int32_t att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest2() // Estructura como primer elemento
+	{
+
+		simpleStruct2 in;
+		in.att0 = 'a';
+		in.att1 = 5;
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createInteger(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct3
+	{
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		std::string att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest3() // Estructura como primer elemento usando también String
+	{
+
+		simpleStruct3 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct4
+	{
+		struct innerSt{
+			struct innerinnerSt{
+				char att1;
+			} att2;
+			short att0;
+			int32_t att1;
+		} att3;
+		char att0;
+		std::string att1;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest4() //Estructura como en el test 3 pero con otra estructura dentro en su primer elemento
+	{
+
+		simpleStruct4 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 9;
+		in.att3.att1 = 10;
+		in.att3.att2.att1 = 'W';
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createStruct(
+					TypecodeAPI::createCharacter(),
+					NULL
+				),
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct5
+	{
+		
+		char att0;
+		std::string att1;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest5() //Estructura igual que en el test 3 pero en medio
+	{
+
+		simpleStruct5 in;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 'b';
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bc = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+	}
+
+	struct simpleStruct6
+	{
+		
+		char att0;
+		std::string att1;
+		struct innerSt{
+			short att0;
+			int32_t att1;
+		} att3;
+		short att2;
+		
+	};
+
+	inline void simpleStructTest6() //Estructura igual que en el test 3 pero en medio
+	{
+
+		simpleStruct6 in, out;
+		in.att0 = 'a';
+		in.att1 = "Hello World";
+		in.att2 = 2;
+		in.att3.att0 = 8;
+		in.att3.att1 = 10;
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createString(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createShort(),
+				TypecodeAPI::createInteger(),
+				NULL
+			),
+			TypecodeAPI::createShort(),
+			
+			NULL
+		);
+
+		Bytecode* bytecodeSerialization = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+		Bytecode* bytecodeDeserialization = BytecodeAPI::generateBytecode(tc, DESERIALIZE);
+
+		char *buffer = (char*)calloc(500, sizeof(char));
+		
+		eProsima::FastBuffer fastBuffer(buffer, 500);
+		eProsima::FastCdr cdr(fastBuffer);
+	 
+	
+
+		for(int count = 0; count < 100; ++count)
+		{
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::serialize((void*) &in, bytecodeSerialization, &cdr);
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::deserialize((void*) &out, bytecodeDeserialization, &cdr);
+		}
+
+		free(buffer);
+
+	}
+
+	struct paddingBehindStructure1
+	{
+		char att1;
+		struct innerSt{
+			int32_t att1;
+			char att2;
+		} att2;
+		/*struct innerSt2{
+			short att1;
+			char att2;
+		} att3;*/
+		char att4;
+	};
+
+	inline void simpleStructTest7() //Probar padding detrás de las estructuras
+	{
+
+		paddingBehindStructure1 in, out;
+		in.att1 = 'a';
+		in.att2.att1 = 2;
+		in.att2.att2 = 'm';
+		/*in.att3.att1 = 3;
+		in.att3.att2 = 'n';*/
+		in.att4 = 'b';
+
+		Typecode *tc = TypecodeAPI::createStruct(
+			TypecodeAPI::createCharacter(),
+			TypecodeAPI::createStruct(
+				TypecodeAPI::createInteger(),
+				TypecodeAPI::createCharacter(),
+				NULL
+			),
+			TypecodeAPI::createCharacter(),
+			NULL
+		);
+
+		Bytecode* bytecodeSerialization = BytecodeAPI::generateBytecode(tc, SERIALIZE);
+		Bytecode* bytecodeDeserialization = BytecodeAPI::generateBytecode(tc, DESERIALIZE);
+
+		char *buffer = (char*)calloc(500, sizeof(char));
+		
+		eProsima::FastBuffer fastBuffer(buffer, 500);
+		eProsima::FastCdr cdr(fastBuffer);
+	 
+	
+
+		for(int count = 0; count < 100; ++count)
+		{
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::serialize((void*) &in, bytecodeSerialization, &cdr);
+			cdr.reset();
+			DynamicFastBuffers::SerializerAPI::deserialize((void*) &out, bytecodeDeserialization, &cdr);
+		}
+
+		free(buffer);
+
+	}
+
+	inline void testStructAlignment()
+	{
+		struct out
+		{
+			char att0;
+			struct in
+			{
+				vector<int> att0;
+			} att1;
+		};
+
+		out st;
+		st.att0 = 'a';
+		//st.att1.att0 = 555;
+		
+		cout << "StringAlign: " << align_tests::stringStructAlign << endl;
+		cout << "Stop" << endl;
+	}
+
+	inline void execute()
+	{
+		newTests::simpleStructTest1();
+		newTests::simpleStructTest2();
+		newTests::simpleStructTest3();
+		newTests::simpleStructTest4();
+		newTests::simpleStructTest5();
+		newTests::simpleStructTest6();
+		newTests::simpleStructTest7();
+	}
+
+};
+
 namespace testSesar
 {
 
@@ -4215,15 +6941,26 @@ inline void testSesar01()
 int main()
 {
 
-	//testDFB::innerComplexTestDFB();
+	testDFB::innerComplexTestDFB();
 
-	//testDFB::performanceDFB();
+	testDFB::performanceDFB();
+
+	unitTests::execute();
+
+	align_tests::execute();
+
+	newTests::execute();
 
 	//testDFB::testinnerComplexStruct_2();
 
 	//testSesar01();
 
-	testSesar::testSesar01();
+	//testSesar::testSesar01();
+
+	cout << "FINISHED" << endl;
+
+	string s;
+	std::cin >> s;
 
 	return 0;
 }

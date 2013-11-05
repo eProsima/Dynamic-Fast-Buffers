@@ -269,7 +269,7 @@ namespace DynamicFastBuffers
 			}
 			break;
 		case TC_SEQUENCE:
-			return sizeof(void*);
+			return sizeof(std::vector<void*>);
 			break;
 		case TC_ENUM:
 			break;

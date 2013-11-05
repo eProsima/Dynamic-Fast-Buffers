@@ -583,7 +583,6 @@
     <ClCompile Include="..\..\..\..\src\cpp\exceptions\WrongTypeException.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\SerializerAPI.cpp" />
     <ClCompile Include="..\..\..\..\src\cpp\TypecodeAPI.cpp" />
-    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\include\cpp\BytecodeAPI.h" />

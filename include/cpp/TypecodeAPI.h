@@ -260,6 +260,7 @@ namespace DynamicFastBuffers
 			}
 			Typecode *ret = new Typecode(TC_ARRAY);
 			ret->setType(type);
+			ret->setAlign(type->getAlign());
 			va_list vl;
 			va_start(vl, dim1);
 			vector<int> content;
