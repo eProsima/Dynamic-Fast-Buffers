@@ -22,10 +22,10 @@ namespace DynamicFastBuffers
 		}
 		
 		//Test--
-		for(int i=0; i<bytecode->getAlignment()->size(); ++i){
+		/*for(int i=0; i<bytecode->getAlignment()->size(); ++i){
 			printf("%d, ", bytecode->getAlignment()->at(i));
 		}
-		std::cout << endl;
+		std::cout << endl;*/
 		//--Test
 
 		return bytecode; 
@@ -354,10 +354,15 @@ namespace DynamicFastBuffers
 		size_t calc = 0;
 		if(alignment != 0){
 			calc = ((size_t) rawPosition % alignment);
+			//cout << "RawPosition: " << rawPosition << "\nAlignment: " << alignment << endl;
 			padding = (alignment - (calc)) % alignment;
 		}
 		
+		//cout << "Old Position: " << position << "\nPadding: " << padding << endl;
+
 		position = (char*) position + padding + (tc->getSize()*tc->getArraySize());
+
+		//cout << "New Position: " << position << "\nKind: " << tc->getKindStr() << "\nSize: " << (tc->getSize()*tc->getArraySize())  << endl << endl;
 		
 		return padding;
 	}

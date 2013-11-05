@@ -3933,7 +3933,7 @@ inline void testComplexVectors()
 	stest1.st3 = stestN;
 	stest1.str1 = "OUTER STRUCT";
 
-	cout << "Sizeof(vector): " << sizeof(vector<int64_t>) << endl;
+	/*cout << "Sizeof(vector): " << sizeof(vector<int64_t>) << endl;
 
 	cout << "s1: " << offsetof(structTest2, s1) << endl;
 	cout << "i1: " << offsetof(structTest2, i1) << endl;
@@ -3964,7 +3964,7 @@ inline void testComplexVectors()
 	cout << "\t.st3.s2: " << offsetof(structTest2, st3.s2) << endl;
 	cout << "\t.st3.l1: " << offsetof(structTest2, st3.l1) << endl;
 
-	cout << "str1: " << offsetof(structTest2, str1) << endl;
+	cout << "str1: " << offsetof(structTest2, str1) << endl;*/
 
 	/*
 	* Typecode creation
@@ -4383,7 +4383,7 @@ namespace align_tests
 		result &= (ofs==ourOffset);
 
 		if (result){
-			cout << "Test 'charAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'charAlignmentTest01': SUCCESS "<< endl;
 		} else {
 			cout << "Test 'charAlignmentTest01': ERROR" << endl;
 		}
@@ -4481,7 +4481,7 @@ namespace align_tests
 		ptrdiff_t ourOffset = (char*) position - (char*) &stIn.c0;
 
 		if (ofs == ourOffset){
-			cout << "Test 'intAlignmentTest01': SUCCESS" << endl;
+			cout << "Test 'intAlignmentTest01': SUCCESS"  << "\nOffset: " << ourOffset << endl;
 		} else {
 			cout << "Test 'intAlignmentTest01': ERROR" << endl;
 		}
@@ -6941,15 +6941,15 @@ inline void testSesar01()
 int main()
 {
 
-	testDFB::innerComplexTestDFB();
+	//testDFB::innerComplexTestDFB();
 
-	testDFB::performanceDFB();
+	//testDFB::performanceDFB();
 
-	unitTests::execute();
+	//unitTests::execute();
 
 	align_tests::execute();
 
-	newTests::execute();
+	//newTests::execute();
 
 	//testDFB::testinnerComplexStruct_2();
 

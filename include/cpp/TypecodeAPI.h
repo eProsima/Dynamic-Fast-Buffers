@@ -297,8 +297,10 @@ namespace DynamicFastBuffers
 				throw WrongParamException("Maximum length specified for creating the sequence must be a positive integer greater than zero.");
 			}
 			Typecode *ret = new Typecode(TC_SEQUENCE);
+			processor::AlignmentInfo alignInfo;
 			ret->setType(type);
 			ret->setMaxLength(maxLength);
+			ret->setAlign(alignInfo.getSequenceStructAlign());
 			return ret;
 		}
 
