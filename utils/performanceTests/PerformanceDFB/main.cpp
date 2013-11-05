@@ -6536,6 +6536,8 @@ inline void testSesar01()
 	//char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
 	char buffer[100000];
 	
+	cout << "Sizeof(String): " << sizeof(std::string) << endl;
+	
 	Typecode *typecode = TypecodeAPI::createStruct(
 		TypecodeAPI::createInteger(),
 		TypecodeAPI::createInteger(),
@@ -6941,21 +6943,17 @@ inline void testSesar01()
 int main()
 {
 
-	//testDFB::innerComplexTestDFB();
+	testDFB::innerComplexTestDFB();
 
-	//testDFB::performanceDFB();
+	testDFB::performanceDFB();
 
-	//unitTests::execute();
+	unitTests::execute();
 
 	align_tests::execute();
 
-	//newTests::execute();
+	newTests::execute();
 
-	//testDFB::testinnerComplexStruct_2();
-
-	//testSesar01();
-
-	//testSesar::testSesar01();
+	testSesar::testSesar01();
 
 	cout << "FINISHED" << endl;
 

@@ -109,7 +109,7 @@
       <AdditionalIncludeDirectories>..\..\..\..\..\Bibliotecas\boost_1_53_0;..\..\..\include;..\..\..\..\CDR\include;$(EPROSIMADIR)\code;..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <StructMemberAlignment>2Bytes</StructMemberAlignment>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

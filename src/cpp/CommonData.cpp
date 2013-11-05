@@ -35,7 +35,7 @@ namespace DynamicFastBuffers
 	int Typecode::addMemberNoCheck(Typecode &member)
 	{
 		members_.push_back(member);
-		int size = member.getSize();
+		int size = member.getAlign();
 #if defined(__linux)
 		if(structSize_ < size){
 			structSize_ = size;

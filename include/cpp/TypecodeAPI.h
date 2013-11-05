@@ -400,7 +400,7 @@ namespace DynamicFastBuffers
 				vector<Typecode> members = tc->getMembers();
 				for(int i=0; i<size; ++i){ //foreach member in struct
 					if(members[i].getKind() != TC_STRUCT){ //NO struct
-						tc->setStructSize(members[i].getSize());
+						tc->setStructSize(members[i].getAlign());
 					}else{ //struct
 						tc->setStructSize(TypecodeAPI::calculateStructSize(&members[i]));
 					}
