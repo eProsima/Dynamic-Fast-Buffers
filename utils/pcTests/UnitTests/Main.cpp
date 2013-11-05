@@ -15,7 +15,7 @@ using namespace std;
 bool generateBytecodeWhiteBox02()
 {
 	try{
-		DynamicFastBuffers::BytecodeAPI::generateBytecode(NULL, DynamicFastBuffers::FLAG_TRUE);
+		DynamicFastBuffers::BytecodeAPI::generateBytecode(NULL, DynamicFastBuffers::SERIALIZE);
 		return false;
 	}catch (DynamicFastBuffers::WrongParamException e){
 		return true;
@@ -220,7 +220,7 @@ bool generateBytecodeBlakBox01()
 	DynamicFastBuffers::Bytecode *bc;
 	bc = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		DynamicFastBuffers::TypecodeAPI::createLong(), 
-		DynamicFastBuffers::FLAG_TRUE
+		DynamicFastBuffers::SERIALIZE
 	);
 	//
 	// Comparison
@@ -238,7 +238,7 @@ bool generateBytecodeBlakBox02()
 	DynamicFastBuffers::Bytecode *bc;
 	bc = DynamicFastBuffers::BytecodeAPI::generateBytecode(
 		structure,
-		DynamicFastBuffers::FLAG_TRUE
+		DynamicFastBuffers::SERIALIZE
 	);
 	//
 	// Comparison
@@ -303,14 +303,14 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 	DynamicFastBuffers::Bytecode *bc7;
 	DynamicFastBuffers::Bytecode *bc8;
 
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::FLAG_TRUE);
-	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::FLAG_TRUE);
-	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::FLAG_TRUE);
-	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::FLAG_TRUE);
-	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::FLAG_TRUE);
-	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::FLAG_TRUE);
-	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::FLAG_TRUE);
-	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::FLAG_TRUE);
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::SERIALIZE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::SERIALIZE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::SERIALIZE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::SERIALIZE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::SERIALIZE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::SERIALIZE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::SERIALIZE);
+	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::SERIALIZE);
 	
 	//
 	// Comparison
@@ -367,8 +367,8 @@ bool serializeBlackBox02(eProsima::FastCdr *cdrp)
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::DESERIALIZE);
 
 	try{
 		cdr->reset();
@@ -420,8 +420,8 @@ bool serializeBlackBox03(eProsima::FastCdr *cdrp)
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	try{
 		cdr->reset();
@@ -468,14 +468,14 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::FLAG_TRUE);
-	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::FLAG_TRUE);
-	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::FLAG_TRUE);
-	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::FLAG_TRUE);
-	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::FLAG_TRUE);
-	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::FLAG_TRUE);
-	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::FLAG_TRUE);
-	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::FLAG_TRUE);
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::SERIALIZE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::SERIALIZE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::SERIALIZE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::SERIALIZE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::SERIALIZE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::SERIALIZE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::SERIALIZE);
+	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::SERIALIZE);
 	
 	
 	
@@ -499,14 +499,14 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	bool b1 = false, b2 = true;
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &b1, bc8, cdr);
 	
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::FLAG_FALSE);
-	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::FLAG_FALSE);
-	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::FLAG_FALSE);
-	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::FLAG_FALSE);
-	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::FLAG_FALSE);
-	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::FLAG_FALSE);
-	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::FLAG_FALSE);
-	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::FLAG_FALSE);
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::DESERIALIZE);
+	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::DESERIALIZE);
+	bc3 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createFloat(), DynamicFastBuffers::DESERIALIZE);
+	bc4 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createDouble(), DynamicFastBuffers::DESERIALIZE);
+	bc5 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createLong(), DynamicFastBuffers::DESERIALIZE);
+	bc6 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createString(), DynamicFastBuffers::DESERIALIZE);
+	bc7 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createCharacter(), DynamicFastBuffers::DESERIALIZE);
+	bc8 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createBoolean(), DynamicFastBuffers::DESERIALIZE);
 	
 	cdr->reset();
 	
@@ -561,8 +561,8 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::DESERIALIZE);
 
 	cdr->reset();
 	DynamicFastBuffers::SerializerAPI::serialize((void*) &inputStruct, bytecodeSerialization, cdr);
@@ -620,8 +620,8 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 	
 	
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	cdr->reset();
 	
@@ -690,8 +690,8 @@ bool deserializeBlackBox04(eProsima::FastCdr *cdrp)
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 	
 	
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	cdr->reset();
 	
@@ -759,8 +759,8 @@ bool deserializeBlackBox05()
 	cdr = new eProsima::FastCdr(*cdrBuffer);
 	
 	
-	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_TRUE);
-	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::FLAG_FALSE);
+	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
+	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
 
 	cdr->reset();
 	
