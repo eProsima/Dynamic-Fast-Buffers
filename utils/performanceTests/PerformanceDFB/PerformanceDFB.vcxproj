@@ -38,6 +38,9 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -91,12 +94,12 @@
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalLibraryDirectories>..\..\..\..\DynamicFastBuffers\lib\x64Win64VS2010;..\..\..\..\CDR\lib\x64Win64VS2010;%(AdditionalLibraryDirectories); ..\..\..\..\boost_1_53_0\lib64-msvc-10.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\DynamicFastBuffers\lib\x64Win64VS2010;..\..\..\..\CDR\lib\x64Win64VS2010;%(AdditionalLibraryDirectories);..\..\..\..\..\Bibliotecas\boost_1_53_0\lib64-msvc-10.0</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_53_0;..\..\..\include;..\..\..\..\CDR\include;$(EPROSIMADIR)\code;..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Bibliotecas\boost_1_53_0;..\..\..\include;..\..\..\..\CDR\include;$(EPROSIMADIR)\code;..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
@@ -104,11 +107,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\CDR\lib\x64Win64VS2010;..\..\..\lib\x64Win64VS2010;..\..\..\..\boost_1_53_0; ..\..\..\..\boost_1_53_0\lib64-msvc-10.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\DynamicFastBuffers\lib\x64Win64VS2010;..\..\..\..\CDR\lib\x64Win64VS2010;%(AdditionalLibraryDirectories);..\..\..\..\..\Bibliotecas\boost_1_53_0\lib64-msvc-10.0</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(EPROSIMADIR)\code;..\..\..\include;..\..\..\..\CDR\include;..\..\..\..\boost_1_53_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Bibliotecas\boost_1_53_0;..\..\..\include;..\..\..\..\CDR\include;$(EPROSIMADIR)\code;..\..\..\..\CDR\include\cpp</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG</PreprocessorDefinitions>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>

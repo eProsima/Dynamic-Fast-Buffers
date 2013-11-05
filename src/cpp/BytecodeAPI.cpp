@@ -354,11 +354,10 @@ namespace DynamicFastBuffers
 		size_t calc = 0;
 		if(alignment != 0){
 			calc = ((size_t) rawPosition % alignment);
+			padding = (alignment - (calc)) % alignment;
 		}
 		
-		padding = (alignment - (calc)) % alignment;
-		
-		position = (char*) position + padding + tc->getSize();
+		position = (char*) position + padding + (tc->getSize()*tc->getArraySize());
 		
 		return padding;
 	}
@@ -371,9 +370,8 @@ namespace DynamicFastBuffers
 		size_t calc = 0;
 		if(alignment != 0){
 			calc = ((size_t) rawPosition % alignment);
+			padding = (alignment - (calc)) % alignment;
 		}
-		
-		padding = (alignment - (calc)) % alignment;
 		
 		position = (char*) position + padding;
 
