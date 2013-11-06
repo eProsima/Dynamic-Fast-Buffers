@@ -186,7 +186,7 @@ int main()
 	//
 	// Bytecode for serialization
 	//
-	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::FLAG_TRUE);
+	DynamicFastBuffers::Bytecode* bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::SERIALIZE);
 
 	//
 	// Data serialization
@@ -201,7 +201,7 @@ int main()
 	//
 	// Bytecode for deserialization
 	//
-	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::FLAG_FALSE);
+	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(struct1, DynamicFastBuffers::DESERIALIZE);
 
 	//
 	// Data deserialization
