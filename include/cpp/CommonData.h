@@ -217,29 +217,37 @@ namespace DynamicFastBuffers
 		int addMemberNoCheck(Typecode &member);
 
 		/*!
-        * @brief In case of a string typecode, sets the length of the string
+        * @brief In case of a string typecode, sets the length of the string.
 		* @param size_str The size to be set.
         */
 		void setStrSize(int size_str);
 
 		/*!
-        * @brief In case of a string typecode, returns the length of the string
+        * @brief In case of a string typecode, returns the length of the string.
 		* @return The size the string.
         */
 		int getStrSize();
 
 		/*!
-        * @brief Sets the size of a structure
-		* @param structSize The size of the struct to be set
+        * @brief Sets the size of a structure.
+		* @param structSize The size of the struct to be set.
 		* @return The size the string.
         */
 		void setStructSize(int structSize);
 
+		/*!
+		* @brief Sets the boundary for a concrete object.
+		* @param align The number of bytes representing the boundary.
+		*/
 		void setAlign(size_t align)
 		{
 			align_ = align;
 		}
 
+		/*!
+		* @brief Returns the alignment of the concrete object.
+		* @return The number of bytes representing the boundary.
+		*/
 		size_t getAlign()
 		{
 			return align_;
@@ -318,74 +326,97 @@ namespace DynamicFastBuffers
 
 	namespace processor
 	{
+		/*!
+		 * @brief This static class stores all the relevant information about the alignment.
+		 * @ingroup COMMONDATAMODULE
+		 */
 		class AlignmentInfo
 		{
 
 		private:
 		
+			//! @brief 
 			struct charAlignment_st
 			{
 				char att1;
 				char att2;
 			};
+			//! @brief 
 			ptrdiff_t charAlign;
 
+			//! @brief
 			struct shortAlignment_st
 			{
 				char att1;
 				short att2;
 			};
+			//! @brief
 			ptrdiff_t shortAlign;
 
+			//! @brief
 			struct intAlignment_st
 			{
 				char att1;
 				int32_t att2;
 			};
+			//! @brief
 			ptrdiff_t intAlign;
 
+			//! @brief
 			struct longAlignment_st
 			{
 				char att1;
 				int64_t att2;
 			};
+			//! @brief
 			ptrdiff_t longAlign;
 
+			//! @brief
 			struct floatAlignment_st
 			{
 				char att1;
 				float att2;
 			};
+			//! @brief
 			ptrdiff_t floatAlign;
 
+			//! @brief
 			struct doubleAlignment_st
 			{
 				char att1;
 				double att2;
 			};
+			//! @brief
 			ptrdiff_t doubleAlign;
 
+			//! @brief
 			struct stringAlignment_st
 			{
 				char att1;
 				std::string att2;
 			};
+			//! @brief
 			ptrdiff_t stringAlign;
 
+			//! @brief
 			struct booleanAlignment_st
 			{
 				char att1;
 				bool att2;
 			};
+			//! @brief
 			ptrdiff_t booleanAlign;
 
+			//! @brief
 			struct sequenceAlignment_st
 			{
 				char att1;
 				vector<void*> att2;
 			};
+			//! @brief
 			ptrdiff_t sequenceAlign;
 
+			//! @brief
 			struct charStructAlignment_st
 			{
 				char att1;
@@ -393,8 +424,10 @@ namespace DynamicFastBuffers
 					char att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t charStructAlign;
 
+			//! @brief
 			struct shortStructAlignment_st
 			{
 				char att1;
@@ -402,8 +435,10 @@ namespace DynamicFastBuffers
 					short att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t shortStructAlign;
 
+			//! @brief
 			struct intStructAlignment_st
 			{
 				char att1;
@@ -411,8 +446,10 @@ namespace DynamicFastBuffers
 					int32_t att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t intStructAlign;
 
+			//! @brief
 			struct longStructAlignment_st
 			{
 				char att1;
@@ -420,8 +457,10 @@ namespace DynamicFastBuffers
 					int64_t att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t longStructAlign;
 
+			//! @brief
 			struct floatStructAlignment_st
 			{
 				char att1;
@@ -438,8 +477,10 @@ namespace DynamicFastBuffers
 					double att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t doubleStructAlign;
 
+			//! @brief
 			struct stringStructAlignment_st
 			{
 				char att1;
@@ -447,8 +488,10 @@ namespace DynamicFastBuffers
 					std::string att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t stringStructAlign;
 
+			//! @brief
 			struct booleanStructAlignment_st
 			{
 				char att1;
@@ -456,8 +499,10 @@ namespace DynamicFastBuffers
 					bool att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t booleanStructAlign;
 
+			//! @brief
 			struct sequenceStructAlignment_st
 			{
 				char att1;
@@ -465,8 +510,10 @@ namespace DynamicFastBuffers
 					vector<void*> att1;
 				} att2;
 			};
+			//! @brief
 			ptrdiff_t sequenceStructAlign;
 
+			//! @brief
 			struct paddingBehindStructure1
 			{
 				char att1;
@@ -476,6 +523,7 @@ namespace DynamicFastBuffers
 				} att2;
 				char att3;
 			};
+			//! @brief
 			ptrdiff_t paddingBehindStructure1Align;
 
 			/*struct paddingBehindStructure2
@@ -489,6 +537,7 @@ namespace DynamicFastBuffers
 			};
 			ptrdiff_t paddingBehindStructure2Align;*/
 
+			//! @brief
 			bool paddingBehindStructures;
 		
 		public:
@@ -653,8 +702,6 @@ namespace DynamicFastBuffers
 			{
 				return paddingBehindStructures;
 			}
-
-			
 			
 		};
 	};
