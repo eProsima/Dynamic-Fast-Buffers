@@ -2405,9 +2405,12 @@ inline void testinnerComplexStruct_1()
 		NULL
 	);
 
+	cout << "Tc" << endl;
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::SERIALIZE);
+	cout << "Bc1" << endl;
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(outerTypecode, DynamicFastBuffers::DESERIALIZE);
+	cout << "Bc2" << endl;
 
 	struct innercomplexStruct_1 inner1;
 	inner1.m1 = 1;
@@ -2431,13 +2434,16 @@ inline void testinnerComplexStruct_1()
 
 	for(int count = 0; count < NUMBER_OF_LOOPS; ++count)
 	{
+		cout << "rset" << endl;
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::serialize((void*) &stest1, bytecodeSerialization, &cdr);
 
-		 
+		 cout << "ser" << endl;
 
 		cdr.reset();
 		DynamicFastBuffers::SerializerAPI::deserialize((void*) &stest2, bytecodeDeserialization, &cdr);
+
+		cout << "deser" << endl;
 	}
 
 	free(buffer);
