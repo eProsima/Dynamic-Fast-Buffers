@@ -37,6 +37,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createInteger()
 		{
+			cout << "INT" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_INTEGER);
 			size_t alignment = alignInfo.getIntegerAlign();
@@ -51,6 +52,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createShort()
 		{
+			cout << "SHORT" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_SHORT);
 			size_t alignment = alignInfo.getShortAlign();
@@ -65,6 +67,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createLong()
 		{
+			cout << "LONG" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_LONG);
 			size_t alignment = alignInfo.getLongAlign();
@@ -79,6 +82,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createFloat()
 		{
+			cout << "FLOAT" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_FLOAT);
 			size_t alignment = alignInfo.getFloatAlign();
@@ -93,6 +97,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createDouble()
 		{
+			cout << "DOUBLE" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_DOUBLE);
 			size_t alignment = alignInfo.getDoubleAlign();
@@ -107,6 +112,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createString()
 		{
+			cout << "STRING" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_STRING);
 			size_t alignment = alignInfo.getStringAlign();
@@ -122,6 +128,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createString(int size_str)
 		{
+			cout << "STRING 2" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode *tc = new Typecode(TC_STRING);
 			tc->setStrSize(size_str);
@@ -137,6 +144,7 @@ namespace DynamicFastBuffers
 	     */
 		static Typecode* createCharacter()
 		{
+			cout << "CHAR" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_CHARACTER);
 			tc->setAlign(alignInfo.getCharAlign());
@@ -149,6 +157,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createBoolean()
 		{
+			cout << "BOOL" << endl;
 			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_BOOLEAN);
 			tc->setAlign(alignInfo.getBooleanAlign());
@@ -163,6 +172,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createStruct(Typecode *init, ...)
 		{
+			cout << "STRUCT" << endl;
 			if(init == NULL){
 				return new Typecode(TC_STRUCT);
 			}
@@ -194,6 +204,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createArray(Typecode *type, int nDims, int dim1, ...)
 		{
+			cout << "ARRAY" << endl;
 			if(nDims < 1 ){
 				throw NotEnoughParamsException("Number of dimensions must be a positive integer greater than zero.");
 			}
@@ -240,6 +251,7 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createSequence(Typecode *type, int maxLength)
 		{
+			cout << "SEQUENCE" << endl;
 			if(maxLength <= 0){
 				throw WrongParamException("Maximum length specified for creating the sequence must be a positive integer greater than zero.");
 			}
@@ -299,6 +311,7 @@ namespace DynamicFastBuffers
 		 */
 		static void deleteTypecode(Typecode *tc)
 		{
+			cout << "DELETE" << endl;
 			if(tc == NULL){
 				throw WrongParamException("Destination typecode cannot be null.");
 			}
