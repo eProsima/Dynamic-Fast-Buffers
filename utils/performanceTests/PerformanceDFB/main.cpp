@@ -2383,6 +2383,7 @@ struct outercomplexStruct_1
 
 inline void testinnerComplexStruct_1()
 {
+	cout << "start" << endl;
 	char *buffer = (char*)calloc(BUFFER_SIZE, sizeof(char));
 	outercomplexStruct_1 stest1, stest2;
 
