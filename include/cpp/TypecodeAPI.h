@@ -21,6 +21,7 @@
 
 namespace DynamicFastBuffers
 {
+
 	/*!
      * @brief This static class offers an interface to create a typecode for data type definitions.
      * @ingroup TYPECODEAPIMODULE
@@ -35,8 +36,7 @@ namespace DynamicFastBuffers
 		*/
 		static size_t calculateStructSize(Typecode *tc)
 		{
-			processor::AlignmentInfo alignInfo;
-			size_t alignment = alignInfo.getShortAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getShortAlign();
 			
 			size_t size = tc->getMembers().size();
 			if(size != 0){
@@ -55,13 +55,13 @@ namespace DynamicFastBuffers
 			size_t stSize = tc->getSize();
 
 			if (stSize == sizeof(char)){
-				tc->setAlign(alignInfo.getCharStructAlign());
+				tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getCharStructAlign());
 			} else if (stSize == sizeof(short)) {
-				tc->setAlign(alignInfo.getShortStructAlign());
+				tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getShortStructAlign());
 			} else if (stSize == sizeof(int32_t)) {
-				tc->setAlign(alignInfo.getIntegerStructAlign());
+				tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getIntegerStructAlign());
 			} else if (stSize >= sizeof(int64_t)) {
-				tc->setAlign(alignInfo.getLongStructAlign());
+				tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getLongStructAlign());
 			} 
 
 			return tc->getSize();
@@ -75,9 +75,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createInteger()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_INTEGER);
-			size_t alignment = alignInfo.getIntegerAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getIntegerAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -89,9 +88,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createShort()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_SHORT);
-			size_t alignment = alignInfo.getShortAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getShortAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -103,9 +101,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createLong()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_LONG);
-			size_t alignment = alignInfo.getLongAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getLongAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -117,9 +114,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createFloat()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_FLOAT);
-			size_t alignment = alignInfo.getFloatAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getFloatAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -131,9 +127,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createDouble()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_DOUBLE);
-			size_t alignment = alignInfo.getDoubleAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getDoubleAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -145,9 +140,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createString()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_STRING);
-			size_t alignment = alignInfo.getStringAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getStringAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -160,10 +154,9 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createString(int size_str)
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode *tc = new Typecode(TC_STRING);
 			tc->setStrSize(size_str);
-			size_t alignment = alignInfo.getStringAlign();
+			size_t alignment = processor::AlignmentInfo::getAlignmentInfo().getStringAlign();
 			//cout << "ALIGN: " << alignment << endl;
 			tc->setAlign(alignment);
 			return tc;
@@ -175,9 +168,8 @@ namespace DynamicFastBuffers
 	     */
 		static Typecode* createCharacter()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_CHARACTER);
-			tc->setAlign(alignInfo.getCharAlign());
+			tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getCharAlign());
 			return tc;
 		}
 
@@ -187,9 +179,8 @@ namespace DynamicFastBuffers
 		 */
 		static Typecode* createBoolean()
 		{
-			processor::AlignmentInfo alignInfo;
 			Typecode* tc = new Typecode(TC_BOOLEAN);
-			tc->setAlign(alignInfo.getBooleanAlign());
+			tc->setAlign(processor::AlignmentInfo::getAlignmentInfo().getBooleanAlign());
 			return tc;
 		}
 
@@ -282,10 +273,9 @@ namespace DynamicFastBuffers
 				throw WrongParamException("Maximum length specified for creating the sequence must be a positive integer greater than zero.");
 			}
 			Typecode *ret = new Typecode(TC_SEQUENCE);
-			processor::AlignmentInfo alignInfo;
 			ret->setType(type);
 			ret->setMaxLength(maxLength);
-			ret->setAlign(alignInfo.getSequenceStructAlign());
+			ret->setAlign(processor::AlignmentInfo::getAlignmentInfo().getSequenceStructAlign());
 			return ret;
 		}
 

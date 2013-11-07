@@ -330,5 +330,15 @@ namespace DynamicFastBuffers
 	{
 		*size_ = size;
 	}
+
+	/**
+	*	Class AlignmentInfo
+	*/
+	namespace processor{
+	
+		AlignmentInfo* processor::AlignmentInfo::alignmentInfo_;
+	
+	
+	};
 	
 };

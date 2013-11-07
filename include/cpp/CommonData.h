@@ -334,89 +334,92 @@ namespace DynamicFastBuffers
 		{
 
 		private:
+
+			//! @brief Atribute used to fulfill Singleton design pattern.
+			static AlignmentInfo *alignmentInfo_;
 		
-			//! @brief 
+			//! @brief Attribute used to store char boundary.
 			struct charAlignment_st
 			{
 				char att1;
 				char att2;
 			};
-			//! @brief 
+			//! @brief Attribute used to store char boundary.
 			ptrdiff_t charAlign;
 
-			//! @brief
+			//! @brief Structure used to know short boundary.
 			struct shortAlignment_st
 			{
 				char att1;
 				short att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store short boundary.
 			ptrdiff_t shortAlign;
 
-			//! @brief
+			//! @brief Structure used to know int32_t boundary.
 			struct intAlignment_st
 			{
 				char att1;
 				int32_t att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store int32_t boundary.
 			ptrdiff_t intAlign;
 
-			//! @brief
+			//! @brief Structure used to know int64_t boundary.
 			struct longAlignment_st
 			{
 				char att1;
 				int64_t att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store int64_t boundary.
 			ptrdiff_t longAlign;
 
-			//! @brief
+			//! @brief Structure used to know float boundary.
 			struct floatAlignment_st
 			{
 				char att1;
 				float att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store float boundary.
 			ptrdiff_t floatAlign;
 
-			//! @brief
+			//! @brief Structure used to know double boundary.
 			struct doubleAlignment_st
 			{
 				char att1;
 				double att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store double boundary.
 			ptrdiff_t doubleAlign;
 
-			//! @brief
+			//! @brief Structure used to know string boundary.
 			struct stringAlignment_st
 			{
 				char att1;
 				std::string att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store string boundary.
 			ptrdiff_t stringAlign;
 
-			//! @brief
+			//! @brief Structure used to know bool boundary.
 			struct booleanAlignment_st
 			{
 				char att1;
 				bool att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store bool boundary.
 			ptrdiff_t booleanAlign;
 
-			//! @brief
+			//! @brief Structure used to know vector boundary.
 			struct sequenceAlignment_st
 			{
 				char att1;
 				vector<void*> att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store vector boundary.
 			ptrdiff_t sequenceAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of a char data type.
 			struct charStructAlignment_st
 			{
 				char att1;
@@ -424,10 +427,10 @@ namespace DynamicFastBuffers
 					char att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a char data type.
 			ptrdiff_t charStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of a short data type.
 			struct shortStructAlignment_st
 			{
 				char att1;
@@ -435,10 +438,10 @@ namespace DynamicFastBuffers
 					short att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a short data type.
 			ptrdiff_t shortStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of an int32_t data type.
 			struct intStructAlignment_st
 			{
 				char att1;
@@ -446,10 +449,10 @@ namespace DynamicFastBuffers
 					int32_t att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a int32_t data type.
 			ptrdiff_t intStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of an int64_t data type.
 			struct longStructAlignment_st
 			{
 				char att1;
@@ -457,10 +460,10 @@ namespace DynamicFastBuffers
 					int64_t att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a int64_t data type.
 			ptrdiff_t longStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of a float data type.
 			struct floatStructAlignment_st
 			{
 				char att1;
@@ -468,8 +471,10 @@ namespace DynamicFastBuffers
 					float att1;
 				} att2;
 			};
+			//! @brief Attribute used to store struct boundary with a maximum size of a float data type.
 			ptrdiff_t floatStructAlign;
 
+			//! @brief Structure used to know struct boundary when maximum size is the one of a double data type.
 			struct doubleStructAlignment_st
 			{
 				char att1;
@@ -477,10 +482,10 @@ namespace DynamicFastBuffers
 					double att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a double data type.
 			ptrdiff_t doubleStructAlign;
-
-			//! @brief
+			
+			//! @brief Structure used to know struct boundary when maximum size is the one of a string data type.
 			struct stringStructAlignment_st
 			{
 				char att1;
@@ -488,10 +493,10 @@ namespace DynamicFastBuffers
 					std::string att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a string data type.
 			ptrdiff_t stringStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of a boolean data type.
 			struct booleanStructAlignment_st
 			{
 				char att1;
@@ -499,10 +504,10 @@ namespace DynamicFastBuffers
 					bool att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a boolean data type.
 			ptrdiff_t booleanStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know struct boundary when maximum size is the one of a vector data type.
 			struct sequenceStructAlignment_st
 			{
 				char att1;
@@ -510,10 +515,10 @@ namespace DynamicFastBuffers
 					vector<void*> att1;
 				} att2;
 			};
-			//! @brief
+			//! @brief Attribute used to store struct boundary with a maximum size of a vector data type.
 			ptrdiff_t sequenceStructAlign;
 
-			//! @brief
+			//! @brief Structure used to know the padding is inserted behind a structure.
 			struct paddingBehindStructure1
 			{
 				char att1;
@@ -523,23 +528,15 @@ namespace DynamicFastBuffers
 				} att2;
 				char att3;
 			};
-			//! @brief
+			//! @brief Attribute used to store the padding is inserted behind a structure.
 			ptrdiff_t paddingBehindStructure1Align;
 
-			/*struct paddingBehindStructure2
-			{
-				char att1;
-				struct innerSt{
-					int32_t att1;
-					char att2;
-				} att2;
-				char att3;
-			};
-			ptrdiff_t paddingBehindStructure2Align;*/
-
-			//! @brief
+			//! @brief Attribute that holds a value indicating if padding is inserted behind a structure.
 			bool paddingBehindStructures;
 
+			/*!
+			* @brief This function calculates the alignment of all the different data types that could be allocated inside a structure.
+			*/
 			inline void initialize()
 			{
 				charAlignment_st charst;
@@ -605,99 +602,193 @@ namespace DynamicFastBuffers
 				}
 
 			}
-		
-		public:
 
+			/*!
+			* @brief Private constructor used for the Singletodn design pattern.
+			*/
 			AlignmentInfo()
 			{
 				initialize();
 			}
 
+			/*!
+			* @brief Copy constructor.
+			* @param A reference to an AlignmentInfo object.
+			*/
+			AlignmentInfo(AlignmentInfo const&); 
+				
+
+		public:
+
+			/*!
+			* @brief Function used to allow a unique entry point to this class.
+			* @return A reference to an AlignmentInfo unique instantiation.
+			*/
+			static AlignmentInfo& getAlignmentInfo()
+			{
+				if(alignmentInfo_ == NULL){
+					alignmentInfo_ = new AlignmentInfo(); // Guaranteed to be destroyed. Instantiated on first use.
+				}
+				return *alignmentInfo_;
+			}
+
+			/*!
+			* @brief Getter for charAlign
+			* @return size_t The charAlign attribute
+			*/
 			size_t getCharAlign()
 			{
 				return charAlign;
 			}
-		
+			
+			/*!
+			* @brief Getter for intAlign
+			* @return size_t The intAlign attribute
+			*/
 			size_t getIntegerAlign()
 			{
 				return intAlign;
 			}
 
+			/*!
+			* @brief Getter for shortAlign
+			* @return size_t The shortAlign attribute
+			*/
 			size_t getShortAlign()
 			{
 				return shortAlign;
 			}
 
+			/*!
+			* @brief Getter for longAlign
+			* @return size_t The longAlign attribute
+			*/
 			size_t getLongAlign()
 			{
 				return longAlign;
 			}
 
+			/*!
+			* @brief Getter for floatAlign
+			* @return size_t The floatAlign attribute
+			*/
 			size_t getFloatAlign()
 			{
 				return floatAlign;
 			}
 
+			/*!
+			* @brief Getter for doubleAlign
+			* @return size_t The doubleAlign attribute
+			*/
 			size_t getDoubleAlign()
 			{
 				return doubleAlign;
 			}
 
+			/*!
+			* @brief Getter for stringAlign
+			* @return size_t The stringAlign attribute
+			*/
 			size_t getStringAlign()
 			{
 				return stringAlign;
 			}
 
+			/*!
+			* @brief Getter for booleanAlign
+			* @return size_t The booleanAlign attribute
+			*/
 			size_t getBooleanAlign()
 			{
 				return booleanAlign;
 			}
 
+			/*!
+			* @brief Getter for charStructAlign
+			* @return size_t The charStructAlign attribute
+			*/
 			size_t getCharStructAlign()
 			{
 				return charStructAlign;
 			}
 
+			/*!
+			* @brief Getter for shortStructAlign
+			* @return size_t The shortStructAlign attribute
+			*/
 			size_t getShortStructAlign()
 			{
 				return shortStructAlign;
 			}
 
+			/*!
+			* @brief Getter for intStructAlign
+			* @return size_t The intStructAlign attribute
+			*/
 			size_t getIntegerStructAlign()
 			{
 				return intStructAlign;
 			}
 
+			/*!
+			* @brief Getter for longStructAlign
+			* @return size_t The longStructAlign attribute
+			*/
 			size_t getLongStructAlign()
 			{
 				return longStructAlign;
 			}
 
+			/*!
+			* @brief Getter for floatStructAlign
+			* @return size_t The floatStructAlign attribute
+			*/
 			size_t getFloatStructAlign()
 			{
 				return floatStructAlign;
 			}
 
+			/*!
+			* @brief Getter for doubleStructAlign
+			* @return size_t The doubleStructAlign attribute
+			*/
 			size_t getDoubleStructAlign()
 			{
 				return doubleStructAlign;
 			}
-
+			
+			/*!
+			* @brief Getter for booleanStructAlign
+			* @return size_t The booleanStructAlign attribute
+			*/
 			size_t getBooleanStructAlign()
 			{
 				return booleanStructAlign;
 			}
 
+			/*!
+			* @brief Getter for sequenceStructAlign
+			* @return size_t The sequenceStructAlign attribute
+			*/
 			size_t getSequenceStructAlign()
 			{
 				return sequenceStructAlign;
 			}
-
+	
+			/*!
+			* @brief Getter for stringStructAlign
+			* @return size_t The stringStructAlign attribute
+			*/
 			size_t getStringStructAlign()
 			{
 				return stringStructAlign;
 			}
 
+			/*!
+			* @brief Getter for paddingBehindStructures
+			* @return size_t The paddingBehindStructures attribute
+			*/
 			bool getPaddingBehindStructures()
 			{
 				return paddingBehindStructures;
@@ -708,4 +799,4 @@ namespace DynamicFastBuffers
 	
 };
 
-#endif //_COMMON_DATA_
+#endif 
