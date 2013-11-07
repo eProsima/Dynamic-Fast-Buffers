@@ -539,13 +539,6 @@ namespace DynamicFastBuffers
 
 			//! @brief
 			bool paddingBehindStructures;
-		
-		public:
-
-			AlignmentInfo()
-			{
-				initialize();
-			}
 
 			inline void initialize()
 			{
@@ -611,6 +604,13 @@ namespace DynamicFastBuffers
 					paddingBehindStructures = false;
 				}
 
+			}
+		
+		public:
+
+			AlignmentInfo()
+			{
+				initialize();
 			}
 
 			size_t getCharAlign()

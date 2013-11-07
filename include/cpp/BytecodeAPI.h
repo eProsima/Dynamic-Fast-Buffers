@@ -56,8 +56,7 @@ namespace DynamicFastBuffers
 		 * @param m_currentPosition Current memory position.
 		 * @return The number of Bytes of padding inserted by the compiler whan aligning consecutive data types.
 		 */
-		static inline size_t alignment(size_t dataSize, void *&m_currentPosition);
-
+		
 		static inline size_t calculatePadding (void *&position, void *initialPosition, DynamicFastBuffers::Typecode *tc, bool added);
 
 		static inline size_t calculateStructPadding (void *&position, void *initialPosition, DynamicFastBuffers::Typecode *tc);

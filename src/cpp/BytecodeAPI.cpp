@@ -304,7 +304,6 @@ namespace DynamicFastBuffers
 
 	void BytecodeAPI::insertJumps(Typecode *typecode, Bytecode *bytecode, void *&m_currentPosition, void *&initialPosition, bool added)
 	{
-		//bytecode->addAlignment(alignment(typecode->getSize(), m_currentPosition));
 		if (typecode->getKind() == TC_STRUCT){
 			if (added) {
 				calculateStructPadding(m_currentPosition, initialPosition, typecode);
@@ -320,32 +319,6 @@ namespace DynamicFastBuffers
 		}
 	}
 
-	inline size_t BytecodeAPI::alignment(size_t dataSize, void *&m_currentPosition)
-	{
-		size_t align;
-		if(dataSize != 0){
-			align = (dataSize - ((size_t) m_currentPosition % dataSize)) & (dataSize-1);
-			//test
-			//printf("\tData Size:  %d , Pos:  %p, SALTO:  %d", dataSize, m_currentPosition, align);
-			//end test
-			
-		}else{
-			align = 0;
-		}
-		m_currentPosition = (char*) m_currentPosition + align;
-		//printf(" -> %p\n", m_currentPosition);
-		if(dataSize == 8 && (((size_t) m_currentPosition % 8) != 0)){
-		
-			//test
-			//printf("\t\tENTRA: \n");
-			//end test
-		
-			m_currentPosition = (char*) m_currentPosition + sizeof(int);
-			align += sizeof(int);
-		}
-		return align;
-	}
-
 	inline size_t BytecodeAPI::calculatePadding (void *&position, void* initialPosition, DynamicFastBuffers::Typecode *tc, bool added)
 	{
 		size_t padding = 0;
@@ -354,16 +327,11 @@ namespace DynamicFastBuffers
 		size_t calc = 0;
 		if(alignment != 0){
 			calc = ((size_t) rawPosition % alignment);
-			//cout << "RawPosition: " << rawPosition << "\nAlignment: " << alignment << endl;
 			padding = (alignment - (calc)) % alignment;
 		}
 		
-		//cout << "Old Position: " << position << "\nPadding: " << padding << endl;
-
 		position = (char*) position + padding + (tc->getSize()*tc->getArraySize());
 
-		//cout << "New Position: " << position << "\nKind: " << tc->getKindStr() << "\nSize: " << (tc->getSize()*tc->getArraySize())  << endl << endl;
-		
 		return padding;
 	}
 

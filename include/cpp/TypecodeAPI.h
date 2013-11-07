@@ -28,7 +28,45 @@ namespace DynamicFastBuffers
 	class Dfb_DllAPI TypecodeAPI
 	{
 	private:
-		//No private atributes or functions
+		
+		/*!
+        * @brief This function calculates the maximum size of the sizes of the data allocated inside a structure.
+		* @param tc A struct Typecode which size must be calculated.
+		*/
+		static size_t calculateStructSize(Typecode *tc)
+		{
+			processor::AlignmentInfo alignInfo;
+			size_t alignment = alignInfo.getShortAlign();
+			
+			size_t size = tc->getMembers().size();
+			if(size != 0){
+				vector<Typecode> members = tc->getMembers();
+				for(int i=0; i<size; ++i){ //foreach member in struct
+					if(members[i].getKind() != TC_STRUCT){ //NO struct
+						tc->setStructSize(members[i].getAlign());
+					}else{ //struct
+						tc->setStructSize(TypecodeAPI::calculateStructSize(&members[i]));
+					}
+				}
+			}else{
+				tc->setStructSize(0); //check this later
+			}
+
+			size_t stSize = tc->getSize();
+
+			if (stSize == sizeof(char)){
+				tc->setAlign(alignInfo.getCharStructAlign());
+			} else if (stSize == sizeof(short)) {
+				tc->setAlign(alignInfo.getShortStructAlign());
+			} else if (stSize == sizeof(int32_t)) {
+				tc->setAlign(alignInfo.getIntegerStructAlign());
+			} else if (stSize >= sizeof(int64_t)) {
+				tc->setAlign(alignInfo.getLongStructAlign());
+			} 
+
+			return tc->getSize();
+		}
+
 	public:
 
 		/*!
@@ -352,44 +390,6 @@ namespace DynamicFastBuffers
 				}
 			}
 			return tc->getSize(); 
-		}
-
-		/*!
-        * @brief This function calculates the maximum size of the sizes of the datum allocated inside a structure.
-		* @param tc A struct Typecode which size must be calculated.
-		*/
-		static size_t calculateStructSize(Typecode *tc)
-		{
-			processor::AlignmentInfo alignInfo;
-			size_t alignment = alignInfo.getShortAlign();
-			
-			size_t size = tc->getMembers().size();
-			if(size != 0){
-				vector<Typecode> members = tc->getMembers();
-				for(int i=0; i<size; ++i){ //foreach member in struct
-					if(members[i].getKind() != TC_STRUCT){ //NO struct
-						tc->setStructSize(members[i].getAlign());
-					}else{ //struct
-						tc->setStructSize(TypecodeAPI::calculateStructSize(&members[i]));
-					}
-				}
-			}else{
-				tc->setStructSize(0); //check this later
-			}
-
-			size_t stSize = tc->getSize();
-
-			if (stSize == sizeof(char)){
-				tc->setAlign(alignInfo.getCharStructAlign());
-			} else if (stSize == sizeof(short)) {
-				tc->setAlign(alignInfo.getShortStructAlign());
-			} else if (stSize == sizeof(int32_t)) {
-				tc->setAlign(alignInfo.getIntegerStructAlign());
-			} else if (stSize >= sizeof(int64_t)) {
-				tc->setAlign(alignInfo.getLongStructAlign());
-			} 
-
-			return tc->getSize();
 		}
 
 	};
