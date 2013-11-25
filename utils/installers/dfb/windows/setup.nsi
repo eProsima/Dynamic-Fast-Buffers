@@ -222,20 +222,20 @@ FunctionEnd
 
 # Section Descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0000} $(SECGRP0000_DESC) "Dynamic Fast Buffers target libraries"
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0001} $(SEC0001_DESC) "Libraries for x64 target platform."
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0002} $(SEC0002_DESC) "Libraries for i86 target platform."
-!insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0001} $(SECGRP0001_DESC) "Dynamic Fast Buffers environment variables"
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC) "Environment variables for x64 target platform"
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0004_DESC) "Environment variables for i86 target platform"
+!insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0000} $(SECGRP0000_DESC)
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC0001} $(SEC0001_DESC)
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC0002} $(SEC0002_DESC)
+!insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0001} $(SECGRP0001_DESC) 
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC) 
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0004_DESC) 
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # Installer Language Strings
 # TODO Update the Language Strings with the appropriate translations.
 
-LangString SECGRP0000_DESC ${LANG_ENGLISH} "Select whether to install 32-bit or 64-bit libraries"
-LangString SEC0001_DESC ${LANG_ENGLISH} "64-bit libraries"
-LangString SEC0002_DESC ${LANG_ENGLISH} "32-bit libraries"
-LangString SECGRP0001_DESC ${LANG_ENGLISH} "Select whether to set environment variables"
-LangString SEC0003_DESC ${LANG_ENGLISH} "32-bit environment variable set"
-LangString SEC0004_DESC ${LANG_ENGLISH} "64-bit environment variable set"
+LangString SECGRP0000_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers target libraries"
+LangString SEC0001_DESC ${LANG_ENGLISH} "Libraries for x64 target platform."
+LangString SEC0002_DESC ${LANG_ENGLISH} "Libraries for i86 target platform."
+LangString SECGRP0001_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers environment variables"
+LangString SEC0003_DESC ${LANG_ENGLISH} "Environment variables for i86 target platform"
+LangString SEC0004_DESC ${LANG_ENGLISH} "Environment variables for x64 target platform"
