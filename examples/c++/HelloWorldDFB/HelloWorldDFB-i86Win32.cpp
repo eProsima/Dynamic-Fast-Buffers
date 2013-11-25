@@ -1,9 +1,9 @@
-#include "cpp/TypecodeAPI.h"
-#include "cpp/BytecodeAPI.h"
-#include "cpp/SerializerAPI.h"
-#include "cpp/CommonData.h"
-#include "cpp/FastCdr.h"
-#include "cpp/FastBuffer.h"
+#include "dfb/TypecodeAPI.h"
+#include "dfb/BytecodeAPI.h"
+#include "dfb/SerializerAPI.h"
+#include "dfb/CommonData.h"
+#include "fastcdr/FastCdr.h"
+#include "fastcdr/FastBuffer.h"
 #include <iostream>
 
 struct InnerStruct
@@ -106,8 +106,8 @@ int main()
 	// CDR Serializer declaration
 	//
 	char buffer[5000];
-	eProsima::FastBuffer cdrBuffer(buffer, 5000);
-	eProsima::FastCdr cdr(cdrBuffer);
+	eprosima::FastBuffer cdrBuffer(buffer, 5000);
+	eprosima::FastCdr cdr(cdrBuffer);
 	
 	//
 	// Data creation

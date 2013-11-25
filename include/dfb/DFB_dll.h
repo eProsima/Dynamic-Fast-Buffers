@@ -48,7 +48,7 @@
 #if !defined(DFB_SOURCE) && !defined(EPROSIMA_ALL_NO_LIB) \
     && !defined(DFB_NO_LIB)
 
-#include "cpp/DFB_version.h"
+#include "dfb/DFB_version.h"
 
 // Set properties.
 #define EPROSIMA_LIB_NAME dfb
