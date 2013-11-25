@@ -21,35 +21,60 @@ using namespace std;
 namespace DynamicFastBuffers
 {
 
-	//! @brief This enumeration represents the different data types that can be described.
+	/*! 
+	 * @enum tc_kind
+	 * @brief This enumeration represents the different data types that can be described.
+	 * @ingroup COMMONDATAMODULE
+	 */
 	enum tc_kind 
 	{
+		//! @brief Type not specified
 		TC_NOTYPE = 0,
+		//! @brief Integer data type
 		TC_INTEGER,
+		//! @brief Short data type
 		TC_SHORT,
+		//! @brief Long data type
 		TC_LONG,
+		//! @brief Float data type
 		TC_FLOAT,
+		//! @brief Double data type
 		TC_DOUBLE,
+		//! @brief String data type
 		TC_STRING,
+		//! @brief Character data type
 		TC_CHARACTER,
+		//! @brief Boolean data type
 		TC_BOOLEAN,
+		//! @brief Structures
 		TC_STRUCT,
+		//! @brief Unions (not supported by now)
 		TC_UNION,
+		//! @brief Arrays
 		TC_ARRAY,
+		//! @brief Sequences
 		TC_SEQUENCE,
+		//! @brief Enumerations (not supported by now)
 		TC_ENUM
 	};
 
-	//! @brief This enumeration is used to specify if user wants to create a Bytecode for serialization or deserialization.
+	/*! 
+	 * @enum flag
+	 * @brief This enumeration is used to specify if user wants to create a Bytecode for serialization or deserialization.
+	 * @ingroup COMMONDATAMODULE
+	 */
 	enum flag
 	{
+		//! @brief Indicates thet the Bytecode object is for deserializing native data types.
 		DESERIALIZE = 0,
+		//! @brief Indicates that the Bytecode object is for serializing native data types.
 		SERIALIZE
 	};
 
 	/*! 
 	* @typedef Function CALLBACK.
 	* @brief This CALLBACK type represents pointer to a function defined in SerializerAPI.h.
+	* @ingroup COMMONDATAMODULE
 	*/
 	typedef void* (*CALLBACK) (eprosima::FastCdr* serializer, void* data, int &size);
 
