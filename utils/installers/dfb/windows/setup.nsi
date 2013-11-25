@@ -3,6 +3,9 @@
 
 Name "Dynamic Fast Buffers"
 
+### Necesario para tener permisos de borrar ciertos ficheros al desinstalar
+RequestExecutionLevel admin
+
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
 !define COMPANY eProsima
@@ -11,6 +14,10 @@ Name "Dynamic Fast Buffers"
 # MUI Symbol Definitions
 !define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\modern-install.ico"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
+!define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "eProsima\DynamicFastBuffers"
 !define MUI_FINISHPAGE_SHOWREADME $INSTDIR\README.html
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -20,9 +27,16 @@ Name "Dynamic Fast Buffers"
 !include MUI2.nsh
 !include EnvVarUpdate.nsh
 
+# Variables
+Var StartMenuGroup
+
+# Reserved Files
+ReserveFile "${NSISDIR}\Plugins\newadvsplash.dll"
+
 # Installer pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
+!insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE ComponentsPageLeave
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
@@ -105,6 +119,11 @@ Section -post SEC0006
     WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     WriteUninstaller $INSTDIR\uninstall.exe
+	!insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    SetOutPath $SMPROGRAMS\$StartMenuGroup
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\README.lnk" $INSTDIR\README.html
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
+	!insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
     WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
     WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" Publisher "${COMPANY}"
@@ -189,6 +208,7 @@ FunctionEnd
 # Uninstaller functions
 Function un.onInit
     ReadRegStr $INSTDIR HKLM "${REGKEY}" Path
+	!insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION "Main Files" ${UNSEC0000}
     !insertmacro SELECT_UNSECTION "x64 libraries" ${UNSEC0001}
     !insertmacro SELECT_UNSECTION "i86 libraries" ${UNSEC0002}
