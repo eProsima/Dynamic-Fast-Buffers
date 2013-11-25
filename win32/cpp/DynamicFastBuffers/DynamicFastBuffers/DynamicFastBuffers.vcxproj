@@ -585,15 +585,15 @@
     <ClCompile Include="..\..\..\..\src\cpp\TypecodeAPI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\cpp\BytecodeAPI.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\CommonData.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\DFB_dll.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\DFB_version.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\NotEnoughParamsException.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongParamException.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongTypeException.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\SerializerAPI.h" />
-    <ClInclude Include="..\..\..\..\include\cpp\TypecodeAPI.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\BytecodeAPI.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\CommonData.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\DFB_dll.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\DFB_version.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\NotEnoughParamsException.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\WrongParamException.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\WrongTypeException.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\SerializerAPI.h" />
+    <ClInclude Include="..\..\..\..\include\dfb\TypecodeAPI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

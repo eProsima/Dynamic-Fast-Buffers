@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdarg.h>
-#include "cpp/CommonData.h"
-#include "cpp/TypecodeAPI.h"
+#include "dfb/CommonData.h"
+#include "dfb/TypecodeAPI.h"
 #include <string>
 
 using namespace std;

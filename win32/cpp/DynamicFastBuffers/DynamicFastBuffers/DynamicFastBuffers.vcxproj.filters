@@ -49,32 +49,32 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\NotEnoughParamsException.h">
+    <ClInclude Include="..\..\..\..\include\dfb\BytecodeAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\CommonData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\DFB_dll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\DFB_version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\SerializerAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\TypecodeAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\NotEnoughParamsException.h">
       <Filter>Exceptions\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongParamException.h">
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\WrongParamException.h">
       <Filter>Exceptions\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\exceptions\WrongTypeException.h">
+    <ClInclude Include="..\..\..\..\include\dfb\exceptions\WrongTypeException.h">
       <Filter>Exceptions\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\BytecodeAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\CommonData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\SerializerAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\TypecodeAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\DFB_dll.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\include\cpp\DFB_version.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

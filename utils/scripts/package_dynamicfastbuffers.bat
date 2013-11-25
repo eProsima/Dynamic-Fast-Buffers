@@ -39,7 +39,7 @@ if not %errorstatus%==0 goto :exit
 cd "..\..\..\DynamicFastBuffers"
 
 :: Get the current vesion of DynamicFastBuffers
-call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP VERSIONDFB include/cpp/DFB_version.h
+call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP VERSIONDFB include/dfb/DFB_version.h
 if not %errorstatus%==0 goto :exit
 
 :: Update and compile DynamicFastBuffers application.
