@@ -10,7 +10,7 @@
 #define _SERIALIZER_API_
 
 #include "cpp/DFB_dll.h"
-#include "cpp/FastCdr.h"
+#include "fastcdr/FastCdr.h"
 #include "CommonData.h"
 
 namespace DynamicFastBuffers
@@ -36,7 +36,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an integer type (int32_t).
@@ -47,7 +47,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a short type (int16_t).
@@ -58,7 +58,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a short type (int16_t).
@@ -69,7 +69,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a long type (int32_t).
@@ -79,7 +79,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a long type (int32_t).
@@ -90,7 +90,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a float type (float).
@@ -101,7 +101,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a float type (float).
@@ -112,7 +112,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a double type (double).
@@ -123,7 +123,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a double type (double).
@@ -134,7 +134,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a string type (std::string).
@@ -145,7 +145,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeString(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeString(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a string type (std::string).
@@ -156,7 +156,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeString(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeString(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a character type (char).
@@ -167,7 +167,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a character type (char).
@@ -178,7 +178,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a boolean type (bool).
@@ -189,7 +189,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeBoolean(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeBoolean(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a boolean type (bool).
@@ -200,7 +200,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeBoolean(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeBoolean(eprosima::FastCdr *serializer, void *data, int &size);
 		
 		//Complex data types
 
@@ -213,7 +213,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeStruct(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeStruct(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a struct type (struct). The program will go through the members of the structure deserializing them.
@@ -224,7 +224,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeStruct(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeStruct(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of integers. This function will use "serializeArray" function defined in FastCdr class.
@@ -235,7 +235,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of integers. This function will use "serializeArray" function defined in FastCdr class.
@@ -246,7 +246,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of short data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -257,7 +257,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of short data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -268,7 +268,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of long data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -279,7 +279,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of long data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -290,7 +290,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of float data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -301,7 +301,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of float data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -312,7 +312,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of double data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -323,7 +323,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of double data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -334,7 +334,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes an array of character data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -345,7 +345,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeArrayCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeArrayCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes an array of character data types. This function will use "serializeArray" function defined in FastCdr class.
@@ -356,7 +356,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeArrayCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeArrayCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 		
 		/*!
          * @brief This function serializes a sequence of integer data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -368,7 +368,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of integer data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -380,7 +380,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceInteger(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceInteger(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a sequence of short data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -392,7 +392,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of short data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -404,7 +404,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceShort(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceShort(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a sequence of long data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -416,7 +416,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of long data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -428,7 +428,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceLong(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceLong(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a sequence of float data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -440,7 +440,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of float data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -452,7 +452,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceFloat(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceFloat(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a sequence of double data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -464,7 +464,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of double data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -476,7 +476,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceDouble(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceDouble(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function serializes a sequence of character data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -488,7 +488,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void* serializeSequenceCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* serializeSequenceCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 
 		/*!
          * @brief This function deserializes a sequence of character data types. This function will use "serializeArray" function defined in FastCdr class. The sequence
@@ -500,7 +500,7 @@ namespace DynamicFastBuffers
          * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void* deserializeSequenceCharacter(eProsima::FastCdr *serializer, void *data, int &size);
+		static void* deserializeSequenceCharacter(eprosima::FastCdr *serializer, void *data, int &size);
 	public:
 
 		/*!
@@ -512,7 +512,7 @@ namespace DynamicFastBuffers
 		 * @exception NotEnoughMemoryException This exception is thrown when trying to serialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to serialize in an invalid value.
          */
-		static void serialize(void *data, Bytecode* bytecode, eProsima::FastCdr *serializer);
+		static void serialize(void *data, Bytecode* bytecode, eprosima::FastCdr *serializer);
 
 		/*!
          * @brief This function deserializes any data defined by user into the buffer inside FastCdr object, using the rest of the functions implemented within this API class. 
@@ -523,7 +523,7 @@ namespace DynamicFastBuffers
 		 * @exception NotEnoughMemoryException This exception is thrown when trying to deserialize in a position that exceed the internal memory size.
          * @exception BadParamException This exception is thrown trying to deserialize in an invalid value.
          */
-		static void deserialize(void *data, Bytecode* bytecode, eProsima::FastCdr *serializer);
+		static void deserialize(void *data, Bytecode* bytecode, eprosima::FastCdr *serializer);
 	};
 };
 

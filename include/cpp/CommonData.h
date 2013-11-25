@@ -14,7 +14,7 @@
 #include <vector>
 #include <array>
 
-#include "cpp/FastCdr.h"
+#include "fastcdr/FastCdr.h"
 
 using namespace std;
 
@@ -51,7 +51,7 @@ namespace DynamicFastBuffers
 	* @typedef Function CALLBACK.
 	* @brief This CALLBACK type represents pointer to a function defined in SerializerAPI.h.
 	*/
-	typedef void* (*CALLBACK) (eProsima::FastCdr* serializer, void* data, int &size);
+	typedef void* (*CALLBACK) (eprosima::FastCdr* serializer, void* data, int &size);
 
 	/*!
      * @brief This static class stores all the relevant information about a Typecode.

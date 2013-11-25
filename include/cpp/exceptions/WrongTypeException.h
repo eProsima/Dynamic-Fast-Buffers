@@ -10,7 +10,7 @@
 #define _CPP_EXCEPTIONS_WRONGTYPEEXCEPTION_H_
 
 #include "cpp/DFB_dll.h"
-#include "cpp/exceptions/Exception.h"
+#include "fastcdr/exceptions/Exception.h"
 
 namespace DynamicFastBuffers
 {
@@ -18,7 +18,7 @@ namespace DynamicFastBuffers
 	* @brief This class is thrown as an exception when a parameter with a wrong type_ attribute has been specified.
     * @ingroup EXCEPTIONMODULE
 	*/
-	class Dfb_DllAPI WrongTypeException : public eProsima::Exception
+	class Dfb_DllAPI WrongTypeException : public eprosima::Exception
 	{
 	public:
 
