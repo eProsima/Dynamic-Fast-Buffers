@@ -17,13 +17,13 @@ errorstatus=0
 function package
 {
     # Get current version of GCC.
-    . $EPROSIMADIR/scripts/common_pack_functions.sh getGccVersion
+    #. $EPROSIMADIR/scripts/common_pack_functions.sh getGccVersion
 
     # Update and compile CDR library.
     cd ../CDR
     
     # Get the current version of CDR
-    . $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP cdrversion include/cpp/Cdr_version.h
+    . $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP cdrversion include/fastcdr/FastCdr_version.h
     
     # Update CDR library.
     svn update
@@ -31,14 +31,14 @@ function package
     if [ $errorstatus != 0 ]; then return; fi
     # Compile CDR library for i86.
     rm -rf output
-    EPROSIMA_TARGET="i86Linux2.6gcc${gccversion}"
+    EPROSIMA_TARGET="i86Linux2.6gcc"
     rm -rf lib/$EPROSIMA_TARGET
     make
     errorstatus=$?
     if [ $errorstatus != 0 ]; then return; fi
     # Compile CDR library for x64.
     rm -rf output
-    EPROSIMA_TARGET="x64Linux2.6gcc${gccversion}"
+    EPROSIMA_TARGET="x64Linux2.6gcc"
     rm -rf lib/$EPROSIMA_TARGET
     make
     errorstatus=$?
@@ -46,7 +46,7 @@ function package
     cd ../DynamicFastBuffers
 
     # Get the current version of DynamicFastBuffers
-    . $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP dfbversion include/cpp/DFB_version.h
+    . $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP dfbversion include/dfb/DFB_version.h
     errorstatus=$?
     if [ $errorstatus != 0 ]; then return; fi
 
@@ -61,7 +61,7 @@ function package
     if [ $errorstatus != 0 ]; then return; fi
     # Compile FastBuffers for i86.
     rm -rf output
-    EPROSIMA_TARGET="i86Linux2.6gcc${gccversion}"
+    EPROSIMA_TARGET="i86Linux2.6gcc"
     rm -rf lib/$EPROSIMA_TARGET
     make
     errorstatus=$?
@@ -69,7 +69,7 @@ function package
     
     # Compile FastBuffers for x64.
     rm -rf output
-    EPROSIMA_TARGET="x64Linux2.6gcc${gccversion}"
+    EPROSIMA_TARGET="x64Linux2.6gcc"
     rm -rf lib/$EPROSIMA_TARGET
     make
     errorstatus=$?

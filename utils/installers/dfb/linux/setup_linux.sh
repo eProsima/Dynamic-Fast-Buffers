@@ -54,14 +54,14 @@ function installer
 	mkdir -p tmp/$project/lib
 
 	# Copy i86 DFB libraries. Preserve links.
-	mkdir -p tmp/$project/lib/i86Linux2.6gcc${gccversion}
-	cp -d ../../../../lib/i86Linux2.6gcc${gccversion}/* tmp/$project/lib/i86Linux2.6gcc${gccversion}
+	mkdir -p tmp/$project/lib/i86Linux2.6gcc
+	cp -d ../../../../lib/i86Linux2.6gcc/* tmp/$project/lib/i86Linux2.6gcc
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
 
 	# Copy x64 DFB libraries. Preserve links.
-	mkdir -p tmp/$project/lib/x64Linux2.6gcc${gccversion}
-	cp -d ../../../../lib/x64Linux2.6gcc${gccversion}/* tmp/$project/lib/x64Linux2.6gcc${gccversion}
+	mkdir -p tmp/$project/lib/x64Linux2.6gcc
+	cp -d ../../../../lib/x64Linux2.6gcc/* tmp/$project/lib/x64Linux2.6gcc
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
 	
@@ -69,14 +69,14 @@ function installer
 	mkdir -p tmp/$project/lib
 
 	# Copy i86 CDR libraries. Preserve links.
-	mkdir -p tmp/$project/lib/i86Linux2.6gcc${gccversion}
-	cp -d ../../../../../CDR/lib/i86Linux2.6gcc${gccversion}/* tmp/$project/lib/i86Linux2.6gcc${gccversion}
+	mkdir -p tmp/$project/lib/i86Linux2.6gcc
+	cp -d ../../../../../CDR/lib/i86Linux2.6gcc/* tmp/$project/lib/i86Linux2.6gcc
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
 
 	# Copy x64 CDR libraries. Preserve links.
-	mkdir -p tmp/$project/lib/x64Linux2.6gcc${gccversion}
-	cp -d ../../../../../CDR/lib/x64Linux2.6gcc${gccversion}/* tmp/$project/lib/x64Linux2.6gcc${gccversion}
+	mkdir -p tmp/$project/lib/x64Linux2.6gcc
+	cp -d ../../../../../CDR/lib/x64Linux2.6gcc/* tmp/$project/lib/x64Linux2.6gcc
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
 

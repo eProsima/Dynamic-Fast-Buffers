@@ -6,10 +6,10 @@ DFB_SED_OUTPUT_DIR_DEBUG= $(subst /,\\/,$(DFB_OUTDIR_DEBUG))
 DFB_SED_OUTPUT_DIR_RELEASE= $(subst /,\\/,$(DFB_OUTDIR_RELEASE))
 
 # Get product version.
-DFBVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/include/cpp/DFB_version.h)
+DFBVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/include/dfb/DFB_version.h)
 
 # Get cdr version.
-CDRVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/../CDR/include/cpp/cdr/Cdr_version.h)
+CDRVERSION=-$(shell $(EPROSIMADIR)/scripts/common_pack_functions.sh printVersionFromCPP $(BASEDIR)/../CDR/include/fastcdr/cdr/Cdr_version.h)
 
 DFB_TARGET_DEBUG_FILE= libdfbd$(DFBVERSION).so
 DFB_TARGET_DEBUG_Z_FILE= libdfbzd$(DFBVERSION).a
@@ -29,20 +29,20 @@ DFB_TARGET_Z= $(BASEDIR)/lib/$(EPROSIMA_TARGET)/$(DFB_TARGET_Z_FILE)
 DFB_CFLAGS += $(CFLAGS) -std=c++0x
 DFB_CFLAGS_DEBUG += $(CFLAGS_DEBUG) -std=c++0x
 
-DFB_LIBS_DEBUG= $(LIBS_DEBUG) -lcdrd
-DFB_LIBS= $(LIBS) -lcdr
+DFB_LIBS_DEBUG= $(LIBS_DEBUG) -lfastcdrd
+DFB_LIBS= $(LIBS) -lfastcdr
 
 DFB_LIBS_DEBUG_DIR= -L$(BASEDIR)/lib/$(EPROSIMA_TARGET) -L$(BASEDIR)/../CDR/lib/$(EPROSIMA_TARGET)
 DFB_LIBS_DIR= $(DFB_LIBS_DEBUG_DIR)
 
-DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/cpp \
-		  -I$(EPROSIMADIR)/code -I$(BASEDIR)/../CDR/include -I$(BASEDIR)/../CDR/include/cpp
+DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/dfb \
+		  -I$(EPROSIMADIR)/code -I$(BASEDIR)/../CDR/include -I$(BASEDIR)/../CDR/include/fastcdr
 
 DFB_SRC_CPPFILES= $(BASEDIR)/src/cpp/TypecodeAPI.cpp \
 		  $(BASEDIR)/src/cpp/BytecodeAPI.cpp \
 		  $(BASEDIR)/src/cpp/SerializerAPI.cpp \
   		  $(BASEDIR)/src/cpp/CommonData.cpp \
-    	  $(BASEDIR)/src/cpp/exceptions/NotEnoughParamsException.cpp \
+    	  	  $(BASEDIR)/src/cpp/exceptions/NotEnoughParamsException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongParamException.cpp \
 		  $(BASEDIR)/src/cpp/exceptions/WrongTypeException.cpp
 
