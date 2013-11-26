@@ -73,7 +73,7 @@ SectionIn RO
     File /r ..\..\..\doxygen\output\doxygen\html\*
     SetOutPath $INSTDIR\doc\pdf
     File /r ..\..\..\..\doc\pdf\*
-	File /r ..\..\..\doxygen\output\doxygen\latex\refman.pdf
+	File /r "..\..\..\doxygen\output\doxygen\latex\C++11 API Documentation.pdf"
     SetOutPath $INSTDIR\examples
     File /r ..\..\..\..\examples\*
     SetOutPath $INSTDIR\include
