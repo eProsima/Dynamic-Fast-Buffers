@@ -227,7 +227,7 @@ FunctionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC0002} $(SEC0002_DESC)
 !insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0001} $(SECGRP0001_DESC) 
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC) 
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0004_DESC) 
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC0004} $(SEC0004_DESC) 
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # Installer Language Strings
@@ -237,5 +237,5 @@ LangString SECGRP0000_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers target librarie
 LangString SEC0001_DESC ${LANG_ENGLISH} "Libraries for x64 target platform."
 LangString SEC0002_DESC ${LANG_ENGLISH} "Libraries for i86 target platform."
 LangString SECGRP0001_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers environment variables"
-LangString SEC0003_DESC ${LANG_ENGLISH} "Environment variables for i86 target platform"
-LangString SEC0004_DESC ${LANG_ENGLISH} "Environment variables for x64 target platform"
+LangString SEC0003_DESC ${LANG_ENGLISH} "Environment variables for x64 target platform"
+LangString SEC0004_DESC ${LANG_ENGLISH} "Environment variables for i86 target platform"

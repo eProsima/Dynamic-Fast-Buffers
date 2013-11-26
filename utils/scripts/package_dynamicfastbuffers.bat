@@ -100,6 +100,7 @@ ren refman.pdf "C++11 API Documentation.pdf"
 cd "..\..\..\..\.."
 
 
+
 :: Create installers.
 cd "utils\installers\dfb\windows"
 :: Win32 installer.
@@ -107,6 +108,7 @@ makensis.exe /DVERSION="%VERSIONDFB%" setup.nsi
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
 cd "..\..\..\.."
+rd /S /Q "utils\doxygen\output"
 
 :: rmdir /S /Q utils\doxygen\output
 
