@@ -1,7 +1,7 @@
 #include "testSer.h"
-#include "cpp/exceptions/BadParamException.h"
+#include "fastcdr/exceptions/BadParamException.h"
 
-testSer::testSer(eProsima::FastBuffer &buffer) : FastCdr(buffer)
+testSer::testSer(eprosima::FastBuffer &buffer) : FastCdr(buffer)
 {
 }
 

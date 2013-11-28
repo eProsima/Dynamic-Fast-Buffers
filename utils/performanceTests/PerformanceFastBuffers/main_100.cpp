@@ -12,7 +12,7 @@ inline void simpleFastBuffers_10()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	simpleFastBuffers_10_Class input;
 	testSer cdr2(cdrbuffer);
@@ -35,12 +35,12 @@ inline void simpleFastBuffers_10()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -55,7 +55,7 @@ inline void simpleFastBuffers_20()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	simpleFastBuffers_20_Class input;
 	testSer cdr2(cdrbuffer);
@@ -88,12 +88,12 @@ inline void simpleFastBuffers_20()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -108,7 +108,7 @@ inline void simpleFastBuffers_30()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	simpleFastBuffers_30_Class input;
 	testSer cdr2(cdrbuffer);
@@ -151,12 +151,12 @@ inline void simpleFastBuffers_30()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -171,7 +171,7 @@ inline void simpleFastBuffers_40()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	simpleFastBuffers_40_Class input;
 	testSer cdr2(cdrbuffer);
@@ -224,12 +224,12 @@ inline void simpleFastBuffers_40()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -244,7 +244,7 @@ inline void simpleFastBuffers_50()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	simpleFastBuffers_50_Class input;
 	testSer cdr2(cdrbuffer);
@@ -307,12 +307,12 @@ inline void simpleFastBuffers_50()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -361,7 +361,7 @@ inline void complexFastBuffers_2()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	complexFastBuffers_2_Class input;
 	testSer cdr2(cdrbuffer);
@@ -386,12 +386,12 @@ inline void complexFastBuffers_2()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -406,7 +406,7 @@ inline void complexFastBuffers_4()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	complexFastBuffers_4_Class input;
 	testSer cdr2(cdrbuffer);
@@ -443,12 +443,12 @@ inline void complexFastBuffers_4()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -463,7 +463,7 @@ inline void complexFastBuffers_6()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	complexFastBuffers_6_Class input;
 	testSer cdr2(cdrbuffer);
@@ -512,12 +512,12 @@ inline void complexFastBuffers_6()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -532,7 +532,7 @@ inline void complexFastBuffers_8()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	complexFastBuffers_8_Class input;
 	testSer cdr2(cdrbuffer);
@@ -593,12 +593,12 @@ inline void complexFastBuffers_8()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -613,7 +613,7 @@ inline void complexFastBuffers_10()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	complexFastBuffers_10_Class input;
 	testSer cdr2(cdrbuffer);
@@ -686,12 +686,12 @@ inline void complexFastBuffers_10()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -739,7 +739,7 @@ inline void innersimpleFastBuffers_2()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outersimpleFastBuffers_2_Class input;
 	testSer cdr2(cdrbuffer);
@@ -762,12 +762,12 @@ inline void innersimpleFastBuffers_2()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -782,7 +782,7 @@ inline void innersimpleFastBuffers_4()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outersimpleFastBuffers_4_Class input;
 	testSer cdr2(cdrbuffer);
@@ -823,12 +823,12 @@ inline void innersimpleFastBuffers_4()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -843,7 +843,7 @@ inline void innersimpleFastBuffers_6()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outersimpleFastBuffers_6_Class input;
 	testSer cdr2(cdrbuffer);
@@ -910,12 +910,12 @@ inline void innersimpleFastBuffers_6()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -930,7 +930,7 @@ inline void innersimpleFastBuffers_8()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outersimpleFastBuffers_8_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1031,12 +1031,12 @@ inline void innersimpleFastBuffers_8()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1051,7 +1051,7 @@ inline void innersimpleFastBuffers_10()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outersimpleFastBuffers_10_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1194,12 +1194,12 @@ inline void innersimpleFastBuffers_10()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1247,7 +1247,7 @@ inline void innercomplexFastBuffers_1()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outercomplexFastBuffers_1_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1275,12 +1275,12 @@ inline void innercomplexFastBuffers_1()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1295,7 +1295,7 @@ inline void innercomplexFastBuffers_2()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outercomplexFastBuffers_2_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1349,12 +1349,12 @@ inline void innercomplexFastBuffers_2()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1369,7 +1369,7 @@ inline void innercomplexFastBuffers_3()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outercomplexFastBuffers_3_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1460,12 +1460,12 @@ inline void innercomplexFastBuffers_3()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1480,7 +1480,7 @@ inline void innercomplexFastBuffers_4()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outercomplexFastBuffers_4_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1619,12 +1619,12 @@ inline void innercomplexFastBuffers_4()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1639,7 +1639,7 @@ inline void innercomplexFastBuffers_5()
 {
 	char *buffer = (char*) calloc(BUFFER_SIZE, sizeof(char));
 
-	eProsima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
+	eprosima::FastBuffer cdrbuffer(buffer, BUFFER_SIZE);
 	testSer cdr(cdrbuffer);
 	outercomplexFastBuffers_5_Class input;
 	testSer cdr2(cdrbuffer);
@@ -1837,12 +1837,12 @@ inline void innercomplexFastBuffers_5()
 	{
 		try{
 			cdr.serialize(input);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 		try{
 			cdr2.deserialize(output);
-		}catch(eProsima::Exception &ex){
+		}catch(eprosima::Exception &ex){
 			std::cout << "ERROR: " << ex.what() << std::endl;
 		}
 
@@ -1899,6 +1899,6 @@ inline void performanceFastBuffers()
 
 int main()
 {
-    performanceFastBuffers();
+    innerSimpleTestFastBuffers();
     return 0;
 }

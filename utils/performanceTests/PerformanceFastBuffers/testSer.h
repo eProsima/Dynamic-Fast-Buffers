@@ -2,13 +2,13 @@
 #define _testSER_H_
 
 #include "test.h"
-#include "cpp/FastCdr.h"
+#include "fastcdr/FastCdr.h"
 
 /*!
- * @brief This class offers an interface to serialize/deserialize the defined types in the user's IDL file  using a eProsima::FastBuffer.
+ * @brief This class offers an interface to serialize/deserialize the defined types in the user's IDL file  using a eprosima::FastBuffer.
  * @ingroup TEST
  */
-class user_cpp_DllExport testSer : public eProsima::FastCdr
+class user_cpp_DllExport testSer : public eprosima::FastCdr
 { 
 public:
     /*!
@@ -17,7 +17,7 @@ public:
      *
      * @param buffer A reference to the buffer that contains or will contain the CDR representation.
      */
-    testSer(eProsima::FastBuffer &buffer);
+    testSer(eprosima::FastBuffer &buffer);
     
     /*!
      * @brief This function serialize a type simpleFastBuffers_10_Class.

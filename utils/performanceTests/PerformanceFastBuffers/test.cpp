@@ -1,5 +1,5 @@
 #include "test.h"
-#include "cpp/exceptions/BadParamException.h"
+#include "fastcdr/exceptions/BadParamException.h"
 
 #include <utility>
 
