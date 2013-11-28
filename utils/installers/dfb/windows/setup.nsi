@@ -26,6 +26,8 @@ RequestExecutionLevel admin
 !include Sections.nsh
 !include MUI2.nsh
 !include EnvVarUpdate.nsh
+!include EnvVarPage.nsh
+!include x64.nsh
 
 # Variables
 Var StartMenuGroup
@@ -39,6 +41,7 @@ ReserveFile "${NSISDIR}\Plugins\newadvsplash.dll"
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE ComponentsPageLeave
 !insertmacro MUI_PAGE_COMPONENTS
+Page custom VariablesEntornoPage
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
@@ -104,18 +107,20 @@ SectionGroup /e Libraries SECGRP0000
     SectionEnd
 SectionGroupEnd
 
-SectionGroup "Environment variables" SECGRP0001
-    Section "x64 libraries location" SEC0003
-       ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\x64Win64VS2010"
-       WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries location" 1
-    SectionEnd
-    Section "i86 libraries location" SEC0004
-       ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
-       WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries location" 1
-    SectionEnd
-SectionGroupEnd
+# SectionGroup "Environment variables" SECGRP0001
+#     Section "x64 libraries location" SEC0003
+       # ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\x64Win64VS2010"
+       # WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries location" 1
+    # SectionEnd
+    # Section "i86 libraries location" SEC0004
+       # ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
+       # WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries location" 1
+    # SectionEnd
+# SectionGroupEnd
 
 Section -post SEC0006
+    SetShellVarContext all
+
     WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     WriteUninstaller $INSTDIR\uninstall.exe
@@ -132,6 +137,21 @@ Section -post SEC0006
     WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
     WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
     WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
+	
+	### Actualizamos las variables de entorno que se hayan marcado
+	${If} $CheckboxDYNAMIC_FAST_BUFFERS_State == ${BST_CHECKED}
+       ${EnvVarUpdate} $0 "DYNAMIC_FAST_BUFFERS" "P" "HKLM" "$INSTDIR"
+       WriteRegStr HKLM "${REGKEY}\Components" "FAST_BUFFERS" 1
+    ${EndIf}
+    ${If} $CheckboxX64_State == ${BST_CHECKED}
+       ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\x64Win64VS2010"
+       WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries location" 1
+    ${EndIf}
+    ${If} $CheckboxI86_State == ${BST_CHECKED}
+       ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
+       WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries location" 1
+    ${EndIf}
+	
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -168,17 +188,28 @@ Section /o "-un.Main Files" UNSEC0000
     RmDir /r /REBOOTOK $INSTDIR\doc\html
     RmDir /r /REBOOTOK $INSTDIR\lib
     DeleteRegValue HKLM "${REGKEY}\Components" "Main Files"
-SectionEnd
-
-Section /o "-un.i86 libraries location" UNSEC0004
+	
+	### Quitamos las variables de entorno
     DeleteRegValue HKLM "${REGKEY}\Components" "i86 libraries location"
+    DeleteRegValue HKLM "${REGKEY}\Components" "x64 libraries location"
+	DeleteRegValue HKLM "${REGKEY}\Components" "DYNAMIC_FAST_BUFFERS"
+    
+	${un.EnvVarUpdate} $0 "DYNAMIC_FAST_BUFFERS" "R" "HKLM" "$INSTDIR"
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" "$INSTDIR\lib\x64Win64VS2010"
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
 SectionEnd
 
-Section /o "-un.x64 libraries location" UNSEC0003
-    DeleteRegValue HKLM "${REGKEY}\Components" "x64 libraries location"
-SectionEnd
+# Section /o "-un.i86 libraries location" UNSEC0004
+    # DeleteRegValue HKLM "${REGKEY}\Components" "i86 libraries location"
+# SectionEnd
+
+# Section /o "-un.x64 libraries location" UNSEC0003
+    # DeleteRegValue HKLM "${REGKEY}\Components" "x64 libraries location"
+# SectionEnd
 
 Section -un.post UNSEC0006
+	SetShellVarContext all ### Necesario para tener permisos para borrar archivos en el Menú inicio
+	
     DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
 	Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\README.lnk"
@@ -193,6 +224,12 @@ SectionEnd
 
 # Installer functions
 Function .onInit
+	# La variable PROGRAMFILES depende de si estamos en x64 o i86
+    ${If} ${RunningX64}
+       StrCpy '$INSTDIR' '$PROGRAMFILES64\eProsima\DynamicFastBuffers'
+    ${else}
+       StrCpy '$INSTDIR' '$PROGRAMFILES\eProsima\DynamicFastBuffers'
+    ${EndIf}
     InitPluginsDir
     Push $R1
     File /oname=$PLUGINSDIR\spltmp.jpg "$%EPROSIMADIR%\logo\eProsimaLogoAndNameFinal_wBorder_460.jpg"
@@ -211,13 +248,19 @@ FunctionEnd
 
 # Uninstaller functions
 Function un.onInit
+	# La variable PROGRAMFILES depende de si estamos en x64 o i86
+    ${If} ${RunningX64}
+       StrCpy '$INSTDIR' '$PROGRAMFILES64\eProsima\FastBuffers'
+    ${else}
+       StrCpy '$INSTDIR' '$PROGRAMFILES\eProsima\FastBuffers'
+    ${EndIf}
     ReadRegStr $INSTDIR HKLM "${REGKEY}" Path
 	!insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION "Main Files" ${UNSEC0000}
     !insertmacro SELECT_UNSECTION "x64 libraries" ${UNSEC0001}
     !insertmacro SELECT_UNSECTION "i86 libraries" ${UNSEC0002}
-    !insertmacro SELECT_UNSECTION "x64 libraries location" ${UNSEC0003}
-    !insertmacro SELECT_UNSECTION "i86 libraries location" ${UNSEC0004}
+    # !insertmacro SELECT_UNSECTION "x64 libraries location" ${UNSEC0003}
+    # !insertmacro SELECT_UNSECTION "i86 libraries location" ${UNSEC0004}
 FunctionEnd
 
 # Section Descriptions
@@ -225,9 +268,9 @@ FunctionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0000} $(SECGRP0000_DESC)
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC0001} $(SEC0001_DESC)
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC0002} $(SEC0002_DESC)
-!insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0001} $(SECGRP0001_DESC) 
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC) 
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0004} $(SEC0004_DESC) 
+# !insertmacro MUI_DESCRIPTION_TEXT ${SECGRP0001} $(SECGRP0001_DESC) 
+# !insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC) 
+# !insertmacro MUI_DESCRIPTION_TEXT ${SEC0004} $(SEC0004_DESC) 
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # Installer Language Strings
@@ -236,6 +279,6 @@ FunctionEnd
 LangString SECGRP0000_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers target libraries"
 LangString SEC0001_DESC ${LANG_ENGLISH} "Libraries for x64 target platform."
 LangString SEC0002_DESC ${LANG_ENGLISH} "Libraries for i86 target platform."
-LangString SECGRP0001_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers environment variables"
-LangString SEC0003_DESC ${LANG_ENGLISH} "Environment variables for x64 target platform"
-LangString SEC0004_DESC ${LANG_ENGLISH} "Environment variables for i86 target platform"
+# LangString SECGRP0001_DESC ${LANG_ENGLISH} "Dynamic Fast Buffers environment variables"
+# LangString SEC0003_DESC ${LANG_ENGLISH} "Environment variables for x64 target platform"
+# LangString SEC0004_DESC ${LANG_ENGLISH} "Environment variables for i86 target platform"
