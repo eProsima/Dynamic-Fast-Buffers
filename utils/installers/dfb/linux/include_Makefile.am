@@ -1,0 +1,12 @@
+library_includedir = $(includedir)
+nobase_library_include_HEADERS = dfb/DFB_dll.h \
+			  dfb/DFB_version.h \
+			  dfb/CommonData.h \
+			  dfb/BytecodeAPI.h \
+			  dfb/SerializerAPI.h \
+			  dfb/TypecodeAPI.h \
+			  dfb/exceptions/NotEnoughParamsException.h \
+			  dfb/exceptions/WrongParamException.h \
+			  dfb/exceptions/WrongTypeException.h \
+			  dfb/eProsima_cpp/eProsima_auto_link.h
+
