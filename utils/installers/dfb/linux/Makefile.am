@@ -17,13 +17,13 @@ dfb_licenciasdir = $(datadir)/doc/dfb
 dfb_licencias_DATA = DYNAMIC_FAST_BUFFERS_LICENSE.txt LGPLv3_LICENSE.txt README.html
 
 install-data-hook:
-	mkdir -p $(datadir)/doc/dfb/html; \
-	cp -r doc/html/* $(datadir)/doc/dfb/html; \
-	mkdir -p $(datadir)/doc/dfb/pdf; \
-	cp -r doc/pdf/* $(datadir)/doc/dfb/pdf
+	mkdir -p $(DESTDIR)$(datadir)/doc/dfb/html; \
+	cp -r doc/html/* $(DESTDIR)$(datadir)/doc/dfb/html; \
+	mkdir -p $(DESTDIR)$(datadir)/doc/dfb/pdf; \
+	cp -r doc/pdf/* $(DESTDIR)$(datadir)/doc/dfb/pdf
 
 uninstall-hook:
-	rm -r $(datadir)/doc/dfb/html; \
-	rm -r $(datadir)/doc/dfb/pdf; \
-	rm -r $(datadir)/doc/dfb; \
-	rm -r $(datadir)/include/dfb
+	rm -r $(DESTDIR)$(datadir)/doc/dfb/html; \
+	rm -r $(DESTDIR)$(datadir)/doc/dfb/pdf; \
+	rm -r $(DESTDIR)$(datadir)/doc/dfb; \
+	rm -r $(DESTDIR)$(datadir)/../include/dfb

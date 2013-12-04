@@ -29,21 +29,12 @@ function package
     svn update
     errorstatus=$?
     if [ $errorstatus != 0 ]; then return; fi
-    # Compile CDR library for i86.
-    rm -rf output
-    EPROSIMA_TARGET="i86Linux2.6gcc"
-    rm -rf lib/$EPROSIMA_TARGET
-    make
+    # Compile and packageing FastCDR library for all archictectures
+    cd utils/scripts
+    ./package_fastcdr.sh
     errorstatus=$?
     if [ $errorstatus != 0 ]; then return; fi
-    # Compile CDR library for x64.
-    rm -rf output
-    EPROSIMA_TARGET="x64Linux2.6gcc"
-    rm -rf lib/$EPROSIMA_TARGET
-    make
-    errorstatus=$?
-    if [ $errorstatus != 0 ]; then return; fi
-    cd ../DynamicFastBuffers
+    cd ../../../DynamicFastBuffers
 
     # Get the current version of DynamicFastBuffers
     . $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP dfbversion include/dfb/DFB_version.h

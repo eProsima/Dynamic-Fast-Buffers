@@ -13,7 +13,7 @@
 # To create RPM in CentOs you have to follow this link:
 #   http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
-project="DynamicFastBuffers"
+project="dynamicfastbuffers"
 
 function installer
 {
@@ -107,6 +107,68 @@ function installer
 	if [ $errorstatus != 0 ]; then return; fi
 }
 
+function rpminstaller
+{
+	# Copy SPEC file
+	sed "s/VERSION/${version}/g" DynamicFastBuffers.spec > ~/rpmbuild/SPECS/DynamicFastBuffers.spec
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Get the current version of FastBuffers
+    	. $EPROSIMADIR/scripts/common_pack_functions.sh getVersionFromCPP fastcdrversion ../../../../../CDR/include/fastcdr/FastCdr_version.h
+    	errorstatus=$?
+    	if [ $errorstatus != 0 ]; then return; fi
+	distro=`cat /etc/rpm/macros.dist  | grep %dist | cut -d. -f2`
+	echo Distro $distro
+	
+	# Copy source
+	cp "${project}_${version}.tar.gz" ~/rpmbuild/SOURCES
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Install FastCDR rmp for i686
+	cd ~/rpmbuild/RPMS/i686
+	sudo yum localinstall fastcdr-$fastcdrversion-1.$distro.i686.rpm
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Go to directory to build.
+	cd ~/rpmbuild/SPECS
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Build command for i686.
+	rpmbuild -bb --target i686 DynamicFastBuffers.spec
+	errorstatus=$?
+	
+	# Uninstall FastCDR rpm
+	sudo yum remove fastcdr
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Install FastCDR rmp for x86_64
+	cd ~/rpmbuild/RPMS/x86_64
+	sudo yum localinstall fastcdr-$fastcdrversion-1.$distro.x86_64.rpm
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Go to directory to build.
+	cd ~/rpmbuild/SPECS
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Build command for x86_64.
+	rpmbuild -bb --target x86_64 DynamicFastBuffers.spec
+	errorstatus=$?
+
+	# Uninstall FastCDR rpm
+	sudo yum remove fastcdr
+	errorstatus=$?
+	# Return
+	cd -
+	if [ $errorstatus != 0 ]; then return; fi
+}
+
 if [ $# -lt 1 ]; then
 	echo "Needs as parameter the version of the product $project"
 	exit -1
@@ -124,7 +186,7 @@ mkdir tmp/$project
 installer
 
 #TODO Check the distro to know if RMP is supported.
-#[ $errorstatus == 0 ] && { rpminstaller; }
+[ $errorstatus == 0 ] && { rpminstaller; }
 
 # Remove temporaly directory
 rm -rf tmp
