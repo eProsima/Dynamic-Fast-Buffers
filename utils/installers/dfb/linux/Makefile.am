@@ -20,10 +20,13 @@ install-data-hook:
 	mkdir -p $(DESTDIR)$(datadir)/doc/dfb/html; \
 	cp -r doc/html/* $(DESTDIR)$(datadir)/doc/dfb/html; \
 	mkdir -p $(DESTDIR)$(datadir)/doc/dfb/pdf; \
-	cp -r doc/pdf/* $(DESTDIR)$(datadir)/doc/dfb/pdf
+	cp -r doc/pdf/* $(DESTDIR)$(datadir)/doc/dfb/pdf; \
+	mkdir -p $(DESTDIR)$(datadir)/dfb/examples; \
+	cp -r examples/* $(DESTDIR)$(datadir)/dfb/examples
 
 uninstall-hook:
 	rm -r $(DESTDIR)$(datadir)/doc/dfb/html; \
 	rm -r $(DESTDIR)$(datadir)/doc/dfb/pdf; \
 	rm -r $(DESTDIR)$(datadir)/doc/dfb; \
-	rm -r $(DESTDIR)$(datadir)/../include/dfb
+	rm -r $(DESTDIR)$(datadir)/../include/dfb; \
+	rm -r $(DESTDIR)$(datadir)/../dfb
