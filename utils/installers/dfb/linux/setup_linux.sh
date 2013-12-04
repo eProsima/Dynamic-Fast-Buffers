@@ -55,43 +55,53 @@ function installer
 	# DFB headers
 	mkdir -p tmp/$project/include
 	cp -r ../../../../include tmp/$project
-	# CDR & Marshallingheaders
-	cp -r ../../../../../CDR/include tmp/$project
 	errorstatus=$?
 	if [ $errorstatus != 0 ]; then return; fi
+
+	# Copy eProsima header files
+	mkdir -p tmp/$project/include/dfb/eProsima_cpp
+	cp $EPROSIMADIR/code/eProsima_cpp/eProsima_auto_link.h tmp/$project/include/dfb/eProsima_cpp
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Copy DFB sources
+	mkdir -p tmp/$project/src
+	cp -r ../../../../src/cpp tmp/$project/src
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+        if [ -d tmp/$project/src/cpp/.svn ]; then
+            find tmp/$project/src/cpp -iname .svn -exec rm -rf {} \;
+        fi
+
+	# Copy autoconf configuration files.
+	cp configure.ac tmp/$project
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	cp Makefile.am tmp/$project
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	cp include_Makefile.am tmp/$project/include/Makefile.am
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+
+	# Generate autoconf files
+	cd tmp/$project
+	sed -i "s/VERSION/${version}/g" configure.ac
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	sed -i "s/VERSION_MAJOR/`echo ${version} | cut -d. -f1`/g" Makefile.am
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	sed -i "s/VERSION_MINOR/`echo ${version} | cut -d. -f2`/g" Makefile.am
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	autoreconf --force --install
+	errorstatus=$?
+	if [ $errorstatus != 0 ]; then return; fi
+	cd ../..
 	
-	# Copy DFB libraries
-	mkdir -p tmp/$project/lib
-
-	# Copy i86 DFB libraries. Preserve links.
-	mkdir -p tmp/$project/lib/i86Linux2.6gcc
-	cp -d ../../../../lib/i86Linux2.6gcc/* tmp/$project/lib/i86Linux2.6gcc
-	errorstatus=$?
-	if [ $errorstatus != 0 ]; then return; fi
-
-	# Copy x64 DFB libraries. Preserve links.
-	mkdir -p tmp/$project/lib/x64Linux2.6gcc
-	cp -d ../../../../lib/x64Linux2.6gcc/* tmp/$project/lib/x64Linux2.6gcc
-	errorstatus=$?
-	if [ $errorstatus != 0 ]; then return; fi
-	
-	# Copy CDR libraries
-	mkdir -p tmp/$project/lib
-
-	# Copy i86 CDR libraries. Preserve links.
-	mkdir -p tmp/$project/lib/i86Linux2.6gcc
-	cp -d ../../../../../CDR/lib/i86Linux2.6gcc/* tmp/$project/lib/i86Linux2.6gcc
-	errorstatus=$?
-	if [ $errorstatus != 0 ]; then return; fi
-
-	# Copy x64 CDR libraries. Preserve links.
-	mkdir -p tmp/$project/lib/x64Linux2.6gcc
-	cp -d ../../../../../CDR/lib/x64Linux2.6gcc/* tmp/$project/lib/x64Linux2.6gcc
-	errorstatus=$?
-	if [ $errorstatus != 0 ]; then return; fi
-
 	cd tmp
-	tar cvzf "../${project}_${version}_${distroversion}.tar.gz" $project
+	tar cvzf "../${project}_${version}.tar.gz" $project
 	errorstatus=$?
 	cd ..
 	if [ $errorstatus != 0 ]; then return; fi
@@ -104,9 +114,6 @@ fi
 
 version=$1
 
-# Take GCC version
-. $EPROSIMADIR/scripts/common_pack_functions.sh getGccVersion
-
 # Get distro version
 . $EPROSIMADIR/scripts/common_pack_functions.sh getDistroVersion
 
@@ -115,6 +122,9 @@ mkdir tmp
 mkdir tmp/$project
 
 installer
+
+#TODO Check the distro to know if RMP is supported.
+#[ $errorstatus == 0 ] && { rpminstaller; }
 
 # Remove temporaly directory
 rm -rf tmp
