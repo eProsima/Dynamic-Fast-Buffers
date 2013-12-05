@@ -22,11 +22,14 @@ install-data-hook:
 	mkdir -p $(DESTDIR)$(datadir)/doc/dfb/pdf; \
 	cp -r doc/pdf/* $(DESTDIR)$(datadir)/doc/dfb/pdf; \
 	mkdir -p $(DESTDIR)$(datadir)/dfb/examples; \
-	cp -r examples/* $(DESTDIR)$(datadir)/dfb/examples
+	cp -r examples/* $(DESTDIR)$(datadir)/dfb/examples; \
+	rm -r $(DESTDIR)$(datadir)/dfb/examples/c++/HelloWorldDFB/*.sln
+	rm -r $(DESTDIR)$(datadir)/dfb/examples/c++/HelloWorldDFB/*.vcxproj
+	rm -r $(DESTDIR)$(datadir)/dfb/examples/c++/HelloWorldDFB/*.vcxproj.filters
 
 uninstall-hook:
 	rm -r $(DESTDIR)$(datadir)/doc/dfb/html; \
 	rm -r $(DESTDIR)$(datadir)/doc/dfb/pdf; \
 	rm -r $(DESTDIR)$(datadir)/doc/dfb; \
 	rm -r $(DESTDIR)$(datadir)/../include/dfb; \
-	rm -r $(DESTDIR)$(datadir)/../dfb
+	rm -r $(DESTDIR)$(datadir)/dfb
