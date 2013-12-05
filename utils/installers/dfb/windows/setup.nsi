@@ -78,7 +78,10 @@ SectionIn RO
     File /r ..\..\..\..\doc\pdf\*
 	File /r "..\..\..\doxygen\output\doxygen\latex\C++11 API Documentation.pdf"
     SetOutPath $INSTDIR\examples
-    File /r ..\..\..\..\examples\*
+    File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.cpp
+	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.sln
+	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj
+	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj.filters
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
 	File /r ..\..\..\..\..\CDR\include\*
