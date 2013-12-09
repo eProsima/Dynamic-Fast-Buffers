@@ -41,11 +41,6 @@ function package
     errorstatus=$?
     if [ $errorstatus != 0 ]; then return; fi
 
-    # Try to add platform
-#	    setPlatform "i86Linux2.6gcc${gccversion}"
-#	    setPlatform "x64Linux2.6gcc${gccversion}"
-
-    # Update and compile DynamicFastBuffers application.
     # Update DynamicFastBuffers application
     svn update
     errorstatus=$?
@@ -91,12 +86,12 @@ function package
     cd ..
 
     # Create README
-	    soffice --headless "macro:///eProsima.documentation.changeVersionToHTML($PWD/README.odt,$dfbversion)"
+	    soffice --headless "macro:///eProsima.documentation.changeHyperlinksAndVersionToHTML($PWD/README.odt,$dfbversion,./doc/,./)"
 	    errorstatus=$?
 	    if [ $errorstatus != 0 ]; then return; fi
 
     # Create doxygen information.
-    #Export version
+    # Export version
     export VERSION_DOX=$dfbversion
     mkdir -p doc/html
     mkdir -p utils/doxygen/output
@@ -121,6 +116,30 @@ function package
 
     # Remove the doxygen tmp directory
     rm -rf utils/doxygen/output
+
+    # Generate distribution
+    distroName="Dynamic_Fast_Buffers"
+    . $EPROSIMADIR/scripts/common_pack_functions.sh getDistroVersion
+    errorstatus=$?
+    if [ $errorstatus != 0 ]; then return; fi
+    distro=`cat /etc/rpm/macros.dist  | grep %dist | cut -d. -f2`
+    
+    mkdir -p tmpRelease
+    cp ~/rpmbuild/RPMS/i686/fastcdr-${cdrversion}-1.${distro}.i686.rpm tmpRelease
+    cp ~/rpmbuild/RPMS/i686/dynamicfastbuffers-${dfbversion}-1.${distro}.i686.rpm tmpRelease
+    cp ~/rpmbuild/RPMS/x86_64/fastcdr-${cdrversion}-1.${distro}.x86_64.rpm tmpRelease
+    cp ~/rpmbuild/RPMS/x86_64/dynamicfastbuffers-${dfbversion}-1.${distro}.x86_64.rpm tmpRelease
+    
+    cd tmpRelease
+    tar cvzf "../installers/dfb/linux/eProsima_${distroName}_${dfbversion}_${distroversion}.tar.gz" *
+   errorstatus=$?
+    if [ $errorstatus != 0 ]; then return; fi
+    cd ..
+
+    # Remove temp directory
+    rm -rf tmpRelease
+    cd ..
+    rm -rf utils/installers/dfb/linux/tmp
 }
 
 # Check that the environment.sh script was run.

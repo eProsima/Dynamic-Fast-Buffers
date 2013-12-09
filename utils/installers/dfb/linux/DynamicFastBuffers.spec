@@ -8,12 +8,7 @@ URL: http://eprosima.com
 Source0: %{name}_%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: autoconf automake libtool fastcdr
-%ifarch i686
-Requires: fastcdr.so.36
-%endif
-%ifarch x86_64
-Requires: fastcdr.so.36(64bit)
-%endif
+Requires: fastcdr%{?_isa}
 %description
 eProsima DynamicFastBuffers library provides a dynamic API for doing data serialization. It uses a fast implementation of Common Data Representation (CDR) format, included in eProsima FastCDR library.
 
