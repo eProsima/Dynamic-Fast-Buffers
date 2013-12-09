@@ -40,19 +40,36 @@ Function VariablesEntornoPage
         ${NSD_Check} $CheckboxDYNAMIC_FAST_BUFFERS
     ${EndIf}
         
-    ${NSD_CreateCheckbox} 10 32u 100% 24u "&Add to the PATH environment variable the location of Dynamic Fast Buffers target$\r$\nlibraries for platform x64"
-    Pop $CheckboxX64  
-    ${If} $CheckboxX64_State == ${BST_CHECKED}
-        ${NSD_Check} $CheckboxX64
+	${If} ${RunningX64}
+		${NSD_CreateCheckbox} 10 32u 100% 24u "&Add to the PATH environment variable the location of Dynamic Fast Buffers target$\r$\nlibraries for platform x64"
+		Pop $CheckboxX64  
+		${If} ${SectionIsSelected} ${SEC0001}
+			${If} $CheckboxX64_State == ${BST_CHECKED}
+				${NSD_Check} $CheckboxX64
+			${EndIf}
+		${Else}
+            ${NSD_AddStyle} $CheckboxX64 ${WS_DISABLED}
+        ${EndIf}
+		
+		### Fijamos los callbacks para cuando se haga click en los CheckBoxes
+	${NSD_OnClick} $CheckboxX64 ClickX64 
+		
+		${NSD_CreateCheckbox} 10 54u 100% 24u "&Add to the PATH environment variable the location of Dynamic Fast Buffers target$\r$\nlibraries for platform i86"
+		Pop $CheckboxI86
+	${Else}
+		${NSD_CreateCheckbox} 10 32u 100% 24u "&Add to the PATH environment variable the location of Dynamic Fast Buffers target$\r$\nlibraries for platform i86"
+		Pop $CheckboxI86
+	${Endif}
+	
+	${If} ${SectionIsSelected} ${SEC0002}
+        ${If} $CheckboxI86_State == ${BST_CHECKED}
+            ${NSD_Check} $CheckboxI86
+        ${EndIf}
+    ${Else}
+        ${NSD_AddStyle} $CheckboxI86 ${WS_DISABLED}
     ${EndIf}
-    
-    ${NSD_CreateCheckbox} 10 54u 100% 24u "&Add to the PATH environment variable the location of Dynamic Fast Buffers target$\r$\nlibraries for platform i86"
-    Pop $CheckboxI86
-    ${If} $CheckboxI86_State == ${BST_CHECKED}
-        ${NSD_Check} $CheckboxI86
-    ${EndIf}
-    
-    ### La primera vez que lanzamos el instalador, el checkbox de DYNAMIC_FAST_BUFFERS
+	
+	### La primera vez que lanzamos el instalador, el checkbox de DYNAMIC_FAST_BUFFERS
     ### y el de SCRIPTS deben estar marcados. 
     StrCmp $FirstTime "FirstTime" +5 0 ### Si son iguales las cadenas, GOTO +5, si no, GOTO 0
         ${NSD_Check} $CheckboxDYNAMIC_FAST_BUFFERS

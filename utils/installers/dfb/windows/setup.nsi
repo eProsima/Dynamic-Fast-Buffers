@@ -26,47 +26,8 @@ RequestExecutionLevel admin
 !include Sections.nsh
 !include MUI2.nsh
 !include EnvVarUpdate.nsh
-!include EnvVarPage.nsh
 !include x64.nsh
 
-# Variables
-Var StartMenuGroup
-
-# Reserved Files
-ReserveFile "${NSISDIR}\Plugins\newadvsplash.dll"
-
-# Installer pages
-!insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
-!insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
-!define MUI_PAGE_CUSTOMFUNCTION_LEAVE ComponentsPageLeave
-!insertmacro MUI_PAGE_COMPONENTS
-Page custom VariablesEntornoPage
-!insertmacro MUI_PAGE_DIRECTORY
-!insertmacro MUI_PAGE_INSTFILES
-!insertmacro MUI_PAGE_FINISH
-!insertmacro MUI_UNPAGE_CONFIRM
-!insertmacro MUI_UNPAGE_INSTFILES
-
-# Installer languages
-!insertmacro MUI_LANGUAGE English
-
-# Installer attributes
-OutFile eProsima_Dynamic_Fast_Buffers-${VERSION}.exe
-InstallDir "$PROGRAMFILES\eProsima\Dynamic Fast Buffers"
-CRCCheck on
-XPStyle on
-ShowInstDetails show
-VIProductVersion ${VERSION}.0
-VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "Dynamic Fast Buffers"
-VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyWebsite "${URL}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
-VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright ""
-InstallDirRegKey HKLM "${REGKEY}" Path
-ShowUninstDetails show
 
 # Installer sections
 Section "Main Files" SEC0000
@@ -99,6 +60,9 @@ SectionGroup /e Libraries SECGRP0000
         File /r ..\..\..\..\lib\x64Win64VS2010\*
 		File /r ..\..\..\..\..\CDR\lib\x64Win64VS2010\*
         WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries" 1
+		# Copy visual studio redistributable for x64
+        SetOutPath $TEMP
+        File "redistributables\vcredist_x64.exe"
     SectionEnd
 
     Section "i86 libraries" SEC0002
@@ -107,19 +71,52 @@ SectionGroup /e Libraries SECGRP0000
         File /r ..\..\..\..\lib\i86Win32VS2010\*
 		File /r ..\..\..\..\..\CDR\lib\i86Win32VS2010\*
         WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries" 1
+		# Copy visual studio redistributable for i86
+        SetOutPath $TEMP
+        File "redistributables\vcredist_x86.exe"
     SectionEnd
 SectionGroupEnd
 
-# SectionGroup "Environment variables" SECGRP0001
-#     Section "x64 libraries location" SEC0003
-       # ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\x64Win64VS2010"
-       # WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries location" 1
-    # SectionEnd
-    # Section "i86 libraries location" SEC0004
-       # ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
-       # WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries location" 1
-    # SectionEnd
-# SectionGroupEnd
+!include EnvVarPage.nsh
+!include InstallRedistributables.nsh
+
+# Variables
+Var StartMenuGroup
+
+# Reserved Files
+ReserveFile "${NSISDIR}\Plugins\newadvsplash.dll"
+# Installer pages
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
+!insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
+!define MUI_PAGE_CUSTOMFUNCTION_LEAVE ComponentsPageLeave
+!insertmacro MUI_PAGE_COMPONENTS
+Page custom VariablesEntornoPage
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+
+# Installer languages
+!insertmacro MUI_LANGUAGE English
+
+# Installer attributes
+OutFile eProsima_Dynamic_Fast_Buffers-${VERSION}.exe
+InstallDir "$PROGRAMFILES\eProsima\Dynamic Fast Buffers"
+CRCCheck on
+XPStyle on
+ShowInstDetails show
+VIProductVersion ${VERSION}.0
+VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "Dynamic Fast Buffers"
+VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyWebsite "${URL}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
+VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright ""
+InstallDirRegKey HKLM "${REGKEY}" Path
+ShowUninstDetails show
 
 Section -post SEC0006
     SetShellVarContext all
@@ -154,6 +151,9 @@ Section -post SEC0006
        ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\lib\i86Win32VS2010"
        WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries location" 1
     ${EndIf}
+	
+	# Comprobamos si tiene instalado los redistributables de Visual Studio
+    Call InstallRedistributables
 	
 SectionEnd
 
