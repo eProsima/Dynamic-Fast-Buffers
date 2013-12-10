@@ -96,7 +96,7 @@ cd output\doxygen\latex
 call make.bat
 set errorstatus=%ERRORLEVEL%
 if not %errorstatus%==0 goto :exit
-ren refman.pdf "API C++ Manual.pdf"
+ren refman.pdf "DFB - API C++ Manual.pdf"
 cd "..\..\..\..\.."
 
 
