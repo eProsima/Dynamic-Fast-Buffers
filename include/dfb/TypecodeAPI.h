@@ -23,7 +23,7 @@ namespace DynamicFastBuffers
 {
 
 	/*!
-     * @brief This static class offers an interface to create a typecode for data type definitions.
+     * @brief This static class offers an interface to create a typecode for describing native data types.
      * @ingroup TYPECODEAPIMODULE
      */
 	class Dfb_DllAPI TypecodeAPI
@@ -31,7 +31,7 @@ namespace DynamicFastBuffers
 	private:
 		
 		/*!
-        * @brief This function calculates the maximum size of the sizes of the data allocated inside a structure.
+        * @brief This function calculates the maximum of the sizes of the data allocated inside a structure.
 		* @param tc A struct Typecode which size must be calculated.
 		*/
 		static size_t calculateStructSize(Typecode *tc)
@@ -122,7 +122,7 @@ namespace DynamicFastBuffers
 		}
 
 		/*!
-         * @brief This function creates a Typecode which represents double precision number data type.
+         * @brief This function creates a Typecode which represents a double precision number data type.
 		 * @return A pointer to the Typecode object created.
 		 */
 		static Typecode* createDouble()
@@ -322,8 +322,8 @@ namespace DynamicFastBuffers
 
 		/*!
          * @brief This function deletes a Typecode object by calling its default destructor.
-		 * @param tc A Typecode to be deleted.
-		 * @exception WrongParamException This exception is thrown when given Typecode is NULL.
+		 * @param tc A Typecode object to be deleted.
+		 * @exception WrongParamException This exception is thrown when the given Typecode is NULL.
 		 */
 		static void deleteTypecode(Typecode *tc)
 		{

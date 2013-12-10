@@ -67,7 +67,7 @@ namespace DynamicFastBuffers
 		//! @brief Default constructor
 		virtual ~NotEnoughParamsException() throw(){}
 
-		//! @brief This function throws the object as exception.
+		//! @brief This function throws the object as an exception.
 		virtual void raise() const {throw *this;}
 	};
 }

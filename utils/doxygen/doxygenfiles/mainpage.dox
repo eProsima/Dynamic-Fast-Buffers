@@ -1,32 +1,40 @@
 /*!
  * @mainpage DYNAMIC FAST BUFFERS
  *
- * <center><b>DYNAMIC FAST BUFFERS Library</b></center><br/>
+ * <center><b>Dynamic Fast Buffers Library</b></center><br/>
  * 
  * @image html eProsimaLogo.png
  *
  * <br/><center><a href="http://www.eprosima.com">eProsima</a></center>
  *
- * eProsima Dynamic Fast Buffers (DFB) is a high-performance library that allows users to describe and serialize 
- * or deserialize data dynamically in run-time. Its functionality is based on the creation of a typecode for data 
- * definition, and generate afterwards a bytecode to do data serialization. There is no need for users to know any
- * internal data of the typecode of the bytecode, neither of the serialization procedure.
+ * eProsima Dynamic Fast Buffers is a high-performance library that allows users to
+ * dynamically describe and serialize or deserialize data at run-time. Its functionality is
+ * based on the creation of a typecode which defines the data, and the generation
+ * afterwards of a bytecode to do the data serialization. There is no need for users to
+ * know anything about the internal structure of the typecode or the bytecode, neither of
+ * the serialization procedure.
  *
- * This library uses eProsima Fast Buffers for data serialization and deserialization, for in it are defined the functions that perform this operations.
+ * This library uses eProsima Fast CDR, which is a library designed to serialize and
+ * deserialize data in CDR (Common Data Representation) format.
  *
  * eProsima DFB also brings this features:
  *
  * @li Data description through a typecode: 
- * The typecode is a way to describe how is the data that any user wants to use in its application.
- * Through this typecode, eProsima DFB knows how is the user's data and how to move along it. Avoids the developer 
- * to describe data statically inside an IDL file. 
- * @li Bytecode generation for data serialization/deserialization: 
- * This is just a way for DFB of knowing how to serialize the data defined by user. There are two kinds of bytecode 
- * that can be generated, one specific for data serialization, and the other for data deserialization.
+ * A typecode is a way to describe how is the data that a user wants to use in his application.
+ * Through this typecode, eProsima DFB knows how is the user's native data and how to move through it. It also 
+ * avoids the developer from describing data in a static way using an IDL file
+ * @li Bytecode generation: 
+ * This is just a way for DFB of knowing how to serialize the native data defined by the user. There are two kinds of 
+ * bytecode entities that can be generated: one for data serialization, and another for data deserialization. 
  * @li Data serialization/deserialization: 
- * eProsima DBF provides users a way to serialize or deserialize data by using a FastCDR object provided by eProsima
- * Fast Buffers library. Serialized data will be stored inside a buffer defined by user. Deserialized data will be 
- * stored in the user's data type previously defined.
+ * eProsima DBF features a way to serialize or deserialize data using a FastCDR object provided by eProsima Fast CDR library.
+ * The serialized data will be stored inside a buffer defined by the user while the deserialized data will be restored in the 
+ * user's native data type previously defined.
+ * @li Support for different packaging strategies for structures:
+ * eProsima Dynamic Fast Buffers supports different packaging strategies which can be selected by the user at compile time.
+ * @li Multi-platform:
+ * eProsima Dynamic Fast Buffers has been designed and tested for different platforms. It supports Windows and Linux 
+ * (Fedora and CentOS distributions) Operating Systems, in both 32-bit and 64-bit architectures.
  *
  */
 
@@ -38,35 +46,35 @@
  /*!
  * @defgroup SERIALIZERAPIMODULE Serializer API Module
  * @ingroup DYNAMICFASTBUFFERSAPIREFERENCE
- * @brief This containt the API describing the functions availiable for users in order to do data serialization or 
+ * @brief This group contains the API describing the functions that are availiable for the users to do data serialization or 
  * deserialization.
  */
 
  /*!
  * @defgroup BYTECODEAPIMODULE Bytecode Generation API Module
  * @ingroup DYNAMICFASTBUFFERSAPIREFERENCE
- * @brief This group contains related API to generate Bytecode objects.
+ * @brief This group contains the API that must be used to generate Bytecode objects.
  */
 
  /*!
  * @defgroup TYPECODEAPIMODULE Typecode Creation API Module
  * @ingroup DYNAMICFASTBUFFERSAPIREFERENCE
- * @brief This group represent the API that can be used for the creation of a Typecode wich describes soma data 
- * type defined by users.
+ * @brief This group represents the API that can be used for the creation of a Typecode wich describes the native data 
+ * type defined by the users.
  */
 
  /*!
  * @defgroup COMMONDATAMODULE Common Data Module
  * @ingroup DYNAMICFASTBUFFERSAPIREFERENCE
- * @brief This module contains all classes used to represent the entitues of the domain used internally in eProsima
+ * @brief This module contains all the classes used to represent the entities of the domain used internally inside eProsima
  * Dynamic Fast Buffers library.
- * These classes are reachable by users in order to use them to serialize or deserialize data types.
+ * These classes are reachable by users to use them when serializing or deserializing native data types.
  */
  
  /*!
  * @defgroup EXCEPTIONMODULE Exception Module
  * @ingroup DYNAMICFASTBUFFERSAPIREFERENCE
- * @brief This module contains all exeptions that will be raised when an error occurs in runtime.
+ * @brief This module contains all the exeptions that could be raised when an error occurs at runtime.
  */
 
  

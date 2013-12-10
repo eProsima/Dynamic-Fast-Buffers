@@ -29,7 +29,7 @@ namespace DynamicFastBuffers
 	enum tc_kind 
 	{
 		//! @brief Type not specified
-		TC_NOTYPE = 0,
+		TC_NOTYPE = 0, 
 		//! @brief Integer data type
 		TC_INTEGER,
 		//! @brief Short data type
@@ -60,7 +60,7 @@ namespace DynamicFastBuffers
 
 	/*! 
 	 * @enum flag
-	 * @brief This enumeration is used to specify if user wants to create a Bytecode for serialization or deserialization.
+	 * @brief This enumeration is used to specify if the user wants to create a Bytecode for serialization or deserialization.
 	 * @ingroup COMMONDATAMODULE
 	 */
 	enum flag
@@ -113,7 +113,9 @@ namespace DynamicFastBuffers
 		//! @brief The size of the string object represented by this Typecode.
 		int size_str_;
 		
+		//! @brief The alignment calculated for a concrete data type.
 		size_t align_;
+		
 		/*!
         * @brief Checks if a Typecode object with his attribute kind_ set to the specified value provided as parameter can be added to this Typecode.
 		* @return An integer code that represents if a Typecode objetc can or cannot be added to current one.
@@ -153,12 +155,12 @@ namespace DynamicFastBuffers
 
 		/*!
         * @brief Getter for attribute kind_.
-		* @return The enum onbject used for describing the kind of the data type represented by the Tpecode.
+		* @return The enum object used for describing the kind of the data type represented by the Tpecode.
         */
 		tc_kind getKind();
 
 		/*!
-        * @brief Getter for the data kind formatted to an instance of std::string.
+        * @brief Getter for the data type formatted to an instance of std::string.
 		* @return A std::string containing the written description of the attribute kind.
         */
 		string getKindStr();
@@ -170,7 +172,7 @@ namespace DynamicFastBuffers
 		int getConstentSize();
 
 		/*!
-        * @brief Getter to obtain the size in Bytes depending on the data type described by Typecode object.
+        * @brief Getter to obtain the total size in Bytes, depending on the data type described by the Typecode object.
 		* @return The size in Bytes of the represented data type.
         */
 		int getSize();
@@ -182,7 +184,7 @@ namespace DynamicFastBuffers
 		int getMaxLenght();
 
 		/*!
-        * @brief Return the number of slots of the array (in case this Typecode represents such data type).
+        * @brief Returns the total number of slots of the array (in case this Typecode represents such data type).
 		* @return The number of slots of the array.
         */
 		int getArraySize();
@@ -200,13 +202,13 @@ namespace DynamicFastBuffers
 		vector<int> getDimensions();
 
 		/*!
-        * @brief Getter to obtain Typecode representing the data type inside an array or sequence (in case this Typecode represents one of those two data types).
+        * @brief Getter to obtain a Typecode object representing the data type inside an array or sequence (in case this Typecode represents one of those two data types).
 		* @return Pointer to a Typecode object representing the data kind.
         */
 		Typecode* getType();
 
 		/*!
-        * @brief Functon to set attribute named dimentions_ (or counter_ in case the Typecode object has a type_ attribute set to TC_STRUCT).
+        * @brief Function to set attribute named dimentions_ (or counter_ in case the Typecode object has a type_ attribute set to TC_STRUCT).
 		* @param size The size which value has to be copied into one of the two attributes.
 		*/
 		void setArraySize(int size);
@@ -225,7 +227,7 @@ namespace DynamicFastBuffers
 
 		/*!
         * @brief Sets the maximum length of a sequence Typecode.
-		* @param maxLength The maximum length represented an an integer.
+		* @param maxLength The maximum length represented as an integer.
         */
 		void setMaxLength(int maxLength);
 
@@ -287,7 +289,7 @@ namespace DynamicFastBuffers
 	{
 	private:
 
-		//! @brief This attribute stores references to the functions that must be executed to serialize or deserialize some data type defined by user.
+		//! @brief This attribute stores references to the functions that must be executed to serialize or deserialize some data type defined by the user.
 		vector<CALLBACK>* bytecode_;
 
 		//! @brief This attribute holds the memory padding added between data in a complex data type allocation.
@@ -309,7 +311,7 @@ namespace DynamicFastBuffers
 		~Bytecode();
 
 		/*!
-        * @brief Getter for the integer representing the array number of slots.
+        * @brief Getter for the integer which represents the array's slots.
 		* @return The number of slots of the array.
         */
 		inline int* getSize()
@@ -363,88 +365,88 @@ namespace DynamicFastBuffers
 			//! @brief Atribute used to fulfill Singleton design pattern.
 			static AlignmentInfo *alignmentInfo_;
 		
-			//! @brief Attribute used to store char boundary.
+			//! @brief Attribute used to store a char boundary.
 			struct charAlignment_st
 			{
 				char att1;
 				char att2;
 			};
-			//! @brief Attribute used to store char boundary.
+			//! @brief Attribute used to store a char boundary.
 			ptrdiff_t charAlign;
 
-			//! @brief Structure used to know short boundary.
+			//! @brief Structure used to know a short boundary.
 			struct shortAlignment_st
 			{
 				char att1;
 				short att2;
 			};
-			//! @brief Attribute used to store short boundary.
+			//! @brief Attribute used to store a short boundary.
 			ptrdiff_t shortAlign;
 
-			//! @brief Structure used to know int32_t boundary.
+			//! @brief Structure used to know an int32_t boundary.
 			struct intAlignment_st
 			{
 				char att1;
 				int32_t att2;
 			};
-			//! @brief Attribute used to store int32_t boundary.
+			//! @brief Attribute used to store an int32_t boundary.
 			ptrdiff_t intAlign;
 
-			//! @brief Structure used to know int64_t boundary.
+			//! @brief Structure used to know an int64_t boundary.
 			struct longAlignment_st
 			{
 				char att1;
 				int64_t att2;
 			};
-			//! @brief Attribute used to store int64_t boundary.
+			//! @brief Attribute used to store an int64_t boundary.
 			ptrdiff_t longAlign;
 
-			//! @brief Structure used to know float boundary.
+			//! @brief Structure used to know a float boundary.
 			struct floatAlignment_st
 			{
 				char att1;
 				float att2;
 			};
-			//! @brief Attribute used to store float boundary.
+			//! @brief Attribute used to store a float boundary.
 			ptrdiff_t floatAlign;
 
-			//! @brief Structure used to know double boundary.
+			//! @brief Structure used to know a double boundary.
 			struct doubleAlignment_st
 			{
 				char att1;
 				double att2;
 			};
-			//! @brief Attribute used to store double boundary.
+			//! @brief Attribute used to store a double boundary.
 			ptrdiff_t doubleAlign;
 
-			//! @brief Structure used to know string boundary.
+			//! @brief Structure used to know a string boundary.
 			struct stringAlignment_st
 			{
 				char att1;
 				std::string att2;
 			};
-			//! @brief Attribute used to store string boundary.
+			//! @brief Attribute used to store a string boundary.
 			ptrdiff_t stringAlign;
 
-			//! @brief Structure used to know bool boundary.
+			//! @brief Structure used to know a bool boundary.
 			struct booleanAlignment_st
 			{
 				char att1;
 				bool att2;
 			};
-			//! @brief Attribute used to store bool boundary.
+			//! @brief Attribute used to store a bool boundary.
 			ptrdiff_t booleanAlign;
 
-			//! @brief Structure used to know vector boundary.
+			//! @brief Structure used to know a vector boundary.
 			struct sequenceAlignment_st
 			{
 				char att1;
 				vector<void*> att2;
 			};
-			//! @brief Attribute used to store vector boundary.
+			//! @brief Attribute used to store a vector boundary.
 			ptrdiff_t sequenceAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a char data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a char data type.
 			struct charStructAlignment_st
 			{
 				char att1;
@@ -452,10 +454,10 @@ namespace DynamicFastBuffers
 					char att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a char data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a char data type.
 			ptrdiff_t charStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a short data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a short data type.
 			struct shortStructAlignment_st
 			{
 				char att1;
@@ -463,10 +465,10 @@ namespace DynamicFastBuffers
 					short att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a short data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a short data type.
 			ptrdiff_t shortStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of an int32_t data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of an int32_t data type.
 			struct intStructAlignment_st
 			{
 				char att1;
@@ -474,10 +476,10 @@ namespace DynamicFastBuffers
 					int32_t att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a int32_t data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of an int32_t data type.
 			ptrdiff_t intStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of an int64_t data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of an int64_t data type.
 			struct longStructAlignment_st
 			{
 				char att1;
@@ -485,10 +487,10 @@ namespace DynamicFastBuffers
 					int64_t att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a int64_t data type.
+			//! @brief Attribute used to store the the boundary of a structure when its maximum size is the one of an int64_t data type.
 			ptrdiff_t longStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a float data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a float data type.
 			struct floatStructAlignment_st
 			{
 				char att1;
@@ -496,10 +498,10 @@ namespace DynamicFastBuffers
 					float att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a float data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a float data type.
 			ptrdiff_t floatStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a double data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a double data type.
 			struct doubleStructAlignment_st
 			{
 				char att1;
@@ -507,10 +509,10 @@ namespace DynamicFastBuffers
 					double att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a double data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a double data type.
 			ptrdiff_t doubleStructAlign;
 			
-			//! @brief Structure used to know struct boundary when maximum size is the one of a string data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a string data type.
 			struct stringStructAlignment_st
 			{
 				char att1;
@@ -518,10 +520,10 @@ namespace DynamicFastBuffers
 					std::string att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a string data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a string data type.
 			ptrdiff_t stringStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a boolean data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a boolean data type.
 			struct booleanStructAlignment_st
 			{
 				char att1;
@@ -529,10 +531,10 @@ namespace DynamicFastBuffers
 					bool att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a boolean data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a boolean data type.
 			ptrdiff_t booleanStructAlign;
 
-			//! @brief Structure used to know struct boundary when maximum size is the one of a vector data type.
+			//! @brief Structure used to know the boundary of a structure when its maximum size is the one of a vector data type.
 			struct sequenceStructAlignment_st
 			{
 				char att1;
@@ -540,10 +542,10 @@ namespace DynamicFastBuffers
 					vector<void*> att1;
 				} att2;
 			};
-			//! @brief Attribute used to store struct boundary with a maximum size of a vector data type.
+			//! @brief Attribute used to store the boundary of a structure when its maximum size is the one of a vector data type.
 			ptrdiff_t sequenceStructAlign;
 
-			//! @brief Structure used to know the padding is inserted behind a structure.
+			//! @brief Structure used to know the padding inserted behind a structure.
 			struct paddingBehindStructure1
 			{
 				char att1;
@@ -553,7 +555,7 @@ namespace DynamicFastBuffers
 				} att2;
 				char att3;
 			};
-			//! @brief Attribute used to store the padding is inserted behind a structure.
+			//! @brief Attribute used to store the padding inserted behind a structure.
 			ptrdiff_t paddingBehindStructure1Align;
 
 			//! @brief Attribute that holds a value indicating if padding is inserted behind a structure.

@@ -21,13 +21,6 @@ namespace DynamicFastBuffers
 			BytecodeAPI::generateBytecodeDeserialization(bytecode, typecode, index, initialPosition, added);
 		}
 		
-		//Test--
-		//for(int i=0; i<bytecode->getAlignment()->size(); ++i){
-		//	printf("%d, ", bytecode->getAlignment()->at(i));
-		//}
-		//std::cout << endl;
-		//--Test
-
 		return bytecode; 
 	}
 

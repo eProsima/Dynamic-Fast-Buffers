@@ -8,6 +8,6 @@ using namespace std;
 
 namespace DynamicFastBuffers
 {
-	//No code inside this file for now.
+	//No code inside this file.
 
 }
