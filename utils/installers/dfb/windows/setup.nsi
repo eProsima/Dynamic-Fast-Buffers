@@ -38,7 +38,7 @@ SectionIn RO
     SetOutPath $INSTDIR\doc\pdf
     File /r ..\..\..\..\doc\pdf\*
 	File /r "..\..\..\doxygen\output\doxygen\latex\DFB - API C++ Manual.pdf"
-    SetOutPath $INSTDIR\examples
+    SetOutPath $INSTDIR\examples\c++\HelloWorldDFB
     File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.cpp
 	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.sln
 	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj
@@ -46,6 +46,8 @@ SectionIn RO
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
 	File /r ..\..\..\..\..\CDR\include\*
+	SetOutPath $INSTDIR\include\fastcdr\eProsima_cpp
+	File /r ..\..\..\..\..\eProsima\eProsima\code\eProsima_cpp\eProsima_auto_link.h
 	SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
     File ..\..\..\..\LGPLv3_LICENSE.txt
