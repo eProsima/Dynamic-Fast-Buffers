@@ -817,7 +817,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\lib\i86Win32VS2010; $(ProjectDir)..\..\..\..\CDR\lib\i86Win32VS2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>CDRd.lib;DynamicFastBuffersd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

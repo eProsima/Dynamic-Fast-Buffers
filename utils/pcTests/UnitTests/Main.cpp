@@ -1,11 +1,11 @@
-#include "cpp/TypecodeAPI.h"
-#include "cpp/BytecodeAPI.h"
-#include "cpp/SerializerAPI.h"
-#include "cpp/CommonData.h"
-#include "cpp/FastCdr.h"
-#include "cpp/FastBuffer.h"
-#include "cpp/exceptions/Exception.h"
-#include "cpp/exceptions/WrongParamException.h"
+#include "dfb/TypecodeAPI.h"
+#include "dfb/BytecodeAPI.h"
+#include "dfb/SerializerAPI.h"
+#include "dfb/CommonData.h"
+#include "fastcdr/FastCdr.h"
+#include "fastcdr/FastBuffer.h"
+#include "fastcdr/exceptions/Exception.h"
+#include "dfb/exceptions/WrongParamException.h"
 #include <iostream>
 #include <exception>
 #include <cstdint>
@@ -267,7 +267,7 @@ struct outer
 	inner att4;
 };
 
-bool serializeBlackBox01(eProsima::FastCdr *cdrp)
+bool serializeBlackBox01(eprosima::FastCdr *cdrp)
 {
 
 	int size = 0;
@@ -289,10 +289,10 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 		DynamicFastBuffers::TypecodeAPI::createBoolean());
 
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bc1;
 	DynamicFastBuffers::Bytecode *bc2;
@@ -339,7 +339,7 @@ bool serializeBlackBox01(eProsima::FastCdr *cdrp)
 	return true;
 }
 
-bool serializeBlackBox02(eProsima::FastCdr *cdrp)
+bool serializeBlackBox02(eprosima::FastCdr *cdrp)
 {
 	inner inputStruct;
 	
@@ -362,10 +362,10 @@ bool serializeBlackBox02(eProsima::FastCdr *cdrp)
 		tc);
 		
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::SERIALIZE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::DESERIALIZE);
@@ -380,7 +380,7 @@ bool serializeBlackBox02(eProsima::FastCdr *cdrp)
 
 }
 
-bool serializeBlackBox03(eProsima::FastCdr *cdrp)
+bool serializeBlackBox03(eprosima::FastCdr *cdrp)
 {
 	outer inputStruct;
 	inner in1;
@@ -415,10 +415,10 @@ bool serializeBlackBox03(eProsima::FastCdr *cdrp)
 		typecode);
 		
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::DESERIALIZE);
@@ -432,7 +432,7 @@ bool serializeBlackBox03(eProsima::FastCdr *cdrp)
 	}
 }
 
-bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
+bool deserializeBlackBox01(eprosima::FastCdr *cdrp)
 {
 	DynamicFastBuffers::Bytecode *bc1;
 	DynamicFastBuffers::Bytecode *bc2;
@@ -463,10 +463,10 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 		DynamicFastBuffers::TypecodeAPI::createBoolean());
 	
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 
 	bc1 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createInteger(), DynamicFastBuffers::SERIALIZE);
 	bc2 = DynamicFastBuffers::BytecodeAPI::generateBytecode(DynamicFastBuffers::TypecodeAPI::createShort(), DynamicFastBuffers::SERIALIZE);
@@ -535,7 +535,7 @@ bool deserializeBlackBox01(eProsima::FastCdr *cdrp)
 	return returnValue;
 }
 
-bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
+bool deserializeBlackBox02(eprosima::FastCdr *cdrp)
 {
 	inner inputStruct, outputStruct;
 	
@@ -556,10 +556,10 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 		DynamicFastBuffers::TypecodeAPI::createInteger());
 		
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::SERIALIZE);
 	DynamicFastBuffers::Bytecode *bytecodeDeserialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(tc, DynamicFastBuffers::DESERIALIZE);
@@ -579,7 +579,7 @@ bool deserializeBlackBox02(eProsima::FastCdr *cdrp)
 	return returnValue;
 }
 
-bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
+bool deserializeBlackBox03(eprosima::FastCdr *cdrp)
 {
 	outer inputStruct, outputStruct; 
 	inner in1;
@@ -614,10 +614,10 @@ bool deserializeBlackBox03(eProsima::FastCdr *cdrp)
 		typecode);
 		
 	char *buffer = (char*) malloc(size);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, size); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, size); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 	
 	
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
@@ -657,7 +657,7 @@ struct outerBlackBox04
 	bool att3;
 };
 
-bool deserializeBlackBox04(eProsima::FastCdr *cdrp)
+bool deserializeBlackBox04(eprosima::FastCdr *cdrp)
 {
 
 	outerBlackBox04 inputStruct, outputStruct; 
@@ -684,10 +684,10 @@ bool deserializeBlackBox04(eProsima::FastCdr *cdrp)
 	);
 	
 	char *buffer = (char*) malloc(500);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, 500); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, 500); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 	
 	
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
@@ -753,10 +753,10 @@ bool deserializeBlackBox05()
 	);
 	
 	char *buffer = (char*) malloc(500);
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
-	cdrBuffer = new eProsima::FastBuffer(buffer, 500); 
-	cdr = new eProsima::FastCdr(*cdrBuffer);
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
+	cdrBuffer = new eprosima::FastBuffer(buffer, 500); 
+	cdr = new eprosima::FastCdr(*cdrBuffer);
 	
 	
 	DynamicFastBuffers::Bytecode *bytecodeSerialization = DynamicFastBuffers::BytecodeAPI::generateBytecode(typecode, DynamicFastBuffers::SERIALIZE);
@@ -867,13 +867,13 @@ bool addMemberBlackBox04()
 	return returnValue;
 }
 
-void setUp(eProsima::FastCdr *&cdr, eProsima::FastBuffer *&fastBuffer, char* buffer)
+void setUp(eprosima::FastCdr *&cdr, eprosima::FastBuffer *&fastBuffer, char* buffer)
 {
-	fastBuffer = new eProsima::FastBuffer(buffer, 500); 
-	cdr = new eProsima::FastCdr(*fastBuffer);
+	fastBuffer = new eprosima::FastBuffer(buffer, 500); 
+	cdr = new eprosima::FastCdr(*fastBuffer);
 }
 
-void tearDown(eProsima::FastCdr *&cdr, eProsima::FastBuffer *&fastBuffer)
+void tearDown(eprosima::FastCdr *&cdr, eprosima::FastBuffer *&fastBuffer)
 {
 	delete cdr;
 	delete fastBuffer;
@@ -882,8 +882,8 @@ void tearDown(eProsima::FastCdr *&cdr, eProsima::FastBuffer *&fastBuffer)
 int main()
 {
 	char buffer[500];
-	eProsima::FastCdr *cdr;
-	eProsima::FastBuffer *cdrBuffer;
+	eprosima::FastCdr *cdr;
+	eprosima::FastBuffer *cdrBuffer;
 	setUp(cdr, cdrBuffer, buffer);
 
 	cout << "UNIT TESTS:\n\n";
