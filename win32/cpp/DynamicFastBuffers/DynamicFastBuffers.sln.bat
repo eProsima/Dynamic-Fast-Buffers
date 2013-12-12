@@ -1,7 +1,7 @@
 :: This script execute Visual Studio getting first the version of the product.
 
 :: Get the current vesion of DFB
-call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP VERSIONDFB ..\..\..\include\cpp\DFB_version.h
+call %EPROSIMADIR%\scripts\common_pack_functions.bat :getVersionFromCPP VERSIONDFB ..\..\..\include\dfb\DFB_version.h
 if not %errorstatus%==0 goto :EOF
 
 set VERSION=-%VERSIONDFB%
