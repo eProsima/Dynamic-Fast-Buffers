@@ -31,7 +31,7 @@ DFB_LIBS= $(LIBS) -lcdr -ldfb
 DFB_LIBS_DEBUG_DIR= -L$(BASEDIR)/lib/$(EPROSIMA_TARGET) -L$(BASEDIR)/../CDR/lib/$(EPROSIMA_TARGET)
 DFB_LIBS_DIR= $(DFB_LIBS_DEBUG_DIR)
 
-DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/cpp \
+DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/dfb \
 		  -I$(EPROSIMADIR)/code -I$(BASEDIR)/../CDR/include
 
 DFB_SRC_CPPFILES= $(BASEDIR)/utils/pcTests/UnitTests/Main.cpp
