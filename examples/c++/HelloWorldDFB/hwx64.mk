@@ -1,4 +1,4 @@
-BASEDIR=../../..
+BASEDIR=.
 OUTDIR= $(BASEDIR)/output
 CC=gcc
 CPP=g++
@@ -14,19 +14,18 @@ TARGET_ARCH= x64Linux2.6gcc
 
 DFB_SED_OUTPUT_DIR_RELEASE= $(subst /,\\/,$(DFB_OUTDIR_RELEASE))
 
-DFB_EXE_DIR= $(BASEDIR)/examples/c++/HelloWorldDFB/HelloWorldDFB-$(TARGET_ARCH)/
+DFB_EXE_DIR= $(BASEDIR)/bin
 
-DFB_TARGET_EXE= $(DFB_EXE_DIR)HelloWorldx64.o
+DFB_TARGET_EXE= $(DFB_EXE_DIR)/HelloWorldx64
 
 DFB_CFLAGS += -c -Wall -O2 -m64 -fpic -std=c++11
 DFB_LDFLAGS=-m64
 
 DFB_LIBS= $(LIBS) -lfastcdr -ldfb
 
-DFB_LIBS_DIR= -L$(BASEDIR)/lib/$(TARGET_ARCH) -L$(BASEDIR)/../CDR/lib/$(TARGET_ARCH)
+DFB_LIBS_DIR=
 
-DFB_INCLUDE_DIRS= $(INCLUDE_DIRS) -I$(BASEDIR)/include -I$(BASEDIR)/include/dfb \
-		  -I$(EPROSIMADIR)/code -I$(BASEDIR)/../CDR/include 
+DFB_INCLUDE_DIRS=
 
 DFB_SRC_CPPFILES= $(BASEDIR)/examples/c++/HelloWorldDFB/HelloWorldDFB-x64Win64.cpp
 
@@ -50,8 +49,6 @@ checkDFBDirectories:
 	@mkdir -p $(OUTDIR)
 	@mkdir -p $(DFB_OUTDIR)
 	@mkdir -p $(DFB_OUTDIR_RELEASE)
-	@mkdir -p lib
-	@mkdir -p lib/$(TARGET_ARCH)
 	@mkdir -p $(DFB_EXE_DIR)
 
 $(DFB_TARGET_EXE): $(DFB_EXE_RELEASE)
