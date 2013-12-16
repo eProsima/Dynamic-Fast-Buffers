@@ -37,18 +37,18 @@ SectionIn RO
     File /r ..\..\..\doxygen\output\doxygen\html\*
     SetOutPath $INSTDIR\doc\pdf
     File /r ..\..\..\..\doc\pdf\*
-	File /r "..\..\..\doxygen\output\doxygen\latex\DFB - API C++ Manual.pdf"
+    File /r "..\..\..\doxygen\output\doxygen\latex\DFB - API C++ Manual.pdf"
     SetOutPath $INSTDIR\examples\c++\HelloWorldDFB
     File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.cpp
-	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.sln
-	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj
-	File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj.filters
+    File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.sln
+    File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj
+    File /r ..\..\..\..\examples\c++\HelloWorldDFB\*.vcxproj.filters
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
-	File /r ..\..\..\..\..\CDR\include\*
+    File /r ..\..\..\..\..\CDR\include\*
 	SetOutPath $INSTDIR\include\eProsima_cpp
-	File /r ..\..\..\..\..\eProsima\eProsima\code\eProsima_cpp\eProsima_auto_link.h
-	SetOutPath $INSTDIR
+    File /r "$%EPROSIMADIR%\code\eProsima_cpp\eProsima_auto_link.h"
+    SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
     File ..\..\..\..\LGPLv3_LICENSE.txt
     File ..\..\..\..\README.html
