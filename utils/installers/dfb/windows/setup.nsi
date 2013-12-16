@@ -104,7 +104,7 @@ Page custom VariablesEntornoPage
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile eProsima_Dynamic_Fast_Buffers-${VERSION}.exe
+OutFile eProsima_Dynamic_Fast_Buffers_${VERSION}.exe
 InstallDir "$PROGRAMFILES\eProsima\Dynamic Fast Buffers"
 CRCCheck on
 XPStyle on
