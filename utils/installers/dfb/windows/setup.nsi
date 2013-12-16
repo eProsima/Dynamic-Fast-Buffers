@@ -46,7 +46,7 @@ SectionIn RO
     SetOutPath $INSTDIR\include
     File /r ..\..\..\..\include\*
 	File /r ..\..\..\..\..\CDR\include\*
-	SetOutPath $INSTDIR\include\fastcdr\eProsima_cpp
+	SetOutPath $INSTDIR\include\eProsima_cpp
 	File /r ..\..\..\..\..\eProsima\eProsima\code\eProsima_cpp\eProsima_auto_link.h
 	SetOutPath $INSTDIR
     File ..\..\..\..\DYNAMIC_FAST_BUFFERS_LICENSE.txt
