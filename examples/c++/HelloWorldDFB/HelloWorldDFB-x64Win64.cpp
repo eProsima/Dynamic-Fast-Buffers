@@ -216,9 +216,9 @@ int main()
 	cdr.reset();
 
 	if(checkStruct(&inputStruct, &outputStruct) == 0){
-		cout << "TEST: HelloWorldDFB-x64Win64 ended succesfully.\nData Comparison: CORRECT" << endl;
+		cout << "TEST: HelloWorldDFB-64bit ended succesfully.\nData Comparison: CORRECT" << endl;
 	}else{
-		cout << "TEST: HelloWorldDFB-x64Win64 failed.\nData Comparison: FAIL" << endl;
+		cout << "TEST: HelloWorldDFB-64bit failed.\nData Comparison: FAIL" << endl;
 	}
 
 	return 0;
