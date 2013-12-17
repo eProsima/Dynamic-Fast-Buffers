@@ -28,6 +28,31 @@ RequestExecutionLevel admin
 !include EnvVarUpdate.nsh
 !include x64.nsh
 
+# Installer sections Has to be defined at the beginning because they are used by EnvVarPage.nsh
+SectionGroup /e Libraries SECGRP0000
+    Section "x64 libraries" SEC0001
+        SetOutPath $INSTDIR\lib\x64Win64VS2010
+        SetOverwrite on
+        File /r ..\..\..\..\lib\x64Win64VS2010\*
+		File /r ..\..\..\..\..\CDR\lib\x64Win64VS2010\*
+        WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries" 1
+		# Copy visual studio redistributable for x64
+        SetOutPath $TEMP
+        File "redistributables\vcredist_x64.exe"
+    SectionEnd
+
+    Section "i86 libraries" SEC0002
+        SetOutPath $INSTDIR\lib\i86Win32VS2010
+        SetOverwrite on
+        File /r ..\..\..\..\lib\i86Win32VS2010\*
+		File /r ..\..\..\..\..\CDR\lib\i86Win32VS2010\*
+        WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries" 1
+		# Copy visual studio redistributable for i86
+        SetOutPath $TEMP
+        File "redistributables\vcredist_x86.exe"
+    SectionEnd
+SectionGroupEnd
+
 
 # Installer sections
 Section "Main Files" SEC0000
@@ -55,29 +80,7 @@ SectionIn RO
     WriteRegStr HKLM "${REGKEY}\Components" "Main Files" 1
 SectionEnd
 
-SectionGroup /e Libraries SECGRP0000
-    Section "x64 libraries" SEC0001
-        SetOutPath $INSTDIR\lib\x64Win64VS2010
-        SetOverwrite on
-        File /r ..\..\..\..\lib\x64Win64VS2010\*
-		File /r ..\..\..\..\..\CDR\lib\x64Win64VS2010\*
-        WriteRegStr HKLM "${REGKEY}\Components" "x64 libraries" 1
-		# Copy visual studio redistributable for x64
-        SetOutPath $TEMP
-        File "redistributables\vcredist_x64.exe"
-    SectionEnd
 
-    Section "i86 libraries" SEC0002
-        SetOutPath $INSTDIR\lib\i86Win32VS2010
-        SetOverwrite on
-        File /r ..\..\..\..\lib\i86Win32VS2010\*
-		File /r ..\..\..\..\..\CDR\lib\i86Win32VS2010\*
-        WriteRegStr HKLM "${REGKEY}\Components" "i86 libraries" 1
-		# Copy visual studio redistributable for i86
-        SetOutPath $TEMP
-        File "redistributables\vcredist_x86.exe"
-    SectionEnd
-SectionGroupEnd
 
 !include EnvVarPage.nsh
 !include InstallRedistributables.nsh
